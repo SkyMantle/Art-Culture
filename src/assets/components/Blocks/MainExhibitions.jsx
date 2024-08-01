@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
 
-function MainNews() {
+function MainExhibitions() {
 	const { t } = useTranslation()
 	const [posts, setPosts] = useState([])
 	const [media, setMedia] = useState({})
@@ -45,7 +45,7 @@ function MainNews() {
 	useEffect(() => {
 		// Запит на отримання постів з медіа-даними
 		axios
-			.get('https://zimbabaluba.pp.ua/wp-json/wp/v2/posts?categories=3&_embed')
+			.get('https://zimbabaluba.pp.ua/wp-json/wp/v2/posts?categories=6&_embed')
 			.then(response => {
 				console.log('Отримані дані постів:', response.data)
 				setPosts(response.data)
@@ -73,13 +73,13 @@ function MainNews() {
 	return (
 		<div className={`${styles.mainPageNewsContainer}`}>
 			<div className={`${styles.mainPageNewsTitleWithButton}`}>
-				<h3 className={`${styles.mainPageNewsTitle}`}>{t('Новини')}</h3>
+				<h3 className={`${styles.mainPageNewsTitle}`}>{t('Виставки')}</h3>
 				<div
 					className={`${styles.mainPageNewsButtonWrapper} ${styles.desktopButtonWrapper}`}
 				>
 					<button className={`${styles.mainPageNewsButton}`}>
 						<p className={`${styles.mainPageNewsButtonTitle}`}>
-							{t('Усі новини')}
+							{t('Усі виставки')}
 						</p>
 						<img
 							className={`${styles.mainPageNewsButtonImg}`}
@@ -125,7 +125,7 @@ function MainNews() {
 									<img
 										className={`${styles.cardImg} ${index === 0 ? styles.firstCardImg : index === 1 ? styles.secondCardImg : index === 2 ? styles.thirdCardImg : styles.fourthCardImg}`}
 										src={featuredMediaUrl}
-										alt={t('Світлина новини')}
+										alt={t('Світлина виставки')}
 										onError={e => {
 											e.target.onerror = null
 											e.target.src = '/Img/newsCardERROR.jpg'
@@ -187,7 +187,7 @@ function MainNews() {
 			>
 				<button className={`${styles.mainPageNewsButton}`}>
 					<p className={`${styles.mainPageNewsButtonTitle}`}>
-						{t('Усі новини')}
+						{t('Усі dbcnfdrb')}
 					</p>
 					<img
 						className={`${styles.mainPageNewsButtonImg}`}
@@ -204,4 +204,4 @@ function MainNews() {
 	)
 }
 
-export default MainNews
+export default MainExhibitions

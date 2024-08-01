@@ -1,6 +1,10 @@
 import styles from '../../../styles/layout/MainPage.module.scss'
 import MainNews from '../../components/Blocks/MainNews.jsx'
+import MainArtists from '../../components/Blocks/MainArtists.jsx'
+import MainExhibitions from '../../components/Blocks/MainExhibitions.jsx'
+import MainMuseums from '../../components/Blocks/MainMuseums.jsx'
 import MainBannerSlider from '../../components/Sliders/MainBannerSlider/MainBannerSlider.jsx'
+import MainInstagramSlider from '../../components/Sliders/MainInstagramSlider/MainInstagramSlider.jsx'
 function MainPage() {
 	return (
 		<div className={styles.mainPage}>
@@ -41,6 +45,10 @@ function MainPage() {
 				</p>
 			</div>
 			<MainNews />
+			<MainArtists />
+			<MainInstagramSlider />
+			<MainExhibitions />			
+			<MainMuseums />
 		</div>
 	)
 }

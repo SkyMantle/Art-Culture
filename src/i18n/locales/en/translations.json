@@ -1,7 +1,7 @@
 {
     "Головна": "Home",
     "Новини": "News",
-    "Митці": "Painters",
+    "Митці": "Artists",
     "Виставки": "Exhibitions",
     "Музеї": "Museums",
     "Арт терміни": "Art terms",
@@ -10,7 +10,18 @@
     "Контакти": "Contacts",
     "Юридична інформація": "Legal Notice",
     "Політика конфіденційності": "Privacy Policy",
-    "Авторські права": "Privacy Policy",
+    "Авторські права": "Copyrights",
     "Меню": "Menu",
-    "Пошук": "Search"
+    "Пошук": "Search",
+    "Усі новини": "All news",
+    "Читати далі": "Read more",
+    "Світлина музею": "Museum photo",
+    "Світлина годинника": "Clock picture",
+    "Усі митці": "All artists",
+    "Світлина": "Picture",
+    "Стрілка": "Arrow",
+    "Усі виставки": "All exhibitions",
+    "Світлина виставки": "Exhibition photo",
+    "Усі музеї": "All museums",
+    "Світлина новини": "News photo"
 }

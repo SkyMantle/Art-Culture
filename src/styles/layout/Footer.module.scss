@@ -314,6 +314,88 @@
 	// стили для текста ссылки на информацию об авторских правах
 }
 
+@media (min-width: 1441px) {
+	.footerLogoWrapper {
+		// стили для обёртки логотипа
+		margin: 0 56px 0 0;
+	}
+	
+	.footerLogoImg {
+		// стили для изображения логотипа
+		width: 122.47px;
+		height: 68.43px;
+	}
+	
+	.footerLogoTitleWrapper {
+		// стили для обёртки текста логотипа
+		margin: 0 0 -3px 0;
+	}
+	
+	.footerLogoFirstWord {
+		// стили для первого слова в логотипе
+		margin: 0 0 0 -12px;
+		font-size: 156px;
+	}
+	
+	.footerLogoFirstWord::before {
+		content: "";
+		position: absolute;
+		top: 38px;
+		left: 123px;
+		width: 9px;
+		height: 7px;
+	}
+	
+	.footerLogoSecondWord {
+		// стили для второго слова в логотипе
+		margin: 0 0 -1px -13px;
+		font-size: 15.25px;
+		letter-spacing: 3.3px;
+	}
+	
+	.footerLogoThirdWord {
+		// стили для третьего слова в логотипе
+		margin: 0 0 0 -13px;
+		font-size: 22px;
+		letter-spacing: 4px;
+	}
+	
+	.footerMenuWrapper {
+		// стили для обёртки меню
+		width: calc(460px - (150 * ((1440px - 100vw) / (1440 - 800))));
+	}
+	
+	.footerMenuLink {
+		// стили для ссылки в меню
+		font-size: 16px;
+	}
+	
+	.footerSeparatorWrapper {
+		// стили для обёртки разделителя
+		margin: 0 calc(85px - (65 * ((1440px - 100vw) / (1440 - 800)))) 0 0;
+	}
+	
+	.footerRightWrapper {
+		// стили для правой части footer
+		width: calc(490px - (150 * ((1440px - 100vw) / (1440 - 800))));
+	}
+	
+	.footerFollowUsTitle {
+		// стили для текста "follow us"
+		font-size: 22px;
+	}
+	
+	.footerContactsTitle {
+		// стили для заголовка "Контакти"
+		font-size: 16px;
+	}
+	
+	.footerLegalLink, .footerPolicyLink, .footerCopyrightLink {
+		// стили для ссылки на юридическую информацию
+		font-size: 16px;
+	}
+}
+
 @media (max-width: 799px) {
 	.footer {
 		// стили для тега footer

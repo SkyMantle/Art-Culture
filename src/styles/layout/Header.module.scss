@@ -3,6 +3,7 @@
 
 body {
 	font-family: $CenturyGothic, $CormorantSCRegular, $chiller-font, $default-font;
+	overflow-x: hidden; // отключаем горизонтальный скролл
 }
 .mainHeader {
 	position: fixed;
@@ -221,9 +222,9 @@ h1 {
 		content: "";
 		position: absolute;
 		left: 50%;
-		bottom: -5px;
+		bottom: calc(-29 / 1440 * 100vw);
 		width: 0;
-		height: 1px;
+		height: 3px;
 		background: linear-gradient(to right, rgba(216, 57, 52, 0), rgb(255, 255, 255), rgba(216, 57, 52, 0));
 		transition:
 			width 0.4s ease,
@@ -382,15 +383,31 @@ h1 {
 	align-items: center;
 }
 .staticHeaderLogo {
-	margin: 0 calc(22.5 / 1440 * 100vw) 0 0;
+	margin: 0 calc(22.5 / 1440 * 100vw) calc(15 / 1440 * 100vw) 0;
 }
 .staticHeaderLogoTitle {
 	font-family: $chiller-font;
-	font-size: calc(0px + 135 * (100vw / 1440));
+	font-size: calc(0px + 165 * (100vw / 1440));
 	line-height: 0.53; //Важная строка!!!
 	display: inline-block; /* Необходимо для применения transform */
 	transform: scaleX(1.1); /* Масштабирование по горизонтали */
 	user-select: none;
+}	
+.staticHeaderLogoTitle::before {
+	content: "";
+	position: absolute;
+	top: calc(41 / 1440 * 100vw);
+	left: calc(128 / 1440 * 100vw);
+	width: calc(9 / 1440 * 100vw);
+	height: calc(7 / 1440 * 100vw);
+	min-width: 3.9px;
+	min-height: 2.77px;
+	max-width: 9px;
+	max-height: 7px;
+	background: url(/public/Img/logoPoint.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 100% 100%;
 }
 .staticHeaderTitleContainer {
 	margin: 0 calc(22.5 / 1440 * 100vw);
@@ -486,7 +503,6 @@ h1 {
 	}
 
 	.mainMenu__link {
-		font-size: 18px;
 	}
 	.burgerButton {
 		&__img {
@@ -496,9 +512,37 @@ h1 {
 		&__title {
 			margin: 0 0 0 6px;
 		}
+	}.staticHeaderLogo {
+		margin: 0 calc(22.5 / 1440 * 100vw) 15px 0;
 	}
 	.staticHeaderLogoTitle {
-		font-size: 135px;
+		font-size: 165px;
+	}.staticHeaderLogoTitle::before {
+		content: "";
+		position: absolute;
+		top: 41px;
+		left: 128px;
+		width: 9px;
+		height: 7px;
+	}
+
+	.mainMenu {
+		&__link {
+			font-size: 18px;
+		}
+	
+		&__link::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			bottom: -29px;
+			width: 0;
+			height: 3px;
+			background: linear-gradient(to right, rgba(216, 57, 52, 0), rgb(255, 255, 255), rgba(216, 57, 52, 0));
+			transition:
+				width 0.4s ease,
+				left 0.4s ease;
+		}
 	}
 }
 
@@ -557,7 +601,12 @@ h1 {
 
 @media (max-width: 720px) {
 	.staticHeaderLogoTitle {
-		font-size: 67.5px;
+		font-size: 82.61px;
+	}.staticHeaderLogoTitle::before {
+		content: "";
+		position: absolute;
+		top: 21px;
+		left: 65px;
 	}
 }
 
