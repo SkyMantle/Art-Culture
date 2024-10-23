@@ -144,6 +144,11 @@ export const updatePost = async (req, res, next) => {
 			include: { author: { select: { email: true, id: true } } },
 		})
 
+		console.log('Received update request:', {
+			body: req.body,
+			file: req.file,
+		})
+
 		res.json(updatedPost)
 	} catch (error) {
 		next(error)

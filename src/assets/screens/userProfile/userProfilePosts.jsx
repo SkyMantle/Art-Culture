@@ -79,13 +79,14 @@ function UserProfilePosts() {
 
 	// Modal Handlers
 	const openEditModal = post => {
+		console.log('Opening edit window', post)
 		setEditingPost(post)
 		setFormData({
-			title: post.title,
-			content: post.content,
+			title: post.title || '',
+			content: post.content || '',
 			images: null,
 		})
-		setRemainingTitle(50 - post.title.length)
+		setRemainingTitle(50 - (post.title ? post.title.length : 0))
 		setIsModalOpen(true)
 	}
 
@@ -99,6 +100,7 @@ function UserProfilePosts() {
 	const handleChange = e => {
 		const { name, value, files } = e.target
 
+		console.log('Invalid change', { name, value, files })
 		if (name === 'images') {
 			setFormData({ ...formData, images: files[0] })
 		} else {
@@ -120,7 +122,9 @@ function UserProfilePosts() {
 		setMessage('')
 		setFormErrors({})
 
-		if (formData.title || !formData.content) {
+		console.log('Submitting form with data:', formData)
+
+		if (!formData.title.trim() || !formData.content.trim()) {
 			setFormErrors({ form: 'Заголовок та опис необхідні' })
 			return
 		}
@@ -133,7 +137,7 @@ function UserProfilePosts() {
 				postData.append('images', formData.images)
 			}
 
-			const response = await API.put(`/post/${editingPost.id}`, postData, {
+			const response = await API.put(`/posts/${editingPost.id}`, postData, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
@@ -262,6 +266,8 @@ function UserProfilePosts() {
 										>
 											{t('До публікації')}
 										</button>
+									</div>
+									<div className={styles.userProfileEditWrapper}>
 										<button
 											className={styles.userProfileEditButton}
 											onClick={() => openEditModal(post)}

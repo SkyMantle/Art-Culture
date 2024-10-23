@@ -153,7 +153,27 @@
 	}
 }
 
-// src/styles/components/UserProfile/userProfilePosts.module.scss
+.userProfileEditWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.userProfileEditButton,
+.userProfileDeleteButton {
+	font-size: calc(18px + 6 * (100vw / 1440));
+	background-color: white;
+	padding: calc(10 / 1440 * 100vw);
+	border-radius: calc((25 / 1440 * 100vw) / 5);
+}
+
+.userProfileDeleteButton:hover {
+	background-color: #f44336;
+}
+
+.userProfileEditButton:hover {
+	background-color: #4caf50;
+}
 
 /* Modal Overlay */
 .modalOverlay {
@@ -233,10 +253,16 @@
 /* Save Button */
 .modalSaveButton {
 	padding: 0.5rem 1rem;
-	background-color: #4caf50;
+	background-color: #4caf50 !important;
 	color: #fff;
 	border: none;
 	cursor: pointer;
+	border-radius: 4px;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+	width: 80%;
+	max-width: 300px;
+	margin: 20px 0;
 }
 
 /* Cancel Button */
@@ -246,6 +272,12 @@
 	color: #fff;
 	border: none;
 	cursor: pointer;
+	border-radius: 4px;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+	width: 80%;
+	max-width: 300px;
+	margin: 20px 0;
 }
 
 /* Current Image */
