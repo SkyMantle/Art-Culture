@@ -12,6 +12,7 @@ import authRoutes from './src/routes/authRoutes.js'
 import exhibitionRoutes from './src/routes/exhibitionRoutes.js'
 import postRoutes from './src/routes/postRoutes.js'
 import productRoutes from './src/routes/productRoutes.js'
+import searchRouter from './src/routes/searchRoute.js'
 import userRoutes from './src/routes/userRoutes.js'
 dotenv.config()
 
@@ -92,6 +93,7 @@ app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/posts/postId', postRoutes)
 app.use('/api/exhibitions', exhibitionRoutes)
+app.use('/api/search', searchRouter)
 
 // Routes
 console.log(process.env.NODE_ENV)

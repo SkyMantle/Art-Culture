@@ -4,6 +4,7 @@ import fs from 'fs'
 import multer from 'multer'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import client from '../utils/elasticsearch.js'
 
 const prisma = new PrismaClient()
 
@@ -83,6 +84,19 @@ export const createPost = async (req, res, next) => {
 	} catch (error) {
 		next(error)
 	}
+
+	await client.index({
+		index: 'posts',
+		id: post.id,
+		body: {
+			title_en: post.title_en,
+			title_uk: post.title_uk,
+			content_en: post.content_en,
+			content_uk: post.content_uk,
+			authorId: post.author.id,
+			createdAt: post.createdAt,
+		},
+	})
 }
 
 export const getAllPosts = async (req, res, next) => {
@@ -196,6 +210,18 @@ export const updatePost = async (req, res, next) => {
 	} catch (error) {
 		next(error)
 	}
+	await client.update({
+		index: 'posts',
+		id: id,
+		body: {
+			doc: {
+				title_en: title_en,
+				title_uk: title_uk,
+				content_en: content_en,
+				content_uk: content_uk,
+			},
+		},
+	})
 }
 
 export const deletePost = async (req, res, next) => {
