@@ -1,4 +1,4 @@
-@import '/src/styles/components/UserProfile/userProfile.module.scss';
+@use '/src/styles/components/UserProfile/userProfile.module.scss';
 @import '/src/styles/utilities/variables.scss';
 
 .userProfilePostsContainer {

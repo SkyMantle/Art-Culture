@@ -7,6 +7,14 @@ import { defineConfig } from 'vite'
 export default defineConfig({
 	plugins: [react()],
 	assetsInclude: [`**/*.ttf`],
+	css: {
+		preprocessorOptions: {
+            scss: {
+                api: 'modern-compiler',
+				silenceDeprecations: ["import"]
+            }
+		}
+	},	
 	server: {
 		https: {
 			key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
@@ -19,9 +27,6 @@ export default defineConfig({
 				rewrite: path => path.replace(/^\/api/, ''),
 			},
 		},
-		"rewrites":  [
-		  {"source": "/(.*)", "destination": "/"}
-		],
 		esbuild: {
 			minifyIdentifiers: false,
 		},
