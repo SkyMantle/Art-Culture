@@ -3,9 +3,7 @@ export function getBaseUrl() {
 	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
 	const baseUrl = isLocalhost
 		? 'http://localhost:5000'
-		: process.env.NODE_ENV === 'production'
-			? 'https://art.playukraine.com'
-			: 'https://art-culture-omega.vercel.app/'
+		: 'https://art.playukraine.com'
     return baseUrl;
 }
 
