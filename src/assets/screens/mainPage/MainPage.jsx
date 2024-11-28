@@ -5,7 +5,8 @@ import MainArtists from '../../components/Blocks/MainArtists.jsx'
 import MainExhibitions from '../../components/Blocks/MainExhibitions.jsx'
 import MainMuseums from '../../components/Blocks/MainMuseums.jsx'
 import MainNews from '../../components/Blocks/MainNews.jsx'
-import MainBannerSlider from '../../components/Sliders/MainBannerSlider/MainBannerSlider.jsx'
+// import MainBannerSlider from '../../components/Sliders/MainBannerSlider/MainBannerSlider.jsx'
+import MainPageBannerSlider from '../../components/Sliders/MainPageBannerSlider/MainPageBannerSlider.jsx'
 import MainInstagramSlider from '../../components/Sliders/MainInstagramSlider/MainInstagramSlider.jsx'
 import MainPopularArtsSlider from '../../components/Sliders/MainPopularArtsSlider/MainPopularArtsSlider.jsx'
 function MainPage() {
@@ -23,7 +24,8 @@ function MainPage() {
 	}, [handleScroll])
 	return (
 		<div className={styles.mainPage}>
-			<MainBannerSlider />
+			{/* <MainBannerSlider /> */}
+			<MainPageBannerSlider />
 			<div className={styles.mainPageWelcomeTitleWrapper}>
 				<h1 className={styles.welcomeTitle}>
 					Вітаємо на ukrainian art&culture

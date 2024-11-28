@@ -1,0 +1,269 @@
+@import '/src/styles/utilities/variables.scss';
+
+.MainPageBannerSliderCardContainer {
+    // Обёртка карточки слайдера
+    margin: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.MainPageBannerSliderCardWrapper {
+    // Обёртка карточки слайдера
+    padding: calc(51px - (28 * ((1440px - 100vw) / (1440 - 375)))) $responsiveLeftAndRightPadding calc(102px - (28 * ((1440px - 100vw) / (1440 - 375))));
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.MainPageBannerSliderCardLogoWrapper {
+    // Обёртка логотипа
+    margin: 0 auto 0 0;
+    padding: 20px;
+    width: auto;
+    max-width: 50%;
+    top: 0;
+    left: 0;
+    display: flex;
+    min-height: 30%;
+    max-height: 50%;
+    z-index: 1;
+    background: white;
+    border-radius: 20px;
+}
+
+.MainPageBannerSliderCardLogo {
+    // Логотип
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    // filter: drop-shadow(0 0px 30px rgba(255, 255, 255, 1));
+}
+
+.MainPageBannerSliderCardTitleWrapper {
+    // Обёртка названия музея
+    display: flex;
+    margin: 0 auto 0 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.MainPageBannerSliderCardTitle {
+    // Название музея
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: calc(28px - (10 * ((1440px - 100vw) / (1440 - 375))));
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    font-family: $default-font;
+}
+
+.MainPageBannerSliderCardDescriptionWrapper {
+    // Обёртка описания музея
+    margin: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    max-height: calc(calc(20px - (6 * ((1440px - 100vw) / (1440 - 375)))) * 3);
+}
+
+.MainPageBannerSliderCardDescription {
+    // Описание музея
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    font-size: calc(20px - (6 * ((1440px - 100vw) / (1440 - 375))));
+    font-weight: 400;
+    color: white;
+    font-family: $default-font;
+}
+
+.MainPageBannerSliderCardReadMoreButtonWrapper {
+    // Обёртка кнопки "Читать далее"
+    margin: 0 0 0 auto;
+    width: auto;
+    height: auto;
+    z-index: 1;
+}
+
+.MainPageBannerSliderCardReadMoreButton {
+    // Кнопка "Читать далее"
+    padding: 0 20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: calc(51 / 1440 * 100vw);
+    min-height: 40px;
+    max-height: 51px;
+    border-radius: 51px;
+    color: #fff;
+    border: none;
+    background-color: #3a8374;
+    cursor: pointer;
+}
+
+.MainPageBannerSliderCardImgWrapper {
+    // Обёртка задней картинки музея
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.MainPageBannerSliderCardImgWrapper::after {
+    // Полупрозрачный фон
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.36;
+}
+
+.MainPageBannerSliderCardImg {
+    // Карточка слайдера
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.MainPageBannerSliderContainer {
+    // Основной стиль для блока слайдера
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @at-root {
+        :root {
+            --swiper-navigation-size: calc(42px - (7 * ((1440px - 100vw) / (1440 - 375))));
+        }
+    }
+
+    .swiper-wrapper {
+        position: relative;
+        margin: 0;
+        width: 100vw;
+        height: calc(600px - (140 * ((1440px - 100vw) / (1440 - 375))));
+        z-index: 1;
+        display: flex;
+        transition-property: transform;
+        transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+        box-sizing: content-box;
+    }
+
+    .swiper-slide {
+        flex-shrink: 0;
+        width: auto;
+        height: calc(600px - (140 * ((1440px - 100vw) / (1440 - 375))));
+        position: relative;
+        transition-property: transform;
+        display: block;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        position: absolute;
+        top: calc(calc(590px - (140 * ((1440px - 100vw) / (1440 - 375)))) - calc(var(--swiper-navigation-size) / 2));
+        width: var(--swiper-navigation-size);
+        height: var(--swiper-navigation-size);
+        // margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+        z-index: 11;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 50%;
+        color: black;
+    }
+
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+        // left: calc(638px - (505 * ((1440px - 100vw) / (1440 - 375))));
+        left: calc(50% - calc(var(--swiper-navigation-size) * 1.14) - calc(34.5px - (5.5 * ((1440px - 100vw) / (1440 - 375)))));
+        right: auto;
+    }
+
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: calc(50% - calc(var(--swiper-navigation-size) * 1.14) - calc(34.5px - (5.5 * ((1440px - 100vw) / (1440 - 375)))));
+        left: auto;
+    }
+
+    /* Navigation font start */
+    .swiper-button-prev,
+    .swiper-button-next {
+        &:after {
+            font-family: swiper-icons;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: none !important;
+            letter-spacing: 0;
+            font-variant: initial;
+            line-height: 1;
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+        right: calc(50% - calc(var(--swiper-navigation-size) * 1.24) - calc(34.5px - (5.5 * ((1440px - 100vw) / (1440 - 375)))));
+        left: auto;
+    }
+
+    /* Common Styles */
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+        top: calc(calc(590px - (140 * ((1440px - 100vw) / (1440 - 375)))) - calc(var(--swiper-navigation-size) / 1.4));
+        left: 0;
+        width: 100%;
+    }
+
+    /* Fraction */
+    .swiper-pagination-fraction {
+        color: white;
+    }
+}
+
+@media screen and (min-width: 1441px) {
+    .MainPageBannerSliderCardContainer {
+        // Обёртка карточки слайдера
+        margin: 0 0 0 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .MainPageBannerSliderCardContainer {
+        // Обёртка карточки слайдера
+        margin: 0 0 0 0;
+    }
+}

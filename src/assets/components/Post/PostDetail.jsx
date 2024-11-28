@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import styles from '../../../styles/components/Post/PostDetail.module.scss'
-import { getFormattedDate, getImageUrl } from '../../../utils/helper'
+import { getFormattedDate, getImageUrl, getFormattedTime } from '../../../utils/helper'
 
 function PostDetail() {
 	const { t, i18n } = useTranslation()
