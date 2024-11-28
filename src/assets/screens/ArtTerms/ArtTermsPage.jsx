@@ -8,11 +8,6 @@ import layoutStyles from '../../../styles/layout/Layout.module.scss'
 
 function ArtTermsPage() {
 	const { t } = useTranslation()
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	const [creators, setCreators] = useState([])
 	const [loading, setLoading] = useState(true)

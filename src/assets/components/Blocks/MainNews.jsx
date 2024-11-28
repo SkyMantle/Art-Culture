@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
+import { getFormattedDate, getFormattedTime, getImageUrl } from '../../../utils/helper'
 
 function MainNews() {
 	const { t, i18n } = useTranslation()
@@ -16,14 +17,6 @@ function MainNews() {
 	const handleNewsPageClick = () => {
 		navigate('/NewsPage')
 	}
-
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: process.env.NODE_ENV === 'production'
-			? 'https://art.playukraine.com'
-			: 'https://art-culture-omega.vercel.app/'
 
 	function getPostsCount(Width) {
 		if (Width >= 1600) {
@@ -100,22 +93,12 @@ function MainNews() {
 					// Логування даних для перевірки
 					console.log('Пост:', post)
 
-					const featuredMediaUrl = post.images
-						? `${baseUrl}${post.images.replace('../../', '/')}`
-						: '/Img/halfNewsCard.jpg'
+					const featuredMediaUrl = getImageUrl(post.images, '/Img/halfNewsCard.jpg');
 
 					console.log('Витягнуте медіа:', featuredMediaUrl)
 
-					const postDate = new Date(post.createdAt)
-					const formattedDate = postDate.toLocaleDateString('uk-UA', {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric',
-					})
-					const formattedTime = postDate.toLocaleTimeString('uk-UA', {
-						hour: 'numeric',
-						minute: 'numeric',
-					})
+					const formattedDate = getFormattedDate(post.createdAt)
+					const formattedTime = getFormattedTime(post.createdAt)
 
 					const title = currentLanguage === 'en' ? post.title_en : post.title_uk
 					const content =

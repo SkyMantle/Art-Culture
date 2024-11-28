@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
+import { getFormattedDate, getImageUrl } from '../../../utils/helper'
 
 function MainExhibitions() {
 	const { t } = useTranslation()
@@ -20,12 +21,6 @@ function MainExhibitions() {
 			return 2 // Assuming you meant to return 1 for widths below 1440px
 		}
 	}
-
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -94,24 +89,12 @@ function MainExhibitions() {
 
 						const featuredMediaUrl =
 							exhibition.images && exhibition.images.length > 0
-								? `${baseUrl}${exhibition.images[0].imageUrl.replace('../../', '/')}`
+								? getImageUrl(exhibition.images[0].imageUrl, '/Img/halfNewsCard.jpg')
 								: '/Img/halfNewsCard.jpg'
 						console.log('Витягнуте медіа:', featuredMediaUrl)
 
-						const formattedStartDate = new Date(
-							exhibition.startDate
-						).toLocaleDateString('uk-UA', {
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						})
-						const formattedEndDate = new Date(
-							exhibition.endDate
-						).toLocaleTimeString('uk-UA', {
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						})
+						const formattedStartDate = getFormattedDate(exhibition.startDate)
+						const formattedEndDate = getFormattedDate(exhibition.endDate)
 						const formattedTime = exhibition.cardTime
 							? exhibition.cardTime
 							: '-'

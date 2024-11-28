@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss' // Assuming you have a CSS module for styling
+import { getFormattedDate, getImageUrl } from '../../../utils/helper'
+
 function MainArtists() {
 	const { t } = useTranslation()
 	const [creators, setCreators] = useState([])
@@ -14,12 +16,6 @@ function MainArtists() {
 	const [visibleCreatorsCount, setVisibleCreatorsCount] = useState(
 		getPostsCount(window.innerWidth)
 	)
-
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
@@ -100,18 +96,9 @@ function MainArtists() {
 			</div>
 			<div className={styles.mainPageNewsCardsWrapper}>
 				{creators.slice(0, visibleCreatorsCount).map((creator, index) => {
-					const featuredMediaUrl = creator.images
-						? `${baseUrl}${creator.images.replace('../../', '/')}`
-						: '/Img/halfNewsCard.jpg'
+					const featuredMediaUrl = getImageUrl(creator.images, '/Img/halfNewsCard.jpg');
 
-					const formattedDate = new Date(creator.createdAt).toLocaleDateString(
-						'uk-UA',
-						{
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						}
-					)
+					const formattedDate = getFormattedDate(creator.createdAt)
 
 					const formattedTime = new Date(creator.createdAt).toLocaleTimeString(
 						'uk-UA',

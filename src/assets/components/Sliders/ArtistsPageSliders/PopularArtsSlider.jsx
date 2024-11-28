@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import { Navigation, Pagination } from 'swiper/modules'
 
 import '/src/styles/components/Sliders/ArtistsPageSliders/PopularArtsSlider.scss'
+import { getBaseUrl } from '../../../../utils/helper'
 
 const Slide = ({ product, baseUrl }) => {
 	const { t, i18n } = useTranslation()
@@ -81,11 +82,7 @@ const PopularArtsSlider = () => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+	const baseUrl = getBaseUrl()
 
 	useEffect(() => {
 		const fetchCreatorProducts = async () => {

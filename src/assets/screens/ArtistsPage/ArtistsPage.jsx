@@ -6,15 +6,11 @@ import PopularArtsSlider from '../../components/Sliders/ArtistsPageSliders/Popul
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import styles from '../../../styles/layout/ArtistsPage.module.scss'
+import { getImageUrl } from '../../../utils/helper.js'
 
 function ArtistsPage() {
 	const { t, i18n } = useTranslation()
 	const currentLanguage = i18n.language
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	const [creators, setCreators] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -176,14 +172,11 @@ function ArtistsPage() {
 						</div>
 					) : (
 						creators.slice(0, visibleCreatorsCount).map(creator => {
-							const featuredMediaUrl = creator.images
-								? `${baseUrl}${creator.images.replace('../../', '/')}`
-								: '/Img/ArtistPhoto.jpg'
+							const featuredMediaUrl = getImageUrl(creator.images, '/Img/ArtistPhoto.jpg')
 							return (
-								<div className={`${styles.ArtistsPageGalleryInnerWrapper}`}>
+								<div key={creator.id} className={`${styles.ArtistsPageGalleryInnerWrapper}`}>
 									<div className={`${styles.ArtistsPageGalleryCardWrapper}`}>
 										<div
-											key={creator.id}
 											className={`${styles.ArtistsPageGalleryCardPictureWrapper}`}
 											onClick={() => handleAuthorPreviewClick(creator.id)}
 											style={{ cursor: 'pointer' }}

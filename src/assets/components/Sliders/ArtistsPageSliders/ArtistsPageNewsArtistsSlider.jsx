@@ -13,6 +13,7 @@ import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 
 import styles from '/src/styles/components/Sliders/ArtistsPageSliders/ArtistsPageNewsArtistsSlider.module.scss'
+import { getBaseUrl } from '../../../../utils/helper'
 
 const Slide = ({ post, baseUrl }) => {
 	const { t, i18n } = useTranslation()
@@ -75,11 +76,7 @@ const ArtistsPageNewsArtistsSlider = () => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+	const baseUrl = getBaseUrl()
 
 	useEffect(() => {
 		const fetchCreatorPosts = async () => {

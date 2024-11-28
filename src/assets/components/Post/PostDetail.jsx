@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import styles from '../../../styles/components/Post/PostDetail.module.scss'
+import { getFormattedDate, getImageUrl } from '../../../utils/helper'
 
 function PostDetail() {
 	const { t } = useTranslation()
@@ -25,12 +26,6 @@ function PostDetail() {
 			})
 	}, [id])
 
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
-
 	if (error) {
 		return <div>{t('Error loading post')}</div>
 	}
@@ -39,20 +34,10 @@ function PostDetail() {
 		return <div>{t('Loading...')}</div>
 	}
 
-	const featuredMediaUrl = post.images
-		? `${baseUrl}${post.images.replace('../../', '/')}`
-		: '/Img/halfNewsCard.jpg'
+	const featuredMediaUrl = getImageUrl(post.images, '/Img/halfNewsCard.jpg')
 
-	const postDate = new Date(post.createdAt)
-	const formattedDate = postDate.toLocaleDateString('uk-UA', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-	})
-	const formattedTime = postDate.toLocaleTimeString('uk-UA', {
-		hour: 'numeric',
-		minute: 'numeric',
-	})
+	const formattedDate = getFormattedDate(post.createdAt)
+	const formattedTime = getFormattedTime(post.createdAt)
 
 	return (
 		<div className={styles.postDetailContainer}>

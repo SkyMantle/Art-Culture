@@ -13,14 +13,11 @@ import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 
 import '/src/styles/components/Sliders/NewsPageAuthorsSlider/NewsPageAuthorsSlider.scss'
+import { getBaseUrl } from '../../../../utils/helper'
 
 const Slide = ({ creator, onClick }) => {
 	const { t } = useTranslation()
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+	const baseUrl = getBaseUrl()
 	return (
 		<div
 			className='newsPageAuthorsSliderCardContainer'

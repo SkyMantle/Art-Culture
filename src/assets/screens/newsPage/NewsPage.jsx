@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styles from '../../../styles/layout/newsPage.module.scss'
 import NewsPageAuthorsSlider from '../../components/Sliders/NewsPageAuthorsSlider/NewsPageAuthorsSlider.jsx'
+import { getFormattedDate, getImageUrl } from '../../../utils/helper.js'
 
 function NewsPage() {
 	const { t, i18n } = useTranslation()
@@ -24,12 +25,6 @@ function NewsPage() {
 	const [visiblePostsCount, setVisiblePostsCount] = useState(
 		getPostsCount(window.innerWidth)
 	)
-
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	// Function to determine number of posts to display based on window width
 	function getPostsCount(width) {
@@ -181,21 +176,10 @@ function NewsPage() {
 						filteredPosts.slice(0, visiblePostsCount).map((post, index) => {
 							const { title, content } = getLocalizedFields(post)
 							// Construct image URL similar to MainNews component
-							const featuredMediaUrl = post.images
-								? `${baseUrl}${post.images.replace('../../', '/')}`
-								: '/Img/halfNewsCard.jpg'
+							const featuredMediaUrl = getImageUrl(post.images, '/Img/halfNewsCard.jpg')
 
 							// Format date and time
-							const postDate = new Date(post.createdAt)
-							const formattedDate = postDate.toLocaleDateString('uk-UA', {
-								year: 'numeric',
-								month: 'long',
-								day: 'numeric',
-							})
-							const formattedTime = postDate.toLocaleTimeString('uk-UA', {
-								hour: 'numeric',
-								minute: 'numeric',
-							})
+							const formattedDate = getFormattedDate(post.createdAt)
 
 							// Determine the card number for styling (1 to 12)
 							const cardNumber = index + 1 // Adjust if you have separate top and bottom sections
@@ -295,21 +279,10 @@ function NewsPage() {
 							const cardNumber = visiblePostsCount + index + 1
 
 							// Construct image URL similar to MainNews component
-							const featuredMediaUrl = post.images
-								? `${baseUrl}${post.images.replace('../../', '/')}`
-								: '/Img/halfNewsCard.jpg'
+							const featuredMediaUrl = getImageUrl(post.images, '/Img/halfNewsCard.jpg')
 
 							// Format date and time
-							const postDate = new Date(post.createdAt)
-							const formattedDate = postDate.toLocaleDateString('uk-UA', {
-								year: 'numeric',
-								month: 'long',
-								day: 'numeric',
-							})
-							const formattedTime = postDate.toLocaleTimeString('uk-UA', {
-								hour: 'numeric',
-								minute: 'numeric',
-							})
+							const formattedDate = getFormattedDate(post.createdAt)
 
 							return (
 								<div

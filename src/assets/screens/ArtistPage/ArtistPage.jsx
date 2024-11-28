@@ -7,16 +7,13 @@ import ArtistPageMasonryGallery from '../../components/Sliders/ArtistPageSliders
 import ArtistPageNewsArtistsSlider from '../../components/Sliders/ArtistPageSliders/ArtistPageNewsArtistsSlider.jsx'
 import PopularOfThisArtistSlider from '../../components/Sliders/ArtistPageSliders/PopularOfThisArtistSlider.jsx'
 import MainPopularArtsSlider from '../../components/Sliders/MainPopularArtsSlider/MainPopularArtsSlider.jsx'
+import { getBaseUrl, getImageUrl } from '../../../utils/helper.js'
 
 function ArtistPage() {
 	const { t, i18n } = useTranslation()
 	const currentLanguage = i18n.language
 	const { id } = useParams()
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+	const baseUrl = getBaseUrl()
 
 	const [creator, setCreator] = useState(null)
 	const [products, setProducts] = useState([])
@@ -66,9 +63,7 @@ function ArtistPage() {
 		currentLanguage === 'en'
 			? creator.bio_en || creator.bio
 			: creator.bio_uk || creator.bio
-	const images = creator.images
-		? `${baseUrl}${creator.images.replace('../../', '/')}`
-		: '/Img/defaultArtistPhoto.jpg'
+	const images = getImageUrl(creator.images, '/Img/defaultArtistPhoto.jpg')
 
 	return (
 		<div className={`${styles.artistPage}`}>

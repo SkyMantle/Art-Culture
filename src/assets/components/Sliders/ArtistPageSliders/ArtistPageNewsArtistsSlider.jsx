@@ -12,6 +12,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 
 import { useNavigate } from 'react-router-dom'
 import styles from '/src/styles/components/Sliders/ArtistPageSliders/ArtistPageNewsArtistsSlider.module.scss'
+import { getBaseUrl } from '../../../../utils/helper'
 
 const Slide = ({ post, baseUrl }) => {
 	const { t, i18n } = useTranslation()
@@ -178,11 +179,7 @@ const ArtistPageNewsArtistsSlider = () => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+	const baseUrl = getBaseUrl()
 
 	useEffect(() => {
 		const fetchCreatorPosts = async () => {

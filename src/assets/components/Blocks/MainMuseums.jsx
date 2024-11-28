@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
+import { getFormattedDate, getFormattedTime, getImageUrl } from '../../../utils/helper'
 
 function MainMuseums() {
 	const { t } = useTranslation()
@@ -11,12 +12,6 @@ function MainMuseums() {
 	const [visibleMuseumsCount, setVisibleMuseumsCount] = useState(
 		getPostsCount(window.innerWidth)
 	)
-
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
 
 	function getPostsCount(Width) {
 		if (Width >= 1600) {
@@ -94,26 +89,11 @@ function MainMuseums() {
 					// Логування даних для перевірки
 					console.log('Витягнені музеі:', museums)
 
-					const featuredMediaUrl = museum.images
-						? `${baseUrl}${museum.images.replace('../../', '/')}`
-						: '/Img/halfNewsCard.jpg'
+					const featuredMediaUrl = getImageUrl(museum.images, '/Img/halfNewsCard.jpg');
 					console.log('Витягнуте медіа:', featuredMediaUrl)
 
-					const formattedDate = new Date(museum.createdAt).toLocaleDateString(
-						'uk-UA',
-						{
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						}
-					)
-					const formattedTime = new Date(museum.createdAt).toLocaleTimeString(
-						'uk-UA',
-						{
-							hour: 'numeric',
-							minute: 'numeric',
-						}
-					)
+					const formattedDate = getFormattedDate(museum.createdAt)
+					const formattedTime = getFormattedTime(museum.createdAt)
 
 					return (
 						<div
