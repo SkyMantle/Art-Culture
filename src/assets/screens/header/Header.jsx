@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import '../../../styles/layout/Header.module.scss'
+import LikeAndShare from '../../components/Blocks/LikeAndShare'
 
 function Header() {
 	const { t } = useTranslation()
@@ -340,22 +341,7 @@ function Header() {
 						</div>
 						<div className='socialContainer'>
 							<div className='socialUpperWrapper'>
-								<div className='socialLikeAndShareInner'>
-									<button className='socialLikeAndShareInner__likeButton circleButton'>
-										<img
-											className='likeButtonImg'
-											src='/Img/likeHeart.svg'
-											alt='Like'
-										/>
-									</button>
-									<button className='socialLikeAndShareInner__shareButton circleButton'>
-										<img
-											className='shareButtonImg'
-											src='/Img/shareArrow.svg'
-											alt='Share'
-										/>
-									</button>
-								</div>
+								<LikeAndShare className="dark large-hidden" />
 								<div className='burgerButtonWrapper'>
 									<button className='burgerButton'>
 										<img

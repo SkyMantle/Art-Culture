@@ -1,12 +1,25 @@
 .socialLikeAndShareInner {
     &__likeButton:hover,
     &__shareButton:hover {
-        box-shadow: 0 0 7px 3px rgb(255, 255, 255);
+        box-shadow: 0 0 7px 3px red;
         transition: box-shadow 0.3s ease;
     }
 
     &__likeButton:not(:hover),
     &__shareButton:not(:hover) {
+        transition: 1s;
+    }
+}
+
+.socialLikeAndShareInner.dark {
+    .socialLikeAndShareInner__likeButton:hover,
+    .socialLikeAndShareInner__shareButton:hover {
+        box-shadow: 0 0 7px 3px rgb(255, 255, 255);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .socialLikeAndShareInner__likeButton:not(:hover),
+    .socialLikeAndShareInner__shareButton:not(:hover) {
         transition: 1s;
     }
 }

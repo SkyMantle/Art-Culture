@@ -275,7 +275,7 @@ h1 {
 		left: 38px;
 		font-size: 18px;
 		user-select: none;
-		color: #fff;
+		color: $dark;
 	}
 
 	&__shareButton {
@@ -290,6 +290,15 @@ h1 {
 		right: 38px;
 		font-size: 18px;
 		user-select: none;
+		color: $dark;
+	}
+}
+.socialLikeAndShareInner.dark {
+	.socialLikeAndShareInner__likeButton::after {
+		color: #fff;
+	}
+
+	.socialLikeAndShareInner__shareButton::before {
 		color: #fff;
 	}
 }
@@ -546,12 +555,12 @@ h1 {
 }
 
 @media (max-width: 1279px) {
-	.socialLikeAndShareInner {
-		&__likeButton::after {
+	.socialLikeAndShareInner.large-hidden {
+		.socialLikeAndShareInner__likeButton::after {
 			display: none;
 		}
 
-		&__shareButton::before {
+		.socialLikeAndShareInner__shareButton::before {
 			display: none;
 		}
 	}
@@ -691,6 +700,16 @@ h1 {
 			margin: 0 0 0 -5.137px;
 			font-size: 8.693px;
 			letter-spacing: 1.581px;
+		}
+	}
+	
+    .socialLikeAndShareInner {
+		&__likeButton::after {
+			display: none;
+		}
+
+		&__shareButton::before {
+			display: none;
 		}
 	}
 }

@@ -1,0 +1,15 @@
+@import '/src/styles/utilities/variables.scss';
+
+.PopularArtsSliderLikeAndShareWrapper {
+    // Обёртка кнопок Like и Share
+    align-items: center;
+    margin: 0 0 0 auto;
+    width: 177px !important;
+}
+
+@media screen and (max-width: 569px) {
+    .PopularArtsSliderLikeAndShareWrapper {
+        // Обёртка кнопок Like и Share
+        width: 80px !important;
+    }
+}
