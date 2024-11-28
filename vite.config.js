@@ -19,6 +19,9 @@ export default defineConfig({
 				rewrite: path => path.replace(/^\/api/, ''),
 			},
 		},
+		"rewrites":  [
+		  {"source": "/(.*)", "destination": "/"}
+		],
 		esbuild: {
 			minifyIdentifiers: false,
 		},
