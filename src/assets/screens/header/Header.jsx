@@ -106,6 +106,10 @@ function Header() {
 		navigate('/MuseumsPage')
 	}
 
+	const handleArtTermsPageClick = () => {
+		navigate('/art-terms')
+	}
+
 	const burgerMenu = (
 		<div className='burgerMenu'>
 			<div className='burgerMenuWrapper'>
@@ -326,8 +330,8 @@ function Header() {
 											{t('Музеї')}
 										</a>
 									</li>
-									<li className='mainMenu__li'>
-										<a className='mainMenu__link' href='#'>
+									<li className='mainMenu__li' onClick={handleArtTermsPageClick}>
+										<a className='mainMenu__link' href='#'> 
 											{t('Арт терміни')}
 										</a>
 									</li>

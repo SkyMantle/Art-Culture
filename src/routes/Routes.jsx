@@ -19,6 +19,7 @@ import UserProfile from '../assets/screens/userProfile/userProfile.jsx'
 import UserProfileAddPost from '../assets/screens/userProfile/userProfileAddPost.jsx'
 import UserProfilePosts from '../assets/screens/userProfile/userProfilePosts.jsx'
 import { routes } from './routes.data.js'
+import ArtTermsPage from '../assets/screens/ArtTerms/ArtTermsPage.jsx'
 
 const AppRouter = () => {
 	return (
@@ -48,6 +49,7 @@ const AppRouter = () => {
 				<Exhibitions />
 				<Paintings />
 				<PostDetail />
+				<ArtTermsPage />
 				<Login />
 				<SignUp />
 			</Routes>

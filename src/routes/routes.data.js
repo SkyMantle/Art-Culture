@@ -17,6 +17,7 @@ import NewsPage from '../assets/screens/newsPage/NewsPage'
 import UserProfile from '../assets/screens/userProfile/userProfile'
 import UserProfileAddPost from '../assets/screens/userProfile/userProfileAddPost'
 import UserProfilePosts from '../assets/screens/userProfile/userProfilePosts'
+import ArtTermsPage from '../assets/screens/ArtTerms/ArtTermsPage'
 
 export const routes = [
 	{
@@ -87,6 +88,12 @@ export const routes = [
 	{
 		path: '/MuseumsPage',
 		element: MuseumsPage,
+		isAuth: false,
+	},
+
+	{
+		path: '/art-terms',
+		element: ArtTermsPage,
 		isAuth: false,
 	},
 

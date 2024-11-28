@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import API from '../../../utils/api'
-import styles from '/src/styles/components/ExhibitionCard/ExhibitionCardCreate.module.scss'
+import styles from '../../../styles/components/ExhibitionCard/ExhibitionCardCreate.module.scss'
 
 const ArtistCheckbox = memo(({ artist, isChecked, onChange }) => (
 	<div className={styles.checkArtistItem}>
