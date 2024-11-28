@@ -20,7 +20,10 @@ export default defineConfig({
 			},
 		},
 		"rewrites":  [
-		  {"source": "/(.*)", "destination": "/"}
+			{
+				"source": "/:path(api/.*)",
+				"destination": "/api"
+			}
 		],
 		esbuild: {
 			minifyIdentifiers: false,
