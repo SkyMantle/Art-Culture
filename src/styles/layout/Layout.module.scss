@@ -1,5 +1,5 @@
-@import '/src/styles/base/reset.scss';
-@import '../utilities/variables';
+@use '../base/reset.scss';
+@use '../utilities/variables';
 
 .container {
 	width: 100%;
@@ -10,16 +10,16 @@
 	/* Основной контейнер страницы */
 	display: flex;
 	flex-direction: column;
-	margin: $responsiveTopPadding 0 0 0;
+	margin: variables.$responsiveTopPadding 0 0 0;
 
 	* {
-		font-family: $default-font;
+		font-family: variables.$default-font;
 	}
 }
 
 .PageTitleWrapper {
     // Контейнер для названия страницы
-    margin: calc(53px - (30 * ((1440px - 100vw) / (1440 - 375)))) $responsiveLeftAndRightPadding 0;
+    margin: calc(53px - (30 * ((1440px - 100vw) / (1440 - 375)))) variables.$responsiveLeftAndRightPadding 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,7 @@
 
 .PageSeparatorWrapper {
     // Контейнер для разделителя
-    margin: calc(23px - (2 * ((1440px - 100vw) / (1440 - 375)))) $responsiveLeftAndRightPadding 0;
+    margin: calc(23px - (2 * ((1440px - 100vw) / (1440 - 375)))) variables.$responsiveLeftAndRightPadding 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@
 
 .PageSubTitleWrapper {
     // Контейнер для подзаголовка
-    margin: 38px $responsiveLeftAndRightPadding 0;
+    margin: 38px variables.$responsiveLeftAndRightPadding 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
 @media (min-width: 1441px) {
     .PageContainer {
         // главный контейнер
-        margin: $staticPcTopPadding 0 0 0;
+        margin: variables.$staticPcTopPadding 0 0 0;
     }
 
     .PageTitleWrapper {
@@ -102,7 +102,7 @@
 @media (max-width: 569px) {
     .PageContainer {
         // главный контейнер
-        margin: $staticMobileTopPadding 0 0 0;
+        margin: variables.$staticMobileTopPadding 0 0 0;
     }
 
     .PageSubTitleWrapper {
