@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next'
 import styles from "../../../styles/components/Blocks/Letters.module.scss"
 
-function Letters() {
+function Letters({ onLetterSelected, selected }) {
 	const { i18n } = useTranslation()
 
 	const letters = i18n.language == "en" 
@@ -12,10 +13,17 @@ function Letters() {
 	return (
 		<div>
 			{letters.map(letter => {
-				return <span className={styles.letter} key={letter}>{letter}</span>
+				return <span key={letter} 
+					className={`${styles.letter} ${letter == selected ? styles.selected : ""}`}
+					onClick={() => onLetterSelected(letter)}>{letter}</span>
 			})}
 		</div>
 	)
 }
+
+Letters.propTypes = {
+    onLetterSelected: PropTypes.func,
+	selected: PropTypes.string
+};
 
 export default Letters

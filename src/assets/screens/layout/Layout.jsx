@@ -23,6 +23,7 @@ import UserProfilePosts from '../userProfile/userProfilePosts'
 import ProductCardCreate from '/src/assets/components/ProductCard/ProductCardCreate'
 import styles from '/src/styles/layout/Layout.module.scss'
 import ArtTermsPage from '../ArtTerms/ArtTermsPage'
+import ArtTermsFilteredPage from '../ArtTerms/ArtTermsFilteredPage'
 
 const Layout = ({ children, heading = '', backLink = '/' }) => {
 	const [username, setUsername] = useState('')
@@ -44,6 +45,7 @@ const Layout = ({ children, heading = '', backLink = '/' }) => {
 					<Route path='/MuseumsPage' element={<MuseumsPage />} />
 					<Route path='/MuseumPage' element={<MuseumPage />} />
 					<Route path='/art-terms' element={<ArtTermsPage />} />
+					<Route path='/art-terms/:letter' element={<ArtTermsFilteredPage />} />
 					<Route
 						path='/userProfile'
 						element={

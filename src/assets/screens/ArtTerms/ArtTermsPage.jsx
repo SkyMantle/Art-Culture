@@ -85,7 +85,7 @@ function ArtTermsPage() {
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<Letters></Letters>
+				<Letters onLetterSelected={(letter) => navigate(`/art-terms/${letter}`)} />
 			</div>
 
 			<PopularArtsSlider />
