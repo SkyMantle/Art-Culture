@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import ArtistsPageNewsArtistsSlider from '../../components/Sliders/ArtistsPageSliders/ArtistsPageNewsArtistsSlider.jsx'
+import PopularArtsSlider from '../../components/Sliders/ArtistsPageSliders/PopularArtsSlider.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Letters from '../../components/Blocks/Letters'
@@ -92,6 +92,8 @@ function ArtTermsPage() {
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
 				<Letters></Letters>
 			</div>
+
+			<PopularArtsSlider />
 
 		</div>
 	)
