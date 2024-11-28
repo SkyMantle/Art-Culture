@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import ArtistsPageNewsArtistsSlider from '../../components/Sliders/ArtistsPageSliders/ArtistsPageNewsArtistsSlider.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Letters from '../../components/Blocks/Letters'
 import layoutStyles from '../../../styles/layout/Layout.module.scss'
 
 function ArtTermsPage() {
@@ -87,6 +88,11 @@ function ArtTermsPage() {
 					{t('Арт-терміни-інформація')}
 				</p>
 			</div>
+
+			<div className={`${layoutStyles.DescriptionWrapper}`}>
+				<Letters></Letters>
+			</div>
+
 		</div>
 	)
 }
