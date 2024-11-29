@@ -33,6 +33,7 @@ model User {
   createdExhibitions Exhibition[]       @relation("UserCreatedExhibitions")
   exhibitionArtists  ExhibitionArtist[] // Added relation to ExhibitionArtist
   // Other fields...
+  artTerms           ArtTerm[]
 
   @@map("user")
 }
@@ -71,6 +72,7 @@ model Product {
   author         User           @relation(fields: [authorId], references: [id])
   authorId       Int
   images         ProductImage[] @relation("ProductImages")
+  artTerms       ArtTerm[]
 }
 
 model ProductImage {
@@ -116,4 +118,28 @@ model ExhibitionArtist {
 
   @@id([exhibitionId, artistId])
   @@index([artistId], map: "ExhibitionArtist_artistId_fkey")
+}
+
+model ArtTerm {
+  id Int @id @default(autoincrement())
+
+  title_en String @db.VarChar(100)
+
+  title_uk String @db.VarChar(100)
+
+  description_en String @db.VarChar(300)
+
+  description_uk String @db.VarChar(300)
+
+  content_en String @db.Text
+
+  content_uk String @db.Text
+  author     User   @relation(fields: [authorId], references: [id])
+  authorId   Int    @map("author_id")
+
+  highlightedProduct   Product @relation(fields: [highlightedProductId], references: [id])
+  highlightedProductId Int     @map("highlighted_product_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }
