@@ -14,7 +14,15 @@ export default defineConfig({
 				silenceDeprecations: ["import"]
             }
 		}
-	},	
+	},
+	resolve: {
+		alias: [
+			{ find: '@', replacement: path.resolve(__dirname, 'src') },
+			{ find: '@styles', replacement: path.resolve(__dirname, 'src', 'styles') },
+			{ find: '@components', replacement: path.resolve(__dirname, 'src', 'assets', 'components') },
+			{ find: '@screens', replacement: path.resolve(__dirname, 'src', 'assets', 'screens') },
+		],
+	},
 	server: {
 		https: {
 			key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
