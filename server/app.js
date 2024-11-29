@@ -13,6 +13,7 @@ import exhibitionRoutes from './src/routes/exhibitionRoutes.js'
 import postRoutes from './src/routes/postRoutes.js'
 import productRoutes from './src/routes/productRoutes.js'
 import userRoutes from './src/routes/userRoutes.js'
+import artTermsRoutes from './src/routes/artTermsRoutes.js'
 dotenv.config()
 
 const app = express()
@@ -92,6 +93,7 @@ app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/posts/postId', postRoutes)
 app.use('/api/exhibitions', exhibitionRoutes)
+app.use('/api/art-terms', artTermsRoutes)
 
 // Routes
 console.log(process.env.NODE_ENV)

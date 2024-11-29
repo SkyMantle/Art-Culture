@@ -127,9 +127,9 @@ model ArtTerm {
 
   title_uk String @db.VarChar(100)
 
-  description_en String @db.VarChar(300)
+  description_en String @db.VarChar(350)
 
-  description_uk String @db.VarChar(300)
+  description_uk String @db.VarChar(350)
 
   content_en String @db.Text
 
