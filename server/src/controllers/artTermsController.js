@@ -12,6 +12,7 @@ export const getArtTermsByLang = async (req, res, next) => {
 		const artTerms = await prisma.artTerm.findMany({
             orderBy: orderBy,
             select: {
+                id: true,
                 title_en: lang !== "uk",
                 title_uk: lang === "uk",
                 description_en: lang !== "uk",
@@ -21,8 +22,8 @@ export const getArtTermsByLang = async (req, res, next) => {
 
         const terms = artTerms.map(term => {
             return lang === "uk" 
-                ? { letter: term.title_uk[0], title: term.title_uk, description: term.description_uk }
-                : { letter: term.title_en[0], title: term.title_en, description: term.description_en };
+                ? { id: term.id, letter: term.title_uk[0], title: term.title_uk, description: term.description_uk }
+                : { id: term.id, letter: term.title_en[0], title: term.title_en, description: term.description_en };
         })
         const firstTerms = [];
         terms.forEach(item => {

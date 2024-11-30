@@ -45,7 +45,7 @@ const Layout = ({ children, heading = '', backLink = '/' }) => {
 					<Route path='/MuseumsPage' element={<MuseumsPage />} />
 					<Route path='/MuseumPage' element={<MuseumPage />} />
 					<Route path='/art-terms' element={<ArtTermsPage />} />
-					<Route path='/art-terms/:letter' element={<ArtTermsFilteredPage />} />
+					<Route path='/art-terms/letters/:letter' element={<ArtTermsFilteredPage />} />
 					<Route
 						path='/userProfile'
 						element={

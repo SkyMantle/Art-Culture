@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useParams, useNavigate } from 'react-router-dom'
-import Letters from '../../components/Blocks/Letters'
-import layoutStyles from '../../../styles/layout/Layout.module.scss'
+import Letters from '@components/Blocks/Letters'
+import layoutStyles from '@styles/layout/Layout.module.scss'
 
 function ArtTermsFilteredPage() {
 	const { t } = useTranslation()

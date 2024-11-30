@@ -8,7 +8,7 @@ import {
 const router = express.Router()
 
 // Route to get all creators
-router.get('/:lang', getArtTermsByLang)
+router.get('/letters/:lang', getArtTermsByLang)
 
 export default router
 

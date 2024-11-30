@@ -1,72 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import PopularArtsSlider from '../../components/Sliders/ArtistsPageSliders/PopularArtsSlider.jsx'
+import PopularArtsSlider from '@components/Sliders/ArtistsPageSliders/PopularArtsSlider.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Letters from '../../components/Blocks/Letters'
-import layoutStyles from '../../../styles/layout/Layout.module.scss'
+import Letters from '@components/Blocks/Letters'
+import Loading from '@components/Blocks/Loading'
+import LoadingError from '@components/Blocks/LoadingError'
+import layoutStyles from '@styles/layout/Layout.module.scss'
+import styles from '@styles/layout/ArtTermsPage.module.scss'
 
 function ArtTermsPage() {
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 
-	const [creators, setCreators] = useState([])
-	const [loading, setLoading] = useState(true)
 	const navigate = useNavigate()
 	const [error, setError] = useState(null)
-	const [visibleCreatorsCount, setVisibleCreatorsCount] = useState(
-		getPostsCount(window.innerWidth)
-	)
-
-	function getPostsCount(width) {
-		if (width === null || width === undefined) {
-			throw new Error('Width must be a number')
-		}
-		if (width >= 1920) {
-			return 4
-		}
-		if (width >= 1600 && width < 1920) {
-			return 3
-		}
-		if (width > 1440 && width < 1600) {
-			return 2
-		}
-		if (width <= 1440) {
-			return 2
-		}
-	}
-
+	const [language, setLanguage] = useState(i18n.language)
+	const [loading, setLoading] = useState(true)
+	const [artTerms, setArtTerms] = useState([])
 	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			if (newPostCount !== visibleCreatorsCount) {
-				setVisibleCreatorsCount(newPostCount)
-			}
-		}
-
-		window.addEventListener('resize', handleResize)
-
-		// Initial check
-		handleResize()
-
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visibleCreatorsCount])
+		i18n.on("languageChanged", () => setLanguage(i18n.language))
+		return () => i18n.off("languageChanged", () => setLanguage(i18n.language))
+	}, [i18n])
 	useEffect(() => {
 		const fetchCreator = async () => {
 			try {
-				const response = await axios.get('/api/users/creators')
-				console.log('received author data', response.data)
-				setCreators(response.data.creators)
+				setLoading(true)
+				const response = await axios.get('/api/art-terms/letters/' + language)
+				setArtTerms(response.data.artTerms)
 				setLoading(false)
+				setError(false)
 			} catch (error) {
 				console.error('Error fetching author data', error)
 				setLoading(false)
+				setError(true)
 			}
 		}
 
 		fetchCreator()
-	}, [])
+	}, [language])
 
 	return (
 		<div className={`${layoutStyles.PageContainer}`}>
@@ -85,7 +56,38 @@ function ArtTermsPage() {
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<Letters onLetterSelected={(letter) => navigate(`/art-terms/${letter}`)} />
+				<Letters onLetterSelected={(letter) => navigate(`/art-terms/letters/${letter.toLowerCase()}`)} />
+			</div>
+
+			<div className={`${layoutStyles.DescriptionWrapper}`}>
+				{loading ? <Loading /> : error ? <LoadingError />
+						: artTerms.length === 0 ? (
+						<div>
+							{t('Немає митців для відображення.')}
+						</div>
+					) : artTerms.map(artTerm => {
+						return (
+							<div key={artTerm.letter} className={styles.card}>
+								<div  className={styles.cardMedia}>
+									<a href={"/art-terms/" + artTerm.id}>
+										<div>
+											<picture></picture>
+										</div>
+									</a>
+								</div>
+								<div className={styles.cardContent}>
+									<h2 className={styles.cardTitle}>
+										<a href={"/art-terms/letters/" + artTerm.letter.toLowerCase()}>{artTerm.letter}</a>
+
+										<a href={"/art-terms/" + artTerm.id}>{artTerm.title}</a>
+									</h2>
+									<div className='card-description'>
+										<a href={"/art-terms/" + artTerm.id}>{artTerm.description}</a>
+									</div>
+								</div>
+							</div>
+						)
+					})}
 			</div>
 
 			<PopularArtsSlider />
