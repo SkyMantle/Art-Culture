@@ -7,12 +7,12 @@ import LoadingError from '@components/Blocks/LoadingError'
 import layoutStyles from '@styles/layout/Layout.module.scss'
 
 function ArtTermPage() {
-	const { t } = useTranslation()
+	const { i18n } = useTranslation()
 	const { id } = useParams()
 
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(true)
-	const [artTerm, setArtTerm] = useState(null)
+	const [artTerm, setArtTerm] = useState({})
 	useEffect(() => {
 		const fetchCreator = async () => {
 			try {
@@ -31,18 +31,28 @@ function ArtTermPage() {
 		fetchCreator()
 	}, [id])
 
+	const title = () => i18n.language == "en" ? artTerm.title_en : artTerm.title_uk;
+	const description = () => i18n.language == "en" ? artTerm.description_en : artTerm.description_uk;
+	const content = () => i18n.language == "en" ? artTerm.content_en : artTerm.content_uk;
 	return (
-		<div className={`${layoutStyles.PageContainer}`}>
+		loading ? <Loading /> : error ? <LoadingError />
+			: <div className={`${layoutStyles.PageContainer}`}>
 			<div className={`${layoutStyles.PageTitleWrapper}`}>
-				<h2 className={`${layoutStyles.PageTitle}`}>{t('Арт-термін')}</h2>
+				<h2 className={`${layoutStyles.PageTitle}`}>{title()}</h2>
 			</div>
 
 			<div className={`${layoutStyles.PageSeparatorWrapper}`}>
 				<div className={`${layoutStyles.PageSeparator}`}></div>
 			</div>
+
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				{loading ? <Loading /> : error ? <LoadingError />
-					: <div>Art term {artTerm}</div>}
+				<p className={`${layoutStyles.Description}`}>
+					{description()}
+				</p>
+			</div>
+
+			<div className={`${layoutStyles.DescriptionWrapper}`}>
+				<div>{content()}</div>
 			</div>
 		</div>
 	)

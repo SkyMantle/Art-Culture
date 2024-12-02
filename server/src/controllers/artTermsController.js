@@ -74,3 +74,24 @@ export const getArtTermsByLetter = async (req, res, next) => {
 		next(error)
 	}
 }
+
+export const getArtTermById = async (req, res, next) => {
+	try {
+		let id = req.params.id
+		if (!id) {
+			return res.status(400).json({ error: 'invalid letter' })
+		}
+
+        id = parseInt(id);
+		const artTerm = await prisma.artTerm.findFirstOrThrow({
+            where: {
+                id: id
+            }
+        });
+
+		res.json({ artTerm })
+	} catch (error) {
+		console.error('Error fetch data art-term id', error)
+		next(error)
+	}
+}
