@@ -30,7 +30,7 @@ function ArtTermsPage() {
 				setLoading(false)
 				setError(false)
 			} catch (error) {
-				console.error('Error fetching author data', error)
+				console.error('Error fetching art terms letters data', error)
 				setLoading(false)
 				setError(true)
 			}

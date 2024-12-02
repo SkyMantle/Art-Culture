@@ -1,6 +1,7 @@
 import cn from 'clsx'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import ProtectedRoute from '../../../routes/ProtectedRoute'
 import ExhibitionCardCreate from '../../components/ExhibitionCard/ExhibitionCardCreate'
 import PostDetail from '../../components/Post/PostDetail'
@@ -24,8 +25,9 @@ import ProductCardCreate from '/src/assets/components/ProductCard/ProductCardCre
 import styles from '/src/styles/layout/Layout.module.scss'
 import ArtTermsPage from '../ArtTerms/ArtTermsPage'
 import ArtTermsFilteredPage from '../ArtTerms/ArtTermsFilteredPage'
+import ArtTermPage from '../ArtTerms/ArtTermPage'
 
-const Layout = ({ children, heading = '', backLink = '/' }) => {
+const Layout = ({ heading = '' }) => {
 	const [username, setUsername] = useState('')
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [serverMessage, setServerMessage] = useState('')
@@ -46,6 +48,7 @@ const Layout = ({ children, heading = '', backLink = '/' }) => {
 					<Route path='/MuseumPage' element={<MuseumPage />} />
 					<Route path='/art-terms' element={<ArtTermsPage />} />
 					<Route path='/art-terms/letters/:letter' element={<ArtTermsFilteredPage />} />
+					<Route path='/art-terms/:id' element={<ArtTermPage />} />
 					<Route
 						path='/userProfile'
 						element={
@@ -105,5 +108,8 @@ const Layout = ({ children, heading = '', backLink = '/' }) => {
 			</section>
 		</BrowserRouter>
 	)
+}
+Layout.propTypes = {
+	heading: PropTypes.string,
 }
 export default Layout

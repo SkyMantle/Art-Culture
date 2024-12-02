@@ -31,7 +31,7 @@ function ArtTermsFilteredPage() {
 				setLoading(false)
 				setError(false)
 			} catch (error) {
-				console.error('Error fetching author data', error)
+				console.error('Error fetching art terms by letter data', error)
 				setLoading(false)
 				setError(true)
 			}
