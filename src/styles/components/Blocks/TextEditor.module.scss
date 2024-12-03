@@ -1,0 +1,81 @@
+@use '../../../styles/utilities/variables.scss';
+
+.profileAddPostInput {
+    /* Стиль текстовых полей ввода */
+    margin: variables.$responsiveSmallPadding 0 0 0;
+    width: 100%;
+    max-width: none;
+    height: 1en;
+    padding: 0;
+    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
+    border: 1px solid #ddd;
+    font-weight: 400;
+}
+
+.profileAddPostTextarea {
+    /* Стиль для текстовых областей */
+    margin: variables.$responsiveSmallPadding 0 0 0;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    overflow-wrap: break-word;
+    background-color: field;
+    column-count: initial !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd;
+    border-image: initial;
+    white-space: pre-wrap;
+    width: 100%;
+    max-width: none;
+    min-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*3);
+    max-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*7);
+    height: 100%;
+    padding: 0;
+    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
+    font-family: variables.$default-font;
+    resize: none;
+}
+
+.profileAddPostLabel {
+    /* Стиль для меток полей ввода */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
+    font-weight: 700;
+}
+
+.remainingChars {
+    /* Стиль для оставшихся символов */
+    margin: variables.$responsiveSmallPadding 0 0 auto;
+    font-size: calc(14px - (4 * ((1440px - 100vw) / (1440 - 375))));
+    color: variables.$secondary-color;
+}
+
+@media (min-width: 1441px) {
+    .remainingChars {
+        /* Стиль для оставшихся символов */
+        margin: variables.$staticPcSmallPadding 0 0 auto;
+        font-size: 14px;
+    }
+
+    .profileAddPostTextarea {
+        /* Стиль для текстовых областей */
+        margin: variables.$staticPcSmallPadding 0 0 0;
+        min-height: calc(16px*3);
+        max-height: calc(16px*7);
+        font-size: 16px;
+    }
+}

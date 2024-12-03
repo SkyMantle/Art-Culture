@@ -7,6 +7,8 @@ import { useAuth } from '../../../Context/AuthContext.jsx'
 import API from '../../../utils/api.js'
 import styles from '/src/styles/components/UserProfile/userProfileAddPost.module.scss'
 import Sidebar from '@components/Blocks/Sidebar'
+import TextEditor from '@components/Blocks/TextEditor'
+import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 
 function UserProfileAddPost() {
 	const { t } = useTranslation()
@@ -122,7 +124,11 @@ function UserProfileAddPost() {
 
 	const [remainingTitleUk, setRemainingTitleUk] = useState(50);
 	const [remainingTitleEn, setRemainingTitleEn] = useState(50);
-
+	const textEditorOnChange = ({name, value}) => {
+		const newFormData = { ...formData, [name]: value }
+		setFormData(newFormData)
+	};
+	console.log(formData);
 	return (
 		<div className={styles.profile}>
 			<Sidebar />
@@ -137,76 +143,30 @@ function UserProfileAddPost() {
 					<div className={styles.modalTextField}>
 						<div className={styles.modalFieldUk}>
 							<div className={styles.profileAddPostField}>
-								<label className={styles.profileAddPostLabel}>
-									{t('Назва публікації українською')}
-									<input
-										type='text'
-										name='title_uk'
-										value={formData.title_uk}
-										onChange={handleChange}
-										maxLength='50'
-										className={styles.profileAddPostInput}
-										// placeholder='Наприклад: Моя перша публікація'
-										required
-									/>
-								</label>
-								<small className={styles.remainingChars}>
-									{remainingTitleUk} {t('символів залишилось')}
-								</small>
+								<TextEditor label={t('Назва публікації українською')}
+									name='title_uk' value={formData.title_uk}
+									maxLength={50} required onChange={textEditorOnChange}
+									placeholder={t('Назва публікації українською')} />
 							</div>
 							<div className={styles.profileAddPostField}>
-								<label className={styles.profileAddPostLabel}>
-									{t('Опис публікації українською')}
-									<textarea
-										name='content_uk'
-										value={formData.content_uk}
-										onChange={handleChange}
-										maxLength="500" // Ограничение на уровне интерфейса
-										className={styles.profileAddPostTextarea}
-										// placeholder='Введіть детальний опис публікації'
-										required
-									/>
-								</label>
-								<small className={styles.remainingChars}>
-									{remainingContent.content_uk} {t('символів залишилось')}
-								</small>
+								<TextAreaEditor label={t('Опис публікації українською')}
+									name='content_uk' value={formData.content_uk}
+									maxLength='500' required onChange={textEditorOnChange}
+									placeholder={t('Опис публікації українською')} />
 							</div>
 						</div>
 						<div className={styles.modalFieldEn}>
 							<div className={styles.profileAddPostField}>
-								<label className={styles.profileAddPostLabel}>
-									{t('Назва публікації англійською')}
-									<input
-										type='text'
-										name='title_en'
-										value={formData.title_en}
-										onChange={handleChange}
-										maxLength='50'
-										className={styles.profileAddPostInput}
-										// placeholder='Title'
-										required
-									/>
-								</label>
-								<small className={styles.remainingChars}>
-									{remainingTitleEn} {t('символів залишилось')}
-								</small>
+								<TextEditor label={t('Назва публікації англійською')}
+									name='title_en' value={formData.title_en}
+									maxLength='50' required onChange={textEditorOnChange}
+									placeholder={t('Назва публікації англійською')} />
 							</div>
 							<div className={styles.profileAddPostField}>
-								<label className={styles.profileAddPostLabel}>
-									{t('Опис публікації англійською')}
-									<textarea
-										name='content_en'
-										value={formData.content_en}
-										onChange={handleChange}
-										maxLength="500" // Ограничение на уровне интерфейса
-										className={styles.profileAddPostTextarea}
-										// placeholder='Add description'
-										required
-									/>
-								</label>
-								<small className={styles.remainingChars}>
-									{remainingContent.content_en} {t('символів залишилось')}
-								</small>
+								<TextAreaEditor label={t('Опис публікації англійською')}
+									name='content_en' value={formData.content_en}
+									maxLength='500' required onChange={textEditorOnChange}
+									placeholder={t('Опис публікації англійською')} />
 							</div>
 						</div>
 					</div>
