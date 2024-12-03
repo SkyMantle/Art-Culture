@@ -24,28 +24,39 @@ function UserProfileAddPost() {
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState({})
 
-	const handleChange = e => {
-		const { name, value, files } = e.target
+	const handleChange = (e) => {
+		const { name, value, files } = e.target;
 
 		if (name === 'images') {
-			setFormData({ ...formData, images: files[0] })
+			setFormData({ ...formData, images: files[0] });
 		} else {
-			setFormData({ ...formData, [name]: value })
+			if ((name === 'content_uk' || name === 'content_en') && value.length > 500) {
+				return; // Блокируем изменение, если больше 500 символов
+			}
+
+			setFormData({ ...formData, [name]: value });
 
 			if (name === 'title_uk') {
-				setRemainingTitle(50 - value.length)
+				setRemainingTitleUk(50 - value.length); // Обновляем для украинского названия
+			} else if (name === 'title_en') {
+				setRemainingTitleEn(50 - value.length); // Обновляем для английского названия
 			}
 
-			if (name === 'title_en') {
-				setRemainingTitle(50 - value.length)
+			if (name === 'content_uk' || name === 'content_en') {
+				setRemainingContent((prev) => ({
+					...prev,
+					[name]: 500 - value.length,
+				}));
 			}
 
+			// Автоматическая регулировка высоты текстового поля
 			if (e.target.tagName.toLowerCase() === 'textarea') {
-				e.target.style.height = 'auto'
-				e.target.style.height = `${e.target.scrollHeight}px`
+				e.target.style.height = 'auto';
+				e.target.style.height = `${e.target.scrollHeight}px`;
 			}
 		}
-	}
+	};
+
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -104,6 +115,14 @@ function UserProfileAddPost() {
 		}
 	}
 
+	const [remainingContent, setRemainingContent] = useState({
+		content_uk: 500,
+		content_en: 500,
+	})
+
+	const [remainingTitleUk, setRemainingTitleUk] = useState(50);
+	const [remainingTitleEn, setRemainingTitleEn] = useState(50);
+
 	return (
 		<div className={styles.profile}>
 			<Sidebar />
@@ -132,7 +151,7 @@ function UserProfileAddPost() {
 									/>
 								</label>
 								<small className={styles.remainingChars}>
-									{remainingTitle} {t('символів залишилось')}
+									{remainingTitleUk} {t('символів залишилось')}
 								</small>
 							</div>
 							<div className={styles.profileAddPostField}>
@@ -142,11 +161,15 @@ function UserProfileAddPost() {
 										name='content_uk'
 										value={formData.content_uk}
 										onChange={handleChange}
+										maxLength="500" // Ограничение на уровне интерфейса
 										className={styles.profileAddPostTextarea}
 										// placeholder='Введіть детальний опис публікації'
 										required
 									/>
 								</label>
+								<small className={styles.remainingChars}>
+									{remainingContent.content_uk} {t('символів залишилось')}
+								</small>
 							</div>
 						</div>
 						<div className={styles.modalFieldEn}>
@@ -165,7 +188,7 @@ function UserProfileAddPost() {
 									/>
 								</label>
 								<small className={styles.remainingChars}>
-									{remainingTitle} {t('символів залишилось')}
+									{remainingTitleEn} {t('символів залишилось')}
 								</small>
 							</div>
 							<div className={styles.profileAddPostField}>
@@ -175,11 +198,15 @@ function UserProfileAddPost() {
 										name='content_en'
 										value={formData.content_en}
 										onChange={handleChange}
+										maxLength="500" // Ограничение на уровне интерфейса
 										className={styles.profileAddPostTextarea}
 										// placeholder='Add description'
 										required
 									/>
 								</label>
+								<small className={styles.remainingChars}>
+									{remainingContent.content_en} {t('символів залишилось')}
+								</small>
 							</div>
 						</div>
 					</div>
