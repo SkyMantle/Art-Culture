@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '/src/Context/AuthContext'
 import styles from '/src/styles/screen/ExhibitionList/Exhibitions.module.scss'
 import API from '/src/utils/api.js'
+import Sidebar from '@components/Blocks/Sidebar'
 
 function MuseumExhibitions() {
 	const { t, i18n } = useTranslation()
 	const currentLanguage = i18n.language
-	const [serverMessage, setServerMessage] = useState('')
 	const [page, setPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
 	const [exhibitions, setExhibitions] = useState([])
 	const [loading, setLoading] = useState(true)
-	const { user, logout } = useAuth()
-	const isUser = user && user.role === 'USER'
-	const isCreator = user && user.role === 'CREATOR'
-	const isMuseum = user && user.role === 'MUSEUM'
-	const isAdmin = user && user.role === 'ADMIN'
-	const navigate = useNavigate()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [selectedExhibitionImages, setSelectedExhibitionImages] = useState([])
 	const [editingExhibition, setEditingExhibition] = useState(null)
@@ -90,44 +82,6 @@ function MuseumExhibitions() {
 
 	if (error) {
 		return <div>{error}</div>
-	}
-
-	const handleProfilePageClick = () => {
-		navigate('/userProfile')
-	}
-
-	const handlePostsClick = () => {
-		navigate('/userProfilePosts')
-	}
-
-	const handleAddPostClick = () => {
-		navigate('/userProfileAddPost')
-	}
-
-	const handleLogout = () => {
-		logout()
-		navigate('/login')
-	}
-
-	const handleProductCartCreateClick = () => {
-		navigate('/ProductCardCreate')
-	}
-
-	const handlePaintingCardListClick = () => {
-		navigate('/Paintings')
-	}
-
-	const handleExhibitionCardCreateClick = () => {
-		navigate('/ExhibitionCardCreate')
-	}
-
-	const handleExhibitionListClick = () => {
-		navigate('/Exhibitions')
-	}
-
-	const handleExhibitionImageClick = images => {
-		setSelectedExhibitionImages(images)
-		setIsModalOpen(true)
 	}
 
 	const handleCloseModal = () => {
@@ -329,58 +283,7 @@ function MuseumExhibitions() {
 
 	return (
 		<div className={styles.profile}>
-			<div className={styles.profileActions}>
-				<button
-					className={`${styles.profileAction} ${styles.profileActionActive}`}
-					onClick={handleProfilePageClick}
-				>
-					{t('Профіль')}
-				</button>
-				{!isUser && !isMuseum && (
-					<>
-						<button
-							className={styles.profileAction}
-							onClick={handleAddPostClick}
-						>
-							{t('Додати публікацію')}
-						</button>
-						<button className={styles.profileAction} onClick={handlePostsClick}>
-							{t('Публікації')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handleProductCartCreateClick}
-						>
-							{t('Додати картину')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handlePaintingCardListClick}
-						>
-							{t('Переглянути вироби/картини')}
-						</button>
-					</>
-				)}
-				{isMuseum && (
-					<>
-						<button
-							className={styles.profileAction}
-							onClick={handleExhibitionCardCreateClick}
-						>
-							{t('Додати виставку')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handleExhibitionListClick}
-						>
-							{t('Переглянути виставки')}
-						</button>
-					</>
-				)}
-				<button className={styles.profileAction} onClick={handleLogout}>
-					{t('Вийти')}
-				</button>
-			</div>
+			<Sidebar />
 			<div className={styles.exhibitionsContainer}>
 				<h2>{t('Ваші виставки')}</h2>
 				{exhibitions.length === 0 ? (

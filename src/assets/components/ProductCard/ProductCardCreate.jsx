@@ -1,18 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../../Context/AuthContext.jsx'
 import API from '../../../utils/api.js'
 import styles from '/src/styles/components/ProductCard/ProductCardCreate.module.scss'
+import Sidebar from '@components/Blocks/Sidebar'
 
 const ProductCardCreate = () => {
 	const { t } = useTranslation()
-	const { user, logout } = useAuth()
-	const isUser = user && user.role === 'USER'
-	const isCreator = user && user.role === 'CREATOR'
-	const isMuseum = user && user.role === 'MUSEUM'
-	const isAdmin = user && user.role === 'ADMIN'
-	console.log('CurrentUser:', user)
 	const navigate = useNavigate()
 	const [formData, setFormData] = useState({
 		title_en: '',
@@ -81,93 +75,9 @@ const ProductCardCreate = () => {
 		}
 	}
 
-	const handleProfilePageClick = () => {
-		navigate('/userProfile')
-	}
-
-	const handlePostsClick = () => {
-		navigate('/userProfilePosts')
-	}
-
-	const handleAddPostClick = () => {
-		navigate('/userProfileAddPost')
-	}
-
-	const handleLogout = () => {
-		logout()
-		navigate('/login')
-	}
-
-	const handleProductCartCreateClick = () => {
-		navigate('/ProductCardCreate')
-	}
-
-	const handlePaintingCardListClick = () => {
-		navigate('/Paintings')
-	}
-
-	const handleExhibitionCardCreateClick = () => {
-		navigate('/ExhibitionCardCreate')
-	}
-
-	const handleExhibitionListClick = () => {
-		navigate('/Exhibitions')
-	}
-
 	return (
 		<div className={styles.profile}>
-			<div className={styles.profileActions}>
-				<button
-					className={`${styles.profileAction} ${styles.profileActionActive}`}
-					onClick={handleProfilePageClick}
-				>
-					{t('Профіль')}
-				</button>
-				{!isUser && !isMuseum && (
-					<>
-						<button
-							className={styles.profileAction}
-							onClick={handleAddPostClick}
-						>
-							{t('Додати публікацію')}
-						</button>
-						<button className={styles.profileAction} onClick={handlePostsClick}>
-							{t('Публікації')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handleProductCartCreateClick}
-						>
-							{t('Додати картину')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handlePaintingCardListClick}
-						>
-							{t('Переглянути вироби/картини')}
-						</button>
-					</>
-				)}
-				{isMuseum && (
-					<>
-						<button
-							className={styles.profileAction}
-							onClick={handleExhibitionCardCreateClick}
-						>
-							{t('Додати виставку')}
-						</button>
-						<button
-							className={styles.profileAction}
-							onClick={handleExhibitionListClick}
-						>
-							{t('Переглянути виставки')}
-						</button>
-					</>
-				)}
-				<button className={styles.profileAction} onClick={handleLogout}>
-					{t('Вийти')}
-				</button>
-			</div>
+			<Sidebar />
 			<div className={styles.productCreate}>
 				<h2 className={styles.productCreateTitle}>{t('Додати картину')}</h2>
 				{serverMessage && (

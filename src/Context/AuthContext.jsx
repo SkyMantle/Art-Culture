@@ -1,11 +1,13 @@
-// src/Context/AuthContext.jsx
-
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import API from '../utils/api'
 
 const AuthContext = createContext()
 
 export const useAuth = () => useContext(AuthContext)
+
+export const logout = () => {
+	localStorage.removeItem('token')
+}
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
@@ -45,14 +47,14 @@ export const AuthProvider = ({ children }) => {
 		console.log('User logged in:', userData)
 	}
 
-	const updateUser = userData => {
-		setUser(userData)
-	}
-
 	const logout = () => {
 		setUser(null)
 		setIsLoggedIn(false)
 		localStorage.removeItem('token')
+	}
+	
+		const updateUser = userData => {
+		setUser(userData)
 	}
 
 	return (
