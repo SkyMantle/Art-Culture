@@ -41,13 +41,11 @@ model User {
 model Post {
   id Int @id @default(autoincrement())
 
-  title_en String?
+  title_en    String
+  title_uk    String
+  content_en  String @db.VarChar(500)
+  content_uk  String @db.VarChar(500) 
 
-  title_uk String?
-
-  content_en String?
-
-  content_uk String?
   author     User     @relation(fields: [authorId], references: [id])
   authorId   Int      @map("author_id")
   images     String?
