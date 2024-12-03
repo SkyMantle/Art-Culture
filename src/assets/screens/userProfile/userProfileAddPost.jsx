@@ -22,43 +22,13 @@ function UserProfileAddPost() {
 		content_uk: '',
 		images: null,
 	})
-	const [remainingTitle, setRemainingTitle] = useState(50)
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState({})
 
 	const handleChange = (e) => {
-		const { name, value, files } = e.target;
-
-		if (name === 'images') {
-			setFormData({ ...formData, images: files[0] });
-		} else {
-			if ((name === 'content_uk' || name === 'content_en') && value.length > 500) {
-				return; // Блокируем изменение, если больше 500 символов
-			}
-
-			setFormData({ ...formData, [name]: value });
-
-			if (name === 'title_uk') {
-				setRemainingTitleUk(50 - value.length); // Обновляем для украинского названия
-			} else if (name === 'title_en') {
-				setRemainingTitleEn(50 - value.length); // Обновляем для английского названия
-			}
-
-			if (name === 'content_uk' || name === 'content_en') {
-				setRemainingContent((prev) => ({
-					...prev,
-					[name]: 500 - value.length,
-				}));
-			}
-
-			// Автоматическая регулировка высоты текстового поля
-			if (e.target.tagName.toLowerCase() === 'textarea') {
-				e.target.style.height = 'auto';
-				e.target.style.height = `${e.target.scrollHeight}px`;
-			}
-		}
+		const { name, files } = e.target;
+		setFormData({ ...formData, [name]: files[0] });
 	};
-
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -117,13 +87,6 @@ function UserProfileAddPost() {
 		}
 	}
 
-	const [remainingContent, setRemainingContent] = useState({
-		content_uk: 500,
-		content_en: 500,
-	})
-
-	const [remainingTitleUk, setRemainingTitleUk] = useState(50);
-	const [remainingTitleEn, setRemainingTitleEn] = useState(50);
 	const textEditorOnChange = ({name, value}) => {
 		const newFormData = { ...formData, [name]: value }
 		setFormData(newFormData)
