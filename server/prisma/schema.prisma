@@ -41,8 +41,8 @@ model User {
 model Post {
   id Int @id @default(autoincrement())
 
-  title_en    String
-  title_uk    String
+  title_en    String @db.VarChar(50)
+  title_uk    String @db.VarChar(50)
   content_en  String @db.VarChar(500)
   content_uk  String @db.VarChar(500) 
 
@@ -56,15 +56,13 @@ model Post {
 model Product {
   id Int @id @default(autoincrement())
 
-  title_en String
+  title_en        String @db.VarChar(50)
+  title_uk        String @db.VarChar(50)
+  description_en  String @db.VarChar(500)
+  description_uk  String @db.VarChar(500)
+  specs_en        String? @db.VarChar(500)
+  specs_uk        String? @db.VarChar(500)
 
-  title_uk String
-
-  description_en String
-
-  description_uk String
-  specs_en       String?
-  specs_uk       String?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
   author         User           @relation(fields: [authorId], references: [id])
@@ -84,15 +82,15 @@ model ProductImage {
 
 model Exhibition {
   id                Int                @id @default(autoincrement())
-  title_en          String?
-  description_en    String?
-  title_uk          String?
-  description_uk    String?
+  title_en          String? @db.VarChar(50)
+  description_en    String? @db.VarChar(500)
+  title_uk          String? @db.VarChar(50)
+  description_uk    String? @db.VarChar(500)
   startDate         DateTime
   endDate           DateTime
-  time              String?
-  location_en       String?
-  location_uk       String?
+  time              String? @db.VarChar(200)
+  location_en       String? @db.VarChar(500)
+  location_uk       String? @db.VarChar(500)
   createdById       Int
   createdBy         User               @relation("UserCreatedExhibitions", fields: [createdById], references: [id])
   exhibitionArtists ExhibitionArtist[]
