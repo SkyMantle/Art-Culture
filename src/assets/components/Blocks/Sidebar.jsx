@@ -8,7 +8,10 @@ function Sidebar() {
 	const navigate = useNavigate()
 	const { user, logout } = useAuth()
 	const isUser = user && user.role === 'USER'
+	const isEditor = user && user.role === 'EDITOR'
 	const isMuseum = user && user.role === 'MUSEUM'
+	const isAdmin = user && user.role === 'ADMIN'
+	const isCreator = user && user.role === 'CREATOR'
 
 	const handleProfilePageClick = () => {
 		navigate('/userProfile')
@@ -51,7 +54,17 @@ function Sidebar() {
 			>
 				{t('Профіль')}
 			</button>
-			{!isUser && !isMuseum && (
+			{isAdmin && (
+				<>
+					<button
+						className={`${styles.profileAction} ${styles.profileActionActive}`}
+						onClick={() => navigate('/admin/dashboard')}
+					>
+						{t('Адміністрація')}
+					</button>
+				</>
+			)}
+			{(isCreator || isEditor || isAdmin) && (
 				<>
 					<button
 						className={styles.profileAction}

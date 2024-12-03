@@ -63,7 +63,7 @@ const Layout = ({ heading = '' }) => {
 						}
 					/>
 					<Route
-						path='/AdminDashboard'
+						path='/admin/dashboard'
 						element={
 							<ProtectedRoute roles={['ADMIN']}>
 								<AdminDashboard />
