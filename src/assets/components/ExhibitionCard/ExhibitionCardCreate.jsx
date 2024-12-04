@@ -86,7 +86,7 @@ function ExhibitionForm() {
 				authorsToProcess.map(async author => {
 					try {
 						const paintingsRes = await API.get(`/products/author/${author.id}`)
-						const hasPaintings = paintingsRes.data.paintings.length > 0
+						const hasPaintings = paintingsRes.data.products.length > 0
 						return {
 							...author,
 							type: 'author',
@@ -583,10 +583,12 @@ function ExhibitionForm() {
 						/>
 						{searchResults.length > 0 && (
 							<div className={styles.searchResults}>
-								{searchResults.map(result => (
-									<div
+								{searchResults.map(result => {
+									//const isDisabled = result.type === 'author' && !result.paintings;
+									const isDisabled = false;
+									return (<div
 										key={`${result.type}-${result.id}`}
-										className={`${styles.searchResultItem} ${result.type === 'author' && !result.paintings ? styles.disabled : ''}`}
+										className={`${styles.searchResultItem} ${isDisabled ? styles.disabled : ''}`}
 										onClick={() => {
 											if (result.type === 'author') {
 												if (!result.paintings) {
@@ -642,7 +644,7 @@ function ExhibitionForm() {
 											</>
 										)}
 									</div>
-								))}
+								)})}
 							</div>
 						)}
 					</div>

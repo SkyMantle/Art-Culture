@@ -32,7 +32,7 @@ export const searchAuthors = async (req, res, next) => {
 export const searchPainting = async (req, res, next) => {
 	try {
 		const query = req.query.q || ''
-		const authorId = parseInt(req.params.authorId, 10)
+		const authorId = req.params.authorId ? parseInt(req.params.authorId, 10) : null
 
 		const paintings = await prisma.product.findMany({
 			where: {
