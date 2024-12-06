@@ -66,7 +66,7 @@ const UserProfile = () => {
 			})
 			if (response.status === 200) {
 				const { user: updatedUserProfile, message } = response.data
-				setServerMessage(message)
+				setServerMessage(t(message))
 				setEditMode(false)
 				updateUser(updatedUserProfile)
 				closeModal() // Закрываем модальное окно после успешного обновления
