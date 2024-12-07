@@ -1,4 +1,3 @@
-import ExhibitionCardCreate from '../assets/components/ExhibitionCard/ExhibitionCardCreate'
 import PostDetail from '../assets/components/Post/PostDetail'
 import ProductCartCreate from '../assets/components/ProductCard/ProductCardCreate'
 import Login from '../assets/components/VerificationPages/LoginPage'
@@ -17,8 +16,6 @@ import NewsPage from '../assets/screens/newsPage/NewsPage'
 import UserProfile from '../assets/screens/userProfile/userProfile'
 import UserProfileAddPost from '../assets/screens/userProfile/userProfileAddPost'
 import UserProfilePosts from '../assets/screens/userProfile/userProfilePosts'
-import ArtTermsPage from '../assets/screens/ArtTerms/ArtTermsPage'
-import ArtTermsFilteredPage from '../assets/screens/ArtTerms/ArtTermsFilteredPage'
 
 export const routes = [
 	{
@@ -106,12 +103,6 @@ export const routes = [
 	{
 		path: '/ProductCardCreate',
 		element: ProductCartCreate,
-		isAuth: true,
-	},
-
-	{
-		path: '/ExhibitionCardCreate',
-		element: ExhibitionCardCreate,
 		isAuth: true,
 	},
 

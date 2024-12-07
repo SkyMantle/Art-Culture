@@ -75,7 +75,7 @@ const Layout = ({ heading = '' }) => {
 					<Route path='/Paintings' element={<Paintings />} />
 					<Route path='/ProductCardCreate' element={<ProductCardCreate />} />
 					<Route
-						path='/ExhibitionCardCreate'
+						path='/exhibitions/create'
 						element={<ExhibitionCardCreate />}
 					/>
 					<Route path='/Exhibitions' element={<MuseumExhibitions />} />

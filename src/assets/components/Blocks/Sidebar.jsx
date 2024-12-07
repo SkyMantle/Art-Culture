@@ -34,7 +34,7 @@ function Sidebar() {
 	}
 
 	const handleExhibitionCardCreateClick = () => {
-		navigate('/ExhibitionCardCreate')
+		navigate('/exhibitions/create')
 	}
 
 	const handleExhibitionListClick = () => {
