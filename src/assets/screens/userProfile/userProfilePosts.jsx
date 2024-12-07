@@ -7,6 +7,8 @@ import styles from '/src/styles/components/UserProfile/userProfilePosts.module.s
 import Sidebar from '@components/Blocks/Sidebar'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import TranslatedContent from '@components/Blocks/TranslatedContent.jsx'
+import { getFormattedDate } from '@/utils/helper.js'
 
 function UserProfilePosts() {
 	const { t, i18n } = useTranslation()
@@ -93,17 +95,7 @@ function UserProfilePosts() {
 	const handleChange = (e) => {
 		const { name, value, files } = e.target;
 
-		if (name === 'images') {
-			setFormData({ ...formData, images: files[0] });
-		} else {
-			setFormData({ ...formData, [name]: value });			
-
-			// Автоматическая регулировка высоты текстового поля
-			if (e.target.tagName.toLowerCase() === 'textarea') {
-				e.target.style.height = 'auto';
-				e.target.style.height = `${e.target.scrollHeight}px`;
-			}
-		}
+		setFormData({ ...formData, images: files[0] });
 	};
 
 
@@ -219,14 +211,11 @@ function UserProfilePosts() {
 								</div>
 								<div className={styles.userProfilePostsTextWrapper}>
 									<h3 className={styles.userProfilePostsTitle}>
-										{currentLanguage === 'en' ? post.title_en : post.title_uk}
+										<TranslatedContent en={post.title_en} uk={post.title_uk} />
 									</h3>
 									<div className={styles.userProfilePostsDescriptionWrapper}>
 										<p className={styles.userProfilePostsDescription}>
-											{currentLanguage === 'en'
-												? post.content_en.substring(0, 100)
-												: post.content_uk.substring(0, 100)}
-											...
+											<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} html />											
 										</p>
 									</div>
 									<div className={styles.userProfilePostsClockAndDateWrapper}>
@@ -236,7 +225,7 @@ function UserProfilePosts() {
 											alt={t('Дата')}
 										/>
 										<p className={styles.userProfilePostsDate}>
-											{new Date(post.createdAt).toLocaleDateString()}
+											{getFormattedDate(post.createdAt)}
 										</p>
 										<button
 											className={styles.userProfilePostsButton}

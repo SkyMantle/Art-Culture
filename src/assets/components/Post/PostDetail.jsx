@@ -1,18 +1,18 @@
 // src/components/PostDetail/PostDetail.jsx
 
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 import styles from '../../../styles/components/Post/PostDetail.module.scss'
 import { getFormattedDate, getImageUrl, getFormattedTime } from '../../../utils/helper'
+import TranslatedContent from '@components/Blocks/TranslatedContent'
 
 function PostDetail() {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const { id } = useParams()
 	const [post, setPost] = useState(null)
 	const [error, setError] = useState(null)
-	const currentLanguage = i18n.language
 
 	useEffect(() => {
 		axios
@@ -40,9 +40,6 @@ function PostDetail() {
 	const formattedDate = getFormattedDate(post.createdAt)
 	const formattedTime = getFormattedTime(post.createdAt)
 
-	const title = currentLanguage === 'en' ? post.title_en : post.title_uk
-	const content = currentLanguage === 'en' ? post.content_en : post.content_uk
-
 	return (
 		<div className={styles.postDetailContainer}>
 			<img
@@ -53,8 +50,8 @@ function PostDetail() {
 					e.target.src = '/Img/newsCardERROR.jpg'
 				}}
 			/>
-			<h1>{title}</h1>
-			<p>{content}</p>
+			<h1><TranslatedContent en={post.title_en} uk={post.title_uk} /></h1>
+			<TranslatedContent en={post.content_en} uk={post.content_uk} html />
 			<p>
 				{t('Автор')}: {post.author.title || post.author.email}
 			</p>
