@@ -356,7 +356,7 @@ function MuseumExhibitions() {
 									{console.log('type data artists:', artistNames)}
 									<div className={styles.exhibitionDelEditWrapper}>
 										<button
-											className={styles.exhibitionEditButton}
+											className="button button-default"
 											onClick={() => openEditModal(exhibition)}
 										>
 											{t('Редагувати')}

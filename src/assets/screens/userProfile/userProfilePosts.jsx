@@ -236,7 +236,7 @@ function UserProfilePosts() {
 									</div>
 									<div className={styles.userProfileDelEditWrapper}>
 										<button
-											className={styles.userProfileEditButton}
+											className="button button-default"
 											onClick={() => openEditModal(post)}
 										>
 											{t('Редагувати')}

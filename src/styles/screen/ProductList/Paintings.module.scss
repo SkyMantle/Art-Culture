@@ -80,32 +80,15 @@
 
 .paintingsDelEditWrapper {
 	/* Обертка для кнопок редактирования и удаления */
-	margin: auto 0 0 0;
+	margin: $responsiveMediumPadding 0 0 0;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.paintingsEditButton {
-	/* Стили для кнопки редактирования */
-	margin: $responsiveMediumPadding 0 0 0;
-	padding: 0 $staticButtonLeftAndRightPadding;
-	height: calc(51px - (11 * ((1440px - 100vw) / (1440 - 375))));
-	min-height: 40px;
-	max-height: 51px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid #000;
-	border-radius: calc(34px - (4 * ((1440px - 100vw) / (1440 - 375))));
-	background-color: #fff;
-	cursor: pointer;
-}
-
 .paintingsDeleteButton {
 	/* Стили для кнопки редактирования */
-	margin: $responsiveMediumPadding 0 0 $responsiveMediumPadding;
 	padding: 0 $staticButtonLeftAndRightPadding;
 	height: calc(51px - (11 * ((1440px - 100vw) / (1440 - 375))));
 	min-height: 40px;
@@ -293,16 +276,8 @@
 		}
 	}
 
-	.paintingsEditButton {
-		/* Стили для кнопки редактирования */
-		margin: $staticPcMediumPadding 0 0 0;
-		padding: 0 $staticButtonLeftAndRightPadding;
-		border-radius: 34px;
-	}
-
 	.paintingsDeleteButton {
 		/* Стили для кнопки редактирования */
-		margin: $staticPcMediumPadding 0 0 $staticPcMediumPadding;
 		padding: 0 $staticButtonLeftAndRightPadding;
 		border-radius: 34px;
 	}

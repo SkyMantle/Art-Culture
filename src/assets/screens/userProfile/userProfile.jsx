@@ -151,7 +151,7 @@ const UserProfile = () => {
 										toggleEditMode()
 										openModal()
 									}}
-									className={styles.editButton}
+									className="button button-default"
 								>
 									{editMode ? t('Скасувати') : t('Редагувати')}
 								</button>
@@ -179,7 +179,7 @@ const UserProfile = () => {
 															toggleEditMode()
 															closeModal()
 														}}
-														className={styles.editButton}
+														className="button"
 													>
 														<span className={styles.close}>&times;</span>
 													</button>

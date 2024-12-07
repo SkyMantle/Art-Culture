@@ -234,7 +234,7 @@ const Paintings = () => {
 								</h4>
 								<div className={styles.paintingsDelEditWrapper}>
 									<button
-										className={styles.paintingsEditButton}
+										className="button button-default"
 										onClick={() => openEditModal(product)}
 									>
 										{t('Редагувати')}
