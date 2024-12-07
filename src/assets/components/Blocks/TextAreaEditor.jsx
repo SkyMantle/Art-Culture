@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next'
+import ReactQuill from "react-quill"
+import "quill/dist/quill.snow.css"
 import styles from "@styles/components/Blocks/TextEditor.module.scss"
 
-function TextAreaEditor({ className, name, label, value, maxLength, onChange, placeholder, required }) {
+const TextAreaEditor = forwardRef(({ className, name, label, value, maxLength, onChange, placeholder, required }, ref) => {
 	const { t } = useTranslation()
 	const [remaining, setRemaining] = useState(maxLength - (value ?? "").length)
 	const handleChange = (e) => {
@@ -11,32 +13,22 @@ function TextAreaEditor({ className, name, label, value, maxLength, onChange, pl
 			return; // Блокируем изменение, если больше maxLength символов
 		}
 
-		setRemaining(maxLength - e.target.value.length);
-		onChange({ name, value: e.target.value });
-		e.target.style.height = 'auto';
-		e.target.style.height = `${e.target.scrollHeight + 10}px`;
+		setRemaining(maxLength - e.length);
+		onChange({ name, value: e });
 	};
-		
 	return (
 		<>
 		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
 			{label}
-			<textarea
-				name={name}
-				value={value}
-				onChange={handleChange}
-				maxLength={maxLength}
-				className={styles.profileAddPostTextarea}
-				placeholder={placeholder}
-				required={required}
-			/>
 		</label>
+		<ReactQuill theme="snow" value={value} onChange={handleChange} modules={{ toolbar: false }} />
 		<small className={styles.remainingChars}>
 			{remaining} {t('символів залишилось')}
 		</small>
 		</>
 	)
-}
+})
+TextAreaEditor.displayName = "TextAreaEditor"
 
 TextAreaEditor.propTypes = {
     maxLength: PropTypes.number,

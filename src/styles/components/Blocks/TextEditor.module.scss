@@ -60,7 +60,7 @@
 
 .remainingChars {
     /* Стиль для оставшихся символов */
-    margin: variables.$responsiveSmallPadding 0 0 auto;
+    margin: variables.$responsiveSmallPadding 5px 0 auto;
     font-size: calc(14px - (4 * ((1440px - 100vw) / (1440 - 375))));
     color: variables.$secondary-color;
 }
@@ -68,7 +68,7 @@
 @media (min-width: 1441px) {
     .remainingChars {
         /* Стиль для оставшихся символов */
-        margin: variables.$staticPcSmallPadding 0 0 auto;
+        margin-top: variables.$staticPcSmallPadding;
         font-size: 14px;
     }
 
