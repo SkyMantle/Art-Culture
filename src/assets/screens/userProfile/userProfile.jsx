@@ -107,7 +107,7 @@ const UserProfile = () => {
 											? URL.createObjectURL(profileImage)
 											: profileImage.startsWith('http') ||
 													profileImage.startsWith('/uploads/profileImages')
-												? `${process.env.REACT_APP_API_URL}${profileImage}`
+												? `${profileImage}`
 												: profileImage
 									}
 									alt='Profile'

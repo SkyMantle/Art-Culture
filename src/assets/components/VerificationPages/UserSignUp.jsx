@@ -40,7 +40,7 @@ const SelfSignUp = () => {
 			if (response.status === 201) {
 				const { token, user } = response.data // Assuming API returns user data
 				login(user, token) // Update AuthContext
-				navigate('/userProfile') // Redirect to profile
+				navigate('/profile') // Redirect to profile
 			}
 		} catch (error) {
 			if (error.response && error.response.data) {

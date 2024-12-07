@@ -36,7 +36,7 @@ export const routes = [
 	},
 
 	{
-		path: '/userProfile',
+		path: '/profile',
 		element: UserProfile,
 		isAuth: true,
 	},
@@ -54,13 +54,13 @@ export const routes = [
 	},
 
 	{
-		path: '/userProfileAddPost',
+		path: '/profile/posts/create',
 		element: UserProfileAddPost,
 		isAuth: true,
 	},
 
 	{
-		path: '/userProfilePosts',
+		path: '/profile/posts',
 		element: UserProfilePosts,
 		isAuth: true,
 	},
@@ -101,7 +101,7 @@ export const routes = [
 		isAuth: true,
 	},
 	{
-		path: '/ProductCardCreate',
+		path: '/profile/products/create',
 		element: ProductCartCreate,
 		isAuth: true,
 	},
@@ -113,7 +113,7 @@ export const routes = [
 	},
 
 	{
-		path: '/Paintings',
+		path: '/profile/products',
 		element: Paintings,
 		isAuth: true,
 	},

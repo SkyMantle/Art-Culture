@@ -50,7 +50,7 @@ const Layout = ({ heading = '' }) => {
 					<Route path='/art-terms/letters/:letter' element={<ArtTermsFilteredPage />} />
 					<Route path='/art-terms/:id' element={<ArtTermPage />} />
 					<Route
-						path='/userProfile'
+						path='/profile'
 						element={
 							<UserProfile
 								isLoggedIn={isLoggedIn}
@@ -70,10 +70,10 @@ const Layout = ({ heading = '' }) => {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path='/userProfileAddPost' element={<UserProfileAddPost />} />
-					<Route path='/userProfilePosts' element={<UserProfilePosts />} />
-					<Route path='/Paintings' element={<Paintings />} />
-					<Route path='/ProductCardCreate' element={<ProductCardCreate />} />
+					<Route path='/profile/posts/create' element={<UserProfileAddPost />} />
+					<Route path='/profile/posts' element={<UserProfilePosts />} />
+					<Route path='/profile/products' element={<Paintings />} />
+					<Route path='/profile/products/create' element={<ProductCardCreate />} />
 					<Route
 						path='/exhibitions/create'
 						element={<ExhibitionCardCreate />}

@@ -206,7 +206,7 @@ const Paintings = () => {
 							<div key={product.id} className={styles.productCard}>
 								{product.images.length > 0 && (
 									<img
-										src={`${process.env.REACT_APP_API_URL}${product.images[0].imageUrl}`}
+										src={`${product.images[0].imageUrl}`}
 										alt={title}
 										className={styles.productImage}
 										onClick={() => handleImageClick(product.images)}
@@ -264,10 +264,10 @@ const Paintings = () => {
 							{selectedProductImages.map((image, index) => (
 								<img
 									key={index}
-									src={`${process.env.REACT_APP_API_URL}${image.imageUrl}`}
+									src={`${image.imageUrl}`}
 									alt={`Product Image ${index + 1}`}
 									className={styles.modalImage}
-								/>
+								/>	
 							))}
 						</div>
 					</div>

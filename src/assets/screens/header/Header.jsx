@@ -89,7 +89,7 @@ function Header() {
 
 	const handleProfileClick = () => {
 		closeBurgerMenu();
-		navigate('/userProfile')
+		navigate('/profile')
 	}
 
 	const handleMainPageClick = () => {

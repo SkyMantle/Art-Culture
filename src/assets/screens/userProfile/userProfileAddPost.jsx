@@ -77,7 +77,7 @@ function UserProfileAddPost() {
 
 			if (response.status === 201) {
 				setMessage(t("Публікація успішно створена"))
-				navigate('/userProfilePosts')
+				navigate('/profile/posts')
 			}
 		} catch (error) {
 			console.error('Error adding post:', error)

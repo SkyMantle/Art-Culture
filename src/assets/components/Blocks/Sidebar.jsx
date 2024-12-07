@@ -14,23 +14,23 @@ function Sidebar() {
 	const isCreator = user && user.role === 'CREATOR'
 
 	const handleProfilePageClick = () => {
-		navigate('/userProfile')
+		navigate('/profile')
 	}
 
 	const handlePostsClick = () => {
-		navigate('/userProfilePosts')
+		navigate('/profile/posts')
 	}
 
 	const handleAddPostClick = () => {
-		navigate('/userProfileAddPost')
+		navigate('/profile/posts/create')
 	}
 
 	const handleProductCartCreateClick = () => {
-		navigate('/ProductCardCreate')
+		navigate('/profile/products/create')
 	}
 
 	const handlePaintingCardListClick = () => {
-		navigate('/Paintings')
+		navigate('/profile/products')
 	}
 
 	const handleExhibitionCardCreateClick = () => {

@@ -62,8 +62,8 @@ const ProductCardCreate = () => {
 
 			if (response.status === 201) {
 				setServerMessage('Product created successfully')
-				console.log('Navigating to /paintings')
-				navigate('/paintings')
+				console.log('Navigating to /profile/products')
+				navigate('/profile/products')
 			}
 		} catch (error) {
 			console.error('product create error', error)

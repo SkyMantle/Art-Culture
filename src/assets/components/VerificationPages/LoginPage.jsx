@@ -32,7 +32,7 @@ const Login = () => {
 			if (response.status === 200) {
 				const { token, user } = response.data // Assuming API returns user data
 				login(user, token) // Update AuthContext
-				navigate('/userProfile') // Redirect to profile
+				navigate('/profile') // Redirect to profile
 				console.log('token', token)
 			}
 		} catch (error) {
