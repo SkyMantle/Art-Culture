@@ -6,7 +6,9 @@ function ProfilePageContainer({ children }) {
 	return (
 		<div className={styles.profile}>
 			<Sidebar />
-			{children}
+			<div className={styles.profileInfo}>
+				{children}
+			</div>
 		</div>
 	)
 }

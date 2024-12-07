@@ -1,15 +1,6 @@
 @use '/src/styles/components/UserProfile/userProfile.module.scss';
 @import '/src/styles/utilities/variables.scss';
 
-.exhibitionFormContainer {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	font-family: $default-font;
-	margin: $responsiveMediumPadding 0 $responsiveMediumPadding
-		$responsiveLeftAndRightPadding;
-}
 
 .formTitle {
 	font-weight: 600;
@@ -50,7 +41,6 @@
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	align-items: start;
 	justify-content: space-between;
 }
 
@@ -140,11 +130,6 @@
 }
 
 @media (min-width: 1441px) {
-	.exhibitionFormContainer {
-		margin: $staticPcMediumPadding 0 $staticPcMediumPadding
-			$responsiveLeftAndRightPadding;
-	}
-
 	.formTitle {
 		font-size: 28px;
 	}

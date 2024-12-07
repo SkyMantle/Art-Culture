@@ -172,86 +172,84 @@ function UserProfilePosts() {
 
 	return (
 		<ProfilePageContainer>
-			<div className={styles.userProfilePostsContainer}>
-				<div className={styles.profileTitleWrapper}>
-					<h3 className={styles.profileTitle}>{t('Публікації')}</h3>
-				</div>
-				{loading ? (
-					<p className={styles.userPageLoadingMessage}>
-						{t('Завантаження...')}
-					</p>
-				) : error ? (
-					<p className={styles.userPageErrorMessage}>{error}</p>
-				) : posts.length === 0 ? (
-					<p>{t('Публікацій немає')}</p>
-				) : (
-					posts.map(post => (
-						<div key={post.id} className={styles.userProfilePostsWrapper}>
-							<div className={styles.userProfilePostsPicAndTextWrapper}>
-								<div className={styles.userProfilePostsPicWrapper}>
-									{post.images ? (
-										<img
-											className={styles.userProfilePostsPic}
-											src={post.images}
-											alt={t('Світлина публікації')}
-											onError={e => {
-												e.target.onerror = null
-												e.target.src = '/Img/defaultPostImage.jpg' // Default image path
-											}}
-										/>
-									) : (
-										<img
-											className={styles.userProfilePostsPic}
-											src='/Img/defaultPostImage.jpg'
-											alt={t('Світлина публікації')}
-										/>
-									)}
+			<div className={styles.profileTitleWrapper}>
+				<h3 className={styles.profileTitle}>{t('Публікації')}</h3>
+			</div>
+			{loading ? (
+				<p className={styles.userPageLoadingMessage}>
+					{t('Завантаження...')}
+				</p>
+			) : error ? (
+				<p className={styles.userPageErrorMessage}>{error}</p>
+			) : posts.length === 0 ? (
+				<p>{t('Публікацій немає')}</p>
+			) : (
+				posts.map(post => (
+					<div key={post.id} className={styles.userProfilePostsWrapper}>
+						<div className={styles.userProfilePostsPicAndTextWrapper}>
+							<div className={styles.userProfilePostsPicWrapper}>
+								{post.images ? (
+									<img
+										className={styles.userProfilePostsPic}
+										src={post.images}
+										alt={t('Світлина публікації')}
+										onError={e => {
+											e.target.onerror = null
+											e.target.src = '/Img/defaultPostImage.jpg' // Default image path
+										}}
+									/>
+								) : (
+									<img
+										className={styles.userProfilePostsPic}
+										src='/Img/defaultPostImage.jpg'
+										alt={t('Світлина публікації')}
+									/>
+								)}
+							</div>
+							<div className={styles.userProfilePostsTextWrapper}>
+								<h3 className={styles.userProfilePostsTitle}>
+									<TranslatedContent en={post.title_en} uk={post.title_uk} />
+								</h3>
+								<div className={styles.userProfilePostsDescriptionWrapper}>
+									<p className={styles.userProfilePostsDescription}>
+										<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} html />											
+									</p>
 								</div>
-								<div className={styles.userProfilePostsTextWrapper}>
-									<h3 className={styles.userProfilePostsTitle}>
-										<TranslatedContent en={post.title_en} uk={post.title_uk} />
-									</h3>
-									<div className={styles.userProfilePostsDescriptionWrapper}>
-										<p className={styles.userProfilePostsDescription}>
-											<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} html />											
-										</p>
-									</div>
-									<div className={styles.userProfilePostsClockAndDateWrapper}>
-										<img
-											className={styles.userProfilePostsClock}
-											src='/Img/clock.svg'
-											alt={t('Дата')}
-										/>
-										<p className={styles.userProfilePostsDate}>
-											{getFormattedDate(post.createdAt)}
-										</p>
-										<button
-											className={styles.userProfilePostsButton}
-											onClick={() => navigate(`/posts/${post.id}`)} // Navigate to post detail page
-										>
-											{t('До публікації')}&#8194;&#187;
-										</button>
-									</div>
-									<div className={styles.userProfileDelEditWrapper}>
-										<button
-											className="button button-default"
-											onClick={() => openEditModal(post)}
-										>
-											{t('Редагувати')}
-										</button>
-										<button
-											className={styles.userProfileDeleteButton}
-											onClick={() => handleDeletePost(post.id)}
-										>
-											{t('Видалити')}
-										</button>
-									</div>
+								<div className={styles.userProfilePostsClockAndDateWrapper}>
+									<img
+										className={styles.userProfilePostsClock}
+										src='/Img/clock.svg'
+										alt={t('Дата')}
+									/>
+									<p className={styles.userProfilePostsDate}>
+										{getFormattedDate(post.createdAt)}
+									</p>
+									<button
+										className={styles.userProfilePostsButton}
+										onClick={() => navigate(`/posts/${post.id}`)} // Navigate to post detail page
+									>
+										{t('До публікації')}&#8194;&#187;
+									</button>
+								</div>
+								<div className={styles.userProfileDelEditWrapper}>
+									<button
+										className="button button-default"
+										onClick={() => openEditModal(post)}
+									>
+										{t('Редагувати')}
+									</button>
+									<button
+										className={styles.userProfileDeleteButton}
+										onClick={() => handleDeletePost(post.id)}
+									>
+										{t('Видалити')}
+									</button>
 								</div>
 							</div>
 						</div>
-					))
-				)}
-			</div>
+					</div>
+				))
+			)}
 			{/* Modal Window */}
 			{isModalOpen && (
 				<div className={styles.modalOverlay}>

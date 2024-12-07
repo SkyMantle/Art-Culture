@@ -26,6 +26,7 @@ import styles from '/src/styles/layout/Layout.module.scss'
 import ArtTermsPage from '../ArtTerms/ArtTermsPage'
 import ArtTermsFilteredPage from '../ArtTerms/ArtTermsFilteredPage'
 import ArtTermPage from '../ArtTerms/ArtTermPage'
+import AdminArtTermsList from '../Admin/ArtTermsList';
 
 const Layout = ({ heading = '' }) => {
 	const [username, setUsername] = useState('')
@@ -70,6 +71,8 @@ const Layout = ({ heading = '' }) => {
 							</ProtectedRoute>
 						}
 					/>
+					<Route path='/admin/art-terms'
+						element={<ProtectedRoute roles={['ADMIN']}><AdminArtTermsList /></ProtectedRoute>} />
 					<Route path='/profile/posts/create' element={<UserProfileAddPost />} />
 					<Route path='/profile/posts' element={<UserProfilePosts />} />
 					<Route path='/profile/products' element={<Paintings />} />

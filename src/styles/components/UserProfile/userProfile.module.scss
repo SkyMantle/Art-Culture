@@ -96,21 +96,6 @@
 	text-transform: uppercase;
 }
 
-.profileInfo {
-	/* Контейнер для информации о пользователе */
-	margin: $responsiveMediumPadding 0 $responsiveMediumPadding $responsiveLeftAndRightPadding;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: start;
-
-	h2 {
-		display: none;
-	}
-}
-
 .profileTitleWrapper {
 	/* Обертка для заголовка профиля */
 	width: 100%;
@@ -410,11 +395,6 @@
 			/* Стиль для последней кнопки действия */
 			margin: $staticPcBigPadding 0 0 0;
 		}
-	}
-
-	.profileInfo {
-		// /* Контейнер для информации о пользователе */
-		margin: $staticPcMediumPadding 0 $staticPcMediumPadding $responsiveLeftAndRightPadding;
 	}
 
 	.profileTitle {

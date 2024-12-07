@@ -84,74 +84,72 @@ const ProductCardCreate = () => {
 
 	return (
 		<ProfilePageContainer>
-			<div className={styles.productCreate}>
-				<h2 className={styles.productCreateTitle}>{t('Додати картину')}</h2>
-				{serverMessage && (
-					<p className={styles.serverMessage}>{serverMessage}</p>
-				)}
-				<form onSubmit={handleSubmit}>
-					<div className={styles.modalTextWrapper}>
-						<div className={styles.modalFieldUk}>
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Назва українською')}
-									name='title_uk' value={formData.title_uk}
-									maxLength={50} required onChange={textEditorOnChange} />
-							</div>
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Опис українською')}
-									name='description_uk' value={formData.description_uk}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Специфікація українською')}
-									name='specs_uk' value={formData.specs_uk}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
+			<h2 className={styles.productCreateTitle}>{t('Додати картину')}</h2>
+			{serverMessage && (
+				<p className={styles.serverMessage}>{serverMessage}</p>
+			)}
+			<form onSubmit={handleSubmit}>
+				<div className={styles.modalTextWrapper}>
+					<div className={styles.modalFieldUk}>
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Назва українською')}
+								name='title_uk' value={formData.title_uk}
+								maxLength={50} required onChange={textEditorOnChange} />
 						</div>
-						<div className={styles.modalFieldEn}>
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Назва англійською')}
-									name='title_en' value={formData.title_en}
-									maxLength={50} required onChange={textEditorOnChange} />
-							</div>
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Опис англійською')}
-									name='description_en' value={formData.description_en}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Специфікація англійською')}
-									name='specs_en' value={formData.specs_en}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Опис українською')}
+								name='description_uk' value={formData.description_uk}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Специфікація українською')}
+								name='specs_uk' value={formData.specs_uk}
+								maxLength={500} required onChange={textEditorOnChange} />
 						</div>
 					</div>
-					<label className={styles.profileLabel}>
-						{t('Додати зображення')}
-						{/* Images */}
-						<input
-							type='file'
-							name='images'
-							accept='image/*'
-							multiple
-							onChange={handleChange}
-							required
+					<div className={styles.modalFieldEn}>
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Назва англійською')}
+								name='title_en' value={formData.title_en}
+								maxLength={50} required onChange={textEditorOnChange} />
+						</div>
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Опис англійською')}
+								name='description_en' value={formData.description_en}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Специфікація англійською')}
+								name='specs_en' value={formData.specs_en}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
+					</div>
+				</div>
+				<label className={styles.profileLabel}>
+					{t('Додати зображення')}
+					{/* Images */}
+					<input
+						type='file'
+						name='images'
+						accept='image/*'
+						multiple
+						onChange={handleChange}
+						required
+					/>
+				</label>
+				{/* Image Previews */}
+				<div className={styles.imagePreviews}>
+					{imagePreviews.map((preview, index) => (
+						<img
+							key={index}
+							src={preview}
+							alt={`Preview ${index}`}
+							className={styles.previewImage}
 						/>
-					</label>
-					{/* Image Previews */}
-					<div className={styles.imagePreviews}>
-						{imagePreviews.map((preview, index) => (
-							<img
-								key={index}
-								src={preview}
-								alt={`Preview ${index}`}
-								className={styles.previewImage}
-							/>
-						))}
-					</div>
-					<button type='submit'>{t('Створити')}</button>
-				</form>
-			</div>
+					))}
+				</div>
+				<button type='submit'>{t('Створити')}</button>
+			</form>
 		</ProfilePageContainer>
 	)
 }

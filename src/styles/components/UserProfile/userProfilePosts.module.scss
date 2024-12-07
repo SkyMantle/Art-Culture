@@ -1,18 +1,12 @@
 @use '/src/styles/components/UserProfile/userProfile.module.scss';
 @import '/src/styles/utilities/variables.scss';
 
-.userProfilePostsContainer {
-	/* Контейнер для карточек публикаций */
-	width: 100%;
-	font-family: $default-font;
-	margin: $responsiveMediumPadding 0 $responsiveMediumPadding $responsiveLeftAndRightPadding;
-}
-
 .userProfilePostsWrapper {
 	/* Контейнер для карточек публикаций */
 	margin: $responsiveMediumPadding 0 0 0;
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 }
 
 .userProfilePostsPicAndTextWrapper {
@@ -370,10 +364,6 @@
 }
 
 @media (min-width: 1441px) {
-	.userProfilePostsContainer {
-		/* Контейнер для карточек публикаций */
-		margin: $staticPcMediumPadding 0 $staticPcMediumPadding $responsiveLeftAndRightPadding;
-	}
 
 	.userProfilePostsWrapper {
 		/* Контейнер для карточек публикаций */

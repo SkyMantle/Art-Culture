@@ -97,83 +97,81 @@ function UserProfileAddPost() {
 	console.log(formData);
 	return (
 		<ProfilePageContainer>
-			<div className={styles.profileAddPostContainer}>
-				<h2 className={styles.profileAddPostTitle}>
-					{t('Додати нову публікацію')}
-				</h2>
-				{message && <p className={styles.message}>{message}</p>}
-				{errors && <p className={styles.error}>{errors}</p>}
-				<form onSubmit={handleSubmit} className={styles.profileAddPostForm}>
-					<div className={styles.modalTextField}>
-						<div className={styles.modalFieldUk}>
-							<div className={styles.profileAddPostField}>
-								<TextEditor label={t('Назва публікації українською')}
-									name='title_uk' value={formData.title_uk}
-									maxLength={50} required onChange={textEditorOnChange}/>
-							</div>
-							<div className={styles.profileAddPostField}>
-								<TextAreaEditor label={t('Опис публікації українською')}
-									name='content_uk' value={formData.content_uk}
-									maxLength='500' required onChange={textEditorOnChange}/>
-							</div>
+			<h2 className={styles.profileAddPostTitle}>
+				{t('Додати нову публікацію')}
+			</h2>
+			{message && <p className={styles.message}>{message}</p>}
+			{errors && <p className={styles.error}>{errors}</p>}
+			<form onSubmit={handleSubmit} className={styles.profileAddPostForm}>
+				<div className={styles.modalTextField}>
+					<div className={styles.modalFieldUk}>
+						<div className={styles.profileAddPostField}>
+							<TextEditor label={t('Назва публікації українською')}
+								name='title_uk' value={formData.title_uk}
+								maxLength={50} required onChange={textEditorOnChange}/>
 						</div>
-						<div className={styles.modalFieldEn}>
-							<div className={styles.profileAddPostField}>
-								<TextEditor label={t('Назва публікації англійською')}
-									name='title_en' value={formData.title_en}
-									maxLength='50' required onChange={textEditorOnChange}/>
-							</div>
-							<div className={styles.profileAddPostField}>
-								<TextAreaEditor label={t('Опис публікації англійською')}
-									name='content_en' value={formData.content_en}
-									maxLength='500' required onChange={textEditorOnChange}/>
-							</div>
+						<div className={styles.profileAddPostField}>
+							<TextAreaEditor label={t('Опис публікації українською')}
+								name='content_uk' value={formData.content_uk}
+								maxLength='500' required onChange={textEditorOnChange}/>
 						</div>
 					</div>
-					<div className={styles.profileAddPostField}>
-						<label className={styles.profileAddPostLabel}>
-							{t('Додати зображення (опційно):')}
-							<input
-								type='file'
-								name='images'
-								accept='image/*'
-								onChange={handleChange}
-								className={styles.profileAddPostInput}
-							/>
-						</label>
+					<div className={styles.modalFieldEn}>
+						<div className={styles.profileAddPostField}>
+							<TextEditor label={t('Назва публікації англійською')}
+								name='title_en' value={formData.title_en}
+								maxLength='50' required onChange={textEditorOnChange}/>
+						</div>
+						<div className={styles.profileAddPostField}>
+							<TextAreaEditor label={t('Опис публікації англійською')}
+								name='content_en' value={formData.content_en}
+								maxLength='500' required onChange={textEditorOnChange}/>
+						</div>
 					</div>
+				</div>
+				<div className={styles.profileAddPostField}>
+					<label className={styles.profileAddPostLabel}>
+						{t('Додати зображення (опційно):')}
+						<input
+							type='file'
+							name='images'
+							accept='image/*'
+							onChange={handleChange}
+							className={styles.profileAddPostInput}
+						/>
+					</label>
+				</div>
 
-					<div className={styles.profileLinksWrapper}>
-						<button
-							className={styles.profileLink}
-							onClick={() =>
-								window.open(
-									'https://www.deepl.com/en/translator',
-									'_blank',
-									'noopener'
-								)
-							}
-						>
-							{t('Онлайн перекладач')}&#8194;&#187;
-						</button>
-						<button
-							className={styles.profileLink}
-							onClick={() =>
-								window.open(
-									'https://cloudconvert.com/jpeg-to-webp',
-									'_blank',
-									'noopener'
-								)
-							}
-						>
-							{t('Онлайн WEBP-конвертер')}&#8194;&#187;
-						</button>
-					</div>
-					<button type='submit' className={styles.profileAddPostButton}>
-						{t('Зберегти')}
+				<div className={styles.profileLinksWrapper}>
+					<button
+						className={styles.profileLink}
+						onClick={() =>
+							window.open(
+								'https://www.deepl.com/en/translator',
+								'_blank',
+								'noopener'
+							)
+						}
+					>
+						{t('Онлайн перекладач')}&#8194;&#187;
 					</button>
-				</form>
-			</div>
+					<button
+						className={styles.profileLink}
+						onClick={() =>
+							window.open(
+								'https://cloudconvert.com/jpeg-to-webp',
+								'_blank',
+								'noopener'
+							)
+						}
+					>
+						{t('Онлайн WEBP-конвертер')}&#8194;&#187;
+					</button>
+				</div>
+				<button type='submit' className={styles.profileAddPostButton}>
+					{t('Зберегти')}
+				</button>
+			</form>
 		</ProfilePageContainer>
 	)
 }

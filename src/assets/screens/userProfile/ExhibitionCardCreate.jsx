@@ -401,290 +401,289 @@ function ExhibitionForm() {
 
 	return (
 		<ProfilePageContainer>
-			<div className={styles.exhibitionFormContainer}>
-				<h2 className={styles.formTitle}>{t('Створити виставку')}</h2>
-				{errors.length > 0 && (
-					<div className={styles.errorMessages}>
-						<ul className={styles.errorList}>
-							{errors.map((err, index) => (
-								<li key={index} className={styles.errorItem}>
-									{err}
-								</li>
-							))}
-						</ul>
-					</div>
-				)}
-				{serverMessage && (
-					<div className={styles.successMessage}>{serverMessage}</div>
-				)}
-				<form
-					onSubmit={handleSubmit}
-					encType='multipart/form-data'
-					className={styles.exhibitionForm}
-				>
-					<div className={styles.modalTextWrapper}>
-						<div className={styles.modalFieldUk}>
-							{/* Title in Ukrainian */}
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Назва виставки українською')}
-									name='title_uk' value={formData.title_uk}
-									maxLength={50} required onChange={textEditorOnChange} />								
-							</div>
-
-							{/* Description in Ukrainian */}
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Опис виставки українською')}
-									name='description_uk' value={formData.description_uk}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
-
-							{/* Location in Ukrainian */}
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Місце проведення українською')}
-									name='location_uk' value={formData.location_uk}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
-
-							{/* Start Date */}
-							<div className={styles.formGroup}>
-								<label className={styles.formLabel}>{t('Дата початку')}</label>
-								<input
-									type='date'
-									name='startDate'
-									value={formData.startDate}
-									onChange={handleInputChange}
-									required
-									className={styles.formInput}
-								/>
-							</div>
-
-							{/* Start time */}
-							<div className={styles.formGroup}>
-								<label className={styles.formLabel}>{t('Час початку')}</label>
-								<input
-									type='text'
-									name='time'
-									value={formData.time}
-									onChange={handleInputChange}
-									required
-									className={styles.formInput}
-								/>
-							</div>
+			<h2 className={styles.formTitle}>{t('Створити виставку')}</h2>
+			{errors.length > 0 && (
+				<div className={styles.errorMessages}>
+					<ul className={styles.errorList}>
+						{errors.map((err, index) => (
+							<li key={index} className={styles.errorItem}>
+								{err}
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+			{serverMessage && (
+				<div className={styles.successMessage}>{serverMessage}</div>
+			)}
+			<form
+				onSubmit={handleSubmit}
+				encType='multipart/form-data'
+				className={styles.exhibitionForm}
+			>
+				<div className={styles.modalTextWrapper}>
+					<div className={styles.modalFieldUk}>
+						{/* Title in Ukrainian */}
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Назва виставки українською')}
+								name='title_uk' value={formData.title_uk}
+								maxLength={50} required onChange={textEditorOnChange} />								
 						</div>
 
-						<div className={styles.modalFieldEn}>
-							{/* Title in English */}
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Назва виставки англійською')}
-									name='title_en' value={formData.title_en}
-									maxLength={50} required onChange={textEditorOnChange} />
-							</div>
+						{/* Description in Ukrainian */}
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Опис виставки українською')}
+								name='description_uk' value={formData.description_uk}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
 
-							{/* Description in English */}
-							<div className={styles.formGroup}>
-								<TextAreaEditor label={t('Опис виставки англійською')}
-									name='description_en' value={formData.description_en}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
+						{/* Location in Ukrainian */}
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Місце проведення українською')}
+								name='location_uk' value={formData.location_uk}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
 
-							{/* Location in English */}
-							<div className={styles.formGroup}>
-								<TextEditor label={t('Місце проведення англійською')}
-									name='location_en' value={formData.location_en}
-									maxLength={500} required onChange={textEditorOnChange} />
-							</div>
-							{/* End Date */}
-							<div className={styles.formGroup}>
-								<label className={styles.formLabel}>
-									{t('Дата завершення')}
-								</label>
-								<input
-									type='date'
-									name='endDate'
-									value={formData.endDate}
-									onChange={handleInputChange}
-									required
-									className={styles.formInput}
-								/>
-							</div>
+						{/* Start Date */}
+						<div className={styles.formGroup}>
+							<label className={styles.formLabel}>{t('Дата початку')}</label>
+							<input
+								type='date'
+								name='startDate'
+								value={formData.startDate}
+								onChange={handleInputChange}
+								required
+								className={styles.formInput}
+							/>
+						</div>
 
-							{/* End time */}
-							<div className={styles.formGroup}>
-								<label className={styles.formLabel}>
-									{t('Час завершення')}
-								</label>
-								<input
-									type='text'
-									name='time'
-									value={formData.time}
-									onChange={handleInputChange}
-									required
-									className={styles.formInput}
-								/>
-							</div>
+						{/* Start time */}
+						<div className={styles.formGroup}>
+							<label className={styles.formLabel}>{t('Час початку')}</label>
+							<input
+								type='text'
+								name='time'
+								value={formData.time}
+								onChange={handleInputChange}
+								required
+								className={styles.formInput}
+							/>
 						</div>
 					</div>
 
-					{/* Search input */}
-					<div className={styles.formGroup}>
-						<label className={styles.formLabel}>{t('Пошук')}</label>
-						<input
-							type='text'
-							name='search'
-							value={searchQuery}
-							onChange={handleSearchChange}
-							placeholder={t("Введіть ім'я митця або картини")}
-							className={styles.formInput}
-						/>
-						{searchResults.length > 0 && (
-							<div className={styles.searchResults}>
-								{searchResults.map(result => {
-									//const isDisabled = result.type === 'author' && !result.paintings;
-									const isDisabled = false;
-									return (<div
-										key={`${result.type}-${result.id}`}
-										className={`${styles.searchResultItem} ${isDisabled ? styles.disabled : ''}`}
-										onClick={() => {
-											if (result.type === 'author') {
-												if (!result.paintings) {
-													handleSelectedResult(result)
-												}
-											} else {
+					<div className={styles.modalFieldEn}>
+						{/* Title in English */}
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Назва виставки англійською')}
+								name='title_en' value={formData.title_en}
+								maxLength={50} required onChange={textEditorOnChange} />
+						</div>
+
+						{/* Description in English */}
+						<div className={styles.formGroup}>
+							<TextAreaEditor label={t('Опис виставки англійською')}
+								name='description_en' value={formData.description_en}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
+
+						{/* Location in English */}
+						<div className={styles.formGroup}>
+							<TextEditor label={t('Місце проведення англійською')}
+								name='location_en' value={formData.location_en}
+								maxLength={500} required onChange={textEditorOnChange} />
+						</div>
+						{/* End Date */}
+						<div className={styles.formGroup}>
+							<label className={styles.formLabel}>
+								{t('Дата завершення')}
+							</label>
+							<input
+								type='date'
+								name='endDate'
+								value={formData.endDate}
+								onChange={handleInputChange}
+								required
+								className={styles.formInput}
+							/>
+						</div>
+
+						{/* End time */}
+						<div className={styles.formGroup}>
+							<label className={styles.formLabel}>
+								{t('Час завершення')}
+							</label>
+							<input
+								type='text'
+								name='time'
+								value={formData.time}
+								onChange={handleInputChange}
+								required
+								className={styles.formInput}
+							/>
+						</div>
+					</div>
+				</div>
+
+				{/* Search input */}
+				<div className={styles.formGroup}>
+					<label className={styles.formLabel}>{t('Пошук')}</label>
+					<input
+						type='text'
+						name='search'
+						value={searchQuery}
+						onChange={handleSearchChange}
+						placeholder={t("Введіть ім'я митця або картини")}
+						className={styles.formInput}
+					/>
+					{searchResults.length > 0 && (
+						<div className={styles.searchResults}>
+							{searchResults.map(result => {
+								//const isDisabled = result.type === 'author' && !result.paintings;
+								const isDisabled = false;
+								return (<div
+									key={`${result.type}-${result.id}`}
+									className={`${styles.searchResultItem} ${isDisabled ? styles.disabled : ''}`}
+									onClick={() => {
+										if (result.type === 'author') {
+											if (!result.paintings) {
 												handleSelectedResult(result)
 											}
-										}}
-									>
-										{result.type === 'author' ? (
-											<>
-												<div className={styles.resultAuthorWrapper}>
-													{result.images ? (
-														<img
-															src={getImageUrl(result.images)}
-															alt={result.title || result.email}
-															className={styles.resultAuthorImage}
-														/>
-													) : (
-														<img
-															src={defaultAuthorImageUrl}
-															alt='Default author'
-															className={styles.resultImage}
-														/>
-													)}
-													<p>{result.title || result.email}</p>
-													{!result.hasPaintings && (
-														<p className={styles.noPaintingsMessage}>
-															{t('Цей автор не має картин')}
-														</p>
-													)}
-												</div>
-											</>
-										) : (
-											<>
-												<div className={styles.resultPaintingsWrapper}>
-													{result.images && result.images.length > 0 ? (
-														<img
-															src={getImageUrl(result.images[0].imageUrl)}
-															alt={result.title_en || result.title_uk}
-															className={styles.resultPaintingsImage}
-														/>
-													) : (
-														<img
-															src={defaultPaintingImageUrl}
-															alt='Default painting'
-															className={styles.resultImage}
-														/>
-													)}
-													<p>{result.title_en || result.title_uk}</p>
-												</div>
-											</>
-										)}
-									</div>
-									)
-								})}
-							</div>
-						)}
-					</div>
-					{/* Selected items search */}
-					<div className={styles.selectedObjectWrapper}>
-						{selectedAuthors.map(author => (
-							<div key={`author-${author.id}`} className={styles.chipContainer}>
-								{author.images ? (
-									<img
-										src={getImageUrl(author.images)}
-										alt={author.title || author.email}
-										className={styles.chipImage}
-									/>
-								) : (
-									<img
-										src={defaultAuthorImageUrl}
-										alt='Default author'
-										className={styles.chipImage}
-									/>
-								)}
-								<p>{author.title || author.email}</p>
-								<button onClick={() => handleSelectAuthorPaintings(author.id)}>
-									{t('Обрати картини')}
-								</button>
-								<button onClick={() => handleRemoveAuthor(author.id)}>×</button>
-								{/* Render selected paintings for this author */}
-								{selectedAuthorPaintings[author.id] && (
-									<div className={styles.authorPaintings}>
-										{selectedAuthorPaintings[author.id].map(painting => (
-											<div
-												key={`painting-${painting.id}`}
-												className={styles.chip}
-											>
-												{painting.images && painting.images.length > 0 ? (
+										} else {
+											handleSelectedResult(result)
+										}
+									}}
+								>
+									{result.type === 'author' ? (
+										<>
+											<div className={styles.resultAuthorWrapper}>
+												{result.images ? (
 													<img
-														src={getImageUrl(painting.images[0].imageUrl)}
-														alt={painting.title_en || painting.title_uk}
-														className={styles.chipImage}
+														src={getImageUrl(result.images)}
+														alt={result.title || result.email}
+														className={styles.resultAuthorImage}
+													/>
+												) : (
+													<img
+														src={defaultAuthorImageUrl}
+														alt='Default author'
+														className={styles.resultImage}
+													/>
+												)}
+												<p>{result.title || result.email}</p>
+												{!result.hasPaintings && (
+													<p className={styles.noPaintingsMessage}>
+														{t('Цей автор не має картин')}
+													</p>
+												)}
+											</div>
+										</>
+									) : (
+										<>
+											<div className={styles.resultPaintingsWrapper}>
+												{result.images && result.images.length > 0 ? (
+													<img
+														src={getImageUrl(result.images[0].imageUrl)}
+														alt={result.title_en || result.title_uk}
+														className={styles.resultPaintingsImage}
 													/>
 												) : (
 													<img
 														src={defaultPaintingImageUrl}
 														alt='Default painting'
-														className={styles.chipImage}
+														className={styles.resultImage}
 													/>
 												)}
-												<span>{painting.title_en || painting.title_uk}</span>
-												<button
-													onClick={() =>
-														handleRemovePainting(author.id, painting.id)
-													}
-												>
-													×
-												</button>
+												<p>{result.title_en || result.title_uk}</p>
 											</div>
-										))}
-									</div>
-								)}
-							</div>
-						))}
-					</div>
+										</>
+									)}
+								</div>
+								)
+							})}
+						</div>
+					)}
+				</div>
+				{/* Selected items search */}
+				<div className={styles.selectedObjectWrapper}>
+					{selectedAuthors.map(author => (
+						<div key={`author-${author.id}`} className={styles.chipContainer}>
+							{author.images ? (
+								<img
+									src={getImageUrl(author.images)}
+									alt={author.title || author.email}
+									className={styles.chipImage}
+								/>
+							) : (
+								<img
+									src={defaultAuthorImageUrl}
+									alt='Default author'
+									className={styles.chipImage}
+								/>
+							)}
+							<p>{author.title || author.email}</p>
+							<button onClick={() => handleSelectAuthorPaintings(author.id)}>
+								{t('Обрати картини')}
+							</button>
+							<button onClick={() => handleRemoveAuthor(author.id)}>×</button>
+							{/* Render selected paintings for this author */}
+							{selectedAuthorPaintings[author.id] && (
+								<div className={styles.authorPaintings}>
+									{selectedAuthorPaintings[author.id].map(painting => (
+										<div
+											key={`painting-${painting.id}`}
+											className={styles.chip}
+										>
+											{painting.images && painting.images.length > 0 ? (
+												<img
+													src={getImageUrl(painting.images[0].imageUrl)}
+													alt={painting.title_en || painting.title_uk}
+													className={styles.chipImage}
+												/>
+											) : (
+												<img
+													src={defaultPaintingImageUrl}
+													alt='Default painting'
+													className={styles.chipImage}
+												/>
+											)}
+											<span>{painting.title_en || painting.title_uk}</span>
+											<button
+												onClick={() =>
+													handleRemovePainting(author.id, painting.id)
+												}
+											>
+												×
+											</button>
+										</div>
+									))}
+								</div>
+							)}
+						</div>
+					))}
+				</div>
 
-					{/* Images */}
-					<div className={styles.formGroup}>
-						<label className={styles.formLabel}>{t('Додати зображення')}</label>
-						<input
-							type='file'
-							accept='image/*'
-							multiple
-							onChange={handleImageChange}
-							className={styles.formFileInput}
-						/>
-					</div>
+				{/* Images */}
+				<div className={styles.formGroup}>
+					<label className={styles.formLabel}>{t('Додати зображення')}</label>
+					<input
+						type='file'
+						accept='image/*'
+						multiple
+						onChange={handleImageChange}
+						className={styles.formFileInput}
+					/>
+				</div>
 
-					{/* Submit Button */}
-					<button
-						type='submit'
-						className={styles.submitButton}
-						disabled={isSubmitting}
-					>
-						{isSubmitting ? t('Створюється...') : t('Створити виставку')}
-					</button>
-				</form>
-			</div>
+				{/* Submit Button */}
+				<button
+					type='submit'
+					className={styles.submitButton}
+					disabled={isSubmitting}
+				>
+					{isSubmitting ? t('Створюється...') : t('Створити виставку')}
+				</button>
+			</form>
+
 			{isModalOpen && (
 				<div
 					className={styles.modalOverlay}
