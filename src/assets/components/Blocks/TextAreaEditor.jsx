@@ -21,7 +21,7 @@ const TextAreaEditor = forwardRef(({ className, name, label, value, maxLength, o
 		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
 			{label}
 		</label>
-		<ReactQuill theme="snow" value={value} onChange={handleChange} modules={{ toolbar: false }} />
+		<ReactQuill theme="snow" value={value} onChange={handleChange} modules={{ toolbar: true }} />
 		<small className={styles.remainingChars}>
 			{remaining} {t('символів залишилось')}
 		</small>
