@@ -1,5 +1,5 @@
-import PostDetail from '../assets/components/Post/PostDetail'
-import ProductCartCreate from '../assets/components/ProductCard/ProductCardCreate'
+import PostDetail from '../assets/screens/Post/PostDetail'
+import ProductCartCreate from '../assets/screens/userProfile/ProductCardCreate'
 import Login from '../assets/components/VerificationPages/LoginPage'
 import SignUp from '../assets/components/VerificationPages/SignUpPage'
 import AdminDashboard from '../assets/screens/Admin/AdminDashboard'

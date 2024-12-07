@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import styles from '../../../styles/components/ExhibitionCard/ExhibitionCardCreate.module.scss'
 import API from '../../../utils/api'
-import Sidebar from '@components/Blocks/Sidebar'
+import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 
@@ -400,9 +400,7 @@ function ExhibitionForm() {
 	const defaultPaintingImageUrl = '/Img/ArtistPhoto.jpg'
 
 	return (
-		<div className={styles.profile}>
-			<Sidebar />
-
+		<ProfilePageContainer>
 			<div className={styles.exhibitionFormContainer}>
 				<h2 className={styles.formTitle}>{t('Створити виставку')}</h2>
 				{errors.length > 0 && (
@@ -738,7 +736,7 @@ function ExhibitionForm() {
 					</div>
 				</div>
 			)}
-		</div>
+		</ProfilePageContainer>
 	)
 }
 

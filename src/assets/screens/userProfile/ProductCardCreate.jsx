@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import API from '../../../utils/api.js'
 import styles from '/src/styles/components/ProductCard/ProductCardCreate.module.scss'
-import Sidebar from '@components/Blocks/Sidebar'
+import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 
@@ -83,8 +83,7 @@ const ProductCardCreate = () => {
 	};
 
 	return (
-		<div className={styles.profile}>
-			<Sidebar />
+		<ProfilePageContainer>
 			<div className={styles.productCreate}>
 				<h2 className={styles.productCreateTitle}>{t('Додати картину')}</h2>
 				{serverMessage && (
@@ -153,7 +152,7 @@ const ProductCardCreate = () => {
 					<button type='submit'>{t('Створити')}</button>
 				</form>
 			</div>
-		</div>
+		</ProfilePageContainer>
 	)
 }
 

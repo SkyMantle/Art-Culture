@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '/src/styles/screen/ProductList/Paintings.module.scss'
 import API from '/src/utils/api.js'
-import Sidebar from '@components/Blocks/Sidebar'
+import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
-import TranslatedContent from '../../components/Blocks/TranslatedContent'
+import TranslatedContent from '@components/Blocks/TranslatedContent'
 
 const Paintings = () => {
 	const { t, i18n } = useTranslation()
@@ -189,8 +189,7 @@ const Paintings = () => {
 	};
 
 	return (
-		<div className={styles.profile}>
-			<Sidebar />
+		<ProfilePageContainer>
 			<div className={styles.productList}>
 				<h2>{t('Картини')}</h2>
 				{serverMessage && (
@@ -345,7 +344,7 @@ const Paintings = () => {
 					</div>
 				</div>
 			)}
-		</div>
+		</ProfilePageContainer>
 	)
 }
 
