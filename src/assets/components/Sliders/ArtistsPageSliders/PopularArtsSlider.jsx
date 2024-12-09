@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next'
 // Import Swiper React components
@@ -17,6 +17,7 @@ import '@styles/components/Sliders/Base/PopularSlider.scss'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 import LikeAndShare from '../../Blocks/LikeAndShare'
 import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
+import TranslatedContent from '../../Blocks/TranslatedContent';
 
 const Slide = ({ product, baseUrl }) => {
 	const { t, i18n } = useTranslation()
@@ -26,15 +27,6 @@ const Slide = ({ product, baseUrl }) => {
 	const handleProductClick = () => {
 		navigate(`/products/${product.id}`) // Adjust the route as per your application
 	}
-
-	const title =
-		currentLanguage === 'en' ? product.title_en : product.title_uk || ''
-	const description =
-		currentLanguage === 'en'
-			? product.description_en
-			: product.description_uk || ''
-	const specs =
-		currentLanguage === 'en' ? product.specs_en : product.specs_uk || ''
 
 	const imageUrl =
 		product.images && product.images.length > 0
@@ -59,26 +51,13 @@ const Slide = ({ product, baseUrl }) => {
 					<button className='PopularSliderCardButton'>{t('Огляд')}</button>
 				</div>
 				<div className='PopularSliderCardTitleWrapper'>
-					{/* <h3 className='PopularSliderCardTitle'>
-						{' '}
-						{title.length > 50 ? `${title.substring(0, 50)}...` : title}
-					</h3> */}
 					<h3 className='PopularSliderCardTitle'>
-						{title.length > 50
-							? `${title.substring(0, title.substring(0, 50).lastIndexOf(' '))}...`
-							: title}
+						<TranslatedContent en={product.title_en} uk={product.title_uk} maxLength={50} />
 					</h3>
 				</div>
 				<div className='PopularSliderCardDescriptionWrapper'>
-					{/* <p className='PopularSliderCardDescription'>
-						{description.length > 50
-							? `${description.substring(0, 50)}...`
-							: description}
-					</p> */}
 					<p className='PopularSliderCardDescription'>
-						{description.length > 60
-							? `${description.substring(0, description.substring(0, 60).lastIndexOf(' ') || 60)}...`
-							: description}
+						<TranslatedContent en={product.description_en} uk={product.description_uk} maxLength={60} />
 					</p>
 				</div>
 			</div>
@@ -92,9 +71,7 @@ Slide.propTypes = {
 };
 
 const PopularArtsSlider = () => {
-	const { t, i18n } = useTranslation()
-	const currentLanguage = i18n.language
-	const navigate = useNavigate()
+	const { t } = useTranslation()
 
 	const [products, setProducts] = useState([])
 	const [loading, setLoading] = useState(true)

@@ -15,20 +15,10 @@ import '@styles/components/Sliders/Base/NewsSlider.scss'
 import { getBaseUrl } from '../../../../utils/helper'
 import LikeAndShare from '@components/Blocks/LikeAndShare'
 import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
+import TranslatedContent from '../../Blocks/TranslatedContent'
 
 const Slide = ({ post, baseUrl }) => {
-	const { t, i18n } = useTranslation()
-	const currentLanguage = i18n.language
-	const navigate = useNavigate()
-
-	// TODO:Rewrite component to use navigate for post
-	// const handleArtistPageClick = () => {
-	// 	navigate('/ArtistPage')
-	// }
-
-	const title = currentLanguage === 'en' ? post.title_en : post.title_uk
-	const content =
-		(currentLanguage === 'en' ? post.content_en : post.content_uk) || ''
+	const { t } = useTranslation()
 
 	const featuredMediaUrl = post.images
 		? `${baseUrl}${post.images.replace('../../', '/')}`
@@ -49,13 +39,13 @@ const Slide = ({ post, baseUrl }) => {
 
 			<div className="NewsSliderCardTitleWrapper">
 				<h3 className="NewsSliderCardTitle">
-					{title.length > 50 ? `${title.substring(0, 50)}...` : title}
+					<TranslatedContent en={post.title_en} uk={post.title_uk} maxLength={50} />
 				</h3>
 			</div>
 
 			<div className="NewsSliderCardDescriptionWrapper">
 				<p className="NewsSliderCardDescription">
-					{content.length > 230 ? `${content.substring(0, 230)}...` : content}
+					<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={230} />
 				</p>
 			</div>
 		</div>
@@ -63,9 +53,7 @@ const Slide = ({ post, baseUrl }) => {
 }
 
 const ArtistPageNewsArtistsSlider = () => {
-	const { t, i18n } = useTranslation()
-	const currentLanguage = i18n.language
-	const navigate = useNavigate()
+	const { t } = useTranslation()
 	const [creatorPosts, setCreatorPosts] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)

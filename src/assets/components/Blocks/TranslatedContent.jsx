@@ -6,7 +6,8 @@ function TranslatedContent({ en, uk, maxLength, html }) {
 	let text = i18n.language === 'en' ? en : uk;
 	if (maxLength && text.length > maxLength)
 	{
-		text = text.substring(0, maxLength) + '...'
+		const trimIndex = text.substring(0, maxLength).lastIndexOf(' ') || maxLength;
+        text = text.substring(0, trimIndex) + '...'
 	}
 
 	return (html ? <span dangerouslySetInnerHTML={{__html: text}} /> : <>{text}</>)

@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
-import { getFormattedDate, getFormattedTime, getImageUrl } from '../../../utils/helper'
+import { getFormattedDate, getFormattedTime, getImageUrl, limitText } from '../../../utils/helper'
+import TranslatedContent from './TranslatedContent'
 
 function MainNews() {
 	const { t, i18n } = useTranslation()
@@ -100,10 +101,6 @@ function MainNews() {
 					const formattedDate = getFormattedDate(post.createdAt)
 					const formattedTime = getFormattedTime(post.createdAt)
 
-					const title = currentLanguage === 'en' ? post.title_en : post.title_uk
-					const content =
-						(currentLanguage === 'en' ? post.content_en : post.content_uk) || ''
-
 					return (
 						<div
 							key={post.id}
@@ -126,16 +123,14 @@ function MainNews() {
 										<h3
 											className={`${styles.cardTitle} ${index === 0 ? styles.firstCardTitle : index === 1 ? styles.secondCardTitle : index === 2 ? styles.thirdCardTitle : styles.fourthCardTitle}`}
 										>
-											{title}
+											<TranslatedContent en={post.title_en} uk={post.title_uk} maxLength={50} />
 										</h3>
 									</div>
 									<div className={`${styles.cardDescriptioneWrapper}`}>
 										<p
 											className={`${styles.cardDescription} ${index === 0 ? styles.firstCardDescription : index === 1 ? styles.secondCardDescription : styles.thirdCardDescription}`}
 										>
-											{content.length > 100
-												? `${content.substring(0, 100)}...`
-												: content}
+											<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} />
 										</p>
 									</div>
 								</div>

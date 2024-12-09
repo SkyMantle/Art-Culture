@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -13,6 +12,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import '/src/styles/components/Sliders/ArtistPageSliders/PopularOfThisArtistSlider.scss'
 import LikeAndShare from '@components/Blocks/LikeAndShare'
 import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
+import TranslatedContent from '../../Blocks/TranslatedContent'
 
 const PopularOfThisArtistSlider = ({ products, baseUrl }) => {
 	const { t, i18n } = useTranslation()
@@ -57,10 +57,6 @@ const PopularOfThisArtistSlider = ({ products, baseUrl }) => {
 								currentLanguage === 'en'
 									? product.title_en || product.title
 									: product.title_uk || product.title
-							const description =
-								currentLanguage === 'en'
-									? product.description_en || product.description
-									: product.description_uk || product.description
 
 							const imageUrl =
 								product.images && product.images.length > 0
@@ -92,16 +88,12 @@ const PopularOfThisArtistSlider = ({ products, baseUrl }) => {
 											</div>
 											<div className='product-slide-card-title-wrapper'>
 												<h3 className='product-slide-card-title'>
-													{title.length > 50
-														? `${title.substring(0, 50)}...`
-														: title}
+													<TranslatedContent en={product.title_en} uk={product.title_uk} maxLength={50} />
 												</h3>
 											</div>
 											<div className='product-slide-card-description-wrapper'>
 												<p className='product-slide-card-description'>
-													{description.length > 100
-														? `${description.substring(0, 100)}...`
-														: description}
+													<TranslatedContent en={product.description_en} uk={product.description_uk} maxLength={100} />
 												</p>
 											</div>
 										</div>
