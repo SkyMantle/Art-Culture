@@ -68,10 +68,6 @@ const Paintings = () => {
 			specs_uk: product.specs_uk || '',
 			images: null,
 		})
-		setRemainingTitle(500 - product.title_en.length || product.title_uk.length)
-		setRemainingDescription(
-			5000 - product.description_en.length || product.description_uk.length
-		)
 		setIsModalOpen(true)
 	}
 
@@ -269,36 +265,36 @@ const Paintings = () => {
 									{t('Редагування картини/виробу')}
 								</h2>
 							</div>
-							<div className={styles.modalTextWrapper}>
-								<div className={styles.modalFieldUk}>
-									<div className={styles.formGroup}>
+							<div className="flex gap-8 form-wrapper">
+								<div className="form-group">
+									<div className="field-group">
 										<TextEditor label={t('Назва українською')}
 											name='title_uk' value={formData.title_uk}
 											maxLength={50} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.formGroup}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Опис українською')}
 											name='description_uk' value={formData.description_uk}
 											maxLength={500} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.formGroup}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Специфікація українською')}
 											name='specs_uk' value={formData.specs_uk}
 											maxLength={500} required onChange={textEditorOnChange} />
 									</div>
 								</div>
-								<div className={styles.modalFieldEn}>
-									<div className={styles.formGroup}>
+								<div className="form-group">
+									<div className="field-group">
 										<TextEditor label={t('Назва англійською')}
 											name='title_en' value={formData.title_en}
 											maxLength={50} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.formGroup}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Опис англійською')}
 											name='description_en' value={formData.description_en}
 											maxLength={500} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.formGroup}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Специфікація англійською')}
 											name='specs_en' value={formData.specs_en}
 											maxLength={500} required onChange={textEditorOnChange} />

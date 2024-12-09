@@ -73,10 +73,10 @@ const ProductCardCreate = () => {
 			{serverMessage && (
 				<p className={styles.serverMessage}>{serverMessage}</p>
 			)}
-			<form onSubmit={handleSubmit}>
-				<div className={styles.modalTextWrapper}>
-					<div className={styles.modalFieldUk}>
-						<div className={styles.formGroup}>
+			<form onSubmit={handleSubmit} className='form-wrapper'>
+				<div className="flex gap-8 form-wrapper">
+					<div className="form-group">
+						<div className="field-group">
 							<TextEditor
 								label={t('Назва українською')}
 								name="title_uk"
@@ -86,7 +86,7 @@ const ProductCardCreate = () => {
 								onChange={textEditorOnChange}
 							/>
 						</div>
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor
 								label={t('Опис українською')}
 								name="description_uk"
@@ -96,7 +96,7 @@ const ProductCardCreate = () => {
 								onChange={textEditorOnChange}
 							/>
 						</div>
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor
 								label={t('Специфікація українською')}
 								name="specs_uk"
@@ -107,8 +107,8 @@ const ProductCardCreate = () => {
 							/>
 						</div>
 					</div>
-					<div className={styles.modalFieldEn}>
-						<div className={styles.formGroup}>
+					<div className="form-group">
+						<div className="field-group">
 							<TextEditor
 								label={t('Назва англійською')}
 								name="title_en"
@@ -118,7 +118,7 @@ const ProductCardCreate = () => {
 								onChange={textEditorOnChange}
 							/>
 						</div>
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor
 								label={t('Опис англійською')}
 								name="description_en"
@@ -128,7 +128,7 @@ const ProductCardCreate = () => {
 								onChange={textEditorOnChange}
 							/>
 						</div>
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor
 								label={t('Специфікація англійською')}
 								name="specs_en"

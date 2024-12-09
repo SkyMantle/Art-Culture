@@ -413,33 +413,33 @@ function ExhibitionForm() {
 			<form
 				onSubmit={handleSubmit}
 				encType='multipart/form-data'
-				className={styles.exhibitionForm}
+				className="form-wrapper"
 			>
-				<div className={styles.modalTextWrapper}>
-					<div className={styles.modalFieldUk}>
+				<div className="flex gap-8 form-wrapper">
+					<div className="form-group">
 						{/* Title in Ukrainian */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextEditor label={t('Назва виставки українською')}
 								name='title_uk' value={formData.title_uk}
 								maxLength={50} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Description in Ukrainian */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor label={t('Опис виставки українською')}
 								name='description_uk' value={formData.description_uk}
 								maxLength={500} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Location in Ukrainian */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextEditor label={t('Місце проведення українською')}
 								name='location_uk' value={formData.location_uk}
 								maxLength={500} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Start Date */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<label className={styles.formLabel}>{t('Дата початку')}</label>
 							<input
 								type='date'
@@ -452,7 +452,7 @@ function ExhibitionForm() {
 						</div>
 
 						{/* Start time */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<label className={styles.formLabel}>{t('Час початку')}</label>
 							<input
 								type='text'
@@ -465,29 +465,29 @@ function ExhibitionForm() {
 						</div>
 					</div>
 
-					<div className={styles.modalFieldEn}>
+					<div className="form-group">
 						{/* Title in English */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextEditor label={t('Назва виставки англійською')}
 								name='title_en' value={formData.title_en}
 								maxLength={50} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Description in English */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextAreaEditor label={t('Опис виставки англійською')}
 								name='description_en' value={formData.description_en}
 								maxLength={500} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Location in English */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<TextEditor label={t('Місце проведення англійською')}
 								name='location_en' value={formData.location_en}
 								maxLength={500} required onChange={textEditorOnChange} />
 						</div>
 						{/* End Date */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<label className={styles.formLabel}>
 								{t('Дата завершення')}
 							</label>
@@ -502,7 +502,7 @@ function ExhibitionForm() {
 						</div>
 
 						{/* End time */}
-						<div className={styles.formGroup}>
+						<div className="field-group">
 							<label className={styles.formLabel}>
 								{t('Час завершення')}
 							</label>
@@ -519,7 +519,7 @@ function ExhibitionForm() {
 				</div>
 
 				{/* Search input */}
-				<div className={styles.formGroup}>
+				<div className="field-group">
 					<label className={styles.formLabel}>{t('Пошук')}</label>
 					<input
 						type='text'
@@ -657,7 +657,7 @@ function ExhibitionForm() {
 				</div>
 
 				{/* Images */}
-				<div className={styles.formGroup}>
+				<div className="field-group">
 					<ImageEditor
 						label={t('Додати зображення')}
 						required

@@ -439,25 +439,25 @@ function MuseumExhibitions() {
 										{t('Редагування виставки')}
 									</h2>
 								</div>
-								<div className={styles.modalTextWrapper}>
-									<div className={styles.modalFieldUk}>
-										<div className={styles.formGroup}>
+								<div className="flex gap-8 form-wrapper">
+									<div className="form-group">
+										<div className="field-group">
 											<TextEditor label={t('Назва виставки українською')}
 												name='title_uk' value={formData.title_uk}
 												maxLength={50} required onChange={textEditorOnChange} />
 										</div>
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<TextAreaEditor label={t('Опис виставки українською')}
 												name='description_uk' value={formData.description_uk}
 												maxLength={500} required onChange={textEditorOnChange} />
 										</div>
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<TextEditor label={t('Місце проведення українською')}
 												name='location_uk' value={formData.location_uk}
 												maxLength={500} required onChange={textEditorOnChange} />
 										</div>
 										{/* Start Date Field */}
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<label className={styles.formLabel}>
 												{t('Дата початку')}
 											</label>
@@ -469,7 +469,7 @@ function MuseumExhibitions() {
 											/>
 										</div>
 										{/* Time Field */}
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<label className={styles.formLabel}>
 												{t('Час початку')}
 											</label>
@@ -482,24 +482,24 @@ function MuseumExhibitions() {
 										</div>
 									</div>
 
-									<div className={styles.modalFieldEn}>
-										<div className={styles.formGroup}>
+									<div className="form-group">
+										<div className="field-group">
 											<TextEditor label={t('Назва виставки англійською')}
 												name='title_en' value={formData.title_en}
 												maxLength={50} required onChange={textEditorOnChange} />
 										</div>
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<TextAreaEditor label={t('Опис виставки англійською')}
 												name='description_en' value={formData.description_en}
 												maxLength={500} required onChange={textEditorOnChange} />
 										</div>
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<TextEditor label={t('Місце проведення англійською')}
 												name='location_en' value={formData.location_en}
 												maxLength={500} required onChange={textEditorOnChange} />
 										</div>
 										{/* End Date Field */}
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<label className={styles.formLabel}>
 												{t('Дата завершення')}
 											</label>
@@ -511,7 +511,7 @@ function MuseumExhibitions() {
 											/>
 										</div>
 										{/* Time Field */}
-										<div className={styles.formGroup}>
+										<div className="field-group">
 											<label className={styles.formLabel}>
 												{t('Час завершення')}
 											</label>
@@ -525,7 +525,7 @@ function MuseumExhibitions() {
 									</div>
 								</div>
 								{/* Artists Field */}
-								<div className={styles.formGroup}>
+								<div className="field-group">
 									<label className={styles.formLabel}>{t('Митці')}</label>
 									<div className={styles.checkArtistWrapper}>
 										{artists.map(artist => (

@@ -8,7 +8,6 @@ import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 import { useParams } from "react-router-dom";
 import ImageEditor from "../../components/Blocks/ImageEditor.jsx";
-import styles from '/src/styles/components/ProductCard/ProductCardCreate.module.scss'
 
 const AdminArtTermsEdit = () => {
   const { t } = useTranslation();
@@ -84,36 +83,36 @@ const AdminArtTermsEdit = () => {
       ) : error ? (
         <LoadingError />
       ) : <form onSubmit={handleSubmit}>
-      <div className={styles.modalTextWrapper}>
-        <div className={styles.modalFieldUk}>
-          <div className={styles.formGroup}>
+      <div className="flex gap-8">
+        <div className="field-group">
+          <div className="form-group">
             <TextEditor label={t('Назва українською')}
               name='title_uk' value={formData.title_uk}
               maxLength={50} required onChange={textEditorOnChange} />
           </div>
-          <div className={styles.formGroup}>
+          <div className="form-group">
             <TextAreaEditor label={t('Опис українською')}
               name='description_uk' value={formData.description_uk}
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
-          <div className={styles.formGroup}>
+          <div className="form-group">
             <TextAreaEditor label={t('Стаття українською')}
               name='content_uk' value={formData.content_uk}
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
         </div>
-        <div className={styles.modalFieldEn}>
-          <div className={styles.formGroup}>
+        <div className="field-group">
+          <div className="form-group">
             <TextEditor label={t('Назва англійською')}
               name='title_en' value={formData.title_en}
               maxLength={50} required onChange={textEditorOnChange} />
           </div>
-          <div className={styles.formGroup}>
+          <div className="form-group">
             <TextAreaEditor label={t('Опис англійською')}
               name='description_en' value={formData.description_en}
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
-          <div className={styles.formGroup}>
+          <div className="form-group">
             <TextAreaEditor label={t('Стаття англійською')}
               name='content_en' value={formData.content_en}
               maxLength={500} required onChange={textEditorOnChange} />

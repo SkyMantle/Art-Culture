@@ -133,26 +133,6 @@
 		align-items: center;
 	}
 
-	.modalTextWrapper {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-
-	.modalFieldUk {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.modalFieldEn {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		margin: 0 0 0 $responsiveBigPadding;
-	}
-
 	.profileLabel {
 		width: 100%;
 		display: flex;
@@ -179,16 +159,6 @@
 	font-size: calc(28px - (4 * ((1440px - 100vw) / (1440 - 375))));
 	font-weight: 700;
 	text-transform: uppercase;
-}
-
-.formGroup {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-
-	input {
-		margin: $responsiveSmallPadding 0 0 0;
-	}
 }
 
 .closeButton {
@@ -277,15 +247,6 @@
 
 	.modalContent {
 		padding: $responsiveBigPadding $responsiveLeftAndRightPadding;
-
-		.modalFieldEn {
-			margin: 0 0 0 $staticPcBigPadding;
-		}
-
-		.profileLabel {
-			font-size: 16px;
-			margin: $staticPcMediumPadding 0 0 0;
-		}
 	}
 
 	.modalTitle {

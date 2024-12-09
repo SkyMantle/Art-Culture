@@ -11,53 +11,6 @@
     color: black;
     margin: $responsiveMediumPadding 0 0 $responsiveLeftAndRightPadding;
 
-    .profileAddPostInput {
-        /* Стиль текстовых полей ввода */
-        margin: $responsiveSmallPadding 0 0 0;
-        width: 100%;
-        max-width: none;
-        height: 1en;
-        padding: 0;
-        font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-        border: 1px solid #ddd;
-        font-weight: 400;
-    }
-
-    .profileAddPostTextarea {
-        /* Стиль для текстовых областей */
-        margin: $responsiveSmallPadding 0 0 0;
-        text-rendering: auto;
-        color: fieldtext;
-        letter-spacing: normal;
-        word-spacing: normal;
-        line-height: normal;
-        text-transform: none;
-        text-indent: 0px;
-        text-shadow: none;
-        display: inline-block;
-        text-align: start;
-        appearance: auto;
-        -webkit-rtl-ordering: logical;
-        cursor: text;
-        overflow-wrap: break-word;
-        background-color: field;
-        column-count: initial !important;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #ddd;
-        border-image: initial;
-        white-space: pre-wrap;
-        width: 100%;
-        max-width: none;
-        min-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*3);
-        max-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*7);
-        height: 100%;
-        padding: 0;
-        font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-        font-family: $default-font;
-        resize: none;
-    }
-
     .profileAddPostButton {
         /* Стиль для кнопки редактирования */
         width: fit-content;
@@ -97,60 +50,6 @@
     width: 100%;
 }
 
-.modalTextField {
-    /* Контейнер для каждого поля ввода формы */
-    margin: $responsiveSmallPadding 0;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.modalFieldUk {
-    /* Контейнер для каждого поля ввода формы */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.modalFieldEn {
-    /* Контейнер для каждого поля ввода формы */
-    margin: 0 0 0 $responsiveBigPadding;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.profileAddPostField {
-    /* Контейнер для каждого поля ввода формы */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: $responsiveSmallPadding 0 0 0;
-}
-
-.profileAddPostLabel {
-    /* Стиль для меток полей ввода */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    font-weight: 700;
-}
-
-.remainingChars {
-    /* Стиль для оставшихся символов */
-    margin: $responsiveSmallPadding 0 0 auto;
-    font-size: calc(14px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    color: $secondary-color;
-}
-
-.profileAddPostFileInput {
-    /* Стиль для поля загрузки файла */
-    width: 70%;
-    margin: $responsiveSmallPadding 0 0 0;
-}
-
 .profileLinksWrapper {
     /* Контейнер для ссылок */
     display: flex;
@@ -177,20 +76,6 @@
         /* Контейнер для формы добавления публикации */
         margin: $staticPcMediumPadding 0 0 $responsiveLeftAndRightPadding;
 
-        .profileAddPostInput {
-            /* Стиль текстовых полей ввода */
-            margin: $staticPcSmallPadding 0 0 0;
-            font-size: 16px;
-        }
-
-        .profileAddPostTextarea {
-            /* Стиль для текстовых областей */
-            margin: $staticPcSmallPadding 0 0 0;
-            min-height: calc(16px*3);
-            max-height: calc(16px*7);
-            font-size: 16px;
-        }
-
         .profileAddPostButton {
             /* Стиль для кнопки редактирования */
             margin: $staticPcMediumPadding auto;
@@ -202,37 +87,6 @@
     .profileAddPostTitle {
         /* Стиль заголовка формы */
         font-size: 28px;
-    }
-
-    .modalTextField {
-        /* Контейнер для каждого поля ввода формы */
-        margin: $staticPcSmallPadding 0;
-    }
-
-    .modalFieldEn {
-        /* Контейнер для каждого поля ввода формы */
-        margin: 0 0 0 $staticPcBigPadding;
-    }
-
-    .profileAddPostField {
-        /* Контейнер для каждого поля ввода формы */
-        margin: $staticPcSmallPadding 0 0 0;
-    }
-
-    .profileAddPostLabel {
-        /* Стиль для меток полей ввода */
-        font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    }
-
-    .remainingChars {
-        /* Стиль для оставшихся символов */
-        margin: $staticPcSmallPadding 0 0 auto;
-        font-size: 14px;
-    }
-
-    .profileAddPostFileInput {
-        /* Стиль для поля загрузки файла */
-        margin: $staticPcSmallPadding 0 0 0;
     }
 
     .profileLinksWrapper {

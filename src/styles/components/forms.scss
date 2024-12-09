@@ -1,4 +1,4 @@
-@import '/src/styles/utilities/variables.scss';
+@import '../utilities/variables.scss';
 
 .sortable-header {
     user-select: none;
@@ -29,10 +29,41 @@
     gap: 0.5rem;
 }
 
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
 .w-16 {
     width: 4rem;
 }
 
+.form-wrapper {
+    width: 100%;
+}
 .required-field {
     color: red;
+}
+
+.form-group {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	input {
+		margin: $responsiveSmallPadding 0 0 0;
+	}
+}
+
+.field-group {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }

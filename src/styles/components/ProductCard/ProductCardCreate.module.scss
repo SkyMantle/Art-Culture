@@ -7,36 +7,6 @@
 	text-transform: uppercase;
 }
 
-.modalTextWrapper {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.modalFieldUk {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.modalFieldEn {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	margin: 0 0 0 $responsiveBigPadding;
-}
-
-.formGroup {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-
-	input {
-		margin: $responsiveSmallPadding 0 0 0;
-	}
-}
-
 .profileLabel {
 	width: 100%;
 	display: flex;
@@ -46,51 +16,6 @@
 	font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
 	font-weight: 700;
 	margin: $responsiveMediumPadding 0 0 0;
-}
-
-input[type='text'] {
-	width: 100%;
-	max-width: none;
-	height: 1en;
-	padding: 0;
-	font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-	font-weight: normal;
-	border: 1px solid #ddd;
-	margin: $responsiveSmallPadding 0 0 0;
-}
-
-textarea {
-	text-rendering: auto;
-	color: fieldtext;
-	letter-spacing: normal;
-	word-spacing: normal;
-	line-height: normal;
-	text-transform: none;
-	text-indent: 0px;
-	text-shadow: none;
-	display: inline-block;
-	text-align: start;
-	appearance: auto;
-	-webkit-rtl-ordering: logical;
-	cursor: text;
-	overflow-wrap: break-word;
-	background-color: field;
-	column-count: initial !important;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #ddd;
-	border-image: initial;
-	white-space: pre-wrap;
-	width: 100%;
-	max-width: none;
-	min-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*3);
-	max-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*7);
-	height: 100%;
-	margin: $responsiveSmallPadding 0 0 0 !important;
-	padding: 0;
-	font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-	font-family: $default-font;
-	resize: none;
 }
 
 .serverMessage {
@@ -129,23 +54,9 @@ button[type='submit'] {
 		font-size: 28px;
 	}
 
-	.modalFieldEn {
-		margin: 0 0 0 $staticPcBigPadding;
-	}
-
 	.profileLabel {
 		font-size: 16px;
 		margin: $staticPcMediumPadding 0 0 0;
-	}
-
-	input[type='text'] {
-		font-size: 16px;
-		margin: $staticPcSmallPadding 0 0 0;
-	}
-
-	textarea {
-		margin: $staticPcSmallPadding 0 0 0 !important;
-		font-size: 16px;
 	}
 
 	.serverMessage {

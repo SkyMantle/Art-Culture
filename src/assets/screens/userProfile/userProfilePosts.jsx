@@ -266,27 +266,27 @@ function UserProfilePosts() {
 							<p className={styles.error}>{formErrors.form}</p>
 						)}
 						<form onSubmit={handleEditSubmit} className={styles.modalForm}>
-							<div className={styles.modalFormWrapper}>
-								<div className={styles.modalFieldUk}>
-									<div className={styles.modalField}>
+							<div className="flex gap-8 form-wrapper">
+								<div className="form-group">
+									<div className="field-group">
 										<TextEditor label={t('Назва публікації українською')}
 											name='title_uk' value={formData.title_uk}
 											maxLength={50} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.modalField}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Опис публікації українською')}
 											name='content_uk' value={formData.content_uk}
 											maxLength={500} required onChange={textEditorOnChange} />
 									</div>
 								</div>
 
-								<div className={styles.modalFieldEn}>
-									<div className={styles.modalField}>
+								<div className="form-group">
+									<div className="field-group">
 										<TextEditor label={t('Назва публікації англійською')}
 											name='title_en' value={formData.title_en}
 											maxLength={50} required onChange={textEditorOnChange} />
 									</div>
-									<div className={styles.modalField}>
+									<div className="field-group">
 										<TextAreaEditor label={t('Опис публікації англійською')}
 											name='content_en' value={formData.content_en}
 											maxLength={500} required onChange={textEditorOnChange} />

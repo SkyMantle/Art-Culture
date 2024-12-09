@@ -169,36 +169,6 @@
 		align-items: center;
 	}
 
-	.formGroup {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-
-		input {
-			margin: $responsiveSmallPadding 0 0 0;
-		}
-	}
-
-	.modalTextWrapper {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-
-	.modalFieldUk {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.modalFieldEn {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		margin: 0 0 0 $responsiveBigPadding;
-	}
-
 	.formLabel {
 		width: 100%;
 		display: flex;
@@ -354,22 +324,6 @@
 
 	.modalContent {
 		padding: $staticPcBigPadding $responsiveLeftAndRightPadding;
-
-		.modalFormWrapper {
-			padding: 0 $staticPcMediumPadding 0 0;
-		}
-
-		.formGroup {
-
-			input {
-				margin: $staticPcSmallPadding 0 0 0;
-			}
-		}
-
-		.modalFieldEn {
-			margin: 0 0 0 $staticPcBigPadding;
-		}
-
 		.formLabel {
 			font-size: 16px;
 			margin: $staticPcMediumPadding 0 0 0;

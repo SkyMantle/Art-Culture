@@ -22,41 +22,6 @@
 	margin-bottom: $responsiveSmallPadding;
 }
 
-.exhibitionForm {
-	display: flex;
-	flex-direction: column;
-}
-
-.formGroup {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-
-	input {
-		margin: $responsiveSmallPadding 0 0 0;
-	}
-}
-
-.modalTextWrapper {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.modalFieldUk {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.modalFieldEn {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	margin: 0 0 0 $responsiveBigPadding;
-}
-
 .formLabel {
 	width: 100%;
 	display: flex;
@@ -140,16 +105,6 @@
 
 	.errorItem {
 		margin-bottom: $staticPcSmallPadding;
-	}
-
-	.formGroup {
-		input {
-			margin: $staticPcSmallPadding 0 0 0;
-		}
-	}
-
-	.modalFieldEn {
-		margin: 0 0 0 $staticPcBigPadding;
 	}
 
 	.formLabel {

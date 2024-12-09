@@ -99,33 +99,33 @@ function UserProfileAddPost() {
 			{message && <p className={styles.message}>{message}</p>}
 			{errors && <p className={styles.error}>{errors}</p>}
 			<form onSubmit={handleSubmit} className={styles.profileAddPostForm}>
-				<div className={styles.modalTextField}>
-					<div className={styles.modalFieldUk}>
-						<div className={styles.profileAddPostField}>
+				<div className="flex gap-8 form-wrapper">
+					<div className="form-group">
+						<div className="field-group">
 							<TextEditor label={t('Назва публікації українською')}
 								name='title_uk' value={formData.title_uk}
 								maxLength={50} required onChange={textEditorOnChange}/>
 						</div>
-						<div className={styles.profileAddPostField}>
+						<div className="field-group">
 							<TextAreaEditor label={t('Опис публікації українською')}
 								name='content_uk' value={formData.content_uk}
 								maxLength='500' required onChange={textEditorOnChange}/>
 						</div>
 					</div>
-					<div className={styles.modalFieldEn}>
-						<div className={styles.profileAddPostField}>
+					<div className="form-group">
+						<div className="field-group">
 							<TextEditor label={t('Назва публікації англійською')}
 								name='title_en' value={formData.title_en}
 								maxLength='50' required onChange={textEditorOnChange}/>
 						</div>
-						<div className={styles.profileAddPostField}>
+						<div className="field-group">
 							<TextAreaEditor label={t('Опис публікації англійською')}
 								name='content_en' value={formData.content_en}
 								maxLength='500' required onChange={textEditorOnChange}/>
 						</div>
 					</div>
 				</div>
-				<div className={styles.profileAddPostField}>
+				<div className="field-group">
 					<ImageEditor label={t('Додати зображення')} required
 						name='images' value={formData.images} onChange={textEditorOnChange} />
 				</div>
