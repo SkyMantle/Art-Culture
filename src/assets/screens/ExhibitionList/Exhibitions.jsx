@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '/src/styles/screen/ExhibitionList/Exhibitions.module.scss'
 import API from '/src/utils/api.js'
-import Sidebar from '@components/Blocks/Sidebar'
+import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 import ImageEditor from '../../components/Blocks/ImageEditor'
@@ -264,135 +264,132 @@ function MuseumExhibitions() {
 	};
 
 	return (
-		<div className={styles.profile}>
-			<Sidebar />
-			<div className={styles.exhibitionsContainer}>
-				<h2>{t('Ваші виставки')}</h2>
-				{exhibitions.length === 0 ? (
-					<p>{t('Ви не створили жодної виставки')}</p>
-				) : (
-					<div className={styles.exhibitionList}>
-						{exhibitions.map(exhibition => {
-							const title =
-								currentLanguage === 'en'
-									? exhibition.title_en || exhibition.title_uk
-									: exhibition.title_uk || exhibition.title_en
+		<ProfilePageContainer>
+			<h2>{t('Ваші виставки')}</h2>
+			{exhibitions.length === 0 ? (
+				<p>{t('Ви не створили жодної виставки')}</p>
+			) : (
+				<div className={styles.exhibitionList}>
+					{exhibitions.map(exhibition => {
+						const title =
+							currentLanguage === 'en'
+								? exhibition.title_en || exhibition.title_uk
+								: exhibition.title_uk || exhibition.title_en
 
-							const description =
-								currentLanguage === 'en'
-									? exhibition.description_en || exhibition.description_uk
-									: exhibition.description_uk || exhibition.description_en
+						const description =
+							currentLanguage === 'en'
+								? exhibition.description_en || exhibition.description_uk
+								: exhibition.description_uk || exhibition.description_en
 
-							const location =
-								currentLanguage === 'en'
-									? exhibition.location_en || exhibition.location_uk
-									: exhibition.location_uk || exhibition.location_en
+						const location =
+							currentLanguage === 'en'
+								? exhibition.location_en || exhibition.location_uk
+								: exhibition.location_uk || exhibition.location_en
 
-							const artistNames =
-								exhibition.exhibitionArtists &&
-									exhibition.exhibitionArtists.length > 0
-									? exhibition.exhibitionArtists
-										.map(ea => {
-											const artist = ea.artist
-											return artist.name || artist.title || artist.email
-										})
-										.join(',')
-									: t('Немає митців')
-							return (
-								<div key={exhibition.id} className={styles.exhibitionCard}>
-									{/* {exhibition.images && exhibition.images.length > 0 && (
-									<div className={styles.imagesContainer}>
-										{exhibition.images.map(image => (
-											<img
-												key={image.id}
-												src={`${process.env.REACT_APP_API_URL}${image.imageUrl}`}
-												alt={title}
-												className={styles.exhibitionImage}
-												loading='lazy'
-											/>
-										))}
-									</div>
-									)} */}
-
-									{exhibition.images && exhibition.images.length > 0 && (
-										<div className={styles.imagesContainer}>
-											<img
-												src={`${process.env.REACT_APP_API_URL}${exhibition.images[0].imageUrl}`}
-												alt={title}
-												className={styles.exhibitionImage}
-												loading='lazy'
-											/>
-										</div>
-									)}
-									<h3>
-										{t('Назва виставки')}
-										<p className={styles.productCardSubTitle}>{title}</p>
-									</h3>
-									<h4>
-										{t('Опис виставки')}
-										<p className={styles.productCardSubTitle}>{description}</p>
-									</h4>
-									<h4>
-										{t('Митці')}
-										<p className={styles.productCardSubTitle}>{artistNames}</p>
-									</h4>
-									<h4>
-										{t('Дата проведення')}
-										<p className={styles.productCardSubTitle}> </p>
-										<p className={styles.productCardSubTitle}>
-											{new Date(exhibition.startDate).toLocaleDateString()} -{' '}
-											{new Date(exhibition.endDate).toLocaleDateString()}
-										</p>
-									</h4>
-									<h4>
-										{t('Час початку')}
-										<p className={styles.productCardSubTitle}>
-											{exhibition.time}
-										</p>
-									</h4>
-									<h4>
-										{t('Місце проведення')}
-										<p className={styles.productCardSubTitle}>{location}</p>
-									</h4>
-									{console.log('type data artists:', artistNames)}
-									<div className={styles.exhibitionDelEditWrapper}>
-										<button
-											className="button button-default"
-											onClick={() => openEditModal(exhibition)}
-										>
-											{t('Редагувати')}
-										</button>
-										<button
-											className={styles.exhibitionDeleteButton}
-											onClick={() => handleDeleteExhibition(exhibition.id)}
-										>
-											{t('Видалити')}
-										</button>
-									</div>
+						const artistNames =
+							exhibition.exhibitionArtists &&
+								exhibition.exhibitionArtists.length > 0
+								? exhibition.exhibitionArtists
+									.map(ea => {
+										const artist = ea.artist
+										return artist.name || artist.title || artist.email
+									})
+									.join(',')
+								: t('Немає митців')
+						return (
+							<div key={exhibition.id} className={styles.exhibitionCard}>
+								{/* {exhibition.images && exhibition.images.length > 0 && (
+								<div className={styles.imagesContainer}>
+									{exhibition.images.map(image => (
+										<img
+											key={image.id}
+											src={`${process.env.REACT_APP_API_URL}${image.imageUrl}`}
+											alt={title}
+											className={styles.exhibitionImage}
+											loading='lazy'
+										/>
+									))}
 								</div>
-							)
-						})}
-					</div>
-				)}
-				<div className={styles.pagination}>
-					<button
-						onClick={() => setPage(prev => Math.max(prev - 1, 1))}
-						disabled={page === 1}
-					>
-						{/* {t('Попередня')} */}
-						&#8592;
-					</button>
-					<p>
-						{t('Сторінка')} {page} {t('з')} {totalPages}
-					</p>
-					<button
-						onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
-						disabled={page === totalPages}
-					>
-						{/* {t('Наступна')} */}
-						&#8594;
-					</button>
+								)} */}
+
+								{exhibition.images && exhibition.images.length > 0 && (
+									<div className={styles.imagesContainer}>
+										<img
+											src={`${process.env.REACT_APP_API_URL}${exhibition.images[0].imageUrl}`}
+											alt={title}
+											className={styles.exhibitionImage}
+											loading='lazy'
+										/>
+									</div>
+								)}
+								<h3>
+									{t('Назва виставки')}
+									<p className={styles.productCardSubTitle}>{title}</p>
+								</h3>
+								<h4>
+									{t('Опис виставки')}
+									<p className={styles.productCardSubTitle}>{description}</p>
+								</h4>
+								<h4>
+									{t('Митці')}
+									<p className={styles.productCardSubTitle}>{artistNames}</p>
+								</h4>
+								<h4>
+									{t('Дата проведення')}
+									<p className={styles.productCardSubTitle}> </p>
+									<p className={styles.productCardSubTitle}>
+										{new Date(exhibition.startDate).toLocaleDateString()} -{' '}
+										{new Date(exhibition.endDate).toLocaleDateString()}
+									</p>
+								</h4>
+								<h4>
+									{t('Час початку')}
+									<p className={styles.productCardSubTitle}>
+										{exhibition.time}
+									</p>
+								</h4>
+								<h4>
+									{t('Місце проведення')}
+									<p className={styles.productCardSubTitle}>{location}</p>
+								</h4>
+								{console.log('type data artists:', artistNames)}
+								<div className={styles.exhibitionDelEditWrapper}>
+									<button
+										className="button button-default"
+										onClick={() => openEditModal(exhibition)}
+									>
+										{t('Редагувати')}
+									</button>
+									<button
+										className={styles.exhibitionDeleteButton}
+										onClick={() => handleDeleteExhibition(exhibition.id)}
+									>
+										{t('Видалити')}
+									</button>
+								</div>
+							</div>
+						)
+					})}
 				</div>
+			)}
+			<div className={styles.pagination}>
+				<button
+					onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+					disabled={page === 1}
+				>
+					{/* {t('Попередня')} */}
+					&#8592;
+				</button>
+				<p>
+					{t('Сторінка')} {page} {t('з')} {totalPages}
+				</p>
+				<button
+					onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
+					disabled={page === totalPages}
+				>
+					{/* {t('Наступна')} */}
+					&#8594;
+				</button>
 			</div>
 			{/* Image Modal Component */}
 			{isModalOpen && !editingExhibition && (
@@ -561,7 +558,7 @@ function MuseumExhibitions() {
 					</div>
 				</div>
 			)}
-		</div>
+		</ProfilePageContainer>
 	)
 }
 

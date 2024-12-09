@@ -93,9 +93,7 @@ function UserProfileAddPost() {
 	console.log(formData);
 	return (
 		<ProfilePageContainer>
-			<h2 className={styles.profileAddPostTitle}>
-				{t('Додати нову публікацію')}
-			</h2>
+			<h2>{t('Додати нову публікацію')}</h2>
 			{message && <p className={styles.message}>{message}</p>}
 			{errors && <p className={styles.error}>{errors}</p>}
 			<form onSubmit={handleSubmit} className={styles.profileAddPostForm}>

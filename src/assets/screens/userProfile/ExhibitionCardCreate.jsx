@@ -395,7 +395,7 @@ function ExhibitionForm() {
 
 	return (
 		<ProfilePageContainer>
-			<h2 className={styles.formTitle}>{t('Створити виставку')}</h2>
+			<h2>{t('Створити виставку')}</h2>
 			{errors.length > 0 && (
 				<div className={styles.errorMessages}>
 					<ul className={styles.errorList}>

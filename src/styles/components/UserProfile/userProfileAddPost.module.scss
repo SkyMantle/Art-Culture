@@ -32,15 +32,6 @@
     }
 }
 
-.profileAddPostTitle {
-    /* Стиль заголовка формы */
-    width: 100%;
-    display: flex;
-    font-weight: 600;
-    font-size: calc(28px - (10 * ((1440px - 100vw) / (1440 - 375))));
-    text-transform: uppercase;
-}
-
 .profileAddPostForm {
     /* Стиль формы добавления публикации */
     display: flex;
@@ -82,11 +73,6 @@
             border-radius: 34px;
             font-size: 16px;
         }
-    }
-
-    .profileAddPostTitle {
-        /* Стиль заголовка формы */
-        font-size: 28px;
     }
 
     .profileLinksWrapper {

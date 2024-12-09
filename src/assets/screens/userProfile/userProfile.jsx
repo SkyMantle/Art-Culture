@@ -85,9 +85,7 @@ const UserProfile = () => {
 
 	return (
 		<ProfilePageContainer>
-			<div className={styles.profileTitleWrapper}>
-				<h3 className={styles.profileTitle}>{t('Інформація профілю')}</h3>
-			</div>
+			<h2>{t('Інформація профілю')}</h2>
 			<div className={styles.profileDetails}>
 				<div className={styles.profileInformationContainer}>
 					<div className={styles.profileAvatarWrapper}>

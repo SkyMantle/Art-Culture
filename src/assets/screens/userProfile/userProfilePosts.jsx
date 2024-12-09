@@ -10,6 +10,8 @@ import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 import TranslatedContent from '@components/Blocks/TranslatedContent.jsx'
 import { getFormattedDate } from '@/utils/helper.js'
 import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
+import Loading from "@components/Blocks/Loading.jsx";
+import LoadingError from "@components/Blocks/LoadingError.jsx";
 
 function UserProfilePosts() {
 	const { t, i18n } = useTranslation()
@@ -167,16 +169,9 @@ function UserProfilePosts() {
 
 	return (
 		<ProfilePageContainer>
-			<div className={styles.profileTitleWrapper}>
-				<h3 className={styles.profileTitle}>{t('Публікації')}</h3>
-			</div>
-			{loading ? (
-				<p className={styles.userPageLoadingMessage}>
-					{t('Завантаження...')}
-				</p>
-			) : error ? (
-				<p className={styles.userPageErrorMessage}>{error}</p>
-			) : posts.length === 0 ? (
+			<h2>{t('Публікації')}</h2>
+			{loading ? <Loading /> : error ? <LoadingError />
+				: posts.length === 0 ? (
 				<p>{t('Публікацій немає')}</p>
 			) : (
 				posts.map(post => (

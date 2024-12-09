@@ -69,7 +69,7 @@ const ProductCardCreate = () => {
 
 	return (
 		<ProfilePageContainer>
-			<h2 className={styles.productCreateTitle}>{t('Додати картину')}</h2>
+			<h2>{t('Додати картину')}</h2>
 			{serverMessage && (
 				<p className={styles.serverMessage}>{serverMessage}</p>
 			)}

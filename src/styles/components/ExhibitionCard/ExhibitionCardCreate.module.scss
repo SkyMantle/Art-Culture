@@ -2,12 +2,6 @@
 @import '/src/styles/utilities/variables.scss';
 
 
-.formTitle {
-	font-weight: 600;
-	font-size: calc(28px - (10 * ((1440px - 100vw) / (1440 - 375))));
-	text-transform: uppercase;
-}
-
 .errorMessages {
 	color: red;
 	margin-bottom: $responsiveSmallPadding;
@@ -95,10 +89,6 @@
 }
 
 @media (min-width: 1441px) {
-	.formTitle {
-		font-size: 28px;
-	}
-
 	.errorMessages {
 		margin-bottom: $staticPcSmallPadding;
 	}
