@@ -209,17 +209,6 @@ export const resetPasswordConfirm = async (req, res, next) => {
 		next(error)
 	}
 }
-// Add the following controller method
-// export const getCurrentUser = async (req, res, next) => {
-// 	try {
-// 		const user = req.user // Attached by authenticateToken middleware
-// 		if (!user) return res.status(401).json({ error: 'Unauthorized' })
-// 		const { password, ...userWithoutPassword } = user
-// 		res.json({ user: userWithoutPassword })
-// 	} catch (error) {
-// 		next(error)
-// 	}
-// }
 
 export const getCurrentUser = async (req, res, next) => {
 	try {

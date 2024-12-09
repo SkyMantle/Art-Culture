@@ -1,0 +1,34 @@
+@import '/src/styles/utilities/variables.scss';
+
+.sortable-header {
+    user-select: none;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.p-1 {
+    padding: 0.25rem;
+}
+
+.p-2 {
+    padding: 0.5rem;
+}
+
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.w-16 {
+    width: 4rem;
+}

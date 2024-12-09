@@ -95,3 +95,32 @@ export const getArtTermById = async (req, res, next) => {
 		next(error)
 	}
 }
+
+export const getPagesArtTerms = async (req, res, next) => {
+	try {
+		let page = req.params.page ?? 1;
+		let pageSize = req.params.pageSize ?? 20;
+		let search = req.params.search;
+
+        page = parseInt(page);
+        pageSize = parseInt(pageSize);
+        if (pageSize > 20) pageSize = 20;
+        if (page < 1) page = 1;
+		const artTerms = await prisma.artTerm.findMany({
+            select: {
+                id: true,
+                title_uk: true,
+                title_en: true,
+                description_uk: true,
+                description_en: true,
+            },
+            //skip: (page - 1) * pageSize,
+            //take: pageSize,
+        });
+
+		res.json({ artTerms })
+	} catch (error) {
+		console.error('Error fetch data art-term id', error)
+		next(error)
+	}
+}
