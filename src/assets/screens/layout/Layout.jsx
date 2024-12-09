@@ -27,6 +27,7 @@ import ArtTermsPage from '../ArtTerms/ArtTermsPage'
 import ArtTermsFilteredPage from '../ArtTerms/ArtTermsFilteredPage'
 import ArtTermPage from '../ArtTerms/ArtTermPage'
 import AdminArtTermsList from '../Admin/ArtTermsList';
+import AdminArtTermsEdit from '../Admin/ArtTermsEdit';
 
 const Layout = ({ heading = '' }) => {
 	const [username, setUsername] = useState('')
@@ -73,6 +74,8 @@ const Layout = ({ heading = '' }) => {
 					/>
 					<Route path='/admin/art-terms'
 						element={<ProtectedRoute roles={['ADMIN']}><AdminArtTermsList /></ProtectedRoute>} />
+					<Route path='/admin/art-terms/:id'
+						element={<ProtectedRoute roles={['ADMIN']}><AdminArtTermsEdit /></ProtectedRoute>} />
 					<Route path='/profile/posts/create' element={<UserProfileAddPost />} />
 					<Route path='/profile/posts' element={<UserProfilePosts />} />
 					<Route path='/profile/products' element={<Paintings />} />

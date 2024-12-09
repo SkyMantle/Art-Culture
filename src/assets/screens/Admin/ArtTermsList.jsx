@@ -23,13 +23,17 @@ const AdminArtTermsList = () => {
   const [error, setError] = useState(""); // Error state
 
   const columns = [
+    columnHelper.accessor("id", {
+      cell: (info) => <a href={`/admin/art-terms/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
+      header: () => <span>{t("Код")}</span>,
+    }),
     columnHelper.accessor("title_uk", {
-      cell: (info) => info.renderValue(),
+      cell: (info) => <a href={`/admin/art-terms/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
       header: () => <span>{t("Назва українською")}</span>,
     }),
     columnHelper.accessor("title_en", {
       header: () => <span>{t("Назва англійською")}</span>,
-      cell: (info) => info.renderValue(),
+      cell: (info) => <a href={`/admin/art-terms/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
     }),
     columnHelper.accessor("description_uk", {
       header: () => <span>{t("Опис українською")}</span>,
