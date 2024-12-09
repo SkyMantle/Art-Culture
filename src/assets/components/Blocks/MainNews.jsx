@@ -1,14 +1,13 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import styles from '/src/styles/components/Blocks/MainNews.module.scss'
-import { getFormattedDate, getFormattedTime, getImageUrl, limitText } from '../../../utils/helper'
+import { getFormattedDate, getFormattedTime, getImageUrl } from '../../../utils/helper'
 import TranslatedContent from './TranslatedContent'
 
 function MainNews() {
-	const { t, i18n } = useTranslation()
-	const currentLanguage = i18n.language
+	const { t } = useTranslation()
 	const [posts, setPosts] = useState([])
 
 	const [visiblePostsCount, setVisiblePostsCount] = useState(
