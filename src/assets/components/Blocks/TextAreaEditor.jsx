@@ -1,11 +1,11 @@
-import { forwardRef, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next'
 import ReactQuill from "react-quill"
 import "quill/dist/quill.snow.css"
 import styles from "@styles/components/Blocks/TextEditor.module.scss"
 
-const TextAreaEditor = forwardRef(({ className, name, label, value, maxLength, onChange, placeholder, required }, ref) => {
+function TextAreaEditor({ className, name, label, value, maxLength, onChange, placeholder, required }) {
 	const { t } = useTranslation()
 	const [remaining, setRemaining] = useState(maxLength - (value ?? "").length)
 	const handleChange = (html) => {
@@ -19,7 +19,7 @@ const TextAreaEditor = forwardRef(({ className, name, label, value, maxLength, o
 	return (
 		<>
 		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
-			{label}
+			<span>{label} {required ? <span className="required-field">*</span> : null}</span>
 		</label>
 		<ReactQuill theme="snow" value={value} onChange={handleChange} modules={{ toolbar: true }} />
 		<small className={styles.remainingChars}>
@@ -27,8 +27,7 @@ const TextAreaEditor = forwardRef(({ className, name, label, value, maxLength, o
 		</small>
 		</>
 	)
-})
-TextAreaEditor.displayName = "TextAreaEditor"
+}
 
 TextAreaEditor.propTypes = {
     maxLength: PropTypes.number,

@@ -5,6 +5,7 @@ import API from '/src/utils/api.js'
 import Sidebar from '@components/Blocks/Sidebar'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import ImageEditor from '../../components/Blocks/ImageEditor'
 
 function MuseumExhibitions() {
 	const { t, i18n } = useTranslation()
@@ -141,7 +142,7 @@ function MuseumExhibitions() {
 		} else if (name === 'artists') {
 			// Handled in handleArtistSelection
 		} else {
-			setFormData({ ...formData, [name]: value })			
+			setFormData({ ...formData, [name]: value })
 		}
 	}
 
@@ -546,16 +547,13 @@ function MuseumExhibitions() {
 										))}
 									</div>
 								</div>
-								{/* Image Upload */}
-								<label className={styles.formLabel}>
-									{t('Додати зображення')}
-								</label>
-								<input
-									type='file'
-									name='exhibitionImages'
-									accept='image/*'
-									onChange={handleChange}
+								<ImageEditor
+									label={t('Додати зображення')}
+									required
+									name="exhibitionImages"
+									value={formData.images}
 									multiple
+									onChange={textEditorOnChange}
 								/>
 								<button type='submit'>{t('Зберегти')}</button>
 							</form>

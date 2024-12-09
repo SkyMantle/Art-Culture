@@ -9,6 +9,7 @@ import styles from '/src/styles/components/UserProfile/userProfileAddPost.module
 import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
 
 function UserProfileAddPost() {
 	const { t } = useTranslation()
@@ -24,11 +25,6 @@ function UserProfileAddPost() {
 	})
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState("")
-
-	const handleChange = (e) => {
-		const { name, files } = e.target;
-		setFormData({ ...formData, [name]: files[0] });
-	};
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -66,7 +62,7 @@ function UserProfileAddPost() {
 			postData.append('title_uk', formData.title_uk)
 			postData.append('content_uk', formData.content_uk)
 			if (formData.images) {
-				postData.append('images', formData.images)
+				postData.append('images', formData.images[0])
 			}
 
 			const response = await API.post('/posts', postData, {
@@ -82,7 +78,7 @@ function UserProfileAddPost() {
 		} catch (error) {
 			console.error('Error adding post:', error)
 			setErrors(
-				error.response?.data?.error 
+				error.response?.data?.error
 					? t(error.response?.data?.error)
 					: t("Неможливо створити публікацію")
 			)
@@ -130,16 +126,8 @@ function UserProfileAddPost() {
 					</div>
 				</div>
 				<div className={styles.profileAddPostField}>
-					<label className={styles.profileAddPostLabel}>
-						{t('Додати зображення (опційно):')}
-						<input
-							type='file'
-							name='images'
-							accept='image/*'
-							onChange={handleChange}
-							className={styles.profileAddPostInput}
-						/>
-					</label>
+					<ImageEditor label={t('Додати зображення')} required
+						name='images' value={formData.images} onChange={textEditorOnChange} />
 				</div>
 
 				<div className={styles.profileLinksWrapper}>

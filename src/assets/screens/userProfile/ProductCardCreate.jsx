@@ -6,6 +6,7 @@ import styles from '/src/styles/components/ProductCard/ProductCardCreate.module.
 import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
 
 const ProductCardCreate = () => {
 	const { t } = useTranslation()
@@ -20,23 +21,9 @@ const ProductCardCreate = () => {
 		images: [],
 	})
 
-	const [imagePreviews, setImagePreviews] = useState([])
 	const [serverMessage, setServerMessage] = useState('')
 
-	const handleChange = e => {
-		const { name, value, files } = e.target
-
-		if (name === 'images') {
-			const filesArray = Array.from(files)
-			setFormData(prevData => ({ ...prevData, images: filesArray }))
-			const previews = filesArray.map(file => URL.createObjectURL(file))
-			setImagePreviews(previews)
-		} else {
-			setFormData(prevData => ({ ...prevData, [name]: value }))
-		}
-	}
-
-	const handleSubmit = async e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 		setServerMessage('')
 
@@ -48,7 +35,7 @@ const ProductCardCreate = () => {
 		formDataToSend.append('specs_en', formData.specs_en)
 		formDataToSend.append('specs_uk', formData.specs_uk)
 
-		formData.images.forEach(image => {
+		formData.images.forEach((image) => {
 			formDataToSend.append('productImages', image)
 		})
 
@@ -68,9 +55,7 @@ const ProductCardCreate = () => {
 		} catch (error) {
 			console.error('product create error', error)
 			if (error.response && error.response.data) {
-				setServerMessage(
-					error.response.data.error || 'Product could not be created'
-				)
+				setServerMessage(error.response.data.error || 'Product could not be created')
 			} else {
 				setServerMessage('Product could not be created during action')
 			}
@@ -80,7 +65,7 @@ const ProductCardCreate = () => {
 	const textEditorOnChange = ({ name, value }) => {
 		const newFormData = { ...formData, [name]: value }
 		setFormData(newFormData)
-	};
+	}
 
 	return (
 		<ProfilePageContainer>
@@ -92,63 +77,78 @@ const ProductCardCreate = () => {
 				<div className={styles.modalTextWrapper}>
 					<div className={styles.modalFieldUk}>
 						<div className={styles.formGroup}>
-							<TextEditor label={t('Назва українською')}
-								name='title_uk' value={formData.title_uk}
-								maxLength={50} required onChange={textEditorOnChange} />
+							<TextEditor
+								label={t('Назва українською')}
+								name="title_uk"
+								value={formData.title_uk}
+								maxLength={50}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 						<div className={styles.formGroup}>
-							<TextAreaEditor label={t('Опис українською')}
-								name='description_uk' value={formData.description_uk}
-								maxLength={500} required onChange={textEditorOnChange} />
+							<TextAreaEditor
+								label={t('Опис українською')}
+								name="description_uk"
+								value={formData.description_uk}
+								maxLength={500}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 						<div className={styles.formGroup}>
-							<TextAreaEditor label={t('Специфікація українською')}
-								name='specs_uk' value={formData.specs_uk}
-								maxLength={500} required onChange={textEditorOnChange} />
+							<TextAreaEditor
+								label={t('Специфікація українською')}
+								name="specs_uk"
+								value={formData.specs_uk}
+								maxLength={500}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 					</div>
 					<div className={styles.modalFieldEn}>
 						<div className={styles.formGroup}>
-							<TextEditor label={t('Назва англійською')}
-								name='title_en' value={formData.title_en}
-								maxLength={50} required onChange={textEditorOnChange} />
+							<TextEditor
+								label={t('Назва англійською')}
+								name="title_en"
+								value={formData.title_en}
+								maxLength={50}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 						<div className={styles.formGroup}>
-							<TextAreaEditor label={t('Опис англійською')}
-								name='description_en' value={formData.description_en}
-								maxLength={500} required onChange={textEditorOnChange} />
+							<TextAreaEditor
+								label={t('Опис англійською')}
+								name="description_en"
+								value={formData.description_en}
+								maxLength={500}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 						<div className={styles.formGroup}>
-							<TextAreaEditor label={t('Специфікація англійською')}
-								name='specs_en' value={formData.specs_en}
-								maxLength={500} required onChange={textEditorOnChange} />
+							<TextAreaEditor
+								label={t('Специфікація англійською')}
+								name="specs_en"
+								value={formData.specs_en}
+								maxLength={500}
+								required
+								onChange={textEditorOnChange}
+							/>
 						</div>
 					</div>
 				</div>
-				<label className={styles.profileLabel}>
-					{t('Додати зображення')}
-					{/* Images */}
-					<input
-						type='file'
-						name='images'
-						accept='image/*'
-						multiple
-						onChange={handleChange}
-						required
-					/>
-				</label>
-				{/* Image Previews */}
-				<div className={styles.imagePreviews}>
-					{imagePreviews.map((preview, index) => (
-						<img
-							key={index}
-							src={preview}
-							alt={`Preview ${index}`}
-							className={styles.previewImage}
-						/>
-					))}
-				</div>
-				<button type='submit'>{t('Створити')}</button>
+				<ImageEditor
+					label={t('Додати зображення')}
+					required
+					name="images"
+					value={formData.images}
+					multiple
+					onChange={textEditorOnChange}
+				/>
+				<button type="submit">{t('Створити')}</button>
 			</form>
 		</ProfilePageContainer>
 	)

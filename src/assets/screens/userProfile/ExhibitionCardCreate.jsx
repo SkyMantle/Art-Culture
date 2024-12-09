@@ -8,6 +8,7 @@ import API from '../../../utils/api'
 import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import ImageEditor from '../../components/Blocks/ImageEditor'
 
 function ExhibitionForm() {
 	const [formData, setFormData] = useState({
@@ -257,13 +258,6 @@ function ExhibitionForm() {
 		})
 	}
 
-	const handleImageChange = useCallback(e => {
-		setFormData(prevState => ({
-			...prevState,
-			images: [...e.target.files],
-		}))
-	}, [])
-
 	const handleSubmit = async e => {
 		e.preventDefault()
 		setErrors([])
@@ -427,7 +421,7 @@ function ExhibitionForm() {
 						<div className={styles.formGroup}>
 							<TextEditor label={t('Назва виставки українською')}
 								name='title_uk' value={formData.title_uk}
-								maxLength={50} required onChange={textEditorOnChange} />								
+								maxLength={50} required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Description in Ukrainian */}
@@ -664,13 +658,13 @@ function ExhibitionForm() {
 
 				{/* Images */}
 				<div className={styles.formGroup}>
-					<label className={styles.formLabel}>{t('Додати зображення')}</label>
-					<input
-						type='file'
-						accept='image/*'
+					<ImageEditor
+						label={t('Додати зображення')}
+						required
+						name="images"
+						value={formData.images}
 						multiple
-						onChange={handleImageChange}
-						className={styles.formFileInput}
+						onChange={textEditorOnChange}
 					/>
 				</div>
 

@@ -65,6 +65,32 @@
     color: variables.$secondary-color;
 }
 
+input[type='file'] {
+	width: 100%;
+	max-width: none;
+	height: 1en;
+	padding: 0;
+	font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
+	font-weight: normal;
+	border: 1px solid #ddd;
+	margin: variables.$responsiveSmallPadding 0 0 0 !important;
+}
+
+.imagePreviews {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: variables.$responsiveSmallPadding 0 0 0;
+
+	.previewImage {
+		width: 20%;
+		object-fit: cover;
+		border-radius: 10px;
+	}
+}
+
 @media (min-width: 1441px) {
     .remainingChars {
         /* Стиль для оставшихся символов */
@@ -84,4 +110,13 @@
         max-height: calc(16px*7);
         font-size: 16px;
     }
+
+	input[type='file'] {
+		font-size: 16px;
+		margin: variables.$staticPcSmallPadding 0 0 0 !important;
+	}
+
+	.imagePreviews {
+		margin: variables.$staticPcSmallPadding 0 0 0;
+	}
 }

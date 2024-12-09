@@ -18,7 +18,7 @@ function TextEditor({ className, type, name, label, value, maxLength, onChange, 
 	return (
 		<>
 		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
-			{label}
+			<span>{label} {required ? <span className="required-field">*</span> : null}</span>
 			<input
 				type={type ?? "text"}
 				name={name}

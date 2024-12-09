@@ -6,6 +6,7 @@ import API from '../../../utils/api.js'
 import { getFormattedDate } from "@/utils/helper"
 import styles from '/src/styles/components/UserProfile/userProfile.module.scss'
 import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
+import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
 
 const UserProfile = () => {
 	const { user, updateUser, loading, error } = useAuth() // Access user and logout from context
@@ -81,12 +82,6 @@ const UserProfile = () => {
 
 	const openModal = () => setIsOpen(true)
 	const closeModal = () => setIsOpen(false)
-
-	const handleImageChange = e => {
-		if (e.target.files && e.target.files[0]) {
-			setProfileImage(e.target.files[0])
-		}
-	}
 
 	return (
 		<ProfilePageContainer>
@@ -208,15 +203,13 @@ const UserProfile = () => {
 										</div>
 
 										<div className={styles.profileModalImageDownloadWrapper}>
-											<label className={styles.profileLabel}>
-												{t('Додати зображення')}
-												<input
-													type='file'
-													name='profileImages'
-													accept='image/*'
-													onChange={handleImageChange}
-												/>
-											</label>
+										<ImageEditor
+											label={t('Додати зображення')}
+											required
+											name="images"
+											value={profileImage}
+											onChange={({ value }) => console.log(value) || setProfileImage(value[0])}
+										/>
 										</div>
 
 										<button className={styles.submitButton} type='submit'>

@@ -6,6 +6,7 @@ import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 import TranslatedContent from '@components/Blocks/TranslatedContent'
+import ImageEditor from '../../components/Blocks/ImageEditor'
 
 const Paintings = () => {
 	const { t, i18n } = useTranslation()
@@ -26,8 +27,6 @@ const Paintings = () => {
 	})
 	const [message, setMessage] = useState('')
 	const [formErrors, setFormErrors] = useState({})
-	const [remainingTitle, setRemainingTitle] = useState(500)
-	const [remainingDescription, setRemainingDescription] = useState(5000)
 	const [error, setError] = useState('')
 
 	useEffect(() => {
@@ -81,29 +80,6 @@ const Paintings = () => {
 		setEditingProduct(null)
 		setFormErrors({})
 		setMessage('')
-	}
-
-	const handleChange = e => {
-		const { name, value, files } = e.target
-
-		if (name === 'images' || name === 'productImages') {
-			setFormData({ ...formData, images: files })
-		} else {
-			setFormData({ ...formData, [name]: value })
-
-			if (name === 'title_en' || name === 'title_uk') {
-				setRemainingTitle(500 - value.length)
-			}
-
-			if (name === 'description_en' || name === 'description_uk') {
-				setRemainingDescription(5000 - value.length)
-			}
-
-			if (e.target.tagName.toLowerCase() === 'textarea') {
-				e.target.style.height = 'auto'
-				e.target.style.height = `${e.target.scrollHeight}px`
-			}
-		}
 	}
 
 	const handleEditSubmit = async e => {
@@ -267,7 +243,7 @@ const Paintings = () => {
 									src={`${image.imageUrl}`}
 									alt={`Product Image ${index + 1}`}
 									className={styles.modalImage}
-								/>	
+								/>
 							))}
 						</div>
 					</div>
@@ -329,15 +305,13 @@ const Paintings = () => {
 									</div>
 								</div>
 							</div>
-							<label className={styles.profileLabel}>
-								{t('Додати зображення')}
-							</label>
-							<input
-								type='file'
-								name='productImages'
-								accept='image/*'
-								onChange={handleChange}
+							<ImageEditor
+								label={t('Додати зображення')}
+								required
+								name="productImages"
+								value={formData.images}
 								multiple
+								onChange={textEditorOnChange}
 							/>
 							<button type='submit'>{t('Зберегти')}</button>
 						</form>

@@ -9,6 +9,7 @@ import TextEditor from '@components/Blocks/TextEditor'
 import TextAreaEditor from '@components/Blocks/TextAreaEditor'
 import TranslatedContent from '@components/Blocks/TranslatedContent.jsx'
 import { getFormattedDate } from '@/utils/helper.js'
+import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
 
 function UserProfilePosts() {
 	const { t, i18n } = useTranslation()
@@ -92,12 +93,6 @@ function UserProfilePosts() {
 		setMessage('')
 	}
 
-	const handleChange = (e) => {
-		const { name, value, files } = e.target;
-
-		setFormData({ ...formData, images: files[0] });
-	};
-
 
 	const handleEditSubmit = async e => {
 		e.preventDefault()
@@ -120,8 +115,8 @@ function UserProfilePosts() {
 			postData.append('content_en', formData.content_en)
 			postData.append('title_uk', formData.title_uk)
 			postData.append('content_uk', formData.content_uk)
-			if (formData.images instanceof File) {
-				postData.append('images', formData.images)
+			if (formData.images && formData.images[0] instanceof File) {
+				postData.append('images', formData.images[0])
 			}
 
 			const response = await API.put(`/posts/${editingPost.id}`, postData, {
@@ -212,7 +207,7 @@ function UserProfilePosts() {
 								</h3>
 								<div className={styles.userProfilePostsDescriptionWrapper}>
 									<p className={styles.userProfilePostsDescription}>
-										<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} html />											
+										<TranslatedContent en={post.content_en} uk={post.content_uk} maxLength={100} html />
 									</p>
 								</div>
 								<div className={styles.userProfilePostsClockAndDateWrapper}>
@@ -300,17 +295,9 @@ function UserProfilePosts() {
 							</div>
 							<div className={styles.modalFieldImageUploadWrapper}>
 								<div className={styles.modalFieldImage}>
-									<label className={styles.modalLabelUploadContainer}>
-										{t('Змінити зображення (опційно):')}
-										<input
-											type='file'
-											name='images'
-											accept='image/*'
-											onChange={handleChange}
-											className={styles.modalInputImageField}
-										/>
-									</label>
-									{editingPost.images && !(formData.images instanceof File) && (
+									<ImageEditor label={t('Додати зображення')} required
+										name='images' value={formData.images} onChange={textEditorOnChange} />
+									{editingPost.images && !(formData.images && formData.images[0] instanceof File) && (
 										<img
 											src={editingPost.images}
 											alt={t('Поточне зображення')}
