@@ -191,7 +191,7 @@ function NewsPage() {
 												alt={t('Зображення')}
 												onError={e => {
 													e.target.onerror = null
-													e.target.src = '/Img/newsPageImg.jpeg' // Fallback image
+													e.target.src = '/Img/newsCardERROR.jpg' // Fallback image
 												}}
 											/>
 										</div>
@@ -286,7 +286,7 @@ function NewsPage() {
 												alt={t('Зображення')}
 												onError={e => {
 													e.target.onerror = null
-													e.target.src = '/Img/newsPageImg.jpeg' // Fallback image
+													e.target.src = '/Img/newsCardERROR.jpg' // Fallback image
 												}}
 											/>
 										</div>
@@ -365,7 +365,7 @@ function NewsPage() {
 						/>
 					</button>
 				</div>
-				
+
 				<LikeAndShare className={sliderStyles.LikeAndShareFixed} />
 			</div>
 
