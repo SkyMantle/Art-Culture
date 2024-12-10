@@ -148,8 +148,8 @@ const UserProfile = () => {
 
 				<div className='App'>
 					{isOpen && (
-						<div className={styles.modal}>
-							<div className={styles.modalContent}>
+						<div className="modal-overlay">
+							<div className="modal-content">
 								{editMode && (
 									<form
 										className={styles.editProfileForm}

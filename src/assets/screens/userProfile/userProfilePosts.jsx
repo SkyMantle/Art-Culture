@@ -185,13 +185,13 @@ function UserProfilePosts() {
 										alt={t('Світлина публікації')}
 										onError={e => {
 											e.target.onerror = null
-											e.target.src = '/Img/defaultPostImage.jpg' // Default image path
+											e.target.src = '/Img/newsCardERROR.jpg' // Default image path
 										}}
 									/>
 								) : (
 									<img
 										className={styles.userProfilePostsPic}
-										src='/Img/defaultPostImage.jpg'
+										src='/Img/newsCardERROR.jpg'
 										alt={t('Світлина публікації')}
 									/>
 								)}
@@ -242,20 +242,15 @@ function UserProfilePosts() {
 			)}
 			{/* Modal Window */}
 			{isModalOpen && (
-				<div className={styles.modalOverlay}>
-					<div className={styles.modalContent}>
+				<div className="modal-overlay">
+					<div className="modal-content">
 						<button
 							type='button'
-							className={styles.modalCancelButton}
 							onClick={closeEditModal}
 						>
-							<span className={styles.close}>&times;</span>
+							<span className="modal-close-button">&times;</span>
 						</button>
-						<div className={styles.modalTitleAndCloseButtonWrapper}>
-							<h2 className={styles.modalTitle}>
-								{t('Редагування публікації')}
-							</h2>
-						</div>
+						<h2>{t('Редагування публікації')}</h2>
 						{message && <p className={styles.message}>{message}</p>}
 						{formErrors.form && (
 							<p className={styles.error}>{formErrors.form}</p>

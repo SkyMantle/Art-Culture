@@ -19,6 +19,7 @@ function ExhibitionForm() {
 		startDate: '',
 		endDate: '',
 		time: '',
+		finishTime: '',
 		location_en: '',
 		location_uk: '',
 		artists: [],
@@ -202,14 +203,6 @@ function ExhibitionForm() {
 		})
 		setIsModalOpen(false)
 	}
-
-	const handleInputChange = useCallback(e => {
-		const { name, value } = e.target
-		setFormData(prevState => ({
-			...prevState,
-			[name]: value,
-		}))
-	}, [])
 
 	const handleArtistSelection = useCallback(e => {
 		const artistId = parseInt(e.target.value, 10)
@@ -440,28 +433,18 @@ function ExhibitionForm() {
 
 						{/* Start Date */}
 						<div className="field-group">
-							<label className={styles.formLabel}>{t('Дата початку')}</label>
-							<input
+							<TextEditor label={t('Дата початку')}
 								type='date'
-								name='startDate'
-								value={formData.startDate}
-								onChange={handleInputChange}
-								required
-								className={styles.formInput}
-							/>
+								name='startDate' value={formData.startDate}
+								required onChange={textEditorOnChange} />
 						</div>
 
 						{/* Start time */}
 						<div className="field-group">
-							<label className={styles.formLabel}>{t('Час початку')}</label>
-							<input
+							<TextEditor label={t('Час початку')}
 								type='text'
-								name='time'
-								value={formData.time}
-								onChange={handleInputChange}
-								required
-								className={styles.formInput}
-							/>
+								name='time' value={formData.time}
+								required onChange={textEditorOnChange} />
 						</div>
 					</div>
 
@@ -488,39 +471,25 @@ function ExhibitionForm() {
 						</div>
 						{/* End Date */}
 						<div className="field-group">
-							<label className={styles.formLabel}>
-								{t('Дата завершення')}
-							</label>
-							<input
+							<TextEditor label={t('Дата завершення')}
 								type='date'
-								name='endDate'
-								value={formData.endDate}
-								onChange={handleInputChange}
-								required
-								className={styles.formInput}
-							/>
+								name='endDate' value={formData.endDate}
+								required onChange={textEditorOnChange} />
 						</div>
 
 						{/* End time */}
 						<div className="field-group">
-							<label className={styles.formLabel}>
-								{t('Час завершення')}
-							</label>
-							<input
+							<TextEditor label={t('Час завершення')}
 								type='text'
-								name='time'
-								value={formData.time}
-								onChange={handleInputChange}
-								required
-								className={styles.formInput}
-							/>
+								name='finishTime' value={formData.finishTime}
+								required onChange={textEditorOnChange} />
 						</div>
 					</div>
 				</div>
 
 				{/* Search input */}
 				<div className="field-group">
-					<label className={styles.formLabel}>{t('Пошук')}</label>
+					<label className="field-label">{t('Пошук')}</label>
 					<input
 						type='text'
 						name='search'
@@ -680,15 +649,15 @@ function ExhibitionForm() {
 
 			{isModalOpen && (
 				<div
-					className={styles.modalOverlay}
+					className="modal-overlay"
 					onClick={() => setIsModalOpen(false)}
 				>
 					<div
-						className={styles.modalContent}
+						className="modal-content"
 						onClick={e => e.stopPropagation()}
 					>
 						<button
-							className={styles.closeButton}
+							className="modal-close-button"
 							onClick={() => setIsModalOpen(false)}
 						>
 							&times;

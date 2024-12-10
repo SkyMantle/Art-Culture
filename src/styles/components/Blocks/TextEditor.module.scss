@@ -46,18 +46,6 @@
     resize: none;
 }
 
-.profileAddPostLabel {
-    /* Стиль для меток полей ввода */
-	width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    font-weight: 700;
-	margin: variables.$responsiveMediumPadding 0 0 0;
-}
-
 .remainingChars {
     /* Стиль для оставшихся символов */
     margin: variables.$responsiveSmallPadding 5px 0 auto;

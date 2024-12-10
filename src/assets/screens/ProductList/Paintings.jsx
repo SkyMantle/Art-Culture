@@ -224,9 +224,9 @@ const Paintings = () => {
 			</div>
 			{/* Image Modal Component */}
 			{isModalOpen && !editingProduct && (
-				<div className={styles.modalOverlay} onClick={handleCloseModal}>
+				<div className="modal-overlay" onClick={handleCloseModal}>
 					<div
-						className={styles.modalContent}
+						className="modal-content"
 						onClick={e => e.stopPropagation()}
 					>
 						<button className={styles.closeButton} onClick={handleCloseModal}>
@@ -247,12 +247,12 @@ const Paintings = () => {
 			)}
 			{/* Modal edit component */}
 			{isModalOpen && editingProduct && (
-				<div className={styles.modalOverlay} onClick={closeEditModal}>
+				<div className="modal-overlay" onClick={closeEditModal}>
 					<div
-						className={styles.modalContent}
+						className="modal-content"
 						onClick={e => e.stopPropagation()}
 					>
-						<button className={styles.closeButton} onClick={closeEditModal}>
+						<button className="modal-close-button" onClick={closeEditModal}>
 							&times;
 						</button>
 						<form onSubmit={handleEditSubmit}>

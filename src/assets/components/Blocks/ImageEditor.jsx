@@ -1,6 +1,7 @@
-import { useState } from 'react'
 import styles from "@styles/components/Blocks/TextEditor.module.scss";
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function getPreviews(value) {
 	const filesArray = Array.from(value)
@@ -9,6 +10,7 @@ function getPreviews(value) {
 }
 
 function ImageEditor({ className, name, label, value, required, multiple, onChange }) {
+	const { t } = useTranslation()
 	const [imagePreviews, setImagePreviews] = useState(value ? getPreviews(value) : [])
 	const handleChange = (e) => {
 		const filesArray = Array.from(e.target.files)
@@ -20,8 +22,8 @@ function ImageEditor({ className, name, label, value, required, multiple, onChan
 
 	return (
 		<>
-		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
-		<span>{label} {required ? <span className="required-field">*</span> : null}</span>
+		<label className={`field-label ${className ? className : ''}`}>
+		<span>{label} {required ? <span className="required-field" title={t("Це поле обов'язково")}>*</span> : null}</span>
 			<input
 				type='file'
 				name={name}

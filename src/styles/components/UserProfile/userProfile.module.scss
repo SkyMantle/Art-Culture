@@ -233,23 +233,6 @@
 	}
 }
 
-.modalContent {
-	// контент модального окна
-	position: relative;
-	margin: auto auto;
-	background-color: #fff;
-	padding: $responsiveBigPadding $responsiveLeftAndRightPadding;
-	border-radius: 10px;
-	width: 50%;
-	height: fit-content;
-	max-height: 90%;
-	text-align: center;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: start;
-}
-
 .editProfileForm {
 	// форма редактирования профиля
 	display: flex;
@@ -424,11 +407,6 @@
 			// метка имени пользователя
 			font-size: 16px;
 		}
-	}
-
-	.modalContent {
-		// контент модального окна
-		padding: $staticPcBigPadding $responsiveLeftAndRightPadding;
 	}
 
 	.profileModalNameWrapper {

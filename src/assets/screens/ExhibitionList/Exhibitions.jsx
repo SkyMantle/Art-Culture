@@ -28,6 +28,7 @@ function MuseumExhibitions() {
 		startDate: '',
 		endDate: '',
 		time: '',
+		finishTime: '',
 		artists: [],
 		images: null,
 	})
@@ -393,12 +394,12 @@ function MuseumExhibitions() {
 			</div>
 			{/* Image Modal Component */}
 			{isModalOpen && !editingExhibition && (
-				<div className={styles.modalOverlay} onClick={handleCloseModal}>
+				<div className="modal-overlay" onClick={handleCloseModal}>
 					<div
-						className={styles.modalContent}
+						className="modal-content"
 						onClick={e => e.stopPropagation()}
 					>
-						<button className={styles.closeButton} onClick={handleCloseModal}>
+						<button className="modal-close-button" onClick={handleCloseModal}>
 							&times;
 						</button>
 						<div className={styles.modalImages}>
@@ -417,13 +418,13 @@ function MuseumExhibitions() {
 			)}
 			{/* Modal Edit Component */}
 			{isModalOpen && editingExhibition && (
-				<div className={styles.modalOverlay} onClick={handleCloseModal}>
+				<div className="modal-overlay" onClick={handleCloseModal}>
 					<div
-						className={styles.modalContent}
+						className="modal-content"
 						onClick={e => e.stopPropagation()}
 					>
-						<div className={styles.modalFormWrapper}>
-							<button className={styles.closeButton} onClick={closeEditModal}>
+						<div>
+							<button className="modal-close-button" onClick={closeEditModal}>
 								&times;
 							</button>
 							<form onSubmit={handleEditSubmit}>
@@ -455,27 +456,17 @@ function MuseumExhibitions() {
 										</div>
 										{/* Start Date Field */}
 										<div className="field-group">
-											<label className={styles.formLabel}>
-												{t('Дата початку')}
-											</label>
-											<input
+											<TextEditor label={t('Дата початку')}
 												type='date'
-												name='startDate'
-												value={formData.startDate}
-												onChange={handleChange}
-											/>
+												name='startDate' value={formData.startDate}
+												required onChange={textEditorOnChange} />
 										</div>
 										{/* Time Field */}
 										<div className="field-group">
-											<label className={styles.formLabel}>
-												{t('Час початку')}
-											</label>
-											<input
+											<TextEditor label={t('Час початку')}
 												type='text'
-												name='time'
-												value={formData.time}
-												onChange={handleChange}
-											/>
+												name='time' value={formData.time}
+												required onChange={textEditorOnChange} />
 										</div>
 									</div>
 
@@ -497,33 +488,23 @@ function MuseumExhibitions() {
 										</div>
 										{/* End Date Field */}
 										<div className="field-group">
-											<label className={styles.formLabel}>
-												{t('Дата завершення')}
-											</label>
-											<input
+											<TextEditor label={t('Дата завершення')}
 												type='date'
-												name='endDate'
-												value={formData.endDate}
-												onChange={handleChange}
-											/>
+												name='endDate' value={formData.endDate}
+												required onChange={textEditorOnChange} />
 										</div>
 										{/* Time Field */}
 										<div className="field-group">
-											<label className={styles.formLabel}>
-												{t('Час завершення')}
-											</label>
-											<input
+											<TextEditor label={t('Час завершення')}
 												type='text'
-												name='time'
-												value={formData.time}
-												onChange={handleChange}
-											/>
+												name='finishTime' value={formData.finishTime}
+												required onChange={textEditorOnChange} />
 										</div>
 									</div>
 								</div>
 								{/* Artists Field */}
 								<div className="field-group">
-									<label className={styles.formLabel}>{t('Митці')}</label>
+									<label className="field-label">{t('Митці')}</label>
 									<div className={styles.checkArtistWrapper}>
 										{artists.map(artist => (
 											<div className={styles.checkArtistItem} key={artist.id}>

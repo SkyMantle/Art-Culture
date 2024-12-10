@@ -14,11 +14,11 @@ function TextEditor({ className, type, name, label, value, maxLength, onChange, 
 		setRemaining(maxLength - e.target.value.length);
 		onChange({ name, value: e.target.value });
 	};
-		
+
 	return (
 		<>
-		<label className={`${styles.profileAddPostLabel} ${className ? className : ''}`}>
-			<span>{label} {required ? <span className="required-field">*</span> : null}</span>
+		<label className={`field-label ${className ? className : ''}`}>
+			<span>{label} {required ? <span className="required-field" title={t("Це поле обов'язково")}>*</span> : null}</span>
 			<input
 				type={type ?? "text"}
 				name={name}
