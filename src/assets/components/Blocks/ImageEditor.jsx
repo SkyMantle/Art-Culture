@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function getPreviews(value) {
+	if (typeof value === "string") {
+		return [value]
+	}
+
 	const filesArray = Array.from(value)
 	const previews = filesArray.map(file => URL.createObjectURL(file))
 	return previews
