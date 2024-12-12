@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 import prisma from '../../prismaClient.js'
 import generateToken from '../utils/generateToken.js'
 import sendEmail from '../utils/sendEmails.js'
+import logger from "../utils/logging.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -45,12 +46,21 @@ export const register = async (req, res, next) => {
 				bio,
 			},
 		})
-		console.log('User object after creation:', user)
+		logger.debug('User object after creation:', user)
 		const token = generateToken(user)
 
 		const { password: pwd, ...userWithoutPassword } = user
-		console.log('Request body:', req.body)
-		console.log('Uploaded file:', req.file)
+		logger.debug('Request body:', req.body)
+		logger.debug('Uploaded file:', req.file)
+		
+		await sendEmail(
+			user.email,
+			'Підтвердження реестрації',
+			`Дякуємо за реестрацію на проекті ArtPlayUkraine.`,
+			`<p>Дякуємо за реестрацію на проекті ArtPlayUkraine.
+			<a href="${process.env.CLIENT_URL}">Перейти до сайту</a>
+			</p>`
+		)
 
 		res.status(201).json({
 			token,
@@ -126,7 +136,6 @@ export const login = async (req, res, next) => {
 		const token = generateToken(user)
 
 		const { password: pwd, ...userWithoutPassword } = user
-
 		res.json({ token, user: userWithoutPassword })
 	} catch (error) {
 		console.error('Login error:', error)
@@ -161,6 +170,7 @@ export const resetPassword = async (req, res, next) => {
 		await sendEmail(
 			user.email,
 			'Password Reset Request',
+			`Click the link to reset your password: ${resetLink}`,
 			`Click the link to reset your password: ${resetLink}`
 		)
 
