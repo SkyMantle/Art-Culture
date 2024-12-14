@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import ProfilePageContainer from "@components/Blocks/ProfilePageContainer";
-import API from "../../../utils/api.js";
 import Loading from "@components/Blocks/Loading.jsx";
 import LoadingError from "@components/Blocks/LoadingError.jsx";
-import TextEditor from '@components/Blocks/TextEditor'
-import TextAreaEditor from '@components/Blocks/TextAreaEditor'
+import ProfilePageContainer from "@components/Blocks/ProfilePageContainer";
+import SearchPainting from "@components/Blocks/SearchPainting.jsx";
+import TextAreaEditor from '@components/Blocks/TextAreaEditor';
+import TextEditor from '@components/Blocks/TextEditor';
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import ImageEditor from "../../components/Blocks/ImageEditor.jsx";
+import API from "../../../utils/api.js";
 
 const AdminArtTermsEdit = () => {
   const { t } = useTranslation();
@@ -44,9 +44,9 @@ const AdminArtTermsEdit = () => {
 		formDataToSend.append('content_en', formData.content_en)
 		formDataToSend.append('content_uk', formData.content_uk)
 
-		formData.images.forEach(image => {
-			formDataToSend.append('productImages', image)
-		})
+		if (formData.highlightedProduct && formData.highlightedProduct.length) {
+			formDataToSend.append('highlightedProductId', formData.highlightedProduct[0].id)
+		}
 
 		try {
 			const response = await API.post('/art-terms', formDataToSend, {
@@ -75,6 +75,11 @@ const AdminArtTermsEdit = () => {
 		const newFormData = { ...formData, [name]: value }
 		setFormData(newFormData)
 	};
+
+	const paintingsSelectionChange = (paintings) => {
+		const newFormData = { ...formData, highlightedProduct: paintings }
+		setFormData(newFormData)
+	};
   return (
     <ProfilePageContainer>
       <h2>{t("Редагування терміна")}</h2>
@@ -100,6 +105,8 @@ const AdminArtTermsEdit = () => {
               name='content_uk' value={formData.content_uk} html
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
+          <SearchPainting paintings={formData.highlightedProduct}
+            onChange={paintingsSelectionChange} />
         </div>
         <div className="field-group">
           <div className="form-group">
@@ -119,8 +126,6 @@ const AdminArtTermsEdit = () => {
           </div>
         </div>
       </div>
-      {/* <ImageEditor label={t('Додати зображення')} required
-        name='images' value={formData.images} onChange={textEditorOnChange} /> */}
       <button type='submit'>{t('Створити')}</button>
     </form>}
     </ProfilePageContainer>
