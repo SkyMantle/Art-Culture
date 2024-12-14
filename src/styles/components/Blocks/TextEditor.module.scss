@@ -7,8 +7,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: variables.$default-font;
     margin: variables.$responsiveSmallPadding 0 0 0;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -18,7 +19,6 @@
 .profileAddPostTextarea {
     /* Стиль для текстовых областей */
     margin: variables.$responsiveSmallPadding 0 0 0;
-    text-rendering: auto;
     color: fieldtext;
     letter-spacing: normal;
     word-spacing: normal;
@@ -28,23 +28,18 @@
     text-shadow: none;
     display: inline-block;
     text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
     cursor: text;
     overflow-wrap: break-word;
     background-color: field;
     column-count: initial !important;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #ddd;
-    border-image: initial;
+    border: 1px solid #ddd;
     white-space: pre-wrap;
     width: 100%;
     max-width: none;
     min-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*3);
     max-height: calc(calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))))*7);
     height: 100%;
-    padding: 0;
+    padding: 3px;
     font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
     font-family: variables.$default-font;
     resize: none;

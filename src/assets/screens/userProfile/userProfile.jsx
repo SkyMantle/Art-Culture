@@ -1,12 +1,14 @@
+import { getFormattedDate } from '@/utils/helper'
+import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import API from '../../../utils/api.js'
-import { getFormattedDate } from "@/utils/helper"
-import styles from '/src/styles/components/UserProfile/userProfile.module.scss'
-import ProfilePageContainer from '@components/Blocks/ProfilePageContainer'
 import ImageEditor from '../../components/Blocks/ImageEditor.jsx'
+import TextEditor from '../../components/Blocks/TextEditor.jsx'
+import styles from '/src/styles/components/UserProfile/userProfile.module.scss'
+import TextAreaEditor from '../../components/Blocks/TextAreaEditor.jsx'
 
 const UserProfile = () => {
 	const { user, updateUser, loading, error } = useAuth() // Access user and logout from context
@@ -45,7 +47,7 @@ const UserProfile = () => {
 		setServerMessage('')
 	}
 
-	const handleUpdateProfile = async e => {
+	const handleUpdateProfile = async (e) => {
 		e.preventDefault()
 		setServerMessage('')
 
@@ -90,18 +92,22 @@ const UserProfile = () => {
 				<div className={styles.profileInformationContainer}>
 					<div className={styles.profileAvatarWrapper}>
 						<div className={styles.profileAvatar}>
-						{profileImage && (<img
-								src={
-									profileImage instanceof File
-										? URL.createObjectURL(profileImage)
-										: profileImage.startsWith('http') ||
-												profileImage.startsWith('/uploads/profileImages')
-											? `${profileImage}`
-											: profileImage
-								}
-								alt='Profile'
-								className={styles.profileImage}
-							/>)}
+							{profileImage && (
+								<img
+									src={
+										profileImage instanceof File
+											? URL.createObjectURL(profileImage)
+											: profileImage.startsWith('http') ||
+												  profileImage.startsWith(
+														'/uploads/profileImages',
+												  )
+												? `${profileImage}`
+												: profileImage
+									}
+									alt="Profile"
+									className={styles.profileImage}
+								/>
+							)}
 						</div>
 					</div>
 
@@ -129,7 +135,9 @@ const UserProfile = () => {
 						</p>
 
 						{serverMessage && (
-							<p className={styles.ErrorMessage}>{serverMessage}</p>
+							<p className={styles.ErrorMessage}>
+								{serverMessage}
+							</p>
 						)}
 
 						<div className={styles.editButtonWrapper}>
@@ -146,7 +154,7 @@ const UserProfile = () => {
 					</div>
 				</div>
 
-				<div className='App'>
+				<div className="App">
 					{isOpen && (
 						<div className="modal-overlay">
 							<div className="modal-content">
@@ -155,12 +163,18 @@ const UserProfile = () => {
 										className={styles.editProfileForm}
 										onSubmit={handleUpdateProfile}
 									>
-										<div className={styles.modalTitleWrapper}>
+										<div
+											className={styles.modalTitleWrapper}
+										>
 											<h3 className={styles.modalTitle}>
 												{t('Редагування профілю')}
 											</h3>
 
-											<div className={styles.closeButtonWrapper}>
+											<div
+												className={
+													styles.closeButtonWrapper
+												}
+											>
 												<button
 													onClick={() => {
 														toggleEditMode()
@@ -168,49 +182,62 @@ const UserProfile = () => {
 													}}
 													className="button"
 												>
-													<span className={styles.close}>&times;</span>
+													<span
+														className={styles.close}
+													>
+														&times;
+													</span>
 												</button>
 											</div>
 										</div>
 
-										<div className={styles.profileModalNameWrapper}>
-											<p>
-												<strong>{t('П.І.Б.')}&#8194;</strong>
-											</p>
-
-											<input
-												type='text'
-												placeholder='Title'
-												name='title'
+										<div
+											className={
+												styles.profileModalNameWrapper
+											}
+										>
+											<TextEditor
+												name="title"
 												value={title}
-												onChange={e => setTitle(e.target.value)}
+												label={t('П.І.Б.')}
+												onChange={({ value }) =>
+													setTitle(value)
+												}
+												maxLength={191}
 											/>
 										</div>
 
-										<div className={styles.profileModalBioWrapper}>
-											<p>
-												<strong>{t('Про себе')}&#8194;</strong>
-											</p>
+										<div
+											className={
+												styles.profileModalBioWrapper
+											}
+										>
+											<TextAreaEditor label={t('Про себе')}
+												placeholder="Bio"
+												name='bio' value={bio}
+												maxLength={500} required onChange={({ value }) => setBio(value) } />
+										</div>
 
-											<textarea
-												placeholder='Bio'
-												name='bio'
-												value={bio}
-												onChange={e => setBio(e.target.value)}
+										<div
+											className={
+												styles.profileModalImageDownloadWrapper
+											}
+										>
+											<ImageEditor
+												label={t('Додати зображення')}
+												required
+												name="images"
+												value={profileImage}
+												onChange={({ value }) =>
+													setProfileImage(value[0])
+												}
 											/>
 										</div>
 
-										<div className={styles.profileModalImageDownloadWrapper}>
-										<ImageEditor
-											label={t('Додати зображення')}
-											required
-											name="images"
-											value={profileImage}
-											onChange={({ value }) => console.log(value) || setProfileImage(value[0])}
-										/>
-										</div>
-
-										<button className={styles.submitButton} type='submit'>
+										<button
+											className={styles.submitButton}
+											type="submit"
+										>
 											{t('Оновити профіль')}
 										</button>
 									</form>

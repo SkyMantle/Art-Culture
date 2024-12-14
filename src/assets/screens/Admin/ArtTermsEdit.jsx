@@ -92,12 +92,12 @@ const AdminArtTermsEdit = () => {
           </div>
           <div className="form-group">
             <TextAreaEditor label={t('Опис українською')}
-              name='description_uk' value={formData.description_uk}
+              name='description_uk' value={formData.description_uk} html
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
           <div className="form-group">
             <TextAreaEditor label={t('Стаття українською')}
-              name='content_uk' value={formData.content_uk}
+              name='content_uk' value={formData.content_uk} html
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
         </div>
@@ -109,12 +109,12 @@ const AdminArtTermsEdit = () => {
           </div>
           <div className="form-group">
             <TextAreaEditor label={t('Опис англійською')}
-              name='description_en' value={formData.description_en}
+              name='description_en' value={formData.description_en} html
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
           <div className="form-group">
             <TextAreaEditor label={t('Стаття англійською')}
-              name='content_en' value={formData.content_en}
+              name='content_en' value={formData.content_en} html
               maxLength={500} required onChange={textEditorOnChange} />
           </div>
         </div>
