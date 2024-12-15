@@ -103,16 +103,12 @@ app.use("/api/exhibitions", exhibitionRoutes)
 app.use("/api/art-terms", artTermsRoutes)
 app.use("/api/search", searchRoutes)
 app.use("/api/geo", geoRoutes)
-// Routes
-console.log(process.env.NODE_ENV)
-console.log(process.env.CLIENT_URL)
-console.log(userRoutes)
+
+// Route debugging
+console.log("Environment", process.env.NODE_ENV)
+console.log("Client URL", process.env.CLIENT_URL)
 
 // Error Handling Middleware
 app.use(errorHandler)
-app.get("/api/test", (req, res) => {
-  res.json({ message: "API is working!" })
-})
 
-app.use(errorHandler)
 export default app
