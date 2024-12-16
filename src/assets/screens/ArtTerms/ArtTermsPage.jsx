@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Letters from '@components/Blocks/Letters'
 import Loading from '@components/Blocks/Loading'
+import Painting from '@components/Blocks/Painting'
 import LoadingError from '@components/Blocks/LoadingError'
 import layoutStyles from '@styles/layout/Layout.module.scss'
 import styles from '@styles/layout/ArtTermsPage.module.scss'
@@ -70,9 +71,7 @@ function ArtTermsPage() {
 							<div key={artTerm.letter} className={styles.card}>
 								<div  className={styles.cardMedia}>
 									<a href={"/art-terms/" + artTerm.id}>
-										<div>
-											<picture></picture>
-										</div>
+										<Painting painting={artTerm.highlightedProduct} />
 									</a>
 								</div>
 								<div className={styles.cardContent}>
@@ -81,8 +80,11 @@ function ArtTermsPage() {
 
 										<a href={"/art-terms/" + artTerm.id}>{artTerm.title}</a>
 									</h2>
-									<div className='card-description'>
+									<div className={styles.cardDescription}>
 										<a href={"/art-terms/" + artTerm.id}>{artTerm.description}</a>
+									</div>
+									<div className={styles.cardCommands}>
+										<a href={"/art-terms/" + artTerm.id} className="button button-default">{t('Подивитися усі терміни')}</a>
 									</div>
 								</div>
 							</div>

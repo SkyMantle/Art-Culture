@@ -54,7 +54,7 @@ function ArtTermPage() {
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<Painting painting={artTerm.highlightedProduct} />
+				<Painting painting={artTerm.highlightedProduct} metadata />
 			</div>
 
 

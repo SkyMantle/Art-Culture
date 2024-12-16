@@ -26,6 +26,14 @@
     padding-left: variables.$responsiveMediumPadding;
 }
 
+.cardDescription {
+    margin-bottom: 2rem;
+}
+
+.cardCommands {
+    display: inline-flex;
+}
+
 .cardTitle {
     padding-bottom: variables.$responsiveSmallPadding;
     
