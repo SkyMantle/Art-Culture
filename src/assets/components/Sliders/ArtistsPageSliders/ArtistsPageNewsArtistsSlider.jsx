@@ -37,7 +37,7 @@ const Slide = ({ post, baseUrl }) => {
 						alt={t('Світлина мистецтва')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 				</div>

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Loading from '@components/Blocks/Loading'
 import LoadingError from '@components/Blocks/LoadingError'
+import Painting from '@components/Blocks/Painting'
 import layoutStyles from '@styles/layout/Layout.module.scss'
 
 function ArtTermPage() {
@@ -34,6 +35,7 @@ function ArtTermPage() {
 	const title = () => i18n.language == "en" ? artTerm.title_en : artTerm.title_uk;
 	const description = () => i18n.language == "en" ? artTerm.description_en : artTerm.description_uk;
 	const content = () => i18n.language == "en" ? artTerm.content_en : artTerm.content_uk;
+	console.log(artTerm)
 	return (
 		loading ? <Loading /> : error ? <LoadingError />
 			: <div className={`${layoutStyles.PageContainer}`}>
@@ -50,6 +52,11 @@ function ArtTermPage() {
 					{description()}
 				</p>
 			</div>
+
+			<div className={`${layoutStyles.DescriptionWrapper}`}>
+				<Painting painting={artTerm.highlightedProduct} />
+			</div>
+
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
 				<div>{content()}</div>

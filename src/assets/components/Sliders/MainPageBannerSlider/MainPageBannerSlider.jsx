@@ -19,7 +19,7 @@ const Slide = () => {
 	const handleMuseumPageClick = () => {
 		navigate('/MuseumPage')
 	}
-	
+
 	return (
 		<div className="MainPageBannerSliderCardContainer">
 
@@ -33,7 +33,7 @@ const Slide = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 
@@ -74,7 +74,7 @@ const Slide = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 
@@ -101,7 +101,7 @@ const Slide1 = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 
@@ -142,7 +142,7 @@ const Slide1 = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 
@@ -169,7 +169,7 @@ const Slide2 = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 
@@ -210,7 +210,7 @@ const Slide2 = () => {
 						alt={t('Фото музея')}
 						onError={e => {
 							e.target.onerror = null
-							e.target.src = '/public/Img/newsCardERROR.jpg'
+							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
 

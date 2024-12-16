@@ -103,7 +103,7 @@ function ArtistPage() {
 							alt={t('Фото митця')}
 							onError={e => {
 								e.target.onerror = null
-								e.target.src = '/public/Img/newsCardERROR.jpg'
+								e.target.src = '/Img/newsCardERROR.jpg'
 							}}
 						/>
 					</div>

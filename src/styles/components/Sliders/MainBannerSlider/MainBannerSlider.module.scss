@@ -16,7 +16,7 @@
 	height: calc(579px - (337 * ((1440px - 100vw) / (1440 - 375))));
 	max-height: 579px;
 	min-height: 458px;
-	background-image: url(/public/Img/mainBanner.jpeg);
+	background-image: url(/Img/mainBanner.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -103,7 +103,7 @@
 .bannerPreviousArrowButton {
 	// Стиль для кнопки предыдущей стрелки
 	// padding: 0 5px 0 0;
-	background: url(/public/Img/leftGreyArrow.svg);
+	background: url(/Img/leftGreyArrow.svg);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: center;
@@ -112,7 +112,7 @@
 .bannerNextArrowButton {
 	// Стиль для кнопки следующей стрелки	
 	// padding: 0 0 0 5px;
-	background: url(/public/Img/rightBlackArrow.svg);
+	background: url(/Img/rightBlackArrow.svg);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: center;
