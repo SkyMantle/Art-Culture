@@ -2,9 +2,10 @@ import prisma from '../../prismaClient.js'
 
 export const getArtTermsByLang = async (req, res, next) => {
 	try {
-		const lang = req.params.lang ?? "uk"
+		let lang = req.params.lang ?? "uk"
+        lang = lang.split('-')[0]
 		if (lang != "uk" && lang != "en") {
-			return res.status(400).json({ error: 'invalid language' })
+			lang = "uk"
 		}
 
         const orderBy = lang === "uk" ? { title_uk: 'asc' } : { title_en: 'asc' };
