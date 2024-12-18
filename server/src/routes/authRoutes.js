@@ -11,6 +11,7 @@ import {
   updateUserProfile,
 } from "../controllers/authController.js"
 import authenticateToken from "../middleware/authMiddleware.js"
+import museumLogoImageUploader from "../middleware/museumLogoImageUploader.js"
 import authorize from "../middleware/roleMIddleware.js"
 import upload from "../middleware/uploadUserProfileImages.js"
 
@@ -20,6 +21,8 @@ const router = express.Router()
 router.post(
   "/register",
   upload.single("profileImage"),
+  museumLogoImageUploader.upload,
+  museumLogoImageUploader.processImages,
 
   [
     body("email").isEmail().withMessage("Enter a valid email"),
@@ -93,6 +96,8 @@ router.put(
   "/me",
   authenticateToken,
   upload.single("profileImage"),
+  museumLogoImageUploader.upload,
+  museumLogoImageUploader.processImages,
   [
     body("title")
       .optional()
