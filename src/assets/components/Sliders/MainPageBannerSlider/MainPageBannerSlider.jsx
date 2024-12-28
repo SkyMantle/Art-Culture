@@ -10,6 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
+import Loading from '../../Blocks/Loading'
 
 // Import Swiper modules
 import { Navigation, Pagination } from 'swiper/modules'
@@ -25,9 +26,9 @@ const Slide = ({ museum, baseUrl, onClick }) => {
 
 	const museumLogoUrl = museum.museum_logo_image?.imageUrl
 		? getImageUrl(
-			museum.museum_logo_image.imageUrl,
-			'/Img/logoMuseum_3.png',
-		)
+				museum.museum_logo_image.imageUrl,
+				'/Img/logoMuseum_3.png',
+			)
 		: '/Img/logoMuseum_3.png' // Fallback logo
 
 	return (
@@ -56,7 +57,11 @@ const Slide = ({ museum, baseUrl, onClick }) => {
 
 					<div className="BannerSliderCardDescriptionWrapper">
 						<p className="BannerSliderCardDescription">
-							<TranslatedContent en={museum.bio} uk={museum.bio} html />
+							<TranslatedContent
+								en={museum.bio}
+								uk={museum.bio}
+								html
+							/>
 						</p>
 					</div>
 
@@ -126,7 +131,7 @@ const MainPageBannerSlider = () => {
 			>
 				{loading ? (
 					<SwiperSlide>
-						<div className="loading">{t('Завантаження...')}</div>
+						<Loading />
 					</SwiperSlide>
 				) : error ? (
 					<SwiperSlide>

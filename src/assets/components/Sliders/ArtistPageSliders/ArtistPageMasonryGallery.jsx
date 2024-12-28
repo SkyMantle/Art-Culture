@@ -939,7 +939,7 @@ const ArtistPageMasonryGallery = ({ products, baseUrl, creator }) => {
 			</div>
 			{/* More Arts Button */}
 			<div className={style.moreArtsButtonWrapper}>
-				<button className={style.moreArtsButton}>
+				{/* <button className={style.moreArtsButton}>
 					<p className={style.moreArtsButtonText}>
 						{t('Всі роботи Митця')}
 					</p>
@@ -953,7 +953,7 @@ const ArtistPageMasonryGallery = ({ products, baseUrl, creator }) => {
 							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
-				</button>
+				</button> */}
 			</div>
 		</div>
 	)

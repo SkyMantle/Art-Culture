@@ -513,7 +513,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, creator }) => {
 				{/* Gallery Title */}
 				<div className={style.galleryTitleWrapper}>
 					<h3 className={style.galleryTitle}>
-						{t('Роботи цього митця')}
+						{t('Експонати цього музею')}
 					</h3>
 				</div>
 
@@ -947,9 +947,9 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, creator }) => {
 			</div>
 			{/* More Arts Button */}
 			<div className={style.moreArtsButtonWrapper}>
-				<button className={style.moreArtsButton}>
+				{/* <button className={style.moreArtsButton}>
 					<p className={style.moreArtsButtonText}>
-						{t('Всі роботи Митця')}
+					{t('Всі експонати цьго музею')}
 					</p>
 					<img
 						className={`${style.buttonArrow}`}
@@ -961,7 +961,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, creator }) => {
 							e.target.src = '/Img/newsCardERROR.jpg'
 						}}
 					/>
-				</button>
+				</button> */}
 			</div>
 		</div>
 	)
