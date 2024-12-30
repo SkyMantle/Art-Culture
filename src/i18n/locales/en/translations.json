@@ -35,6 +35,7 @@
     "Додати публікацію": "Add post",
     "Завантаження...": "Loading...",
     "Заголовок та опис обов'язкові": "Title and content are required",
+    "Зарееструватися як": "Register as",
     "Зареєструватися": "Sign in",
     "Зберегти": "Save",
     "Згорнути текст": "Collapse text",
@@ -153,5 +154,8 @@
     "Юридична інформація": "Legal Notice",
     "з": "of",
     "символів залишилось": "characters remaining",
+    "тип_реестрації_користувач": "user",
+    "тип_реестрації_митець": "artist",
+    "тип_реестрації_музей": "museum",
     "у нижній частині новинних статей Art & Culture Online, профілів митців та попередніх переглядів виставок, або переглядайте сторінки митців нижче.": "subscription boxes at the bottom of Art & Culture Online news articles, artist profiles and exhibition previews, or browse the artist pages below."
 }

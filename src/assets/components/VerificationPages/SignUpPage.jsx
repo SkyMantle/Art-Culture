@@ -139,18 +139,14 @@ const SignUp = () => {
 					<p className={styles.ErrorMessage}>{serverMessage}</p>
 				)}
 				<form className={styles.SignUpForm} onSubmit={handleSubmit}>
-					<select
-						name="role"
-						value={signUpDetails.role}
-						onChange={handleChange}
-						className={styles.roleSelect}
-						required
-					>
-						<option value="USER">User</option>
-						<option value="MUSEUM">Museum</option>
-						<option value="CREATOR">Creator</option>
-						<option value="EDITOR">Editor</option>
-					</select>
+					<p>
+						{t("Зарееструватися як")}
+						<input type="radio" className='' required name="role" value="USER" checked={signUpDetails.role == 'USER'} onChange={handleChange} /> {t("тип_реестрації_користувач")}
+						<input type="radio" className='' required name="role" value="MUSEUM" checked={signUpDetails.role == 'MUSEUM'} onChange={handleChange} /> {t("тип_реестрації_музей")}
+						<input type="radio" className='' required name="role" value="CREATOR" checked={signUpDetails.role == 'CREATOR'} onChange={handleChange} /> {t("тип_реестрації_митець")}
+						{/* <input type="radio" className='' required name="role" value="EDITOR" checked={signUpDetails.role == 'EDITOR'} onChange={handleChange} /> Editor */}
+
+					</p>
 					<TextEditor
 						label="Email"
 						type="email"
