@@ -15,6 +15,7 @@ export const getArtTermsByLang = async (req, res, next) => {
                 highlightedProduct: {
                     include: {
                         images: true,
+                        author: true,
                     }
                 },
             },
@@ -71,6 +72,7 @@ export const getArtTermsByLetter = async (req, res, next) => {
                 highlightedProduct: {
                     include: {
                         images: true,
+                        author: true,
                     }
                 },
             },

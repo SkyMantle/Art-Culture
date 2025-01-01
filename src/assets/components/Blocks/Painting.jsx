@@ -1,42 +1,45 @@
 import PropTypes from 'prop-types'
 import TranslatedContent from '@components/Blocks/TranslatedContent'
 
-function Painting({ painting }) {
+function Painting({ painting, metadata }) {
 	return (
 		<figure className="article-media__figure">
-			<picture>
-				<img
-					alt=""
-					src={painting.images[0].imageUrl}
-					loading="lazy"
-					width="340"
-					height="481"
-				/>
-			</picture>
+			{painting.images.length > 0 ? (
+				<picture>
+					<img
+						alt=""
+						src={painting.images[0].imageUrl}
+						loading="lazy"
+						width="340"
+						height="481"
+					/>
+				</picture>
+			) : null}
 
+			{metadata ? (
 			<figcaption className="image__caption">
 				<p className="image__caption__piece">
-					{painting.author.title}
-					<br />
+					{painting.author ? (<>{painting.author.title}<br /></>) : null}
 					<em>
-						<a href="https://www.tate.org.uk/art/artworks/gleizes-portrait-of-jacques-nayral-t02410">
+						<a href={`/paintings/${painting.id}`}>
 							<TranslatedContent
 								en={painting.title_en}
 								uk={painting.title_uk}
 							/>
 						</a>
 					</em>
-					(1911)
+					<span className='image__caption__year'>(1911)</span>
 					<br />
 					Tate
 				</p>
-			</figcaption>
+			</figcaption>) : null}
 		</figure>
 	)
 }
 
 Painting.propTypes = {
 	painting: PropTypes.object,
+	metadata: PropTypes.bool,
 }
 
 export default Painting
