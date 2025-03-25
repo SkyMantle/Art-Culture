@@ -12,6 +12,7 @@ import AdminDashboard from '../Admin/AdminDashboard'
 import AdminNewsReview from '../Admin/AdminNewsReview'
 import AdminArtTermsEdit from '../Admin/ArtTermsEdit'
 import AdminArtTermsList from '../Admin/ArtTermsList'
+import AdminPostList from '../Admin/PostList'
 import AllArtistsPage from '../AllArtistsPage/AllArtistsPage'
 import AllExhibitionsPage from '../AllExhibitionsPage/AllExhibitionsPage'
 import AllExhibitsProductPage from '../AllExhibitsProductPage/AllExhibitsProductPage'
@@ -143,6 +144,14 @@ const Layout = ({ heading = '' }) => {
 						element={
 							<ProtectedRoute roles={['ADMIN']}>
 								<AdminArtTermsEdit />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/admin/posts"
+						element={
+							<ProtectedRoute roles={['ADMIN']}>
+								<AdminPostList />
 							</ProtectedRoute>
 						}
 					/>

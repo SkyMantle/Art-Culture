@@ -92,30 +92,6 @@ export const getPendingCounts = async (req, res, next) => {
   }
 }
 
-export const getPendingPosts = async (req, res, next) => {
-  try {
-    const posts = await prisma.post.findMany({
-      where: {
-        status: "PENDING",
-      },
-      include: {
-        author: {
-          select: {
-            id: true,
-            email: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    })
-    return res.json(posts)
-  } catch (error) {
-    next(error)
-  }
-}
-
 export const getPendingProducts = async (req, res, next) => {
   try {
     const products = await prisma.product.findMany({
@@ -127,34 +103,6 @@ export const getPendingProducts = async (req, res, next) => {
       },
     })
     return res.json(products)
-  } catch (error) {
-    next(error)
-  }
-}
-
-export const approvePost = async (req, res, next) => {
-  try {
-    const postId = parseInt(req.params.id, 10)
-    const updatedPost = await prisma.post.update({
-      where: { id: postId },
-      data: { status: "APPROVED" },
-    })
-
-    return res.json(updatedPost)
-  } catch (error) {
-    next(error)
-  }
-}
-
-export const rejectPost = async (req, res, next) => {
-  try {
-    const postId = parseInt(req.params.id, 10)
-    const updatedPost = await prisma.post.update({
-      where: { id: postId },
-      data: { status: "REJECTED" },
-    })
-
-    return res.json(updatedPost)
   } catch (error) {
     next(error)
   }

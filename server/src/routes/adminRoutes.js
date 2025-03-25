@@ -1,17 +1,17 @@
 import express from "express"
 import { body } from "express-validator"
 import {
-  approvePost,
   approveProduct,
   deleteUser,
   getAllUsers,
   getPendingCounts,
-  getPendingPosts,
   getPendingProducts,
-  rejectPost,
   rejectProduct,
   updateUserRole,
 } from "../controllers/adminController.js"
+import {
+  registerAdminPostRoutes,
+} from "../controllers/adminPostsController.js"
 import authenticateToken from "../middleware/authMiddleware.js"
 import authorize from "../middleware/roleMIddleware.js"
 
@@ -27,31 +27,13 @@ router.get(
 )
 
 router.get(
-  "/pending-posts",
-  authenticateToken,
-  authorize("ADMIN"),
-  getPendingPosts,
-)
-
-router.get(
   "/pending-products",
   authenticateToken,
   authorize("ADMIN"),
   getPendingProducts,
 )
 
-router.patch(
-  "/posts/:id/approve",
-  authenticateToken,
-  authorize("ADMIN"),
-  approvePost,
-)
-router.patch(
-  "/posts/:id/reject",
-  authenticateToken,
-  authorize("ADMIN"),
-  rejectPost,
-)
+registerAdminPostRoutes(router);
 
 router.patch(
   "/products/:id/approve",
