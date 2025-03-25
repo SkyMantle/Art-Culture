@@ -28,6 +28,14 @@ const AdminPostList = () => {
       cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
       header: () => <span>{t("Код")}</span>,
     }),
+    columnHelper.accessor("createdAt", {
+      header: () => <span>{t("Дата")}</span>,
+      cell: (info) => info.renderValue(),
+    }),
+    columnHelper.accessor("author.title", {
+      header: () => <span>{t("Автор")}</span>,
+      cell: (info) => info.renderValue(),
+    }),
     columnHelper.accessor("title_uk", {
       cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
       header: () => <span>{t("Назва українською")}</span>,
@@ -36,9 +44,9 @@ const AdminPostList = () => {
       header: () => <span>{t("Назва англійською")}</span>,
       cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
     }),
-    columnHelper.accessor("author.title", {
-      header: () => <span>{t("Автор")}</span>,
-      cell: (info) => info.renderValue(),
+    columnHelper.accessor("status", {
+      header: () => <span>{t("Статус")}</span>,
+      cell: (info) => t("Статус поста " + info.renderValue()),
     }),
   ];
 
