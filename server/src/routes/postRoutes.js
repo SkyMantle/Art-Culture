@@ -61,6 +61,7 @@ router.get("/", getAllPosts)
 
 // Get a single post by ID
 router.get("/:id", getPostById)
+router.get("/posts/:id", getPostById)
 
 // Update a post
 router.put(

@@ -148,7 +148,7 @@ const Layout = ({ heading = '' }) => {
 						}
 					/>
 					<Route
-						path="/admin/current-post-review"
+						path="/admin/posts/:id/review"
 						element={
 							<ProtectedRoute roles={['ADMIN']}>
 								<CurrentPostReview />

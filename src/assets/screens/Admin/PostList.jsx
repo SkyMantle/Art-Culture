@@ -14,6 +14,7 @@ import {
   getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { getFormattedDate, getFormattedTime } from "../../../utils/helper.js";
 
 const columnHelper = createColumnHelper();
 
@@ -30,7 +31,7 @@ const AdminPostList = () => {
     }),
     columnHelper.accessor("createdAt", {
       header: () => <span>{t("Дата")}</span>,
-      cell: (info) => info.renderValue(),
+      cell: (info) => <>{getFormattedDate(info.getValue())} {getFormattedTime(info.getValue())}</>,
     }),
     columnHelper.accessor("author.title", {
       header: () => <span>{t("Автор")}</span>,
@@ -46,7 +47,7 @@ const AdminPostList = () => {
     }),
     columnHelper.accessor("status", {
       header: () => <span>{t("Статус")}</span>,
-      cell: (info) => t("Статус поста " + info.renderValue()),
+      cell: (info) => info.renderValue() == "PENDING" ? <a href={`/admin/posts/${info.row.getValue("id")}/review`}>{t("Статус поста " + info.renderValue())}</a> : t("Статус поста " + info.renderValue()),
     }),
   ];
 
@@ -54,8 +55,9 @@ const AdminPostList = () => {
     const fetchUserPosts = async () => {
       try {
         const response = await API.get("/admin/posts");
+		const dataFromServer = response.data
         setData(
-          Array.isArray(response.data.data) ? response.data.data : []
+          Array.isArray(dataFromServer.data) ? dataFromServer.data : []
         );
       } catch (err) {
         setError(t("Помилка завантаження"));
