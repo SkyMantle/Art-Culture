@@ -171,13 +171,13 @@ const AdminDashboard = () => {
 								className={styles.AdminDashboardStatisticsItemValue}
 								style={{ visibility: value === 0 ? 'hidden' : 'visible' }}
 							>
-								{value}
+								<a href={`/admin/${key}/review`}>{value}</a>
 							</h3>
 							<button
 								className={styles.AdminDashboardDemandARelookButton}
 								style={{ visibility: value === 0 ? 'hidden' : 'visible' }}
 							>
-								{t('Переглянути')}
+								<a href={`/admin/${key}/review`}>{t('Переглянути')}</a>
 							</button>
 						</div>
 					)
