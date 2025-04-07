@@ -101,7 +101,16 @@ const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 					</div>
 					{/* <LikeAndShare className={sliderStyles.LikeAndShareFixed} /> */}
 				</div>
-				<div className="NewsSliderBottomInnerWrapper">
+				{loading ? (
+					<div className="loading">
+						{t('Завантаження...')}
+					</div>) : error ? (
+							<div className="error">{error}</div>
+						) : creatorPosts.length === 0 ? (
+							<div className="noPosts">
+								{t('Немає публікацій від митців.')}
+							</div>) : (
+								<div className="NewsSliderBottomInnerWrapper">
 					<Swiper
 						modules={[Navigation, Pagination]}
 						spaceBetween={0}
@@ -111,23 +120,7 @@ const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 						onSlideChange={() => console.log('slide change')}
 						onSwiper={(swiper) => console.log(swiper)}
 					>
-						{loading ? (
-							<SwiperSlide>
-								<div className="loading">
-									{t('Завантаження...')}
-								</div>
-							</SwiperSlide>
-						) : error ? (
-							<SwiperSlide>
-								<div className="error">{error}</div>
-							</SwiperSlide>
-						) : creatorPosts.length === 0 ? (
-							<SwiperSlide>
-								<div className="noPosts">
-									{t('Немає публікацій від митців.')}
-								</div>
-							</SwiperSlide>
-						) : (
+						{(
 							creatorPosts.map((post) => (
 								<SwiperSlide key={post.id}>
 									<Slide post={post} baseUrl={baseUrl} />
@@ -138,7 +131,8 @@ const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 					<div className={'${swiper-button-prev}'}></div>
 					<div className={'${swiper-pagination}'}></div>
 					<div className={'${swiper-button-next}'}></div>
-				</div>
+					</div>
+				)}
 			</div>
 		</div>
 	)
