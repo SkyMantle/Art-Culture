@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
@@ -10,8 +11,6 @@ import 'swiper/css/pagination'
 // Import Swiper modules
 import { Navigation, Pagination } from 'swiper/modules'
 
-import LikeAndShare from '@components/Blocks/LikeAndShare'
-import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
 import '@styles/components/Sliders/Base/NewsSlider.scss'
 import { useNavigate } from 'react-router-dom'
 import { getBaseUrl } from '../../../../utils/helper'
@@ -66,7 +65,7 @@ const Slide = ({ post, baseUrl }) => {
 	)
 }
 
-const ArtistPageNewsArtistsSlider = () => {
+const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 	const { t } = useTranslation()
 	const [creatorPosts, setCreatorPosts] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -77,7 +76,7 @@ const ArtistPageNewsArtistsSlider = () => {
 	useEffect(() => {
 		const fetchCreatorPosts = async () => {
 			try {
-				const response = await axios.get('/api/posts/creators')
+				const response = await axios.get('/api/posts/creators/' + authorId)
 				console.log('Received creator posts:', response.data)
 				setCreatorPosts(response.data.posts || [])
 				setLoading(false)
@@ -143,6 +142,11 @@ const ArtistPageNewsArtistsSlider = () => {
 			</div>
 		</div>
 	)
+}
+
+
+ArtistPageNewsArtistsSlider.propTypes = {
+	authorId: PropTypes.number.isRequired
 }
 
 export default ArtistPageNewsArtistsSlider
