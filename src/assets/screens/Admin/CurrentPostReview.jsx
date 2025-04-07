@@ -19,6 +19,7 @@ const CurrentPostReview = () => {
     useEffect(() => {
         async function fetchUserPosts() {
             try {
+                setLoading(true);
                 const response = await API.get("/posts/" + id);
                 setData(response.data);
             } catch (err) {
@@ -30,6 +31,30 @@ const CurrentPostReview = () => {
 
         fetchUserPosts();
     }, []);
+
+	const acceptPost = async () => {
+		try {
+			setLoading(true);
+			await API.patch("/admin/posts/" + id + "/approve");
+			navigate('/admin/posts/review')
+		} catch (err) {
+			setError(t("Помилка завантаження"));
+		} finally {
+			setLoading(false);
+		}
+	}
+
+	const rejectPost = async () => {
+		try {
+			setLoading(true);
+			await API.patch("/admin/posts/" + id + "/reject");
+			navigate('/admin/posts/review')
+		} catch (err) {
+			setError(t("Помилка завантаження"));
+		} finally {
+			setLoading(false);
+		}
+	}
 
     return (
         <ProfilePageContainer>
@@ -88,13 +113,13 @@ const CurrentPostReview = () => {
                             <div className={`${styles.ButtonsContainer}`}>
                                 <button
                                     className={`${styles.Button} ${styles.AcceptButton}`}
-                                    onClick={() => navigate('/admin/accept-post')}
+                                    onClick={acceptPost}
                                 >
                                     {t('Прийняти')}
                                 </button>
                                 <button
                                     className={`${styles.Button} ${styles.RejectButton}`}
-                                    onClick={() => navigate('/admin/reject-post')}
+                                    onClick={rejectPost}
                                 >
                                     {t('Відхилити')}
                                 </button>
