@@ -52,7 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 23px 0 0 0;
+  margin: $responsiveMediumPadding 0 0 0;
   height: auto;
 }
 
@@ -85,7 +85,7 @@
 .newsPageBottomCardsContainer {
   /* Контейнер для верхних карточек */
   display: flex;
-  margin: 23px $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  margin: $responsiveMediumPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
 }
 
 .newsPageTopCardsWrapper,
@@ -93,13 +93,13 @@
   /* Контейнер для верхних карточек */
   display: flex;
   flex-wrap: wrap;
-  margin: 0 calc(-10 / 1440 * 100vw);
+  margin: 0 $responsiveSmallPadding;
 }
 
 .newsPageCardContainer {
   /* Контейнер для карточки новостей */
-  padding: 0 calc(10 / 1440 * 100vw);
-  margin: 0 0 calc(60px - (9 * ((1440px - 100vw) / (1440 - 375)))) 0;
+  padding: 0 $responsiveSmallPadding;
+  margin: 0 0 $responsiveBigPadding 0;
   width: calc(100% / 2);
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@
 
 .newsPageCardTitleWrapper {
   /* Обертка для заголовка карточки */
-  margin: calc(26px - (9 * ((1440px - 100vw) / (1440 - 375)))) 0 0 0;
+  margin: $responsiveMediumPadding 0 0 0;
   display: flex;
   flex-direction: column;
 }
@@ -150,7 +150,7 @@
 
 .newsPageCardDescriptionWrapper {
   /* Обертка для описания карточки */
-  margin: calc(18px - (9 * ((1440px - 100vw) / (1440 - 375)))) 0 0 0;
+  margin: $responsiveSmallPadding 0 0 0;
   height: calc(
     calc(20px - (2 * ((1440px - 100vw) / (1440 - 375)))) * 3
   ); // Делаем ограничение вывода текста построчечно
@@ -167,7 +167,7 @@
 
 .newsPageCardClockDateAndReadMoreButtonWrapper {
   /* Обертка для часов, даты и кнопки "Читать далее" */
-  margin: calc(18px - (2 * ((1440px - 100vw) / (1440 - 375)))) 0 0 0;
+  margin: $responsiveSmallPadding 0 0 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -188,7 +188,7 @@
 
 .newsPageCardDateWrapper {
   /* Обертка для даты */
-  margin: 0 0 0 calc(10px - (3 * ((1440px - 100vw) / (1440 - 375))));
+  margin: 0 0 0 $responsiveSmallPadding;
   display: flex;
 }
 
@@ -259,7 +259,7 @@
 
 .newsPageNewsButtonTitle {
   /* Стили для текста кнопки */
-  margin: 0 calc(12px - (2 * ((1440px - 100vw) / (1440 - 375)))) 0 0;
+  margin: 0 $responsiveSmallPadding 0 0;
   font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
   font-weight: 500;
 }
@@ -276,7 +276,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 63px $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  margin: $responsiveBigPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
 }
 
 .newsPageInputMailTitle {
@@ -298,7 +298,7 @@
 .newsPageInputMail {
   /* Поле ввода email, которое растёт по тексту */
   display: inline-block;
-  margin: 25px 0 0 0 !important;
+  margin: $responsiveMediumPadding 0 0 0 !important;
   border-radius: 34px !important;
   border: 1px solid #000 !important;
   padding: $staticButtonLeftAndRightPadding;
@@ -328,7 +328,7 @@
   /* Контейнер для кнопки регистрации */
   display: flex;
   justify-content: center;
-  margin: 20px 0 0 0 !important;
+  margin: $responsiveSmallPadding 0 0 0 !important;
   padding: 0 $responsiveLeftAndRightPadding;
 }
 
@@ -420,6 +420,11 @@
   //     font-size: 28px;
   // }
 
+  .newsPageSearchContainer {
+    /* Контейнер для поиска авторов */
+    margin: $staticPcMediumPadding 0 0 0;
+  }
+
   .newsPageSearchInput {
     /* Поле ввода для поиска авторов */
     font-size: 18px;
@@ -449,6 +454,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  .newsPageSearchContainer {
+    /* Контейнер для поиска авторов */
+    margin: $staticMobileMediumPadding 0 0 0;
   }
 
   .newsPageMoreNewsButtonAndLikeAndShareWrapper {
