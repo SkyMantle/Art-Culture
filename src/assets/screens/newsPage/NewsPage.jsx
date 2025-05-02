@@ -3,7 +3,7 @@ import TranslatedContent from '@components/Blocks/TranslatedContent.jsx'
 import NewsPageAuthorsSlider from '@components/Sliders/NewsPageAuthorsSlider/NewsPageAuthorsSlider.jsx'
 import styles from '@styles/layout/newsPage.module.scss'
 import axios from 'axios'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import searchStyle from '../../../styles/layout/newsPage.module.scss'
@@ -28,10 +28,6 @@ function NewsPage() {
 	const [visiblePostsCount, setVisiblePostsCount] = useState(
 		getPostsCount(window.innerWidth),
 	)
-
-	const [value, setValue] = useState('');
-	const inputRef = useRef(null);
-	const mirrorRef = useRef(null);
 
 	// Function to determine number of posts to display based on window width
 	function getPostsCount(width) {
@@ -93,12 +89,6 @@ function NewsPage() {
 		fetchPosts()
 	}, [])
 
-	useEffect(() => {
-		if (mirrorRef.current && inputRef.current) {
-			mirrorRef.current.textContent = value || inputRef.current.placeholder;
-			inputRef.current.style.width = `${mirrorRef.current.offsetWidth}px`;
-		}
-	}, [value]);
 	// Filter posts based on search term (author's title or email)
 	const filteredPosts = posts.filter((post) => {
 		const authorName = post.author.title || post.author.email
@@ -106,11 +96,11 @@ function NewsPage() {
 	})
 
 	const handleNewsPageClick = () => {
-		navigate('/news-page')
+		navigate('/NewsPage')
 	}
 
 	const handleSignUpClick = () => {
-		navigate('/signup')
+		navigate('/SignUp')
 	}
 
 	const handlePostPageClick = (id) => {
@@ -136,6 +126,16 @@ function NewsPage() {
 					}}
 				/>
 			</div>
+			{/* Search Input */}
+			{/* <div className={`${styles.newsPageSearchContainer}`}>
+				<input
+					className={`${styles.newsPageSearchInput}`}
+					type="text"
+					placeholder={t('Пошук авторів')}
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+				/>
+			</div> */}
 			<Search
 				className={searchStyle.newsPageSearchContainer}
 				searchInput={searchStyle.newsPageSearchInput}
@@ -348,7 +348,6 @@ function NewsPage() {
 												>
 													<TranslatedContent
 														en={post.title_en}
-												html
 														uk={post.title_uk}
 														maxLength={100}
 													/>
@@ -366,6 +365,7 @@ function NewsPage() {
 														en={post.content_en}
 														uk={post.content_uk}
 														maxLength={150}
+														html
 													/>
 												</p>
 											</div>
@@ -451,30 +451,12 @@ function NewsPage() {
 				<p className={`${styles.newsPageInputMailTitle}`}>
 					{t('Підписатися на розсилку')}
 				</p>
-				{/* <div className={`${styles.inputWrapper}`}>
-					<input
-						className={`${styles.newsPageInputMail}`}
-						type="email"
-						placeholder={t('Введіть ваш email')} oninput="this.nextElementSibling.textContent = this.value" />
-					<span className={`${styles.inputMirror}`} aria-hidden="true"></span>
-				</div> */}
-				<div className={`${styles.inputWrapper}`}>
-					<input
-						type="email"
-						className={`${styles.newsPageInputMail}`}
-						placeholder={t('Введіть ваш email')}
-						value={value}
-						ref={inputRef}
-						onChange={(e) => setValue(e.target.value)}
-					/>
-					<span className={`${styles.inputMirror}`} ref={mirrorRef} />
-				</div>
-				{/* <input
+				<input
 					className={`${styles.newsPageInputMail}`}
 					type="email"
 					placeholder={t('Введіть ваш email')}
-					// You can add value and onChange handlers if needed
-				/> */}
+				// You can add value and onChange handlers if needed
+				/>
 			</div>
 			<div className={`${styles.newsPageSignUpButtonContainer}`}>
 				<button
