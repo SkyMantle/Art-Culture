@@ -148,25 +148,7 @@ function NewsPage() {
 	const [visiblePostsCount, setVisiblePostsCount] = useState(
 		getPostsCount(window.innerWidth),
 	)
-
-	// Function to determine number of posts to display based on window width
-	// function getPostsCount(width) {
-	// 	if (width === null || width === undefined) {
-	// 		throw new Error('Width must be a number')
-	// 	}
-	// 	if (width > 1920) {
-	// 		return 4
-	// 	}
-	// 	if (width >= 1600 && width <= 1920) {
-	// 		return 3
-	// 	}
-	// 	if (width > 1440 && width < 1600) {
-	// 		return 2
-	// 	}
-	// 	if (width <= 1440) {
-	// 		return 2
-	// 	}
-	// }
+	const [maxPostsCount, setMaxPostsCount] = useState(0)
 
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
@@ -188,9 +170,6 @@ function NewsPage() {
 			const newPostCount = getPostsCount(window.innerWidth)
 			if (newPostCount !== visiblePostsCount) {
 				setVisiblePostsCount(newPostCount)
-				console.log(
-					`Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
-				)
 			}
 		}
 
@@ -202,7 +181,17 @@ function NewsPage() {
 		return () => {
 			window.removeEventListener('resize', handleResize)
 		}
-	}, [visiblePostsCount])
+	}, [visiblePostsCount, posts])
+	useEffect(() => {
+		const handleResize = () => {
+			const newMaxPostsCount = Math.min(posts.length, Math.max(maxPostsCount, visiblePostsCount * 2))
+			setMaxPostsCount(newMaxPostsCount)
+			console.log('Max posts count updated:', newMaxPostsCount)
+		}
+
+		// Initial check
+		handleResize()
+	}, [visiblePostsCount, posts])
 
 	// Fetch all posts from the server
 	useEffect(() => {
@@ -230,7 +219,7 @@ function NewsPage() {
 	})
 
 	const handleNewsPageClick = () => {
-		navigate('/NewsPage')
+		setMaxPostsCount(maxPostsCount + visiblePostsCount)
 	}
 
 	const handleSignUpClick = () => {
@@ -310,7 +299,7 @@ function NewsPage() {
 						</p>
 					) : (
 						filteredPosts
-							.slice(visiblePostsCount, visiblePostsCount + visiblePostsCount)
+							.slice(visiblePostsCount, maxPostsCount)
 							.map((post) => <PostCard key={post.id} post={post} />)
 					)}
 				</div>
@@ -320,23 +309,24 @@ function NewsPage() {
 				className={`${styles.newsPageMoreNewsButtonAndLikeAndShareWrapper}`}
 			>
 				<div className={`${styles.newsPageMoreNewsButtonWrapper}`}>
-					<button
-						className={`${styles.newsPageMoreNewsButton}`}
-						onClick={handleNewsPageClick}
-					>
-						<p className={`${styles.newsPageNewsButtonTitle}`}>
-							{t('Більше новин')}
-						</p>
-						<img
-							className={`${styles.newsPageNewsButtonImg}`}
-							src={'/Img/buttonArrow.svg'}
-							alt={t('Стрілка')}
-							onError={(e) => {
-								e.target.onerror = null
-								e.target.src = '/mainNewImg/buttonArrow.svg' // Fallback image
-							}}
-						/>
-					</button>
+					{maxPostsCount < posts.length ?
+						(<button
+							className={`${styles.newsPageMoreNewsButton}`}
+							onClick={handleNewsPageClick}
+						>
+							<p className={`${styles.newsPageNewsButtonTitle}`}>
+								{t('Більше новин')}
+							</p>
+							<img
+								className={`${styles.newsPageNewsButtonImg}`}
+								src={'/Img/buttonArrow.svg'}
+								alt={t('Стрілка')}
+								onError={(e) => {
+									e.target.onerror = null
+									e.target.src = '/mainNewImg/buttonArrow.svg' // Fallback image
+								}}
+							/>
+						</button>) : null}
 				</div>
 
 				{/* <LikeAndShare className={sliderStyles.LikeAndShareFixed} /> */}
