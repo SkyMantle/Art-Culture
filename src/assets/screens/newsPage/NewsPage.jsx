@@ -30,21 +30,36 @@ function NewsPage() {
 	)
 
 	// Function to determine number of posts to display based on window width
+	// function getPostsCount(width) {
+	// 	if (width === null || width === undefined) {
+	// 		throw new Error('Width must be a number')
+	// 	}
+	// 	if (width > 1920) {
+	// 		return 4
+	// 	}
+	// 	if (width >= 1600 && width <= 1920) {
+	// 		return 3
+	// 	}
+	// 	if (width > 1440 && width < 1600) {
+	// 		return 2
+	// 	}
+	// 	if (width <= 1440) {
+	// 		return 2
+	// 	}
+	// }
+
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
 			throw new Error('Width must be a number')
 		}
-		if (width > 1920) {
+		if (width => 1920) {
+			return 8
+		}
+		if (width >= 1600 && width <= 1919) {
+			return 6
+		}
+		if (width < 1600) {
 			return 4
-		}
-		if (width >= 1600 && width <= 1920) {
-			return 3
-		}
-		if (width > 1440 && width < 1600) {
-			return 2
-		}
-		if (width <= 1440) {
-			return 2
 		}
 	}
 
