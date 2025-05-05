@@ -202,14 +202,6 @@
   color: $red;
 }
 
-.newsPageSlider {
-  /* Слайдер новостей */
-}
-
-.newsPageBottomCardContainer {
-  /* Контейнер для нижних карточек */
-}
-
 .newsPageMoreNewsButtonAndLikeAndShareWrapper {
   /* Обертка для кнопки "Все новости" и лайка/шаринга */
   margin: 0 $responsiveLeftAndRightPadding;
@@ -336,10 +328,255 @@
 }
 
 @media (min-width: 1441px) {
+  .newsPageContainer {
+    /* Основной контейнер страницы новостей */
+    margin: $staticPcTopPadding 0 0 0;
+  }
+
+  .newsPageTitleContainer {
+    /* Контейнер для заголовка страницы новостей */
+    margin: $staticPcBigPadding $responsiveLeftAndRightPadding $staticPcMediumPadding $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageHorizontalSeparator {
+    /* Горизонтальный разделитель */
+    width: 60px;
+  }
+
+  .newsPageSearchContainer {
+    /* Контейнер для поиска авторов */
+    margin: $staticPcMediumPadding 0 0 0;
+  }
+
+  .newsPageSearchInput {
+    /* Поле ввода для поиска авторов */
+    padding: 0 $staticPcSmallPadding !important;
+  }
+
+  .newsPageTopCardsContainer,
+  .newsPageBottomCardsContainer {
+    /* Контейнер для верхних карточек */
+    margin: $staticPcMediumPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageTopCardsWrapper,
+  .newsPageBottomCardsWrapper {
+    /* Контейнер для верхних карточек */
+    margin: 0 calc(-1 * $staticPcSmallPadding);
+  }
+
+  .newsPageCardContainer {
+    /* Контейнер для карточки новостей */
+    padding: 0 $staticPcSmallPadding;
+    margin: 0 0 $staticPcBigPadding 0;
+  }
+  
+  .newsPageCardTitleWrapper {
+    /* Обертка для заголовка карточки */
+    margin: $staticPcMediumPadding 0 0 0;
+  }
+
+  .newsPageCardTitle {
+    /* Заголовок карточки новостей */
+    height: calc(22px * 2); // Делаем ограничение вывода текста построчечно
+  }
+
+  .newsPageCardDescriptionWrapper {
+    /* Обертка для описания карточки */
+    margin: $staticPcSmallPadding 0 0 0;
+    height: calc(20px * 3); // Делаем ограничение вывода текста построчечно
+  }
+
+  .newsPageCardDescription {
+    /* Описание карточки новостей */
+    line-height: 20px;
+    font-size: 16px;
+  }
+
+  .newsPageCardClockDateAndReadMoreButtonWrapper {
+    /* Обертка для часов, даты и кнопки "Читать далее" */
+    margin: $staticPcSmallPadding 0 0 0;
+  }
+
+  .newsPageCardDateWrapper {
+    /* Обертка для даты */
+    margin: 0 0 0 $staticPcSmallPadding;
+  }
+
+  .newsPageCardDate {
+    /* Дата карточки новостей */
+    font-size: 18px;
+  }
+
+  .newsPageMoreNewsButtonAndLikeAndShareWrapper {
+    /* Обертка для кнопки "Все новости" и лайка/шаринга */
+    margin: 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageNewsButtonTitle {
+    /* Стили для текста кнопки */
+    margin: 0 $staticButtonLeftAndRightPadding 0 0;
+    font-size: 16px;
+  }
+
+  .newsPageInputMailContainer {
+    /* Контейнер для поля ввода email */
+    margin: $staticPcBigPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageInputMailTitle {
+    /* Заголовок поля ввода email */
+    font-size: 18px;
+  }
+
+  .newsPageInputMail {
+    /* Поле ввода email */
+    margin: $staticPcMediumPadding 0 0 0 !important;
+    padding: $staticPcSmallPadding !important;
+    font-size: 16px;
+  }
+
+  .newsPageSignUpButtonContainer {
+    /* Контейнер для кнопки регистрации */
+    display: flex;
+    justify-content: center;
+    margin: $staticPcMediumPadding 0 0 0 !important;
+    padding: 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageSignUpButton {
+    /* Кнопка регистрации */
+    font-size: 16px;
+  }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 799px) {  
+  .newsPageCardContainer {
+    /* Контейнер для карточки новостей */
+    width: 100%;
+  }
 }
+
 
 @media (max-width: 569px) {
+  .newsPageContainer {
+    /* Основной контейнер страницы новостей */
+    margin: $staticMobileTopPadding 0 0 0;
+  }
+
+  .newsPageTitleContainer {
+    /* Контейнер для заголовка страницы новостей */
+    margin: $staticMobileBigPadding $responsiveLeftAndRightPadding $staticMobileMediumPadding $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageHorizontalSeparator {
+    /* Горизонтальный разделитель */
+    width: 40px;
+  }
+
+  .newsPageSearchContainer {
+    /* Контейнер для поиска авторов */
+    margin: $staticMobileMediumPadding 0 0 0;
+  }
+
+  .newsPageSearchInput {
+    /* Поле ввода для поиска авторов */
+    padding: 0 $staticMobileSmallPadding !important;
+  }
+
+  .newsPageTopCardsContainer,
+  .newsPageBottomCardsContainer {
+    /* Контейнер для верхних карточек */
+    margin: $staticMobileMediumPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageTopCardsWrapper,
+  .newsPageBottomCardsWrapper {
+    /* Контейнер для верхних карточек */
+    margin: 0 calc(-1 * $staticMobileSmallPadding);
+  }
+
+  .newsPageCardContainer {
+    /* Контейнер для карточки новостей */
+    padding: 0 $staticMobileSmallPadding;
+    margin: 0 0 $staticMobileBigPadding 0;
+  }
+  
+  .newsPageCardTitleWrapper {
+    /* Обертка для заголовка карточки */
+    margin: $staticMobileMediumPadding 0 0 0;
+  }
+
+  .newsPageCardTitle {
+    /* Заголовок карточки новостей */
+    height: calc(16px * 2); // Делаем ограничение вывода текста построчечно
+  }
+
+  .newsPageCardDescriptionWrapper {
+    /* Обертка для описания карточки */
+    margin: $staticMobileSmallPadding 0 0 0;
+    height: calc(18px * 3); // Делаем ограничение вывода текста построчечно
+  }
+
+  .newsPageCardDescription {
+    /* Описание карточки новостей */
+    line-height: 18px;
+    font-size: 14px;
+  }
+
+  .newsPageCardClockDateAndReadMoreButtonWrapper {
+    /* Обертка для часов, даты и кнопки "Читать далее" */
+    margin: $staticMobileSmallPadding 0 0 0;
+  }
+
+  .newsPageCardDateWrapper {
+    /* Обертка для даты */
+    margin: 0 0 0 $staticMobileSmallPadding;
+  }
+
+  .newsPageCardDate {
+    /* Дата карточки новостей */
+    font-size: 14px;
+  }
+
+  .newsPageMoreNewsButtonAndLikeAndShareWrapper {
+    /* Обертка для кнопки "Все новости" и лайка/шаринга */
+    margin: 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageNewsButtonTitle {
+    /* Стили для текста кнопки */
+    margin: 0 $staticButtonLeftAndRightPadding 0 0;
+    font-size: 12px;
+  }
+
+  .newsPageInputMailContainer {
+    /* Контейнер для поля ввода email */
+    margin: $staticMobileBigPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageInputMailTitle {
+    /* Заголовок поля ввода email */
+    font-size: 14px;
+  }
+
+  .newsPageInputMail {
+    /* Поле ввода email */
+    margin: $staticMobileMediumPadding 0 0 0 !important;
+    padding: $staticMobileSmallPadding !important;
+    font-size: 14px;
+  }
+
+  .newsPageSignUpButtonContainer {
+    /* Контейнер для кнопки регистрации */
+    display: flex;
+    justify-content: center;
+    margin: $staticMobileMediumPadding 0 0 0 !important;
+    padding: 0 $responsiveLeftAndRightPadding;
+  }
+
+  .newsPageSignUpButton {
+    /* Кнопка регистрации */
+    font-size: 14px;
+  }
 }
