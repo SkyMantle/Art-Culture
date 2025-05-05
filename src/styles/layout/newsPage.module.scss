@@ -46,6 +46,7 @@
   justify-content: center;
   align-items: center;
   margin: $responsiveMediumPadding 0 0 0;
+  margin: $responsiveMediumPadding 0 0 0;
   height: auto;
 }
 
@@ -77,12 +78,14 @@
 .newsPageLikeAndShareContainer {
   /* Контейнер для кнопок лайка и шаринга */
   display: none;
+  display: none;
 }
 
 .newsPageTopCardsContainer,
 .newsPageBottomCardsContainer {
   /* Контейнер для верхних карточек */
   display: flex;
+  margin: $responsiveMediumPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
   margin: $responsiveMediumPadding $responsiveLeftAndRightPadding 0 $responsiveLeftAndRightPadding;
 }
 
@@ -92,10 +95,13 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 calc(-1 * $responsiveSmallPadding);
+  margin: 0 calc(-1 * $responsiveSmallPadding);
 }
 
 .newsPageCardContainer {
   /* Контейнер для карточки новостей */
+  padding: 0 $responsiveSmallPadding;
+  margin: 0 0 $responsiveBigPadding 0;
   padding: 0 $responsiveSmallPadding;
   margin: 0 0 $responsiveBigPadding 0;
   width: calc(100% / 2);
@@ -129,6 +135,7 @@
 .newsPageCardTitleWrapper {
   /* Обертка для заголовка карточки */
   margin: $responsiveMediumPadding 0 0 0;
+  margin: $responsiveMediumPadding 0 0 0;
   display: flex;
   flex-direction: column;
 }
@@ -137,11 +144,14 @@
   /* Заголовок карточки новостей */
   display: block;
   height: calc(calc(22px - (6 * ((1440px - 100vw) / (1440 - 375)))) * 2); // Делаем ограничение вывода текста построчечно
+  height: calc(calc(22px - (6 * ((1440px - 100vw) / (1440 - 375)))) * 2); // Делаем ограничение вывода текста построчечно
   overflow: hidden;
 }
 
 .newsPageCardDescriptionWrapper {
   /* Обертка для описания карточки */
+  margin: $responsiveSmallPadding 0 0 0;
+  height: calc(calc(20px - (2 * ((1440px - 100vw) / (1440 - 375)))) * 3); // Делаем ограничение вывода текста построчечно
   margin: $responsiveSmallPadding 0 0 0;
   height: calc(calc(20px - (2 * ((1440px - 100vw) / (1440 - 375)))) * 3); // Делаем ограничение вывода текста построчечно
   overflow: hidden;
@@ -157,6 +167,7 @@
 
 .newsPageCardClockDateAndReadMoreButtonWrapper {
   /* Обертка для часов, даты и кнопки "Читать далее" */
+  margin: $responsiveSmallPadding 0 0 0;
   margin: $responsiveSmallPadding 0 0 0;
   display: flex;
   flex-direction: row;
@@ -178,6 +189,7 @@
 
 .newsPageCardDateWrapper {
   /* Обертка для даты */
+  margin: 0 0 0 $responsiveSmallPadding;
   margin: 0 0 0 $responsiveSmallPadding;
   display: flex;
 }
@@ -219,10 +231,13 @@
 .newsPageMoreNewsButtonWrapper {
   /* Обертка для кнопки "Все новости" */
   margin: 0 auto;
+  margin: 0 auto;
 }
 
 .newsPageMoreNewsButton {
   /* Кнопка "Все новости" */
+  padding: 0 $staticButtonLeftAndRightPadding;
+  width: auto;
   padding: 0 $staticButtonLeftAndRightPadding;
   width: auto;
   height: calc(51px - (11 * ((1440px - 100vw) / (1440 - 375))));
@@ -239,6 +254,7 @@
 
 .newsPageNewsButtonTitle {
   /* Стили для текста кнопки */
+  margin: 0 $staticButtonLeftAndRightPadding 0 0;
   margin: 0 $staticButtonLeftAndRightPadding 0 0;
   font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
   font-weight: 500;
