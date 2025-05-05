@@ -54,7 +54,7 @@ function PostCard({ post }) {
 				<div
 					className={`${styles.newsPageCardTitleWrapper}`}
 				>
-					<p
+					<h3
 						className={`${styles.newsPageCardTitle}`}
 					>
 						<TranslatedContent
@@ -62,7 +62,7 @@ function PostCard({ post }) {
 							uk={post.title_uk}
 							maxLength={100}
 						/>
-					</p>
+					</h3>
 				</div>
 
 				{/* Description */}
