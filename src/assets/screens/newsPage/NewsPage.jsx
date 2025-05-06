@@ -12,6 +12,7 @@ import Search from '../../screens/Search/Search'
 
 function PostCard({ post }) {
 	const { t } = useTranslation()
+	const navigate = useNavigate()
 	// Construct image URL similar to MainNews component
 	const featuredMediaUrl = getImageUrl(
 		post.images,
