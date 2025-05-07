@@ -27,7 +27,7 @@ const AdminPostList = () => {
 
 	const columns = [
 		columnHelper.accessor("id", {
-			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
+			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}/review`}>{info.renderValue()}</a>,
 			header: () => <span>{t("Код")}</span>,
 		}),
 		columnHelper.accessor("createdAt", {
@@ -39,21 +39,17 @@ const AdminPostList = () => {
 			cell: (info) => info.renderValue(),
 		}),
 		columnHelper.accessor("title_uk", {
-			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
+			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}/review`}>{info.renderValue()}</a>,
 			header: () => <span>{t("Назва українською")}</span>,
 		}),
 		columnHelper.accessor("title_en", {
 			header: () => <span>{t("Назва англійською")}</span>,
-			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}`}>{info.renderValue()}</a>,
+			cell: (info) => <a href={`/admin/posts/${info.row.getValue("id")}/review`}>{info.renderValue()}</a>,
 		}),
 		columnHelper.accessor("status", {
 			header: () => <span>{t("Статус")}</span>,
 			cell: (info) =>
-				info.getValue() === "PENDING" ? (
-					<a href={`/admin/posts/${info.row.getValue("id")}/review`}>{t("Статус поста " + info.getValue())}</a>
-				) : (
-					t("Статус поста " + info.getValue())
-				),
+				<a href={`/admin/posts/${info.row.getValue("id")}/review`}>{t("Статус поста " + info.getValue())}</a>,
 		}),
 	];
 
