@@ -1,4 +1,7 @@
+@use "@styles/utilities/variables.scss";
+
 .admin-table {
+    margin: variables.$responsiveMediumPadding auto;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ccc;
@@ -34,5 +37,11 @@
                 border: none;
             }
         }
+    }
+}
+
+@media (min-width: 1441px) {
+    .admin-table {
+        margin: variables.$staticPcMediumPadding auto;
     }
 }
