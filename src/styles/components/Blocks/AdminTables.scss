@@ -37,6 +37,14 @@
                 border: none;
             }
         }
+
+        tr.status-approved {
+            background-color: #e6ffed; // зелёный фон
+        }
+
+        tr.status-rejected {
+            background-color: #ffe6e6; // красный фон
+        }
     }
 }
 

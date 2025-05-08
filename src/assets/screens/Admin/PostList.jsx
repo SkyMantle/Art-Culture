@@ -106,14 +106,26 @@ const AdminPostList = () => {
 							))}
 						</thead>
 						<tbody>
-							{table.getRowModel().rows.map((row) => (
-								<tr key={row.id}>
-									{row.getVisibleCells().map((cell) => (
-										<td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-									))}
-								</tr>
-							))}
+							{table.getRowModel().rows.map((row) => {
+								const status = row.original.status; // нормализуем к нижнему регистру
+								let rowClass = "";
+
+								if (status === "APPROVED") rowClass = "status-approved";
+								else if (status === "REJECTED") rowClass = "status-rejected";
+
+								return (
+									<tr key={row.id} className={rowClass}>
+										{row.getVisibleCells().map((cell) => (
+											<td key={cell.id}>
+												{flexRender(cell.column.columnDef.cell, cell.getContext())}
+											</td>
+										))}
+									</tr>
+								);
+							})}
 						</tbody>
+
+
 					</table>
 					<Pagination table={table} />
 				</>
