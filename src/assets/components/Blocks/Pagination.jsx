@@ -57,7 +57,7 @@ function Pagination({ table }) {
             >
               {[10, 20, 50].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
-                  {t("Показати", { pageSize })}
+                  {t("Показати")}&#160;{pageSize}
                 </option>
               ))}
             </select>
