@@ -182,38 +182,42 @@ function NewsPage() {
 											className={`${styles.newsPageCardWrapper}`}
 										>
 											{/* Image */}
-											<div
-												className={`${styles.newsPageCardImageWrapper}`}
-												onClick={() =>
-													handlePostPageClick(post.id)
-												}
-											>
-												<img
-													className={`${styles.newsPageCardImage}`}
-													src={featuredMediaUrl}
-													alt={t('Зображення')}
-													onError={(e) => {
-														e.target.onerror = null
-														e.target.src =
-															'/Img/newsCardERROR.jpg' // Fallback image
-													}}
-												/>
-											</div>
+											<a href={`/posts/${post.id}`}>
+												<div
+													className={`${styles.newsPageCardImageWrapper}`}
+													onClick={() =>
+														handlePostPageClick(post.id)
+													}
+												>
+													<img
+														className={`${styles.newsPageCardImage}`}
+														src={featuredMediaUrl}
+														alt={t('Зображення')}
+														onError={(e) => {
+															e.target.onerror = null
+															e.target.src =
+																'/Img/newsCardERROR.jpg' // Fallback image
+														}}
+													/>
+												</div>
+											</a>
 
 											{/* Title */}
-											<div
-												className={`${styles.newsPageCardTitleWrapper}`}
-											>
-												<p
-													className={`${styles.newsPageCardTitle}`}
+											<a href={`/posts/${post.id}`}>
+												<div
+													className={`${styles.newsPageCardTitleWrapper}`}
 												>
-													<TranslatedContent
-														en={post.title_en}
-														uk={post.title_uk}
-														maxLength={100}
-													/>
-												</p>
-											</div>
+													<p
+														className={`${styles.newsPageCardTitle}`}
+													>
+														<TranslatedContent
+															en={post.title_en}
+															uk={post.title_uk}
+															maxLength={100}
+														/>
+													</p>
+												</div>
+											</a>
 
 											{/* Description */}
 											<div
@@ -348,7 +352,7 @@ function NewsPage() {
 												>
 													<TranslatedContent
 														en={post.title_en}
-												html
+														html
 														uk={post.title_uk}
 														maxLength={100}
 													/>
