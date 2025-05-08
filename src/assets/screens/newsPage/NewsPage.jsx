@@ -29,103 +29,104 @@ function PostCard({ post }) {
 			key={post.id}
 			className={`${styles.newsPageCardContainer}`}
 		>
-			<div
-				className={`${styles.newsPageCardWrapper}`}
-			>
-				{/* Image */}
+			<a href={`/posts/${post.id}`}>
 				<div
-					className={`${styles.newsPageCardImageWrapper}`}
-					onClick={() =>
-						handlePostPageClick(post.id)
-					}
+					className={`${styles.newsPageCardWrapper}`}
 				>
-					<img
-						className={`${styles.newsPageCardImage}`}
-						src={featuredMediaUrl}
-						alt={t('Зображення')}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src =
-								'/Img/newsCardERROR.jpg' // Fallback image
-						}}
-					/>
-				</div>
-
-				{/* Title */}
-				<div
-					className={`${styles.newsPageCardTitleWrapper}`}
-				>
-					<h3
-						className={`${styles.newsPageCardTitle}`}
-					>
-						<TranslatedContent
-							en={post.title_en}
-							uk={post.title_uk}
-							maxLength={100}
-						/>
-					</h3>
-				</div>
-
-				{/* Description */}
-				<div
-					className={`${styles.newsPageCardDescriptionWrapper}`}
-				>
-					<p
-						className={`${styles.newsPageCardDescription}`}
-					>
-						<TranslatedContent
-							en={post.content_en}
-							uk={post.content_uk}
-							maxLength={150}
-							html
-						/>
-					</p>
-				</div>
-
-				{/* Clock, Date, and Read More Button */}
-				<div
-					className={`${styles.newsPageCardClockDateAndReadMoreButtonWrapper}`}
-				>
+					{/* Image */}
 					<div
-						className={`${styles.newsPageCardClockWrapper}`}
+						className={`${styles.newsPageCardImageWrapper}`}
+						onClick={() =>
+							handlePostPageClick(post.id)
+						}
 					>
 						<img
-							className={`${styles.newsPageCardClockImg}`}
-							src={'/Img/clock.svg'}
-							alt={t('Час')}
+							className={`${styles.newsPageCardImage}`}
+							src={featuredMediaUrl}
+							alt={t('Зображення')}
 							onError={(e) => {
-								e.target.onerror =
-									null
+								e.target.onerror = null
 								e.target.src =
-									'/Img/clock.svg' // Fallback image
+									'/Img/newsCardERROR.jpg' // Fallback image
 							}}
 						/>
 					</div>
+
+					{/* Title */}
 					<div
-						className={`${styles.newsPageCardDateWrapper}`}
+						className={`${styles.newsPageCardTitleWrapper}`}
+					>
+						<h3
+							className={`${styles.newsPageCardTitle}`}
+						>
+							<TranslatedContent
+								en={post.title_en}
+								uk={post.title_uk}
+								maxLength={100}
+							/>
+						</h3>
+					</div>
+
+					{/* Description */}
+
+					<div
+						className={`${styles.newsPageCardDescriptionWrapper}`}
 					>
 						<p
-							className={`${styles.newsPageCardDate}`}
+							className={`${styles.newsPageCardDescription}`}
 						>
-							{formattedDate}
+							<TranslatedContent
+								en={post.content_en}
+								uk={post.content_uk}
+								maxLength={150}
+								html
+							/>
 						</p>
 					</div>
+
+					{/* Clock, Date, and Read More Button */}
 					<div
-						className={`${styles.newsPageCardReadMoreButtonWrapper}`}
+						className={`${styles.newsPageCardClockDateAndReadMoreButtonWrapper}`}
 					>
-						<button
-							onClick={() =>
-								navigate(
-									`/posts/${post.id}`,
-								)
-							}
-							className={`${styles.newsPageCardReadMoreButton}`}
+						<div
+							className={`${styles.newsPageCardClockWrapper}`}
 						>
-							{t('Читати далі')}
-						</button>
+
+							<img
+								className={`${styles.newsPageCardClockImg}`}
+								src={'/Img/clock.svg'}
+								alt={t('Час')}
+								onError={(e) => {
+									e.target.onerror =
+										null
+									e.target.src =
+										'/Img/clock.svg' // Fallback image
+								}}
+							/>
+
+						</div>
+						<div
+							className={`${styles.newsPageCardDateWrapper}`}
+						>
+							<p
+								className={`${styles.newsPageCardDate}`}
+							>
+								{formattedDate}
+							</p>
+						</div>
+						<div
+							className={`${styles.newsPageCardReadMoreButtonWrapper}`}
+						>
+							<button
+								onClick={() => navigate(`/posts/${post.id}`,)}
+								className={`${styles.newsPageCardReadMoreButton}`}
+							>
+								{t('Читати далі')}
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	)
 }
