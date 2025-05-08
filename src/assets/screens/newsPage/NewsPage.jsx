@@ -91,7 +91,6 @@ function PostCard({ post }) {
 						<div
 							className={`${styles.newsPageCardClockWrapper}`}
 						>
-
 							<img
 								className={`${styles.newsPageCardClockImg}`}
 								src={'/Img/clock.svg'}
@@ -103,7 +102,6 @@ function PostCard({ post }) {
 										'/Img/clock.svg' // Fallback image
 								}}
 							/>
-
 						</div>
 						<div
 							className={`${styles.newsPageCardDateWrapper}`}
