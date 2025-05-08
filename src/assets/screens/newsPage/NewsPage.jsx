@@ -33,38 +33,42 @@ function PostCard({ post }) {
 				className={`${styles.newsPageCardWrapper}`}
 			>
 				{/* Image */}
-				<div
-					className={`${styles.newsPageCardImageWrapper}`}
-					onClick={() =>
-						handlePostPageClick(post.id)
-					}
-				>
-					<img
-						className={`${styles.newsPageCardImage}`}
-						src={featuredMediaUrl}
-						alt={t('Зображення')}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src =
-								'/Img/newsCardERROR.jpg' // Fallback image
-						}}
-					/>
-				</div>
+				<a href={`/posts/${post.id}`}>
+					<div
+						className={`${styles.newsPageCardImageWrapper}`}
+						onClick={() =>
+							handlePostPageClick(post.id)
+						}
+					>
+						<img
+							className={`${styles.newsPageCardImage}`}
+							src={featuredMediaUrl}
+							alt={t('Зображення')}
+							onError={(e) => {
+								e.target.onerror = null
+								e.target.src =
+									'/Img/newsCardERROR.jpg' // Fallback image
+							}}
+						/>
+					</div>
+				</a>
 
 				{/* Title */}
-				<div
-					className={`${styles.newsPageCardTitleWrapper}`}
-				>
-					<h3
-						className={`${styles.newsPageCardTitle}`}
+				<a href={`/posts/${post.id}`}>
+					<div
+						className={`${styles.newsPageCardTitleWrapper}`}
 					>
-						<TranslatedContent
-							en={post.title_en}
-							uk={post.title_uk}
-							maxLength={100}
-						/>
-					</h3>
-				</div>
+						<h3
+							className={`${styles.newsPageCardTitle}`}
+						>
+							<TranslatedContent
+								en={post.title_en}
+								uk={post.title_uk}
+								maxLength={100}
+							/>
+						</h3>
+					</div>
+				</a>
 
 				{/* Description */}
 				<div
@@ -250,16 +254,6 @@ function NewsPage() {
 					}}
 				/>
 			</div>
-			{/* Search Input */}
-			{/* <div className={`${styles.newsPageSearchContainer}`}>
-				<input
-					className={`${styles.newsPageSearchInput}`}
-					type="text"
-					placeholder={t('Пошук авторів')}
-					value={searchTerm}
-					onChange={(e) => setSearchTerm(e.target.value)}
-				/>
-			</div> */}
 			<Search
 				className={searchStyle.newsPageSearchContainer}
 				searchInput={searchStyle.newsPageSearchInput}
