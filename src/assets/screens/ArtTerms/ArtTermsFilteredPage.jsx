@@ -26,8 +26,8 @@ function ArtTermsFilteredPage() {
 					return {
 						id: term.id,
 						highlightedProduct: term.highlightedProduct,
-						title: i18n.language != "uk" ? term.title_en : term.title_uk,
-						description: i18n.language != "uk" ? term.description_en : term.description_uk
+						title: i18n.language == "en" ? term.title_en : term.title_uk,
+						description: i18n.language == "en" ? term.description_en : term.description_uk
 					}
 				}))
 				setLoading(false)
