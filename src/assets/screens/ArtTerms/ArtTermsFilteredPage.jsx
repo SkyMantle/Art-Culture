@@ -77,7 +77,7 @@ function ArtTermsFilteredPage() {
 										<a href={"/art-terms/" + artTerm.id}>{artTerm.description}</a>
 									</div>
 									<div className={styles.cardCommands}>
-										<a href={"/art-terms/letters/" + artTerm.title[0].toLowerCase()}
+										<a href={"/art-terms/" + artTerm.id}
 											className="button button-default">{t('Читати далі')}</a>
 									</div>
 								</div>
