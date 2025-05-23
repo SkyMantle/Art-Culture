@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import PopularArtsSlider from '@components/Sliders/ArtistsPageSliders/PopularArtsSlider.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Letters from '@components/Blocks/Letters'
+import AllArtistsPageSearchSlider from '@components/Sliders/AllArtistsPageLettersSortSlider/AllArtistsPageSearchSlider'
+import { englishLetters, ukrainianLetters } from '../../../utils/constants'
 import Loading from '@components/Blocks/Loading'
 import Painting from '@components/Blocks/Painting'
 import LoadingError from '@components/Blocks/LoadingError'
@@ -57,7 +58,8 @@ function ArtTermsPage() {
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<Letters onLetterSelected={(letter) => navigate(`/art-terms/letters/${letter.toLowerCase()}`)} />
+				<AllArtistsPageSearchSlider letters={i18n.language === 'uk' ? ukrainianLetters : englishLetters}
+					onLetterSelected={(letter) => navigate(`/art-terms/letters/${letter.toLowerCase()}`)} />
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import Letters from '@components/Blocks/Letters'
+import AllArtistsPageSearchSlider from '@components/Sliders/AllArtistsPageLettersSortSlider/AllArtistsPageSearchSlider'
+import { englishLetters, ukrainianLetters } from '../../../utils/constants'
 import Loading from '@components/Blocks/Loading'
 import LoadingError from '@components/Blocks/LoadingError'
 import Painting from '@components/Blocks/Painting'
@@ -52,7 +53,9 @@ function ArtTermsFilteredPage() {
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<Letters selected={letter} onLetterSelected={(letter) => navigate(`/art-terms/letters/${letter.toLowerCase()}`)} />
+				<AllArtistsPageSearchSlider letters={i18n.language === 'uk' ? ukrainianLetters : englishLetters}
+					selectedLetter={letter}
+					onLetterSelected={(letter) => navigate(`/art-terms/letters/${letter.toLowerCase()}`)} />
 			</div>
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
