@@ -4,6 +4,7 @@
     display: block;
 
     padding-bottom: variables.$responsiveMediumPadding;
+    width: 100%;
 }
 
 .cardMedia {
@@ -33,7 +34,6 @@
 .cardContent {
     margin-left: 40%;
     padding-left: variables.$responsiveMediumPadding;
-    width: 100%
 }
 
 .cardDescription {

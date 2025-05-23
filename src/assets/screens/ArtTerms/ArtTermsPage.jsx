@@ -86,7 +86,7 @@ function ArtTermsPage() {
 										<a href={"/art-terms/" + artTerm.id}>{artTerm.description}</a>
 									</div>
 									<div className={styles.cardCommands}>
-										<a href={"/art-terms/" + artTerm.id} className="button button-default">{t('Подивитися усі терміни')}</a>
+										<a href={"/art-terms/letters/" + artTerm.letter.toLowerCase()} className="button button-default">{t('Подивитися усі терміни')}</a>
 									</div>
 								</div>
 							</div>
