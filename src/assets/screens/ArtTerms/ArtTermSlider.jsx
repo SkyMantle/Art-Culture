@@ -27,7 +27,7 @@ const Slide = ({ artTerm, baseUrl }) => {
 		: '/Img/halfNewsCard.jpg'
 
 	const handlePostClick = () => {
-		navigate(`/art-ters/${artTerm.id}`)
+		navigate(`/art-terms/${artTerm.id}`)
 	}
 
 	return (
@@ -50,7 +50,8 @@ const Slide = ({ artTerm, baseUrl }) => {
 				</div>
 
 				<div className="NewsSliderCardTitleWrapper">
-					<h3 className="NewsSliderCardTitle">
+					<h3 className="NewsSliderCardTitle"
+						onClick={() => handlePostClick(artTerm.id)}>
 						<TranslatedContent
 							en={artTerm.title_en}
 							uk={artTerm.title_uk}
@@ -60,7 +61,8 @@ const Slide = ({ artTerm, baseUrl }) => {
 				</div>
 
 				<div className="NewsSliderCardDescriptionWrapper">
-					<p className="NewsSliderCardDescription">
+					<p className="NewsSliderCardDescription"
+						onClick={() => handlePostClick(artTerm.id)}>
 						<TranslatedContent
 							en={artTerm.content_en}
 							uk={artTerm.content_uk}
