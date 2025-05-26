@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import Loading from '@components/Blocks/Loading'
 import LoadingError from '@components/Blocks/LoadingError'
 import Painting from '@components/Blocks/Painting'
 import layoutStyles from '@styles/layout/Layout.module.scss'
+import TranslatedContent from '@components/Blocks/TranslatedContent'
 
 function ArtTermPage() {
-	const { i18n } = useTranslation()
 	const { id } = useParams()
 
 	const [error, setError] = useState(null)
@@ -32,15 +31,13 @@ function ArtTermPage() {
 		fetchCreator()
 	}, [id])
 
-	const title = () => i18n.language == "en" ? artTerm.title_en : artTerm.title_uk;
-	const description = () => i18n.language == "en" ? artTerm.description_en : artTerm.description_uk;
-	const content = () => i18n.language == "en" ? artTerm.content_en : artTerm.content_uk;
-	console.log(artTerm)
 	return (
 		loading ? <Loading /> : error ? <LoadingError />
 			: <div className={`${layoutStyles.PageContainer}`}>
 			<div className={`${layoutStyles.PageTitleWrapper}`}>
-				<h1 className={`${layoutStyles.PageTitle}`}>{title()}</h1>
+				<h1 className={`${layoutStyles.PageTitle}`}>
+					<TranslatedContent en={artTerm.title_en} uk={artTerm.title_uk} />
+				</h1>
 			</div>
 
 			<div className={`${layoutStyles.PageSeparatorWrapper}`}>
@@ -49,7 +46,7 @@ function ArtTermPage() {
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
 				<p className={`${layoutStyles.Description}`}>
-					{description()}
+					<TranslatedContent en={artTerm.description_en} uk={artTerm.description_uk} />
 				</p>
 			</div>
 
@@ -59,7 +56,7 @@ function ArtTermPage() {
 
 
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
-				<div>{content()}</div>
+				<TranslatedContent html en={artTerm.content_en} uk={artTerm.content_uk} />
 			</div>
 		</div>
 	)
