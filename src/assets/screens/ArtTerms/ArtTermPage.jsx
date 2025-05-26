@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom'
 import Loading from '@components/Blocks/Loading'
 import LoadingError from '@components/Blocks/LoadingError'
 import Painting from '@components/Blocks/Painting'
-import layoutStyles from '@styles/layout/Layout.module.scss'
 import TranslatedContent from '@components/Blocks/TranslatedContent'
+import PopularArtsSlider from '@components/Sliders/ArtistsPageSliders/PopularArtsSlider.jsx'
+import layoutStyles from '@styles/layout/Layout.module.scss'
 
 function ArtTermPage() {
 	const { id } = useParams()
@@ -58,6 +59,8 @@ function ArtTermPage() {
 			<div className={`${layoutStyles.DescriptionWrapper}`}>
 				<TranslatedContent html en={artTerm.content_en} uk={artTerm.content_uk} />
 			</div>
+
+			<PopularArtsSlider />
 		</div>
 	)
 }
