@@ -1,33 +1,32 @@
 Generated with [vike.dev/new](https://vike.dev/new) ([version 435](https://www.npmjs.com/package/create-vike/v/0.0.435)) using this command:
 
-<<<<<<< HEAD
+```sh
+npm create vike@latest -- --react
+```
+
 ## How to setup project
 
-
-```
-npm ci
-cd server
+```sh
 npm ci
 ```
 
-In the root folder, copy `.env.sample` to `.env`. In the `server` folder, copy `.env.sample` to `.env` and adjust values according to your local setup.
+Copy `.env.sample` to `.env` and adjust values according to your local setup.
 
 ## How to run project
 
-In one terminal run server
-```
-npm start
-```
+Start the development server:
 
-In the other terminal start automatic reload using vite.
-```
-npm run auto-build
-```
-
-## deployment
-=======
 ```sh
-npm create vike@latest --- --react
+npm run dev
+```
+
+## Deployment
+
+After building the app, start the production server:
+
+```sh
+npm run build
+npm start
 ```
 
 ## Contents
@@ -76,5 +75,3 @@ SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all yo
 ### HTML Streaming
 
 You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
->>>>>>> e94f787 (Configure Vike SSR routing and page meta via +page.* naming)
-
