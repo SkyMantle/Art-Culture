@@ -343,7 +343,7 @@ function MuseumsPage({ baseUrl }) {
 					</p>
 
 					<button
-						className={`${styles.ArtistsPageGalleryButtonWhithClock}`}
+						className={`${styles.ArtistsPageGalleryButtonWithClock}`}
 						onClick={handleTimeSortClick}
 					>
 						<h3

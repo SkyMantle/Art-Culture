@@ -183,7 +183,7 @@ function ExhibitionsPage() {
 					</p>
 
 					<button
-						className={`${styles.ArtistsPageGalleryButtonWhithClock}`}
+						className={`${styles.ArtistsPageGalleryButtonWithClock}`}
 						onClick={handleShowPast}
 					>
 						<h3 className={styles.ArtistsPageGalleryButtonTitle}>
