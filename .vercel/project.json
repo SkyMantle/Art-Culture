@@ -1,6 +1,5 @@
 {
-	"framework": "vite",
-	"installCommand": "yarn install",
-	"buildCommand": "yarn build",
-	"outputDirectory": "dist"
+        "framework": "nextjs",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
 }
