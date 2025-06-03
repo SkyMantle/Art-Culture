@@ -111,9 +111,9 @@ function ArtistPage() {
 			</div>
 
 			<div className={`${styles.artistPageAboutArtistContainer}`}>
-				<div
-					className={`${styles.artistPageArtisPhotoWhithDescriptionWrapper}`}
-				>
+                                <div
+                                        className={`${styles.artistPageArtisPhotoWithDescriptionWrapper}`}
+                                >
 					<div className={`${styles.artistPageArtistPhotoWrapper}`}>
 						<img
 							className={`${styles.artistPageArtistPhoto}`}

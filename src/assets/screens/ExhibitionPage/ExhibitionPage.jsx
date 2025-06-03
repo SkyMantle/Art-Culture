@@ -371,10 +371,9 @@ function ExhibitionDetails() {
 					/>
 				</div>
 
-				<div
-					className={`${styles.museumPageMuseumBottomLogoWhithAdressWrapper}`}
-				>
-					<div className={`${styles.museumPageищеещьAdressWrapper}`}>
+                                <div
+                                        className={`${styles.museumPageMuseumBottomLogoWithAddressWrapper}`}
+                                >
 						<div
 							className={`${styles.museumPageMuseumLogoWrapper}`}
 						>

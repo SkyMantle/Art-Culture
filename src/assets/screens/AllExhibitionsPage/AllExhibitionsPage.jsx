@@ -152,7 +152,7 @@ function AllExhibitionsPage() {
 				<p className={styles.ArtistsPageGalleryButtonSeparator}>|</p>
 
 				<button
-					className={styles.ArtistsPageGalleryButtonWhithClock}
+					className={styles.ArtistsPageGalleryButtonWithClock}
 					onClick={handleShowEnglish}
 				>
 					<h3 className={styles.ArtistsPageGalleryButtonTitle}>

@@ -144,7 +144,7 @@ function Header() {
 	const burgerMenu = (
 		<div className="burgerMenu">
 			<div className="burgerMenuWrapper">
-				<div className="burgerMenuSearchWhithButtonsWrapper">
+                                <div className="burgerMenuSearchWithButtonsWrapper">
 					<div className="burgerMenuCloseButtonWrapper">
 						<img
 							className="burgerMenuCloseButtonImg"
