@@ -4,6 +4,7 @@ import { getImageUrl, getFormattedDate, getFormattedTime } from '../src/utils/he
 describe('helper utilities', () => {
   beforeEach(() => {
     global.window = { location: { hostname: 'localhost' } };
+    process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
   });
 
   describe('getImageUrl', () => {

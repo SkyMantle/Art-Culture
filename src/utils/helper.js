@@ -1,9 +1,9 @@
 export function getBaseUrl() {
 	const host = window.location.hostname
 	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-	const baseUrl = isLocalhost
-		? 'http://localhost:5000'
-		: 'https://art.playukraine.com'
+       const baseUrl = isLocalhost
+               ? process.env.NEXT_PUBLIC_API_URL
+               : 'https://art.playukraine.com'
 	return baseUrl
 }
 
