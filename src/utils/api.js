@@ -5,9 +5,9 @@ const host = window.location.hostname
 const isLocalhost = host === 'localhost' || host === '127.0.0.1'
 // Create an instance of axios with default configurations
 const API = axios.create({
-	baseURL: isLocalhost
-		? 'http://localhost:5000/api/'
-		: 'https://art.playukraine.com/api/',
+        baseURL: isLocalhost
+                ? `${process.env.NEXT_PUBLIC_API_URL}/api/`
+                : 'https://art.playukraine.com/api/',
 	timeout: 10000, // Optional: set a timeout for requests
 	headers: {
 		'Content-Type': 'application/json',
