@@ -9,14 +9,15 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "next preview",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "sitemap": "next-sitemap"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.80.6",
     "next": "^15.3.2",
+    "next-intl": "^3.4.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "next-intl": "^3.4.2"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
@@ -29,6 +30,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.0.0-beta.3",
+    "next-sitemap": "^4.2.3",
     "typescript": "^5.8.3"
   }
 }

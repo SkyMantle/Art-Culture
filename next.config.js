@@ -1,6 +1,7 @@
-module.exports = {
+const config = {
   i18n: {
     locales: ['uk', 'en'],
-    defaultLocale: 'uk'
-  }
-}
+    defaultLocale: 'uk',
+  },
+};
+export default config;
