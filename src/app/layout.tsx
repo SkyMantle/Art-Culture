@@ -1,4 +1,21 @@
 import Script from 'next/script'
+import localFont from 'next/font/local'
+
+const firaSans = localFont({
+  src: [
+    {
+      path: '../customFonts/FiraSans-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../customFonts/FiraSans-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'Next.js',
@@ -14,7 +31,7 @@ export default function RootLayout({
   const isProd = process.env.NODE_ENV === 'production'
   return (
     <html lang="en">
-      <body>
+      <body className={firaSans.className}>
         {isProd && gaId && (
           <>
             <Script
