@@ -1,5 +1,4 @@
 {
-    "": "Dashboard",
     "product": {
         "authorTitle": "Artist",
         "OriginalTitle": "Original title",
@@ -189,5 +188,9 @@
     "Час початку": "Start time",
     "Читати далі": "Read more",
     "Що поруч": "What's nearby",
-    "Юридична інформація": "Legal Notice"
+    "Юридична інформація": "Legal Notice",
+  "home": {"welcome": "Welcome to Art & Culture","intro": "This is a sample Next.js blog with SSR.","firstNews":"First news","secondNews":"Second news","allNews":"All news"},
+  "news": {"allNewsTitle":"All news","backToList":"← Back to news list"},
+  "ssr": {"title":"SSR Demo Page","generatedAt":"Generated at server"}
 }
+
