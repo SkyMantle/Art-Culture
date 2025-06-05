@@ -20,7 +20,8 @@
     "next": "^15.3.2",
     "next-intl": "^3.4.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sass": "^1.89.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
