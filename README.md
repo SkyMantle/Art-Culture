@@ -36,3 +36,9 @@ SEO metadata is defined in [`src/meta/index.js`](src/meta/index.js).
 A simple middleware is defined in [`middleware.ts`](middleware.ts). It adds an `X-Art-Culture` header to all responses.
 
 A demo SSR page is available at [`src/pages/ssr.js`](src/pages/ssr.js) which uses `getServerSideProps` to select a random news item on each request.
+
+## Static Regeneration
+
+News pages are pre-rendered at build time but regenerate periodically. The
+`revalidate` export in [`src/app/news/[id]/page.tsx`](src/app/news/%5Bid%5D/page.tsx)
+instructs Next.js to refresh the static content every 60 seconds.
