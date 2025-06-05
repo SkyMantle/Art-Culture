@@ -1,7 +1,7 @@
 // src/app/news/[id]/page.tsx
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { newsList, NewsItem } from '@/data/news'
+import { NewsItem } from '@/data/news'
 
 // Incremental static regeneration
 export const revalidate = 60
@@ -11,10 +11,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
+  const res = await fetch('http://localhost:3000/api/news')
+  const newsList: NewsItem[] = await res.json()
   return newsList.map((n) => ({ id: n.id }))
 }
 
 export async function generateMetadata({ params }: Props) {
+  const res = await fetch('http://localhost:3000/api/news')
+  const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id)
   if (!news) return {}
   return {
@@ -32,6 +36,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function NewsPage({ params }: Props) {
+  const res = await fetch('http://localhost:3000/api/news')
+  const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id) as NewsItem
   if (!news) notFound()
 

@@ -1,7 +1,10 @@
 import Link from 'next/link'
-import { newsList } from '@/data/news'
+import { NewsItem } from '@/data/news'
 
-export default function NewsIndex() {
+export default async function NewsIndex() {
+  const res = await fetch('http://localhost:3000/api/news')
+  const newsList: NewsItem[] = await res.json()
+
   return (
     <main className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Всі новини</h1>
