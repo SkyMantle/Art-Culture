@@ -2,6 +2,23 @@
 
 import type { ReactNode } from 'react'
 import Script from 'next/script'
+import localFont from 'next/font/local'
+
+const firaSans = localFont({
+  src: [
+    {
+      path: '../customFonts/FiraSans-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../customFonts/FiraSans-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'Art Play Ukraine',
@@ -18,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en">
-      <body>
+      <body className={firaSans.className}>
         {isProd && gaId && (
           <>
             <Script
