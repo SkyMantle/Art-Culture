@@ -43,3 +43,6 @@ dist-ssr/
 # SSL certificates
 server.cert
 server.key
+
+# Git fetch metadata
+FETCH_HEAD
