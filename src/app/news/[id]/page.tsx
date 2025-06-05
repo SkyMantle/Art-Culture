@@ -3,6 +3,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { newsList, NewsItem } from '@/data/news'
 
+// Incremental static regeneration
+export const revalidate = 60
+
 interface Props {
   params: { id: string }
 }
