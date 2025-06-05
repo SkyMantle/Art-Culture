@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Image from 'next/image'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
@@ -18,17 +19,19 @@ const Slide = ({ post }) => {
 	return (
 		<div className='mainInstagramSliderCardWrapper'>
 			<div className='mainInstagramSliderCardTopInnerWrapper'>
-				<div className='mainInstagramSliderCardUserPhotoWrapper'>
-					<img
-						className='mainInstagramSliderCardUserPhoto'
-						src={'/Img/mainInstagramSliderUserPhoto.png'}
-						alt={t('Фотографія автора')}
-						onError={e => {
-							e.target.onerror = null
-							e.target.src = '/Img/mainInstagramSliderUserPhoto.png'
-						}}
-					/>
-				</div>
+                                <div className='mainInstagramSliderCardUserPhotoWrapper'>
+                                        <Image
+                                                className='mainInstagramSliderCardUserPhoto'
+                                                src={'/Img/mainInstagramSliderUserPhoto.png'}
+                                                alt={t('Фотографія автора')}
+                                                width={50}
+                                                height={50}
+                                                onError={e => {
+                                                        e.target.onerror = null
+                                                        e.target.src = '/Img/mainInstagramSliderUserPhoto.png'
+                                                }}
+                                        />
+                                </div>
 				<div className='mainInstagramSliderCardUserNameWrapper'>
 					<p className='mainInstagramSliderCardUserName'>ukr_art&culture</p>
 				</div>
@@ -37,15 +40,17 @@ const Slide = ({ post }) => {
 				</div>
 			</div>
 			<div className='mainInstagramSliderCardMiddleInnerWrapper'>
-				<img
-					className='mainInstagramSliderCardImg'
-					src={'/Img/mainInstagramSliderIMG.jpg'}
-					alt={t('Світлина автора')}
-					onError={e => {
-						e.target.onerror = null
-						e.target.src = '/Img/mainInstagramSliderIMG.jpg'
-					}}
-				/>
+                                <Image
+                                        className='mainInstagramSliderCardImg'
+                                        src={'/Img/mainInstagramSliderIMG.jpg'}
+                                        alt={t('Світлина автора')}
+                                        width={630}
+                                        height={330}
+                                        onError={e => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/mainInstagramSliderIMG.jpg'
+                                        }}
+                                />
 			</div>
 			<div className='mainInstagramSliderCardBottomInnerWrapper'>
 				<div className='mainInstagramSliderCardDescriptionWrapper'>
