@@ -1,47 +1,48 @@
 {
+  // Ім’я файлу: tsconfig.json
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "esnext", // Використовуємо сучасний ESNext
     "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Підтримка браузерних API + сучасного JS
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "moduleResolution": "Bundler",
+    "module": "esnext", // ES-модулі
+    "moduleResolution": "node", // Vite/Next.js чекають moduleResolution=node
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "jsx": "preserve",
-    "baseUrl": "src",
+    "jsx": "preserve", // або "react-jsx" (Next.js автоматично «переведе» JSX)
+    "types": [
+      "node",
+      "react",
+      "next"
+    ], // Підключаємо типи Node, React і Next.js
+    // Якщо вам потрібні шляхи (aliases) — залиште, але переконайтеся, що baseUrl кореневий
+    "baseUrl": ".",
     "paths": {
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/data/*": [
+        "src/data/*"
+      ],
       "@/*": [
-        "*"
-      ],
-      "@data/*": [
-        "data/*"
-      ],
-      "@components/*": [
-        "components/*"
+        "src/*"
       ]
-    },
-    "module": "esnext",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    }
   },
   "include": [
-    "next-env.d.ts",
+    "next-env.d.ts", // обов’язково Next.js генерує
     "**/*.ts",
     "**/*.tsx",
-    "src/**/*",
-    ".next/types/**/*.ts"
+    "src/**/*" // уключаємо всю папку src
   ],
   "exclude": [
     "node_modules",
