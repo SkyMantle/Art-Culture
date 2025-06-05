@@ -24,6 +24,9 @@
       ],
       "@data/*": [
         "data/*"
+      ],
+      "@components/*": [
+        "components/*"
       ]
     },
     "module": "esnext",
