@@ -39,3 +39,7 @@ dist-ssr/
 
 .next/
 .git 2/
+
+# SSL certificates
+server.cert
+server.key
