@@ -7,9 +7,18 @@ import MainArtists from '@components/Blocks/MainArtists.jsx'
 import MainExhibitions from '@components/Blocks/MainExhibitions.jsx'
 import MainMuseums from '@components/Blocks/MainMuseums.jsx'
 import MainNews from '@components/Blocks/MainNews.jsx'
-import MainPageBannerSlider from '@components/Sliders/MainPageBannerSlider/MainPageBannerSlider.jsx'
+import dynamic from 'next/dynamic'
+import Loading from '@components/Blocks/Loading.jsx'
 import MainInstagramSlider from '@components/Sliders/MainInstagramSlider/MainInstagramSlider.jsx'
 import MainPopularArtsSlider from '@components/Sliders/MainPopularArtsSlider/MainPopularArtsSlider.jsx'
+
+const MainPageBannerSlider = dynamic(
+  () => import('@components/Sliders/MainPageBannerSlider/MainPageBannerSlider.jsx'),
+  {
+    loading: () => <Loading />,
+    ssr: false,
+  },
+)
 function MainPage() {
 	const { t } = useTranslation()
 	const [isExpanded, setIsExpanded] = useState(false)
