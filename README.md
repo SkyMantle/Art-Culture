@@ -10,6 +10,14 @@ Install dependencies and create a local `.env` file based on `.env.sample`:
 npm install
 ```
 
+## Environment Variables
+
+Copy `.env.sample` to `.env` and update the values as needed.
+
+- `DATABASE_URL` – connection string for PostgreSQL
+- `REDIS_URL` or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`
+- `SHOPIFY_API_KEY` and `SHOPIFY_API_SECRET`
+
 ## Development
 
 Run the development server:
