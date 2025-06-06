@@ -17,6 +17,11 @@ Copy `.env.sample` to `.env` and update the values as needed.
 - `DATABASE_URL` – connection string for PostgreSQL
 - `REDIS_URL` or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`
 - `SHOPIFY_API_KEY` and `SHOPIFY_API_SECRET`
+- `NEXTAUTH_SECRET` and provider credentials like `GITHUB_ID`/`GITHUB_SECRET`
+
+## NextAuth
+
+Ensure the environment variables above are set. Start the development server and open `/api/auth/signin` to test authentication.
 
 ## Development
 
