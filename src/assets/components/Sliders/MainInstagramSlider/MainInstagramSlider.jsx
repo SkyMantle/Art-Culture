@@ -83,9 +83,8 @@ const MainInstagramSlider = () => {
 
 	useEffect(() => {
 		const fetchInstagramPosts = async () => {
-			try {
-				// TODO: замініть на реальний API-ендпоінт
-				const response = await axios.get('/api/instagram/posts')
+                        try {
+                                const response = await axios.get('/api/instagram/posts')
 				setPosts(response.data.data || [])
 			} catch (err) {
 				console.error('Error fetching Instagram post data', err)

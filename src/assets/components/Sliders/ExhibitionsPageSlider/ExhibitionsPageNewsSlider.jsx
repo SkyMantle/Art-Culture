@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom'
 import { getBaseUrl } from '../../../../utils/helper'
 import TranslatedContent from '../../Blocks/TranslatedContent'
 import '/src/styles/components/Sliders/Base/NewsSlider.scss'
-const Slide = ({ post, baseUrl }) => {
+export const Slide = ({ post, baseUrl }) => {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 
@@ -32,7 +32,7 @@ const Slide = ({ post, baseUrl }) => {
 		<div className="NewsSliderCardContainer">
 			<a
 				className="NewsSliderCardLink"
-				// TODO:Rewrite component to use navigate for post	onClick={handleArtistPageClick}
+                                onClick={handlePostClick}
 			>
 				<div className="NewsSliderCardImgWrapper">
 					<img
