@@ -119,7 +119,7 @@ function AllAuthorsPage() {
 
 				// 3) Fetch Museums
 				const museumsResponse = await axios.get('/api/users/museums')
-				console.log('museumsResponse.data:', museumsResponse.data)
+				console.debug('museumsResponse.data:', museumsResponse.data)
 				const museumsWithPosts = await Promise.all(
 					museumsResponse.data.museums.map(async (museum) => {
 						try {
@@ -146,7 +146,7 @@ function AllAuthorsPage() {
 				const exhibitionResponse = await axios.get(
 					'/api/users/exhibitions',
 				)
-				console.log(
+				console.debug(
 					'exhibitionsResponse.data:',
 					exhibitionResponse.data,
 				)

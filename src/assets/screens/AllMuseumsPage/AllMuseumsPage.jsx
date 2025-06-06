@@ -97,7 +97,7 @@ function AllArtistsPage() {
 						: `/api/users/museums/language/en`
 				}
 
-				console.log('Requesting URL:', url)
+				console.debug('Requesting URL:', url)
 				const response = await axios.get(url)
 				const fetchedMuseums = response.data.museums || []
 

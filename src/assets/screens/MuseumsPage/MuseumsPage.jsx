@@ -55,12 +55,12 @@ function MuseumsPage({ baseUrl }) {
 	useEffect(() => {
 		const handleResize = () => {
 			const newMuseumCount = getMuseumsCount(window.innerWidth)
-			console.log(
+			console.debug(
 				`Window width: ${window.innerWidth}, New museum count: ${newMuseumCount}`,
 			)
 			if (newMuseumCount !== visibleMuseumsCount) {
 				setVisibleMuseumsCount(newMuseumCount)
-				console.log(`Updated visibleMuseumCount to: ${newMuseumCount}`)
+				console.debug(`Updated visibleMuseumCount to: ${newMuseumCount}`)
 			}
 		}
 
@@ -85,7 +85,7 @@ function MuseumsPage({ baseUrl }) {
 		const fetchMuseums = async () => {
 			try {
 				const response = await axios.get(`/api/users/museums`)
-				console.log('Fetched museum', response.data)
+				console.debug('Fetched museum', response.data)
 				setMuseums(response.data.museums)
 				setLoading(false)
 			} catch (error) {
@@ -104,7 +104,7 @@ function MuseumsPage({ baseUrl }) {
 				const response = await axios.get(
 					'/api/products/museum-products',
 				)
-				console.log('Fetch Products Maps', response.data)
+				console.debug('Fetch Products Maps', response.data)
 				setProducts(response.data.products)
 			} catch (error) {
 				console.error('Error fetching Museums:', error)

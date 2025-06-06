@@ -94,8 +94,8 @@ const PopularOfThisArtistSlider = ({ products, baseUrl }) => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{products.map((product) => {
 							const title =

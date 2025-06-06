@@ -43,12 +43,12 @@ function ExhibitionsPage() {
 	useEffect(() => {
 		const handleResize = () => {
 			const newExhibitionCount = getExhibitionsCount(window.innerWidth)
-			console.log(
+			console.debug(
 				`Window width: ${window.innerWidth}, New exhibition count: ${newExhibitionCount}`,
 			)
 			if (newExhibitionCount !== visibleExhibitionsCount) {
 				setVisibleExhibitionsCount(newExhibitionCount)
-				console.log(
+				console.debug(
 					`Updated visibleExhibitionCount to: ${newExhibitionCount}`,
 				)
 			}
@@ -68,7 +68,7 @@ function ExhibitionsPage() {
 		const fetchExhibition = async () => {
 			try {
 				const response = await axios.get('/api/exhibitions')
-				console.log('Fetch exhibitions', response.data)
+				console.debug('Fetch exhibitions', response.data)
 				setExhibitions(response.data.exhibitions || [])
 				setLoading(false)
 			} catch (error) {
@@ -226,7 +226,7 @@ function ExhibitionsPage() {
 												'/Img/halfNewsCard.jpg',
 											)
 										: '/Img/halfNewsCard.jpg'
-								console.log(
+								console.debug(
 									'Витягнуте медіа:',
 									featuredMediaUrl,
 								)

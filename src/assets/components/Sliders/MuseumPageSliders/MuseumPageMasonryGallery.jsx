@@ -122,7 +122,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 				const img = new Image()
 				img.src = imageObj.src
 				img.onload = () => {
-					console.log(`Image loaded: ${imageObj.src}`)
+					console.debug(`Image loaded: ${imageObj.src}`)
 					resolve({
 						...imageObj,
 						width: img.width,
@@ -141,7 +141,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 		})
 
 		Promise.all(imagePromises).then((imgs) => {
-			console.log('All images processed:', imgs)
+			console.debug('All images processed:', imgs)
 			setLoadedImages(imgs)
 		})
 	}, [images])
@@ -172,10 +172,10 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 			})
 
 		if (!isColumnsEqual) {
-			console.log('Updating columns:', newColumns)
+			console.debug('Updating columns:', newColumns)
 			setColumns(newColumns)
 		} else {
-			console.log('Columns unchanged.')
+			console.debug('Columns unchanged.')
 		}
 	}, [loadedImages, numberOfColumns, columns])
 
@@ -203,7 +203,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 			})
 		})
 
-		console.log('Scaled columns calculated:', newScaledColumns)
+		console.debug('Scaled columns calculated:', newScaledColumns)
 		setScaledColumns(newScaledColumns)
 	}, [columns, customScaleFactor])
 
@@ -218,13 +218,13 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 				const marginRight = parseInt(columnStyles.marginRight, 10)
 				const width = firstColumn.offsetWidth + marginRight
 
-				console.log(
+				console.debug(
 					`First column offsetWidth: ${firstColumn.offsetWidth}px`,
 				)
-				console.log(`First column marginRight: ${marginRight}px`)
-				console.log(`Calculated column total width: ${width}px`)
-				console.log(`Number of columns: ${numberOfColumns}`)
-				console.log(
+				console.debug(`First column marginRight: ${marginRight}px`)
+				console.debug(`Calculated column total width: ${width}px`)
+				console.debug(`Number of columns: ${numberOfColumns}`)
+				console.debug(
 					`Calculated sliderWidth: ${width * numberOfColumns}px`,
 				)
 				setSliderWidth(width * numberOfColumns) // Total width for all columns
@@ -239,7 +239,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 		const handleResize = debounce(() => {
 			const newNumberOfColumns = getNumberOfColumns()
 			const newBaseImageHeight = getBaseImageHeight()
-			console.log(
+			console.debug(
 				`Window resized. New number of columns: ${newNumberOfColumns}, New base image height: ${newBaseImageHeight}`,
 			)
 			setBaseImageHeight(newBaseImageHeight)
@@ -305,29 +305,29 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 	// Prevent body scrolling when any image is zoomed
 	useEffect(() => {
 		if (isAnyImageZoomed) {
-			console.log('An image is zoomed. Disabling body scroll.')
+			console.debug('An image is zoomed. Disabling body scroll.')
 			document.body.style.overflow = 'hidden'
 		} else {
-			console.log('No images are zoomed. Enabling body scroll.')
+			console.debug('No images are zoomed. Enabling body scroll.')
 			document.body.style.overflow = 'auto'
 		}
 	}, [isAnyImageZoomed])
 
 	// Handle mouse events to pause and resume animation
 	const handleMouseEnter = () => {
-		console.log('Mouse entered gallery. Pausing animation.')
+		console.debug('Mouse entered gallery. Pausing animation.')
 		setIsPaused(true)
 	}
 
 	const handleMouseLeave = () => {
-		console.log('Mouse left gallery. Resuming animation.')
+		console.debug('Mouse left gallery. Resuming animation.')
 		setIsPaused(false)
 	}
 
 	// Handle image click to open modal
 	const handleImageClick = (productImages, product) => {
 		if (productImages && productImages.length > 0) {
-			console.log(`Opening modal for product ID: ${product.id}`)
+			console.debug(`Opening modal for product ID: ${product.id}`)
 			setSelectedProductImages(productImages)
 			setSelectedProduct(product) // Set the selected product
 			setSelectedMuseum(museum) // Set the selected creator
@@ -355,7 +355,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 
 	// Handle closing the modal
 	const handleCloseModal = () => {
-		console.log('Closing modal.')
+		console.debug('Closing modal.')
 		setIsModalOpen(false)
 		setSelectedProductImages([])
 		setSelectedProduct(null) // Reset to null
@@ -366,7 +366,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 
 	// Handle zoom in
 	const handleZoomIn = (index) => {
-		console.log(`Zooming in on image index: ${index}`)
+		console.debug(`Zooming in on image index: ${index}`)
 		setZoomStates((prevZoomStates) => {
 			const newZoomStates = [...prevZoomStates]
 			const currentZoom = newZoomStates[index].zoomLevel
@@ -375,7 +375,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 					(currentZoom + 0.5).toFixed(1),
 				)
 				newZoomStates[index].isZoomed = true
-				console.log(
+				console.debug(
 					`Image index ${index} zoom level increased to ${newZoomStates[index].zoomLevel}`,
 				)
 			}
@@ -385,7 +385,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 
 	// Handle zoom out
 	const handleZoomOut = (index) => {
-		console.log(`Zooming out on image index: ${index}`)
+		console.debug(`Zooming out on image index: ${index}`)
 		setZoomStates((prevZoomStates) => {
 			const newZoomStates = [...prevZoomStates]
 			const currentZoom = newZoomStates[index].zoomLevel
@@ -395,9 +395,9 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 				)
 				if (newZoomStates[index].zoomLevel === 1) {
 					newZoomStates[index].isZoomed = false
-					console.log(`Image index ${index} is no longer zoomed.`)
+					console.debug(`Image index ${index} is no longer zoomed.`)
 				} else {
-					console.log(
+					console.debug(
 						`Image index ${index} zoom level decreased to ${newZoomStates[index].zoomLevel}`,
 					)
 				}
@@ -423,7 +423,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 				return newZoomStates
 			})
 
-			console.log(
+			console.debug(
 				`Mouse moved on image index ${index}: cursorPos=(${x}, ${y})`,
 			)
 		},
@@ -433,7 +433,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 	// Handle mouse enter to show zoom lens
 	const handleMouseEnterImage = useCallback(
 		(index) => {
-			console.log(`Mouse entered image index: ${index}`)
+			console.debug(`Mouse entered image index: ${index}`)
 			setZoomStates((prevZoomStates) => {
 				const newZoomStates = [...prevZoomStates]
 				newZoomStates[index] = {
@@ -449,7 +449,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 	// Handle mouse leave to hide zoom lens
 	const handleMouseLeaveImage = useCallback(
 		(index) => {
-			console.log(`Mouse left image index: ${index}`)
+			console.debug(`Mouse left image index: ${index}`)
 			setZoomStates((prevZoomStates) => {
 				const newZoomStates = [...prevZoomStates]
 				newZoomStates[index] = {
@@ -466,7 +466,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 	// Handle click to toggle zoom
 	const handleImageClickToggleZoom = useCallback(
 		(index) => {
-			console.log(`Toggling zoom on image index: ${index}`)
+			console.debug(`Toggling zoom on image index: ${index}`)
 			setZoomStates((prevZoomStates) => {
 				const newZoomStates = [...prevZoomStates]
 				const zoomState = newZoomStates[index]
@@ -478,7 +478,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 					isZoomed,
 					zoomLevel,
 				}
-				console.log(`Image index ${index} zoom toggled to ${isZoomed}`)
+				console.debug(`Image index ${index} zoom toggled to ${isZoomed}`)
 				return newZoomStates
 			})
 		},
@@ -487,7 +487,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 
 	// Handle manual navigation in carousel
 	const handlePrevSlide = () => {
-		console.log('Navigating to previous slide.')
+		console.debug('Navigating to previous slide.')
 		setCurrentSlide(
 			(prev) =>
 				(prev - 1 + selectedProductImages.length) %
@@ -496,7 +496,7 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 	}
 
 	const handleNextSlide = () => {
-		console.log('Navigating to next slide.')
+		console.debug('Navigating to next slide.')
 		setCurrentSlide((prev) => (prev + 1) % selectedProductImages.length)
 	}
 

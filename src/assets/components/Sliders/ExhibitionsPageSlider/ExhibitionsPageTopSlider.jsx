@@ -27,7 +27,7 @@ const Slide = ({ museum, exhibition, baseUrl, onClick }) => {
 					'/Img/halfNewsCard.jpg',
 				)
 			: '/Img/halfNewsCard.jpg'
-	console.log('Витягнуте медіа:', featuredMediaUrl)
+	console.debug('Витягнуте медіа:', featuredMediaUrl)
 
 	// const museumLogoUrl = museum.museum_logo_image?.imageUrl
 	// 	? getImageUrl(
@@ -120,7 +120,7 @@ const MuseumsPageTopSlider = () => {
 		const fetchMuseums = async () => {
 			try {
 				const response = await axios.get('/api/users/museums')
-				console.log('Fetch museums', response.data)
+				console.debug('Fetch museums', response.data)
 				setMuseums(response.data.museums || [])
 				setLoading(false)
 			} catch (err) {
@@ -136,7 +136,7 @@ const MuseumsPageTopSlider = () => {
 		const fetchExhibition = async () => {
 			try {
 				const response = await axios.get('/api/exhibitions')
-				console.log('Fetch exhibitions', response.data)
+				console.debug('Fetch exhibitions', response.data)
 				setExhibitions(response.data.exhibitions || [])
 				setLoading(false)
 			} catch (err) {
@@ -150,7 +150,7 @@ const MuseumsPageTopSlider = () => {
 	}, [])
 
 	const handleExhibitionPageClick = (id) => {
-		console.log('Navigating to exhibition with id:', id)
+		console.debug('Navigating to exhibition with id:', id)
 		navigate(`/exhibitions/${id}`)
 	}
 	return (
@@ -161,8 +161,8 @@ const MuseumsPageTopSlider = () => {
 				slidesPerView={'1'}
 				navigation
 				pagination={{ clickable: false, type: 'fraction' }}
-				onSlideChange={() => console.log('slide change')}
-				onSwiper={(swiper) => console.log(swiper)}
+				onSlideChange={() => console.debug('slide change')}
+				onSwiper={(swiper) => console.debug(swiper)}
 				autoplay={{
 					delay: 2000, // Задержка в миллисекундах
 					disableOnInteraction: false, // Продолжать автопрокрутку после взаимодействия

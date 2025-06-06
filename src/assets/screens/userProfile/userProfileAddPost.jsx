@@ -86,11 +86,11 @@ function UserProfileAddPost() {
 	}
 
 	const textEditorOnChange = ({ name, value }) => {
-		console.log(name, value)
+		console.debug(name, value)
 		const newFormData = { ...formData, [name]: value }
 		setFormData(newFormData)
 	}
-	console.log(formData)
+	console.debug(formData)
 	return (
 		<ProfilePageContainer>
 			<h2>{t('Додати нову публікацію')}</h2>

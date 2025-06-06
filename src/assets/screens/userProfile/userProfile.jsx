@@ -40,7 +40,7 @@ const UserProfile = () => {
 		if (loading) return
 
 		if (user) {
-			console.log('User is logged in:', user)
+			console.debug('User is logged in:', user)
 			setEmail(user.email || '')
 			setRegDate(getFormattedDate(user.createdAt))
 			setTitle(user.title || '')
@@ -63,7 +63,7 @@ const UserProfile = () => {
 			}
 			navigate('/login') // Redirect to login page
 		}
-		console.log('UserProfile rendering for user:', user)
+		console.debug('UserProfile rendering for user:', user)
 	}, [user, loading, error, navigate])
 
 	const toggleEditMode = () => {
@@ -126,7 +126,7 @@ const UserProfile = () => {
 			'',
 		)
 
-		console.log('Sanitized Bio content:', cleanSanitizedBio) // Log sanitized content
+		console.debug('Sanitized Bio content:', cleanSanitizedBio) // Log sanitized content
 		const formData = new FormData()
 		formData.append('title', title)
 		formData.append('bio', cleanSanitizedBio)
@@ -150,7 +150,7 @@ const UserProfile = () => {
 
 		// Log formData entries for debugging
 		for (let [key, value] of formData.entries()) {
-			console.log(`${key}:`, value)
+			console.debug(`${key}:`, value)
 		}
 
 		try {

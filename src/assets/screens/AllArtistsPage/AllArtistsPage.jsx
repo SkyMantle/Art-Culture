@@ -97,7 +97,7 @@ function AllArtistsPage() {
 						: `/api/users/creators/language/en`
 				}
 
-				console.log('Requesting URL:', url)
+				console.debug('Requesting URL:', url)
 				const response = await axios.get(url)
 				const fetchedCreators = response.data.creators || []
 

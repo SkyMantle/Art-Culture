@@ -54,12 +54,12 @@ function ArtistsPage() {
 	useEffect(() => {
 		const handleResize = () => {
 			const newCreatorCount = getCreatorsCount(window.innerWidth)
-			console.log(
+			console.debug(
 				`Window width: ${window.innerWidth}, New creator count: ${newCreatorCount}`,
 			)
 			if (newCreatorCount !== visibleCreatorsCount) {
 				setVisibleCreatorsCount(newCreatorCount)
-				console.log(
+				console.debug(
 					`Updated visibleCreatorsCount to: ${newCreatorCount}`,
 				)
 			}
@@ -78,7 +78,7 @@ function ArtistsPage() {
 		const fetchCreator = async () => {
 			try {
 				const response = await axios.get('/api/users/creators')
-				console.log('received author data', response.data)
+				console.debug('received author data', response.data)
 				setCreators(response.data.creators)
 				setLoading(false)
 			} catch (error) {

@@ -50,7 +50,7 @@ function MainMuseums() {
                         if (newPostCount !== visibleMuseumsCount) {
                                 setVisibleMuseumsCount(newPostCount)
                                 if (typeof window !== 'undefined') {
-                                        console.log(
+                                        console.debug(
                                                 `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
                                         )
                                 }
@@ -76,7 +76,7 @@ function MainMuseums() {
 		axios
 			.get('/api/users/museums')
 			.then((response) => {
-				console.log('Отримані дані постів:', response.data)
+				console.debug('Отримані дані постів:', response.data)
 				setMuseums(response.data.museums)
 			})
 			.catch((error) => {
@@ -121,13 +121,13 @@ function MainMuseums() {
 			<div className={`${styles.mainPageNewsCardsWrapper}`}>
 				{museums.slice(0, visibleMuseumsCount).map((museum, index) => {
 					// Логування даних для перевірки
-					console.log('Витягнені музеі:', museums)
+					console.debug('Витягнені музеі:', museums)
 
 					const featuredMediaUrl = getImageUrl(
 						museum.images,
 						'/Img/halfNewsCard.jpg',
 					)
-					console.log('Витягнуте медіа:', featuredMediaUrl)
+					console.debug('Витягнуте медіа:', featuredMediaUrl)
 
 					const formattedDate = getFormattedDate(museum.createdAt)
 					const formattedTime = getFormattedTime(museum.createdAt)

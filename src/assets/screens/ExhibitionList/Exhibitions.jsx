@@ -228,9 +228,9 @@ function MuseumExhibitions() {
 			}
 
 			// Log FormData entries for debugging
-			console.log('FormData entries:')
+			console.debug('FormData entries:')
 			for (let pair of exhibitionData.entries()) {
-				console.log(`${pair[0]}: ${pair[1]}`)
+				console.debug(`${pair[0]}: ${pair[1]}`)
 			}
 
 			const response = await API.put(

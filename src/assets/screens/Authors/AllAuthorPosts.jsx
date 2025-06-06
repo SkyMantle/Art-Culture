@@ -84,7 +84,7 @@ function AuthorPostsLists() {
 										setAuthor(
 											exhibitionResponse.data.exhibition,
 										) // Store Exhibition data
-										console.log(
+										console.debug(
 											'exhibitionsResponse.data:',
 											exhibitionResponse.data,
 										)

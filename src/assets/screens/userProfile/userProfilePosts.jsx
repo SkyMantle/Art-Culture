@@ -170,7 +170,7 @@ function UserProfilePosts() {
 		const newFormData = { ...formData, [name]: value }
 		setFormData(newFormData)
 	}
-	console.log(formData)
+	console.debug(formData)
 
 	return (
 		<ProfilePageContainer>

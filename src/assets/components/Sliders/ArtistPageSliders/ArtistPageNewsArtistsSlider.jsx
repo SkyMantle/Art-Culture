@@ -77,7 +77,7 @@ const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 		const fetchCreatorPosts = async () => {
 			try {
 				const response = await axios.get('/api/posts/creators/' + authorId)
-				console.log('Received creator posts:', response.data)
+				console.debug('Received creator posts:', response.data)
 				setCreatorPosts(response.data.posts || [])
 				setLoading(false)
 			} catch (err) {
@@ -117,8 +117,8 @@ const ArtistPageNewsArtistsSlider = ({ authorId }) => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{(
 							creatorPosts.map((post) => (

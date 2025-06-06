@@ -28,7 +28,7 @@ function MainPage() {
 	}
 	const handleScroll = useCallback(
 		debounce(() => {
-			console.log('Scrolling...')
+			console.debug('Scrolling...')
 		}, 100),
 
 		[]

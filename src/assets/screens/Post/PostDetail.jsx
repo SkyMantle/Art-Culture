@@ -25,7 +25,7 @@ function PostDetail() {
 		axios
 			.get(`/api/posts/${id}`)
 			.then((response) => {
-				console.log('Received post data:', response.data)
+				console.debug('Received post data:', response.data)
 				setPost(response.data)
 			})
 			.catch((error) => {

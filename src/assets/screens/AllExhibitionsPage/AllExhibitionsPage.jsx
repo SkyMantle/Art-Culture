@@ -74,9 +74,9 @@ function AllExhibitionsPage() {
 				setError(null)
 
 				const response = await axios.get(`/api/exhibitions`)
-				console.log('Fetch exhibitions', response.data)
+				console.debug('Fetch exhibitions', response.data)
 				const exhibitionsArray = response.data.exhibitions || []
-				console.log('Fetch exhibitions', response.data.exhibitions)
+				console.debug('Fetch exhibitions', response.data.exhibitions)
 				const grouped = groupByLetter(exhibitionsArray)
 				setExhibitions(grouped)
 			} catch (err) {

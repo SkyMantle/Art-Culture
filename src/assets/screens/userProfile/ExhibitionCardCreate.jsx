@@ -59,7 +59,7 @@ function ExhibitionForm() {
 		selectedPaintings: [],
 	})
 
-	console.log('CurrentUser:', user)
+	console.debug('CurrentUser:', user)
 
 	useEffect(() => {
 		// Fetch artists to populate the checkboxes
@@ -71,14 +71,14 @@ function ExhibitionForm() {
 						Authorization: `Bearer ${localStorage.getItem('token')}`,
 					},
 				})
-				console.log('Artists data:', response.data.creators)
+				console.debug('Artists data:', response.data.creators)
 				setArtists(response.data.creators)
 				const museumsResponse = await axios.get('/api/users/museums', {
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem('token')}`,
 					},
 				})
-				console.log('Mus data', museumsResponse.data.museums)
+				console.debug('Mus data', museumsResponse.data.museums)
 				setMuseums(museumsResponse.data.museums)
 			} catch (error) {
 				console.error('Error fetching artists:', error)
@@ -421,7 +421,7 @@ function ExhibitionForm() {
 
 		// Debug: Log FormData entries
 		for (let pair of submissionData.entries()) {
-			console.log(`${pair[0]}: ${pair[1]}`)
+			console.debug(`${pair[0]}: ${pair[1]}`)
 		}
 
 		try {
@@ -431,7 +431,7 @@ function ExhibitionForm() {
 					Authorization: `Bearer ${localStorage.getItem('token')}`,
 				},
 			})
-			console.log('Exhibition created:', response.data)
+			console.debug('Exhibition created:', response.data)
 			setServerMessage('Exhibition created successfully!')
 			// Redirect to the exhibition details page
 			navigate(`/Exhibitions/${response.data.exhibition.id}`)
@@ -642,7 +642,7 @@ function ExhibitionForm() {
 												>
 													{result.images ? (
 														<>
-															{console.log(
+															{console.debug(
 																'Author or painting result:',
 																result,
 																'result.images is:',
@@ -699,7 +699,7 @@ function ExhibitionForm() {
 													{result.images &&
 													result.images.length > 0 ? (
 														<>
-															{console.log(
+															{console.debug(
 																'Author or painting result:',
 																result,
 																'result.images is:',
@@ -740,11 +740,11 @@ function ExhibitionForm() {
 										)}
 									</div>
 								)
-								console.log(
+								console.debug(
 									'Author or painting result:',
 									result,
 								)
-								console.log('result.images is:', result.images)
+								console.debug('result.images is:', result.images)
 							})}
 						</div>
 					)}
@@ -759,7 +759,7 @@ function ExhibitionForm() {
 							<>
 								{author.images ? (
 									<>
-										{console.log(
+										{console.debug(
 											'Author or painting result:',
 											author.images,
 										)}

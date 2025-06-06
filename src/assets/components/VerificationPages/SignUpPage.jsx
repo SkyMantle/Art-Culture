@@ -77,7 +77,6 @@ const SignUp = () => {
 		e.preventDefault()
 		setServerMessage('')
 
-		console.log('signUpDetails before submission:', signUpDetails)
 
 		const formData = new FormData()
 		formData.append('email', signUpDetails.email)
@@ -102,7 +101,6 @@ const SignUp = () => {
 
 		// Log formData entries for debugging
 		for (let [key, value] of formData.entries()) {
-			console.log(`${key}:`, value)
 		}
 
 		try {
@@ -114,8 +112,6 @@ const SignUp = () => {
 						'Content-Type': 'multipart/form-data',
 					},
 				},
-				console.log('signUpDetails', signUpDetails),
-			)
 
 			if (response.status === 201) {
 				const { token, user } = response.data // Assuming API returns user data
