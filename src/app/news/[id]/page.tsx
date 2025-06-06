@@ -11,13 +11,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:3000/api/news')
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   return newsList.map((n) => ({ id: n.id }))
 }
 
 export async function generateMetadata({ params }: Props) {
-  const res = await fetch('http://localhost:3000/api/news')
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id)
   if (!news) return {}
@@ -36,7 +38,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function NewsPage({ params }: Props) {
-  const res = await fetch('http://localhost:3000/api/news')
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id) as NewsItem
   if (!news) notFound()

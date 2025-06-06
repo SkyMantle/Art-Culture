@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { NewsItem } from '@/data/news'
 
 export default async function NewsIndex() {
-  const res = await fetch('http://localhost:3000/api/news')
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
 
   return (
