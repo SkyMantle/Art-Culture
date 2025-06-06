@@ -27,6 +27,21 @@ npm run build
 npm start
 ```
 
+
+## Testing
+
+Run all tests once:
+
+```bash
+npm test
+```
+
+To continually run tests as files change, use watch mode:
+
+```bash
+npm run test:watch
+```
+
 ## SEO
 
 SEO metadata is defined in [`src/meta/index.js`](src/meta/index.js).

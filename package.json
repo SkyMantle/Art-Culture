@@ -12,8 +12,9 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "next preview",
-    "test": "jest",
-    "sitemap": "next-sitemap"
+    "test": "jest --runInBand",
+    "sitemap": "next-sitemap",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.80.6",
