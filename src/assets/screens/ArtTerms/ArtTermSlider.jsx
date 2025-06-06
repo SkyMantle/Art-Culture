@@ -89,7 +89,7 @@ const ArtTermSlider = () => {
 		const fetchCreatorPosts = async () => {
 			try {
 				const response = await axios.get('/api/art-terms/last-terms/' + language)
-				console.log('Received last art-terms posts:', response.data)
+				console.debug('Received last art-terms posts:', response.data)
 				setCreatorPosts(response.data.artTerms || [])
 				setLoading(false)
 			} catch (err) {
@@ -120,8 +120,8 @@ const ArtTermSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

@@ -101,7 +101,7 @@ const PopularExhibitionsSlider = () => {
 				const response = await axios.get(
 					'/api/like/top-liked-exhibitions',
 				)
-				console.log('Received creator products:', response.data)
+				console.debug('Received creator products:', response.data)
 				setExhibitions(response.data || [])
 				setLoading(false)
 			} catch (err) {
@@ -131,8 +131,8 @@ const PopularExhibitionsSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

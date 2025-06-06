@@ -30,7 +30,7 @@ function FitBounds({ bounds }) {
  * @param {Array} museums
  */
 function AllMuseumsMap({ museums }) {
-	console.log('AllMuseumsMap -> museums:', museums)
+	console.debug('AllMuseumsMap -> museums:', museums)
 	const validMuseums = museums.filter(
 		(museum) =>
 			museum.lat &&

@@ -28,7 +28,7 @@ function ArtistPage() {
 		const fetchCreatorAndProduct = async () => {
 			try {
 				const response = await axios.get(`/api/users/creators/${id}`)
-				console.log('Fetched creator', response.data)
+				console.debug('Fetched creator', response.data)
 				setCreator(response.data.creator)
 			} catch (error) {
 				console.error('Error fetch creator', error)
@@ -41,11 +41,11 @@ function ArtistPage() {
 				const productsResponse = await axios.get(
 					`/api/products/author/${id}`,
 				)
-				console.log('Fetched products:', productsResponse.data)
+				console.debug('Fetched products:', productsResponse.data)
 				setProducts(productsResponse.data.products)
 			} catch (error) {
 				if (error.response && error.response.status === 404) {
-					console.log('No product found for this author')
+					console.debug('No product found for this author')
 					setProducts([])
 				} else {
 					console.error('Error fetch creator', error)

@@ -22,7 +22,7 @@ function MuseumPage() {
 		const fetchMuseum = async () => {
 			try {
 				const response = await axios.get(`/api/users/museums/${id}`)
-				console.log('Fetched museum', response.data)
+				console.debug('Fetched museum', response.data)
 				setMuseum(response.data.museum)
 				setLoading(false)
 			} catch (error) {
@@ -36,11 +36,11 @@ function MuseumPage() {
 				const productsResponse = await axios.get(
 					`/api/products/author/${id}`,
 				)
-				console.log('Fetched products', productsResponse.data)
+				console.debug('Fetched products', productsResponse.data)
 				setProducts(productsResponse.data.products)
 			} catch (error) {
 				if (error.response && error.response.status === 404) {
-					console.log('No product found for this author')
+					console.debug('No product found for this author')
 					setProducts([])
 				} else {
 					console.error('Error fetch creator', error)

@@ -84,7 +84,7 @@ const ArtistsPageNewsArtistsSlider = () => {
 		const fetchCreatorPosts = async () => {
 			try {
 				const response = await axios.get('/api/posts/exhibitions')
-				console.log('Received creator posts:', response.data)
+				console.debug('Received creator posts:', response.data)
 				setCreatorPosts(response.data.posts || [])
 				setLoading(false)
 			} catch (err) {
@@ -115,8 +115,8 @@ const ArtistsPageNewsArtistsSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

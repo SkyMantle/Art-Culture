@@ -48,14 +48,14 @@ function MainArtists() {
                                         : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
                         const newPostCount = getPostsCount(width)
                         if (typeof window !== 'undefined') {
-                                console.log(
+                                console.debug(
                                         `Window width: ${window.innerWidth}, New post count: ${newPostCount}`,
                                 )
                         }
                         if (newPostCount !== visibleCreatorsCount) {
                                 setVisibleCreatorsCount(newPostCount)
                                 if (typeof window !== 'undefined') {
-                                        console.log(`Updated visiblePostsCount to: ${newPostCount}`)
+                                        console.debug(`Updated visiblePostsCount to: ${newPostCount}`)
                                 }
                         }
                 }
@@ -78,7 +78,7 @@ function MainArtists() {
 		axios
 			.get('/api/users/creators')
 			.then((response) => {
-				console.log('Received creator data:', response.data)
+				console.debug('Received creator data:', response.data)
 				setCreators(response.data.creators)
 			})
 			.catch((error) => {

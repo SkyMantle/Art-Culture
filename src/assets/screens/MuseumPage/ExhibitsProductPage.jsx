@@ -84,9 +84,9 @@ function ExhibitsProductPage({ baseUrl }) {
 				const response = await axios.get(
 					`/api/products/museum/${museumId}`,
 				)
-				console.log('Fetch exhibits', response.data)
+				console.debug('Fetch exhibits', response.data)
 				const productsArray = response.data.products || []
-				console.log('Fetch exhibits', response.data.products)
+				console.debug('Fetch exhibits', response.data.products)
 				const grouped = groupByLetter(productsArray)
 				setProducts(grouped)
 			} catch (err) {

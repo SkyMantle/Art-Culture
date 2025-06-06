@@ -20,7 +20,7 @@ function ImageEditor({ className, name, label, value, required, multiple, onChan
 		const filesArray = Array.from(e.target.files)
 		const previews = filesArray.map(file => URL.createObjectURL(file))
 		setImagePreviews(previews)
-		console.log(previews)
+		console.debug(previews)
 		onChange({ name, value: e.target.files });
 	};
 

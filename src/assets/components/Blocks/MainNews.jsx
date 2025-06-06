@@ -54,7 +54,7 @@ function MainNews() {
                         if (newPostCount !== visiblePostsCount) {
                                 setVisiblePostsCount(newPostCount)
                                 if (typeof window !== 'undefined') {
-                                        console.log(
+                                        console.debug(
                                                 `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
                                         )
                                 }
@@ -80,7 +80,7 @@ function MainNews() {
 		axios
 			.get('/api/like/top-liked-posts')
 			.then((response) => {
-				console.log('Отримані дані постів:', response.data)
+				console.debug('Отримані дані постів:', response.data)
 				setPosts(response.data)
 			})
 			.catch((error) => {
@@ -121,14 +121,14 @@ function MainNews() {
 			<div className={`${styles.mainPageNewsCardsWrapper}`}>
 				{posts.slice(0, visiblePostsCount).map((post, index) => {
 					// Логування даних для перевірки
-					console.log('Пост:', post)
+					console.debug('Пост:', post)
 
 					const featuredMediaUrl = getImageUrl(
 						post.images,
 						'/Img/halfNewsCard.jpg',
 					)
 
-					console.log('Витягнуте медіа:', featuredMediaUrl)
+					console.debug('Витягнуте медіа:', featuredMediaUrl)
 
 					const formattedDate = getFormattedDate(post.createdAt)
 					const formattedTime = getFormattedTime(post.createdAt)

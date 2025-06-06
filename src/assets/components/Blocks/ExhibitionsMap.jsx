@@ -32,7 +32,7 @@ function FitBounds({ bounds }) {
  */
 
 function AllExhibitionsMap({ exhibitions }) {
-	console.log('AllExhibitionsMap -> exhibitions:', exhibitions)
+	console.debug('AllExhibitionsMap -> exhibitions:', exhibitions)
 	const validExhibitions = useMemo(() => {
 		return Array.isArray(exhibitions)
 			? exhibitions.filter(

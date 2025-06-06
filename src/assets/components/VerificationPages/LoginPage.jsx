@@ -32,7 +32,6 @@ const Login = () => {
 					email: loginDetails.email,
 					password: loginDetails.password,
 				},
-				console.log('loginDetails.email, loginDetails.password'),
 			)
 
 			if (response.status === 200) {
@@ -41,7 +40,6 @@ const Login = () => {
 				if (user.role === 'ADMIN') {
 					navigate('/admin/dashboard') // Redirect to admin dashboard
 				} else navigate('/profile') // Redirect to profile
-				console.log('token', token)
 			}
 		} catch (error) {
 			if (error.response && error.response.data) {

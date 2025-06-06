@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 							Authorization: `Bearer ${token}`,
 						},
 					})
-					console.log('User data fetched:', response.data.user)
+					console.debug('User data fetched:', response.data.user)
 					setUser(response.data.user)
 					setIsLoggedIn(true)
 				} catch (error) {
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 		setUser(userData)
 		setIsLoggedIn(true)
 		localStorage.setItem('token', token)
-		console.log('User logged in:', userData)
+		console.debug('User logged in:', userData)
 	}
 
 	const logout = () => {

@@ -41,7 +41,7 @@ const Slide = ({ product, baseUrl, onOverviewClick }) => {
 		'/Img/newsCardERROR.jpg',
 	) // Fallback image
 
-	console.log('Slider image URL for product', product.id, '=>', imageUrl)
+	console.debug('Slider image URL for product', product.id, '=>', imageUrl)
 
 	return (
 		<div
@@ -116,7 +116,7 @@ const MainPopularArtistsSlider = () => {
 				const response = await axios.get(
 					'/api/like/top-liked-paintings',
 				)
-				console.log('Received creator products:', response.data)
+				console.debug('Received creator products:', response.data)
 				setProducts(response.data || [])
 				setLoading(false)
 			} catch (err) {
@@ -148,7 +148,7 @@ const MainPopularArtistsSlider = () => {
 		[baseUrl],
 	)
 
-	console.log('baseUrl', baseUrl)
+	console.debug('baseUrl', baseUrl)
 
 	// Handler to open the GalleryModal with preloaded images
 	const handleOverviewClick = async (product) => {
@@ -205,8 +205,8 @@ const MainPopularArtistsSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

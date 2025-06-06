@@ -85,7 +85,7 @@ const MainPopularArtistsSlider = () => {
 		const fetchPosts = async () => {
 			try {
 				const response = await axios.get('/api/like/top-liked-posts')
-				console.log('Received creator products:', response.data)
+				console.debug('Received creator products:', response.data)
 				setPosts(response.data || [])
 				setLoading(false)
 			} catch (err) {
@@ -115,8 +115,8 @@ const MainPopularArtistsSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

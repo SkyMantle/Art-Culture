@@ -203,7 +203,7 @@ function NewsPage() {
 		const handleResize = () => {
 			const newMaxPostsCount = Math.min(posts.length, Math.max(maxPostsCount, visiblePostsCount * 2))
 			setMaxPostsCount(newMaxPostsCount)
-			console.log('Max posts count updated:', newMaxPostsCount)
+			console.debug('Max posts count updated:', newMaxPostsCount)
 		}
 
 		// Initial check
@@ -215,7 +215,7 @@ function NewsPage() {
 		const fetchPosts = async () => {
 			try {
 				const response = await axios.get('/api/posts')
-				console.log('Received posts data:', response.data)
+				console.debug('Received posts data:', response.data)
 				// Assuming the API returns { posts: [...] }
 				setPosts(response.data)
 				setLoading(false)

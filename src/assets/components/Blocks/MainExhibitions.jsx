@@ -46,7 +46,7 @@ function MainExhibitions() {
                         if (newPostCount !== visibleExhibitionsCount) {
                                 setVisibleExhibitionsCount(newPostCount)
                                 if (typeof window !== 'undefined') {
-                                        console.log(
+                                        console.debug(
                                                 `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
                                         )
                                 }
@@ -72,7 +72,7 @@ function MainExhibitions() {
 		axios
 			.get('/api/exhibitions')
 			.then((response) => {
-				console.log('Отримані дані виставок:', response.data)
+				console.debug('Отримані дані виставок:', response.data)
 				setExhibitions(response.data.exhibitions)
 			})
 			.catch((error) => {
@@ -122,7 +122,7 @@ function MainExhibitions() {
 					.slice(0, visibleExhibitionsCount)
 					.map((exhibition, index) => {
 						// Логування даних для перевірки
-						console.log('Витягнуті виставки:', exhibitions)
+						console.debug('Витягнуті виставки:', exhibitions)
 
 						const featuredMediaUrl =
 							exhibition.images && exhibition.images.length > 0
@@ -131,7 +131,7 @@ function MainExhibitions() {
 										'/Img/halfNewsCard.jpg',
 									)
 								: '/Img/halfNewsCard.jpg'
-						console.log('Витягнуте медіа:', featuredMediaUrl)
+						console.debug('Витягнуте медіа:', featuredMediaUrl)
 
 						const address = exhibition.address || ''
 

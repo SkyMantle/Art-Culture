@@ -20,7 +20,7 @@ import TranslatedContent from '../../Blocks/TranslatedContent'
 const Slide = ({ museum, baseUrl, onClick }) => {
 	const { t } = useTranslation()
 	const featuredMediaUrl = getImageUrl(museum.images, '/Img/halfNewsCard.jpg')
-	console.log('Витягнуте медіа:', featuredMediaUrl)
+	console.debug('Витягнуте медіа:', featuredMediaUrl)
 
 	return (
 		<div className="PopularSliderCardWrapper">
@@ -86,7 +86,7 @@ const PopularMuseumSlider = () => {
 		const fetchPopularMuseums = async () => {
 			try {
 				const response = await axios.get('/api/like/top-liked-museums')
-				console.log('Received museums:', response.data)
+				console.debug('Received museums:', response.data)
 				setMuseums(response.data || [])
 				setLoading(false)
 			} catch (err) {
@@ -121,8 +121,8 @@ const PopularMuseumSlider = () => {
 						slidesPerView={'auto'}
 						navigation
 						pagination={{ clickable: false, type: 'fraction' }}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						onSlideChange={() => console.debug('slide change')}
+						onSwiper={(swiper) => console.debug(swiper)}
 					>
 						{loading ? (
 							<SwiperSlide>

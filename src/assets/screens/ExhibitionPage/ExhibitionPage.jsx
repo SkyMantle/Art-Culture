@@ -35,7 +35,7 @@ function ExhibitionDetails() {
 						Authorization: `Bearer ${localStorage.getItem('token')}`,
 					},
 				})
-				console.log('Fetched Exhibition Data:', response.data)
+				console.debug('Fetched Exhibition Data:', response.data)
 				const fetchedExhibition = response.data
 
 				setExhibition(fetchedExhibition)
@@ -44,7 +44,7 @@ function ExhibitionDetails() {
 					const museumResponse = await API.get(
 						`/users/museums/${fetchedExhibition.museumId}`,
 					)
-					console.log('Fetched Museum Data:', museumResponse.data)
+					console.debug('Fetched Museum Data:', museumResponse.data)
 					setMuseum(museumResponse.data.museum) // or .data if shaped differently
 				}
 
@@ -54,7 +54,7 @@ function ExhibitionDetails() {
 						const productsResponse = await API.get(
 							`/exhibitions/${id}/products`,
 						)
-						console.log(
+						console.debug(
 							'Fetched Products for Exhibition:',
 							productsResponse.data.products,
 						)
