@@ -33,7 +33,9 @@ SEO metadata is defined in [`src/meta/index.js`](src/meta/index.js).
 
 ## Middleware and SSR
 
-A simple middleware is defined in [`middleware.ts`](middleware.ts). It adds an `X-Art-Culture` header to all responses.
+The middleware in [`middleware.ts`](middleware.ts) now detects the locale from the
+URL. Requests without a locale prefix are redirected to `/uk` by default and an
+`X-Art-Culture` header is added to all responses.
 
 A demo SSR page is available at [`src/pages/ssr.js`](src/pages/ssr.js) which uses `getServerSideProps` to select a random news item on each request.
 

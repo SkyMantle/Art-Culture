@@ -1,7 +1,2 @@
-const config = {
-  i18n: {
-    locales: ['uk', 'en'],
-    defaultLocale: 'uk',
-  },
-};
+const config = {};
 export default config;
