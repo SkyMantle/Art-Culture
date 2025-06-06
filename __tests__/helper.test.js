@@ -3,7 +3,9 @@ import { getImageUrl, getFormattedDate, getFormattedTime } from '../src/utils/he
 
 describe('helper utilities', () => {
   beforeEach(() => {
-    global.window = { location: { hostname: 'localhost' } };
+    global.window = {
+      location: { hostname: 'localhost', origin: 'http://localhost:3000' },
+    };
     process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
   });
 
@@ -20,6 +22,13 @@ describe('helper utilities', () => {
     test('normalizes relative paths', () => {
       const result = getImageUrl('images/pic.jpg');
       expect(result).toBe('http://localhost:5000/images/pic.jpg');
+    });
+
+    test('uses window origin for non-localhost', () => {
+      global.window.location.hostname = 'example.com';
+      global.window.location.origin = 'https://example.com';
+      const result = getImageUrl('images/pic.jpg');
+      expect(result).toBe('https://example.com/images/pic.jpg');
     });
   });
 
