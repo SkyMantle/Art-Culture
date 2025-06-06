@@ -1,13 +1,19 @@
 export function getBaseUrl() {
-        const host =
-                typeof window !== 'undefined'
-                        ? window.location.hostname
-                        : process.env.NEXT_PUBLIC_HOST || 'localhost'
+        const isBrowser = typeof window !== 'undefined'
+        const host = isBrowser
+                ? window.location.hostname
+                : process.env.NEXT_PUBLIC_HOST || 'localhost'
+
         const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-        const baseUrl = isLocalhost
-                ? process.env.NEXT_PUBLIC_API_URL
-                : 'https://art.playukraine.com'
-        return baseUrl
+        if (isLocalhost) {
+                return process.env.NEXT_PUBLIC_API_URL
+        }
+
+        if (isBrowser) {
+                return window.location.origin
+        }
+
+        return `https://${host}`
 }
 
 /**
