@@ -10,9 +10,13 @@ function MainExhibitions() {
 	const { t } = useTranslation()
 	const [exhibitions, setExhibitions] = useState([])
 	const navigate = useNavigate()
-	const [visibleExhibitionsCount, setVisibleExhibitionsCount] = useState(
-		getPostsCount(window.innerWidth),
-	)
+        const [visibleExhibitionsCount, setVisibleExhibitionsCount] = useState(
+                getPostsCount(
+                        typeof window !== 'undefined'
+                                ? window.innerWidth
+                                : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024'),
+                ),
+        )
 
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
@@ -32,26 +36,36 @@ function MainExhibitions() {
 		}
 	}
 
-	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			if (newPostCount !== visibleExhibitionsCount) {
-				setVisibleExhibitionsCount(newPostCount)
-				console.log(
-					`Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
-				)
-			}
-		}
+        useEffect(() => {
+                const handleResize = () => {
+                        const width =
+                                typeof window !== 'undefined'
+                                        ? window.innerWidth
+                                        : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
+                        const newPostCount = getPostsCount(width)
+                        if (newPostCount !== visibleExhibitionsCount) {
+                                setVisibleExhibitionsCount(newPostCount)
+                                if (typeof window !== 'undefined') {
+                                        console.log(
+                                                `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
+                                        )
+                                }
+                        }
+                }
 
-		window.addEventListener('resize', handleResize)
+                if (typeof window !== 'undefined') {
+                        window.addEventListener('resize', handleResize)
+                }
 
-		// Initial check
-		handleResize()
+                // Initial check
+                handleResize()
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visibleExhibitionsCount])
+                return () => {
+                        if (typeof window !== 'undefined') {
+                                window.removeEventListener('resize', handleResize)
+                        }
+                }
+        }, [visibleExhibitionsCount])
 
 	useEffect(() => {
 		// Запит на отримання виставок з медіа-даними

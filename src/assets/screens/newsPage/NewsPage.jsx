@@ -150,9 +150,13 @@ function NewsPage() {
 	const [error, setError] = useState(null)
 
 	// Determine the number of visible posts based on window width
-	const [visiblePostsCount, setVisiblePostsCount] = useState(
-		getPostsCount(window.innerWidth),
-	)
+        const [visiblePostsCount, setVisiblePostsCount] = useState(
+                getPostsCount(
+                        typeof window !== 'undefined'
+                                ? window.innerWidth
+                                : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024'),
+                ),
+        )
 	const [maxPostsCount, setMaxPostsCount] = useState(0)
 
 	function getPostsCount(width) {
@@ -170,23 +174,31 @@ function NewsPage() {
 	}
 
 	// Handle window resize to adjust visible posts count
-	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			if (newPostCount !== visiblePostsCount) {
-				setVisiblePostsCount(newPostCount)
-			}
-		}
+        useEffect(() => {
+                const handleResize = () => {
+                        const width =
+                                typeof window !== 'undefined'
+                                        ? window.innerWidth
+                                        : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
+                        const newPostCount = getPostsCount(width)
+                        if (newPostCount !== visiblePostsCount) {
+                                setVisiblePostsCount(newPostCount)
+                        }
+                }
 
-		window.addEventListener('resize', handleResize)
+                if (typeof window !== 'undefined') {
+                        window.addEventListener('resize', handleResize)
+                }
 
-		// Initial check
-		handleResize()
+                // Initial check
+                handleResize()
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visiblePostsCount, posts])
+                return () => {
+                        if (typeof window !== 'undefined') {
+                                window.removeEventListener('resize', handleResize)
+                        }
+                }
+        }, [visiblePostsCount, posts])
 	useEffect(() => {
 		const handleResize = () => {
 			const newMaxPostsCount = Math.min(posts.length, Math.max(maxPostsCount, visiblePostsCount * 2))

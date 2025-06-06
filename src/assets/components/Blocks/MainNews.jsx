@@ -14,9 +14,13 @@ function MainNews() {
 	const { t } = useTranslation()
 	const [posts, setPosts] = useState([])
 
-	const [visiblePostsCount, setVisiblePostsCount] = useState(
-		getPostsCount(window.innerWidth),
-	)
+        const [visiblePostsCount, setVisiblePostsCount] = useState(
+                getPostsCount(
+                        typeof window !== 'undefined'
+                                ? window.innerWidth
+                                : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024'),
+                ),
+        )
 	const navigate = useNavigate()
 	const handleNewsPageClick = () => {
 		navigate('/news-page')
@@ -40,26 +44,36 @@ function MainNews() {
 		}
 	}
 
-	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			if (newPostCount !== visiblePostsCount) {
-				setVisiblePostsCount(newPostCount)
-				console.log(
-					`Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
-				)
-			}
-		}
+        useEffect(() => {
+                const handleResize = () => {
+                        const width =
+                                typeof window !== 'undefined'
+                                        ? window.innerWidth
+                                        : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
+                        const newPostCount = getPostsCount(width)
+                        if (newPostCount !== visiblePostsCount) {
+                                setVisiblePostsCount(newPostCount)
+                                if (typeof window !== 'undefined') {
+                                        console.log(
+                                                `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
+                                        )
+                                }
+                        }
+                }
 
-		window.addEventListener('resize', handleResize)
+                if (typeof window !== 'undefined') {
+                        window.addEventListener('resize', handleResize)
+                }
 
-		// Initial check
-		handleResize()
+                // Initial check
+                handleResize()
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visiblePostsCount])
+                return () => {
+                        if (typeof window !== 'undefined') {
+                                window.removeEventListener('resize', handleResize)
+                        }
+                }
+        }, [visiblePostsCount])
 
 	useEffect(() => {
 		// Запит на отримання постів з медіа-даними

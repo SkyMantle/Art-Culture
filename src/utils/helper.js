@@ -1,10 +1,13 @@
 export function getBaseUrl() {
-	const host = window.location.hostname
-	const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-       const baseUrl = isLocalhost
-               ? process.env.NEXT_PUBLIC_API_URL
-               : 'https://art.playukraine.com'
-	return baseUrl
+        const host =
+                typeof window !== 'undefined'
+                        ? window.location.hostname
+                        : process.env.NEXT_PUBLIC_HOST || 'localhost'
+        const isLocalhost = host === 'localhost' || host === '127.0.0.1'
+        const baseUrl = isLocalhost
+                ? process.env.NEXT_PUBLIC_API_URL
+                : 'https://art.playukraine.com'
+        return baseUrl
 }
 
 /**
