@@ -13,6 +13,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 
 import { getBaseUrl } from '../../../../utils/helper'
 import '/src/styles/components/Sliders/NewsPageAuthorsSlider/NewsPageAuthorsSlider.scss'
+import Image from 'next/image'
 
 const Slide = ({ author, onClick }) => {
 	const { t } = useTranslation()
@@ -20,23 +21,25 @@ const Slide = ({ author, onClick }) => {
 	return (
 		<div className="newsPageAuthorsSliderCardContainer">
 			<div className="newsPageAuthorsSliderCardWrapper">
-				<div className="newsPageAuthorsSliderCardUserPhotoWrapper">
-					<img
-						className="newsPageAuthorsSliderCardUserPhoto"
-						src={
-							author.images
-								? `${baseUrl}${author.images.replace('../../', '/')}`
-								: '/Img/halfNewsCard.jpg'
-						}
-						alt={t('Фотографія автора')}
-						loading="lazy"
-						onClick={() => onClick(author.id)}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src =
-								'/Img/mainInstagramSliderUserPhoto.png'
-						}}
-					/>
+                                <div className="newsPageAuthorsSliderCardUserPhotoWrapper">
+                                        <Image
+                                                className="newsPageAuthorsSliderCardUserPhoto"
+                                                src={
+                                                        author.images
+                                                                ? `${baseUrl}${author.images.replace('../../', '/')}`
+                                                                : '/Img/halfNewsCard.jpg'
+                                                }
+                                                alt={t('Фотографія автора')}
+                                                width={125}
+                                                height={125}
+                                                loading="lazy"
+                                                onClick={() => onClick(author.id)}
+                                                onError={(e) => {
+                                                        e.target.onerror = null
+                                                        e.target.src =
+                                                                '/Img/mainInstagramSliderUserPhoto.png'
+                                                }}
+                                        />
 				</div>
 				<div className="newsPageAuthorsSliderCardUserNameWrapper">
 					<p className="newsPageAuthorsSliderCardUserName">

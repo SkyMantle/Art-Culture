@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { Navigation, Pagination } from 'swiper/modules'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 import TranslatedContent from '../../Blocks/TranslatedContent'
+import Image from 'next/image'
 
 const Slide = ({ post, baseUrl }) => {
 	const { t } = useTranslation()
@@ -29,15 +30,17 @@ const Slide = ({ post, baseUrl }) => {
 	return (
 		<div className="PopularSliderCardWrapper">
 			<div className="PopularSliderCardInnerWrapper">
-				<img
-					className="PopularSliderCardImg"
-					src={imageUrl}
-					alt={t('Світлина мистецтва')}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/Img/newsCardERROR.jpg'
-					}}
-				/>
+                                <Image
+                                        className="PopularSliderCardImg"
+                                        src={imageUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={295}
+                                        height={430}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/newsCardERROR.jpg'
+                                        }}
+                                />
 			</div>
 			<div className="PopularSliderCardAbsoluteWrapper">
 				<div className="PopularSliderCardButtonWrapper">

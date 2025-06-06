@@ -15,6 +15,7 @@ import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 import { Navigation, Pagination } from 'swiper/modules'
 
 import '/src/styles/components/Sliders/MainPageBannerSlider/MainPageBannerSlider.scss'
+import Image from 'next/image'
 
 const Slide = ({ museum, baseUrl, onClick }) => {
 	const { t } = useTranslation()
@@ -78,17 +79,19 @@ const Slide = ({ museum, baseUrl, onClick }) => {
 					</div>
 				</div>
 
-				<div className="BannerSliderCardImgWrapper">
-					<img
-						className="BannerSliderCardImg"
-						src={featuredMediaUrl}
-						alt={t('Фото музея')}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src = '/Img/newsCardERROR.jpg'
-						}}
-					/>
-				</div>
+                                <div className="BannerSliderCardImgWrapper">
+                                        <Image
+                                                className="BannerSliderCardImg"
+                                                src={featuredMediaUrl}
+                                                alt={t('Фото музея')}
+                                                width={630}
+                                                height={330}
+                                                onError={(e) => {
+                                                        e.target.onerror = null
+                                                        e.target.src = '/Img/newsCardERROR.jpg'
+                                                }}
+                                        />
+                                </div>
 			</div>
 		</div>
 	)

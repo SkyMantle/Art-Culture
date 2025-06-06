@@ -17,6 +17,7 @@ import '@styles/components/Sliders/Base/PopularSlider.scss'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 // import LikeAndShare from '../../Blocks/LikeAndShare'
 import TranslatedContent from '../../Blocks/TranslatedContent'
+import Image from 'next/image'
 
 const Slide = ({ exhibition, baseUrl, onClick }) => {
 	const { t } = useTranslation()
@@ -38,15 +39,17 @@ const Slide = ({ exhibition, baseUrl, onClick }) => {
 	return (
 		<div className="PopularSliderCardWrapper">
 			<div className="PopularSliderCardInnerWrapper">
-				<img
-					className="PopularSliderCardImg"
-					src={imageUrl}
-					alt={t('Світлина мистецтва')}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/Img/mainPopularArtistsSlide.jpg'
-					}}
-				/>
+                                <Image
+                                        className="PopularSliderCardImg"
+                                        src={imageUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={295}
+                                        height={430}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/mainPopularArtistsSlide.jpg'
+                                        }}
+                                />
 			</div>
 			<div className="PopularSliderCardAbsoluteWrapper">
 				<div className="PopularSliderCardButtonWrapper">

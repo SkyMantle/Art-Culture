@@ -16,6 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { getBaseUrl } from '../../../../utils/helper'
 import TranslatedContent from '../../Blocks/TranslatedContent'
 import '/src/styles/components/Sliders/Base/NewsSlider.scss'
+import Image from 'next/image'
 
 const Slide = ({ post, baseUrl, onClick }) => {
 	const { t } = useTranslation()
@@ -32,17 +33,19 @@ const Slide = ({ post, baseUrl, onClick }) => {
 	return (
 		<div className="NewsSliderCardContainer">
 			<a className="NewsSliderCardLink">
-				<div className="NewsSliderCardImgWrapper">
-					<img
-						className="NewsSliderCardImg"
-						src={featuredMediaUrl}
-						alt={t('Світлина мистецтва')}
-						onClick={() => handlePostClick(post.id)}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src = '/Img/newsCardERROR.jpg'
-						}}
-					/>
+                                <div className="NewsSliderCardImgWrapper">
+                                        <Image
+                                                className="NewsSliderCardImg"
+                                                src={featuredMediaUrl}
+                                                alt={t('Світлина мистецтва')}
+                                                width={282}
+                                                height={282}
+                                                onClick={() => handlePostClick(post.id)}
+                                                onError={(e) => {
+                                                        e.target.onerror = null
+                                                        e.target.src = '/Img/newsCardERROR.jpg'
+                                                }}
+                                        />
 				</div>
 
 				<div className="NewsSliderCardTitleWrapper">

@@ -15,6 +15,7 @@ import '@styles/components/Sliders/Base/NewsSlider.scss'
 import { useNavigate } from 'react-router-dom'
 import { getBaseUrl } from '../../../../utils/helper'
 import TranslatedContent from '../../Blocks/TranslatedContent'
+import Image from 'next/image'
 
 const Slide = ({ post, baseUrl }) => {
 	const { t } = useTranslation()
@@ -28,17 +29,19 @@ const Slide = ({ post, baseUrl }) => {
 	}
 	return (
 		<div className="NewsSliderCardContainer">
-			<div className="NewsSliderCardImgWrapper">
-				<img
-					className="NewsSliderCardImg"
-					src={featuredMediaUrl}
-					alt={t('Світлина мистецтва')}
-					onClick={() => handlePostClick(post.id)}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/Img/newsCardERROR.jpg'
-					}}
-				/>
+                        <div className="NewsSliderCardImgWrapper">
+                                <Image
+                                        className="NewsSliderCardImg"
+                                        src={featuredMediaUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={282}
+                                        height={282}
+                                        onClick={() => handlePostClick(post.id)}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/newsCardERROR.jpg'
+                                        }}
+                                />
 			</div>
 
 			<div className="NewsSliderCardTitleWrapper">

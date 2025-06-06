@@ -16,6 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 import ModalWindow from '../../Blocks/ModalWindow'
 import TranslatedContent from '../../Blocks/TranslatedContent'
+import Image from 'next/image'
 
 const Slide = ({ product, baseUrl, onOverviewClick }) => {
 	const { t } = useTranslation()
@@ -49,16 +50,18 @@ const Slide = ({ product, baseUrl, onOverviewClick }) => {
 			// onClick={() => onOverviewClick(product)}
 			onClick={() => handleProductClick(product.id)}
 		>
-			<div className="PopularSliderCardInnerWrapper">
-				<img
-					className="PopularSliderCardImg"
-					src={imageUrl}
-					alt={t('Світлина мистецтва')}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/Img/newsCardERROR.jpg'
-					}}
-				/>
+                        <div className="PopularSliderCardInnerWrapper">
+                                <Image
+                                        className="PopularSliderCardImg"
+                                        src={imageUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={295}
+                                        height={430}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/newsCardERROR.jpg'
+                                        }}
+                                />
 			</div>
 			<div className="PopularSliderCardAbsoluteWrapper">
 				<div className="PopularSliderCardButtonWrapper">
