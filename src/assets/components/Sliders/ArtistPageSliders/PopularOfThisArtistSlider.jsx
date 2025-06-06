@@ -13,6 +13,7 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { Navigation, Pagination } from 'swiper/modules'
 import '/src/styles/components/Sliders/ArtistPageSliders/PopularOfThisArtistSlider.scss'
+import Image from 'next/image'
 
 const Slide = ({ product }) => {
 	const { t } = useTranslation()
@@ -31,16 +32,18 @@ const Slide = ({ product }) => {
 	}
 	return (
 		<div className="popularOfThisArtistSliderCardContainer">
-			<div className="popularOfThisArtistSliderCardImgWrapper">
-				<img
-					className="popularOfThisArtistSliderCardImg"
-					src={featuredMediaUrl}
-					alt={t('Світлина мистецтва')}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/public/Img/newsCardERROR.jpg'
-					}}
-				/>
+                        <div className="popularOfThisArtistSliderCardImgWrapper">
+                                <Image
+                                        className="popularOfThisArtistSliderCardImg"
+                                        src={featuredMediaUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={282}
+                                        height={282}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/public/Img/newsCardERROR.jpg'
+                                        }}
+                                />
 			</div>
 
 			<div className="popularOfThisArtistSliderSoldSellIconWrapper">

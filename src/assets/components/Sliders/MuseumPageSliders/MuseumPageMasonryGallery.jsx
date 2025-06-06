@@ -3,6 +3,7 @@
 import style from '@styles/components/Sliders/MasonrySlider/PageMasonryGallery.module.scss'
 import { debounce } from 'lodash' // Using lodash's debounce
 import PropTypes from 'prop-types'
+import Image from 'next/image'
 import {
 	useCallback,
 	useEffect,
@@ -591,22 +592,22 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 											)
 										}
 									>
-										<img
-											src={img.src}
-											alt=""
-											loading="lazy"
-											className={style.galleryImage}
-											style={{
-												width: '100%',
-												height: '100%', // Let height adjust based on image aspect ratio
-												objectFit: 'cover', // Ensures the image covers the container without distortion
-											}}
-											onError={(e) => {
-												e.target.onerror = null
-												e.target.src =
-													'/Img/newsCardERROR.jpg'
-												console.error(
-													'Error loading gallery image:',
+                                                                              <Image
+                                                                              src={img.src}
+                                                                              alt=""
+                                                                              width={250}
+                                                                              height={250}
+                                                                              loading="lazy"
+                                                                              className={style.galleryImage}
+                                                                              style={{
+                                                                              objectFit: 'cover', // Ensures the image covers the container without distortion
+                                                                              }}
+                                                                              onError={(e) => {
+                                                                              e.target.onerror = null
+                                                                              e.target.src =
+                                                                              '/Img/newsCardERROR.jpg'
+                                                                              console.error(
+                                                                              'Error loading gallery image:',
 													e.target.src,
 												)
 											}}
@@ -652,20 +653,20 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 											)
 										}
 									>
-										<img
-											src={img.src}
-											alt=""
-											loading="lazy"
-											className={style.galleryImage}
-											style={{
-												width: '100%',
-												height: '100%',
-												objectFit: 'cover',
-											}}
-											onError={(e) => {
-												e.target.onerror = null
-												e.target.src =
-													'/Img/newsCardERROR.jpg'
+                                                                              <Image
+                                                                              src={img.src}
+                                                                              alt=""
+                                                                              width={250}
+                                                                              height={250}
+                                                                              loading="lazy"
+                                                                              className={style.galleryImage}
+                                                                              style={{
+                                                                              objectFit: 'cover',
+                                                                              }}
+                                                                              onError={(e) => {
+                                                                              e.target.onerror = null
+                                                                              e.target.src =
+                                                                              '/Img/newsCardERROR.jpg'
 												console.error(
 													'Error loading gallery image:',
 													e.target.src,
@@ -713,20 +714,20 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 											)
 										}
 									>
-										<img
-											src={img.src}
-											alt=""
-											loading="lazy"
-											className={style.galleryImage}
-											style={{
-												width: '100%',
-												height: '100%',
-												objectFit: 'cover',
-											}}
-											onError={(e) => {
-												e.target.onerror = null
-												e.target.src =
-													'/Img/newsCardERROR.jpg'
+                                                                              <Image
+                                                                              src={img.src}
+                                                                              alt=""
+                                                                              width={250}
+                                                                              height={250}
+                                                                              loading="lazy"
+                                                                              className={style.galleryImage}
+                                                                              style={{
+                                                                              objectFit: 'cover',
+                                                                              }}
+                                                                              onError={(e) => {
+                                                                              e.target.onerror = null
+                                                                              e.target.src =
+                                                                              '/Img/newsCardERROR.jpg'
 												console.error(
 													'Error loading gallery image:',
 													e.target.src,
@@ -1099,16 +1100,18 @@ const MuseumPageMasonryGallery = ({ products, baseUrl, museum }) => {
 						{t('Всі експонати цього музею ')}
 					</p>
 					``
-					<img
-						className={`${style.buttonArrow}`}
-						src={'/Img/buttonArrow.svg'}
-						alt={t('Фото митця')}
-						loading="lazy"
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src = '/Img/newsCardERROR.jpg'
-						}}
-					/>
+                                        <Image
+                                                className={`${style.buttonArrow}`}
+                                                src={'/Img/buttonArrow.svg'}
+                                                alt={t('Фото митця')}
+                                                width={20}
+                                                height={20}
+                                                loading="lazy"
+                                                onError={(e) => {
+                                                        e.target.onerror = null
+                                                        e.target.src = '/Img/newsCardERROR.jpg'
+                                                }}
+                                        />
 				</button>
 			</div>
 		</div>

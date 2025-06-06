@@ -12,6 +12,8 @@ import 'swiper/css/pagination'
 import { Autoplay } from 'swiper/modules'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 
+import Image from 'next/image'
+
 // Import Swiper modules
 import { Navigation, Pagination } from 'swiper/modules'
 
@@ -91,17 +93,19 @@ const Slide = ({ museum, exhibition, baseUrl, onClick }) => {
 					</div>
 				</div>
 
-				<div className="BannerSliderCardImgWrapper">
-					<img
-						className="BannerSliderCardImg"
-						src={featuredMediaUrl}
-						alt={t('Фото музея')}
-						onError={(e) => {
-							e.target.onerror = null
-							e.target.src = '/Img/newsCardERROR.jpg'
-						}}
-					/>
-				</div>
+                                <div className="BannerSliderCardImgWrapper">
+                                        <Image
+                                                className="BannerSliderCardImg"
+                                                src={featuredMediaUrl}
+                                                alt={t('Фото музея')}
+                                                width={630}
+                                                height={330}
+                                                onError={(e) => {
+                                                        e.target.onerror = null
+                                                        e.target.src = '/Img/newsCardERROR.jpg'
+                                                }}
+                                        />
+                                </div>
 			</div>
 		</div>
 	)

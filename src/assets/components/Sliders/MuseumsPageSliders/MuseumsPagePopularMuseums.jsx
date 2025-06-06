@@ -16,6 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
 // import LikeAndShare from '../../Blocks/LikeAndShare'
 import TranslatedContent from '../../Blocks/TranslatedContent'
+import Image from 'next/image'
 
 const Slide = ({ museum, baseUrl, onClick }) => {
 	const { t } = useTranslation()
@@ -25,15 +26,17 @@ const Slide = ({ museum, baseUrl, onClick }) => {
 	return (
 		<div className="PopularSliderCardWrapper">
 			<div className="PopularSliderCardInnerWrapper">
-				<img
-					className="PopularSliderCardImg"
-					src={featuredMediaUrl}
-					alt={t('Світлина мистецтва')}
-					onError={(e) => {
-						e.target.onerror = null
-						e.target.src = '/Img/mainPopularArtistsSlide.jpg'
-					}}
-				/>
+                                <Image
+                                        className="PopularSliderCardImg"
+                                        src={featuredMediaUrl}
+                                        alt={t('Світлина мистецтва')}
+                                        width={295}
+                                        height={430}
+                                        onError={(e) => {
+                                                e.target.onerror = null
+                                                e.target.src = '/Img/mainPopularArtistsSlide.jpg'
+                                        }}
+                                />
 			</div>
 			<div className="PopularSliderCardAbsoluteWrapper">
 				<div className="PopularSliderCardButtonWrapper">
