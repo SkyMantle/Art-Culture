@@ -14,9 +14,13 @@ function MainMuseums() {
 	const { t } = useTranslation()
 	const [museums, setMuseums] = useState([])
 	const navigate = useNavigate()
-	const [visibleMuseumsCount, setVisibleMuseumsCount] = useState(
-		getPostsCount(window.innerWidth),
-	)
+        const [visibleMuseumsCount, setVisibleMuseumsCount] = useState(
+                getPostsCount(
+                        typeof window !== 'undefined'
+                                ? window.innerWidth
+                                : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024'),
+                ),
+        )
 
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
@@ -36,26 +40,36 @@ function MainMuseums() {
 		}
 	}
 
-	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			if (newPostCount !== visibleMuseumsCount) {
-				setVisibleMuseumsCount(newPostCount)
-				console.log(
-					`Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
-				)
-			}
-		}
+        useEffect(() => {
+                const handleResize = () => {
+                        const width =
+                                typeof window !== 'undefined'
+                                        ? window.innerWidth
+                                        : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
+                        const newPostCount = getPostsCount(width)
+                        if (newPostCount !== visibleMuseumsCount) {
+                                setVisibleMuseumsCount(newPostCount)
+                                if (typeof window !== 'undefined') {
+                                        console.log(
+                                                `Window width: ${window.innerWidth}, Visible posts count: ${newPostCount}`,
+                                        )
+                                }
+                        }
+                }
 
-		window.addEventListener('resize', handleResize)
+                if (typeof window !== 'undefined') {
+                        window.addEventListener('resize', handleResize)
+                }
 
-		// Initial check
-		handleResize()
+                // Initial check
+                handleResize()
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visibleMuseumsCount])
+                return () => {
+                        if (typeof window !== 'undefined') {
+                                window.removeEventListener('resize', handleResize)
+                        }
+                }
+        }, [visibleMuseumsCount])
 
 	useEffect(() => {
 		// Запит на отримання постів з медіа-даними

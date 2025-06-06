@@ -14,9 +14,13 @@ function MainArtists() {
 	const [regDate, setRegDate] = useState('')
 	const [regTime, setRegTime] = useState('')
 	const { user } = useAuth()
-	const [visibleCreatorsCount, setVisibleCreatorsCount] = useState(
-		getPostsCount(window.innerWidth),
-	)
+        const [visibleCreatorsCount, setVisibleCreatorsCount] = useState(
+                getPostsCount(
+                        typeof window !== 'undefined'
+                                ? window.innerWidth
+                                : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024'),
+                ),
+        )
 
 	function getPostsCount(width) {
 		if (width === null || width === undefined) {
@@ -36,27 +40,39 @@ function MainArtists() {
 		}
 	}
 
-	useEffect(() => {
-		const handleResize = () => {
-			const newPostCount = getPostsCount(window.innerWidth)
-			console.log(
-				`Window width: ${window.innerWidth}, New post count: ${newPostCount}`,
-			)
-			if (newPostCount !== visibleCreatorsCount) {
-				setVisibleCreatorsCount(newPostCount)
-				console.log(`Updated visiblePostsCount to: ${newPostCount}`)
-			}
-		}
+        useEffect(() => {
+                const handleResize = () => {
+                        const width =
+                                typeof window !== 'undefined'
+                                        ? window.innerWidth
+                                        : parseInt(process.env.NEXT_PUBLIC_DEFAULT_WIDTH || '1024')
+                        const newPostCount = getPostsCount(width)
+                        if (typeof window !== 'undefined') {
+                                console.log(
+                                        `Window width: ${window.innerWidth}, New post count: ${newPostCount}`,
+                                )
+                        }
+                        if (newPostCount !== visibleCreatorsCount) {
+                                setVisibleCreatorsCount(newPostCount)
+                                if (typeof window !== 'undefined') {
+                                        console.log(`Updated visiblePostsCount to: ${newPostCount}`)
+                                }
+                        }
+                }
 
-		window.addEventListener('resize', handleResize)
+                if (typeof window !== 'undefined') {
+                        window.addEventListener('resize', handleResize)
+                }
 
-		// Initial check
-		handleResize()
+                // Initial check
+                handleResize()
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [visibleCreatorsCount])
+                return () => {
+                        if (typeof window !== 'undefined') {
+                                window.removeEventListener('resize', handleResize)
+                        }
+                }
+        }, [visibleCreatorsCount])
 
 	useEffect(() => {
 		axios
