@@ -1,4 +1,5 @@
 // src/components/LazyImage.jsx
+import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 
 function LazyImage({ src, alt, className, onClick }) {
