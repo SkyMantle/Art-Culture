@@ -44,3 +44,5 @@ A demo SSR page is available at [`src/pages/ssr.js`](src/pages/ssr.js) which use
 News pages are pre-rendered at build time but regenerate periodically. The
 `revalidate` export in [`src/app/news/[id]/page.tsx`](src/app/news/%5Bid%5D/page.tsx)
 instructs Next.js to refresh the static content every 60 seconds.
+
+For information on obtaining sample SQL dumps see [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md).

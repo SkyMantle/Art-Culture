@@ -46,3 +46,9 @@ server.key
 
 # Git fetch metadata
 FETCH_HEAD
+
+# Database dumps
+dump.sql
+testdata.sql
+artukrainedev.session.sql
+sql command.sql
