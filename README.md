@@ -18,6 +18,7 @@ Copy `.env.sample` to `.env` and update the values as needed.
 - `REDIS_URL` or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`
 - `SHOPIFY_API_KEY` and `SHOPIFY_API_SECRET`
 - `NEXTAUTH_SECRET` and provider credentials like `GITHUB_ID`/`GITHUB_SECRET`
+- `NEXT_PUBLIC_HOST` – hostname used when rendering on the server
 
 ## NextAuth
 
