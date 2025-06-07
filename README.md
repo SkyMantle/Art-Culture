@@ -2,6 +2,9 @@
 
 This project uses **Next.js** for server-side rendering (SSR).
 
+The codebase is tested with **Node.js 18.x**. If you use `nvm`, run `nvm use` in
+the project directory to ensure the correct version.
+
 ## Getting Started
 
 Install dependencies and create a local `.env` file based on `.env.sample`:
