@@ -330,7 +330,7 @@ function NewsPage() {
 								alt={t('Стрілка')}
 								onError={(e) => {
 									e.target.onerror = null
-									e.target.src = '/mainNewImg/buttonArrow.svg' // Fallback image
+                                                                        e.target.src = '/img/buttonArrow.svg' // Fallback image
 								}}
 							/>
 						</button>) : null}
