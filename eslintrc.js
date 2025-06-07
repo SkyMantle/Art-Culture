@@ -1,21 +1,43 @@
 module.exports = {
   root: true,
-  extends: ['next', 'next/core-web-vitals'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2022,
+    ecmaVersion: 2023,
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
+    project: ['./tsconfig.json'],
   },
-  rules: {
-    // За замовчуванням — лише критичні помилки
-    'no-undef': 'error',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    // Дозволити невикористані змінні, якщо їх ім’я починається з _
-    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-  },
+  plugins: [
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+    '@typescript-eslint',
+    'import',
+    'next'
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'next',
+    'next/core-web-vitals'
+  ],
   settings: {
     react: { version: 'detect' },
+    'import/resolver': {
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
+    }
+  },
+  rules: {
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
   },
   ignorePatterns: ['.next/', 'node_modules/', 'public/'],
 };
