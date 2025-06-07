@@ -4,8 +4,8 @@ import localFont from 'next/font/local'
 
 const firaSans = localFont({
   src: [
-    { path: '../customFonts/FiraSans-Regular.ttf', weight: '400', style: 'normal' },
-    { path: '../customFonts/FiraSans-Bold.ttf', weight: '700', style: 'normal' },
+    { path: '../../customFonts/FiraSans-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../customFonts/FiraSans-Bold.ttf', weight: '700', style: 'normal' },
   ],
   display: 'swap',
 })
