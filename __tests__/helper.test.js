@@ -1,14 +1,12 @@
+/** @jest-environment node */
 import { jest } from '@jest/globals';
 import { getImageUrl, getFormattedDate, getFormattedTime, getBaseUrl } from '../src/utils/helper.js';
 
 describe('helper utilities', () => {
   beforeEach(() => {
-    global.window = {};
-    Object.defineProperty(global.window, 'location', {
-      value: { hostname: 'localhost', origin: 'http://localhost:3000' },
-      writable: true,
-      configurable: true,
-    });
+    global.window = {
+      location: { hostname: 'localhost', origin: 'http://localhost:3000' },
+    };
     process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
   });
 
@@ -28,12 +26,9 @@ describe('helper utilities', () => {
     });
 
     test('uses window origin for non-localhost', () => {
-      global.window = {};
-      Object.defineProperty(global.window, 'location', {
-        value: { hostname: 'example.com', origin: 'https://example.com' },
-        writable: true,
-        configurable: true,
-      });
+      global.window = {
+        location: { hostname: 'example.com', origin: 'https://example.com' },
+      };
       const result = getImageUrl('images/pic.jpg');
       expect(result).toBe('https://example.com/images/pic.jpg');
     });
@@ -60,23 +55,17 @@ describe('helper utilities', () => {
 
   describe('getBaseUrl', () => {
     test('returns window origin for localhost', () => {
-      global.window = {};
-      Object.defineProperty(global.window, 'location', {
-        value: { hostname: 'localhost', origin: 'http://localhost:3000' },
-        writable: true,
-        configurable: true,
-      });
+      global.window = {
+        location: { hostname: 'localhost', origin: 'http://localhost:3000' },
+      };
       process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
       expect(getBaseUrl()).toBe('http://localhost:3000');
     });
 
     test('returns window origin for remote host', () => {
-      global.window = {};
-      Object.defineProperty(global.window, 'location', {
-        value: { hostname: 'example.com', origin: 'https://example.com' },
-        writable: true,
-        configurable: true,
-      });
+      global.window = {
+        location: { hostname: 'example.com', origin: 'https://example.com' },
+      };
       expect(getBaseUrl()).toBe('https://example.com');
     });
   });
