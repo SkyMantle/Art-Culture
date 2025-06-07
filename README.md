@@ -4,11 +4,20 @@ This project uses **Next.js** for server-side rendering (SSR).
 
 ## Getting Started
 
-Install dependencies and create a local `.env` file based on `.env.sample`:
+This project requires Node 18 or later. Install dependencies and create a local `.env` file based on `.env.sample`:
 
 ```bash
 npm install
 ```
+
+If you see peer dependency errors, try:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+Tests rely on an up-to-date `package-lock.json`.
+
 
 ## Environment Variables
 
