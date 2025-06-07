@@ -47,7 +47,7 @@ describe('helper utilities', () => {
     });
 
     test('getFormattedTime returns uk-UA time string', () => {
-      expect(getFormattedTime(date)).toBe('12:34');
+      expect(getFormattedTime(date)).toBe('15:34');
     });
   });
 

@@ -6,7 +6,7 @@ export function getBaseUrl() {
 
         const isLocalhost = host === 'localhost' || host === '127.0.0.1'
 
-        if (!isBrowser && isLocalhost) {
+        if (isLocalhost) {
                 return process.env.NEXT_PUBLIC_API_URL
         }
 
@@ -63,11 +63,12 @@ export function getFormattedDate(date) {
 }
 
 export function getFormattedTime(date) {
-	const formattedDate = new Date(date).toLocaleTimeString('uk-UA', {
-		hour: 'numeric',
-		minute: 'numeric',
-		// hour: '2-digit',
-		// minute: '2-digit',
-	})
-	return formattedDate
+        const formattedDate = new Date(date).toLocaleTimeString('uk-UA', {
+                hour: 'numeric',
+                minute: 'numeric',
+                timeZone: 'Europe/Kyiv',
+                // hour: '2-digit',
+                // minute: '2-digit',
+        })
+        return formattedDate
 }
