@@ -3,9 +3,12 @@ import { getImageUrl, getFormattedDate, getFormattedTime, getBaseUrl } from '../
 
 describe('helper utilities', () => {
   beforeEach(() => {
-    global.window = {
-      location: { hostname: 'localhost', origin: 'http://localhost:3000' },
-    };
+    global.window = {};
+    Object.defineProperty(global.window, 'location', {
+      value: { hostname: 'localhost', origin: 'http://localhost:3000' },
+      writable: true,
+      configurable: true,
+    });
     process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
   });
 
@@ -25,10 +28,14 @@ describe('helper utilities', () => {
     });
 
     test('uses window origin for non-localhost', () => {
-      global.window.location.hostname = 'example.com';
-      global.window.location.origin = 'https://example.com';
+      global.window = {};
+      Object.defineProperty(global.window, 'location', {
+        value: { hostname: 'example.com', origin: 'https://example.com' },
+        writable: true,
+        configurable: true,
+      });
       const result = getImageUrl('images/pic.jpg');
-      expect(result).toBe(`${global.window.location.origin}/images/pic.jpg`);
+      expect(result).toBe('https://example.com/images/pic.jpg');
     });
 
     test('server-side uses env base url on localhost', () => {
@@ -52,17 +59,25 @@ describe('helper utilities', () => {
   });
 
   describe('getBaseUrl', () => {
-    test('returns API url for localhost', () => {
-      global.window.location.hostname = 'localhost';
-      global.window.location.origin = 'http://localhost:3000';
+    test('returns window origin for localhost', () => {
+      global.window = {};
+      Object.defineProperty(global.window, 'location', {
+        value: { hostname: 'localhost', origin: 'http://localhost:3000' },
+        writable: true,
+        configurable: true,
+      });
       process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
-      expect(getBaseUrl()).toBe(process.env.NEXT_PUBLIC_API_URL);
+      expect(getBaseUrl()).toBe('http://localhost:3000');
     });
 
     test('returns window origin for remote host', () => {
-      global.window.location.hostname = 'example.com';
-      global.window.location.origin = 'https://example.com';
-      expect(getBaseUrl()).toBe(global.window.location.origin);
+      global.window = {};
+      Object.defineProperty(global.window, 'location', {
+        value: { hostname: 'example.com', origin: 'https://example.com' },
+        writable: true,
+        configurable: true,
+      });
+      expect(getBaseUrl()).toBe('https://example.com');
     });
   });
 });

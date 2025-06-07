@@ -1,20 +1,8 @@
 export function getBaseUrl() {
-        const isBrowser = typeof window !== 'undefined'
-        const host = isBrowser
-                ? window.location.hostname
-                : process.env.NEXT_PUBLIC_HOST || 'localhost'
-
-        const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-
-        if (isLocalhost) {
-                return process.env.NEXT_PUBLIC_API_URL
-        }
-
-        if (isBrowser) {
+        if (typeof window !== 'undefined') {
                 return window.location.origin
         }
-
-        return `https://${host}`
+        return process.env.NEXT_PUBLIC_API_URL || ''
 }
 
 /**
