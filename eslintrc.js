@@ -12,8 +12,7 @@ module.exports = {
     'react-hooks',
     'jsx-a11y',
     '@typescript-eslint',
-    'import',
-    'next'
+    'import'
   ],
   extends: [
     'eslint:recommended',
