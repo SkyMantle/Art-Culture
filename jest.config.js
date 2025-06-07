@@ -1,7 +1,10 @@
 export default {
   testEnvironment: 'node',
   transform: {
-    '^.+\\.(ts|tsx|js|jsx)$': ['ts-jest', { useESM: true }],
+    '^.+\\.[jt]sx?$': ['babel-jest', { configFile: './babel.config.js' }],
+  },
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|svg|webp)$': '<rootDir>/__mocks__/fileMock.js',
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx'],
 };
