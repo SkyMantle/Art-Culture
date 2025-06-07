@@ -114,7 +114,7 @@ function MainArtists() {
 							alt={t('Стрілка')}
 							onError={(e) => {
 								e.target.onerror = null
-								e.target.src = '/mainNewImg/buttonArrow.svg'
+                                                                e.target.src = '/img/buttonArrow.svg'
 							}}
 						/>
 					</button> */}
@@ -270,7 +270,7 @@ function MainArtists() {
 						alt={t('Стрілка')}
 						onError={(e) => {
 							e.target.onerror = null
-							e.target.src = '/mainNewImg/buttonArrow.svg'
+                                                        e.target.src = '/img/buttonArrow.svg'
 						}}
 					/>
 				</button>
