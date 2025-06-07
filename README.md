@@ -87,3 +87,7 @@ News pages are pre-rendered at build time but regenerate periodically. The
 instructs Next.js to refresh the static content every 60 seconds.
 
 For information on obtaining sample SQL dumps see [docs/SAMPLE_DATA.md](docs/SAMPLE_DATA.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
