@@ -30,13 +30,15 @@ module.exports = {
     react: { version: 'detect' },
     'import/resolver': {
       node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      typescript: { project: './tsconfig.json' },
     },
   },
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    'react-refresh/only-export-components': 'off'
+    'react-refresh/only-export-components': 'off',
+    'react/react-in-jsx-scope': 'off'
   },
   ignorePatterns: ['.next/', 'node_modules/', 'public/'],
 };
