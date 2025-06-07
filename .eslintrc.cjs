@@ -14,10 +14,10 @@ module.exports = {
     'react-hooks',
     'jsx-a11y',
     'import',
-    'next',
+    '@next/next',
   ],
   extends: [
-    'next/core-web-vitals',
+    'plugin:@next/next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
