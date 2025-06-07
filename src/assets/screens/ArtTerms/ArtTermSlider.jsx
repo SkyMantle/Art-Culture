@@ -15,10 +15,10 @@ import { Navigation, Pagination } from 'swiper/modules'
 // import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
 import { useNavigate } from 'react-router-dom'
 import { getBaseUrl } from '../../../utils/helper'
-import TranslatedContent from '@components/Blocks/TranslatedContent'
+import TranslatedContent from '../../components/Blocks/TranslatedContent'
 import '@styles/components/Sliders/Base/ArtTermsSlider.scss'
 
-const Slide = ({ artTerm, baseUrl }) => {
+export const Slide = ({ artTerm, baseUrl }) => {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 
@@ -34,14 +34,14 @@ const Slide = ({ artTerm, baseUrl }) => {
 		<div className="NewsSliderCardContainer">
 			<a
 				className="NewsSliderCardLink"
-				// TODO:Rewrite component to use navigate for post	onClick={handleArtistPageClick}
+        onClick={handlePostClick}
 			>
 				<div className="NewsSliderCardImgWrapper">
 					<img
 						className="NewsSliderCardImg"
 						src={featuredMediaUrl}
 						alt={t('Світлина мистецтва')}
-						onClick={() => handlePostClick(artTerm.id)}
+						onClick={handlePostClick}
 						onError={(e) => {
 							e.target.onerror = null
 							e.target.src = '/Img/newsCardERROR.jpg'
@@ -51,7 +51,7 @@ const Slide = ({ artTerm, baseUrl }) => {
 
 				<div className="NewsSliderCardTitleWrapper">
 					<h3 className="NewsSliderCardTitle"
-						onClick={() => handlePostClick(artTerm.id)}>
+						onClick={handlePostClick}>
 						<TranslatedContent
 							en={artTerm.title_en}
 							uk={artTerm.title_uk}
@@ -62,7 +62,7 @@ const Slide = ({ artTerm, baseUrl }) => {
 
 				<div className="ArtTermsSliderCardDescriptionWrapper">
 					<p className="NewsSliderCardDescription"
-						onClick={() => handlePostClick(artTerm.id)}>
+						onClick={handlePostClick}>
 						<TranslatedContent
 							en={artTerm.content_en}
 							uk={artTerm.content_uk}
