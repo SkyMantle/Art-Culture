@@ -2,6 +2,7 @@
 // Файл: /src/app/page.tsx
 
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -44,10 +45,10 @@ export default function HomePage() {
 
       <ul>
         <li>
-          <a href="/news/1">{t('Перша новина')}</a>
+          <Link href="/news/1">{t('Перша новина')}</Link>
         </li>
         <li>
-          <a href="/news/2">{t('Друга новина')}</a>
+          <Link href="/news/2">{t('Друга новина')}</Link>
         </li>
       </ul>
 
