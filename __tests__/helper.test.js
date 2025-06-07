@@ -21,7 +21,7 @@ describe('helper utilities', () => {
 
     test('normalizes relative paths', () => {
       const result = getImageUrl('images/pic.jpg');
-      expect(result).toBe('http://localhost:5000/images/pic.jpg');
+      expect(result).toBe('http://localhost:3000/images/pic.jpg');
     });
 
     test('uses window origin for non-localhost', () => {
@@ -29,6 +29,14 @@ describe('helper utilities', () => {
       global.window.location.origin = 'https://example.com';
       const result = getImageUrl('images/pic.jpg');
       expect(result).toBe('https://example.com/images/pic.jpg');
+    });
+
+    test('server-side uses env base url on localhost', () => {
+      const originalWindow = global.window;
+      delete global.window;
+      const result = getImageUrl('images/pic.jpg');
+      expect(result).toBe('http://localhost:5000/images/pic.jpg');
+      global.window = originalWindow;
     });
   });
 
