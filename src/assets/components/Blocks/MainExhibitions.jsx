@@ -267,13 +267,14 @@ function MainExhibitions() {
 									<div
 										className={`${styles.cardReadMoreWrapper}`}
 									>
-										{/*	TODO:write correct link */}
-										<a
-											href={`/exhibitions/${exhibition.id}`}
-											className={`${styles.cardReadMoreLink}`}
-										>
-											{t('Читати далі')}
-										</a>
+                                                                       <a
+                                                                               onClick={() =>
+                                                                                       handleExhibitionPageClick(exhibition.id)
+                                                                               }
+                                                                               className={`${styles.cardReadMoreLink}`}
+                                                                       >
+                                                                               {t('Читати далі')}
+                                                                       </a>
 									</div>
 								</div>
 							</div>
