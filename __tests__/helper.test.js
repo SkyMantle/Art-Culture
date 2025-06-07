@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { getImageUrl, getFormattedDate, getFormattedTime } from '../src/utils/helper.js';
+import { getImageUrl, getFormattedDate, getFormattedTime, getBaseUrl } from '../src/utils/helper.js';
 
 describe('helper utilities', () => {
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe('helper utilities', () => {
       global.window.location.hostname = 'example.com';
       global.window.location.origin = 'https://example.com';
       const result = getImageUrl('images/pic.jpg');
-      expect(result).toBe('https://example.com/images/pic.jpg');
+      expect(result).toBe(`${global.window.location.origin}/images/pic.jpg`);
     });
   });
 
@@ -40,6 +40,21 @@ describe('helper utilities', () => {
 
     test('getFormattedTime returns uk-UA time string', () => {
       expect(getFormattedTime(date)).toBe('12:34');
+    });
+  });
+
+  describe('getBaseUrl', () => {
+    test('returns API url for localhost', () => {
+      global.window.location.hostname = 'localhost';
+      global.window.location.origin = 'http://localhost:3000';
+      process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
+      expect(getBaseUrl()).toBe(process.env.NEXT_PUBLIC_API_URL);
+    });
+
+    test('returns window origin for remote host', () => {
+      global.window.location.hostname = 'example.com';
+      global.window.location.origin = 'https://example.com';
+      expect(getBaseUrl()).toBe(global.window.location.origin);
     });
   });
 });
