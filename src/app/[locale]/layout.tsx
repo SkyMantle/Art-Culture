@@ -1,16 +1,12 @@
-"use client"
-
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import localFont from 'next/font/local'
 
-import FiraRegular from '../../customFonts/FiraSans-Regular.ttf'
-import FiraBold from '../../customFonts/FiraSans-Bold.ttf'
 
 const firaSans = localFont({
   src: [
-    { path: FiraRegular, weight: '400', style: 'normal' },
-    { path: FiraBold,    weight: '700', style: 'normal' },
+    { path: '../../customFonts/FiraSans-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../customFonts/FiraSans-Bold.ttf',    weight: '700', style: 'normal' },
   ],
   display: 'swap',
 })
