@@ -1,6 +1,7 @@
 // src/app/news/[id]/page.tsx
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import DOMPurify from 'isomorphic-dompurify'
 import { NewsItem } from '@/data/news'
 
 // Incremental static regeneration
@@ -43,6 +44,7 @@ export default async function NewsPage({ params }: Props) {
   const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id) as NewsItem
   if (!news) notFound()
+  const sanitizedContent = DOMPurify.sanitize(news.content)
 
   return (
     <article className="max-w-3xl mx-auto p-4">
@@ -50,7 +52,7 @@ export default async function NewsPage({ params }: Props) {
       <p className="italic text-gray-700 mb-6">{news.excerpt}</p>
       <div
         className="prose prose-blue"
-        dangerouslySetInnerHTML={{ __html: news.content }}
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
       {/* Ось цей Link — і він точно працюватиме */}
       <p className="mt-8">
