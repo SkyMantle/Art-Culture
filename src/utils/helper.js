@@ -5,7 +5,8 @@ export function getBaseUrl() {
                 : process.env.NEXT_PUBLIC_HOST || 'localhost'
 
         const isLocalhost = host === 'localhost' || host === '127.0.0.1'
-        if (isLocalhost) {
+
+        if (!isBrowser && isLocalhost) {
                 return process.env.NEXT_PUBLIC_API_URL
         }
 
