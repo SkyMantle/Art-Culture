@@ -9,8 +9,14 @@ jest.mock('react-router-dom', () => ({
 }))
 
 jest.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (key) => key }),
+  useTranslation: () => ({ t: (key) => key, i18n: { language: 'en' } }),
 }))
+
+jest.mock('swiper/react')
+jest.mock('swiper/modules')
+jest.mock('swiper/css', () => ({}))
+jest.mock('swiper/css/navigation', () => ({}))
+jest.mock('swiper/css/pagination', () => ({}))
 
 describe('Slider slides navigation', () => {
   test('artist slide navigates on click', () => {
