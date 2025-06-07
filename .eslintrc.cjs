@@ -1,42 +1,42 @@
+// .eslintrc.cjs
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2023,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
     project: ['./tsconfig.json'],
   },
   plugins: [
+    '@typescript-eslint',
     'react',
     'react-hooks',
     'jsx-a11y',
-    '@typescript-eslint',
-    'import'
+    'import',
+    'next',
   ],
   extends: [
-    'eslint:recommended',
+    'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:import/typescript',
-    'next',
-    'next/core-web-vitals'
+    'plugin:import/typescript'
   ],
   settings: {
     react: { version: 'detect' },
     'import/resolver': {
-      node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
-    }
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    },
   },
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'react-refresh/only-export-components': 'off'
   },
   ignorePatterns: ['.next/', 'node_modules/', 'public/'],
 };
