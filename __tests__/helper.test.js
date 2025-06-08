@@ -1,13 +1,14 @@
 /** @jest-environment node */
 import { jest } from '@jest/globals';
-import { getImageUrl, getFormattedDate, getFormattedTime, getBaseUrl } from '../src/utils/helper.js';
+import { getImageUrl, getFormattedDate, getFormattedTime } from '../src/utils/helper.js';
+import { getBaseUrl } from '../src/utils/getBaseUrl';
 
 describe('helper utilities', () => {
   beforeEach(() => {
     global.window = {
       location: { hostname: 'localhost', origin: 'http://localhost:3000' },
     };
-    process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
+    process.env.API_BASE_URL = 'http://localhost:5000';
   });
 
   describe('getImageUrl', () => {
@@ -58,7 +59,7 @@ describe('helper utilities', () => {
       global.window = {
         location: { hostname: 'localhost', origin: 'http://localhost:3000' },
       };
-      process.env.NEXT_PUBLIC_API_URL = 'http://localhost:5000';
+      process.env.API_BASE_URL = 'http://localhost:5000';
       expect(getBaseUrl()).toBe('http://localhost:3000');
     });
 

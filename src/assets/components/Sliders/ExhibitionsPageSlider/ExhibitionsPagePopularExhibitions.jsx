@@ -17,7 +17,8 @@ import { Navigation, Pagination } from 'swiper/modules'
 import Image from 'next/image'
 
 import '@styles/components/Sliders/Base/PopularSlider.scss'
-import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
+import { getBaseUrl } from '../../../../utils/getBaseUrl'
+import { getImageUrl } from '../../../../utils/helper'
 // import LikeAndShare from '../../Blocks/LikeAndShare'
 import TranslatedContent from '../../Blocks/TranslatedContent'
 

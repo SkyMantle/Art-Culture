@@ -11,7 +11,7 @@ import 'swiper/css/pagination'
 // Import Swiper modules
 import { Navigation, Pagination } from 'swiper/modules'
 
-import { getBaseUrl } from '../../../../utils/helper'
+import { getBaseUrl } from '../../../../utils/getBaseUrl'
 import '/src/styles/components/Sliders/NewsPageAuthorsSlider/NewsPageAuthorsSlider.scss'
 import Image from 'next/image'
 
