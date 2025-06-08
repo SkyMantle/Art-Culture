@@ -13,7 +13,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 
 // import LikeAndShare from '@components/Blocks/LikeAndShare'
 import { useNavigate } from 'react-router-dom'
-import { getBaseUrl } from '../../../../utils/helper'
+import { getBaseUrl } from '../../../../utils/getBaseUrl'
 import TranslatedContent from '../../Blocks/TranslatedContent'
 import Image from 'next/image'
 import '/src/styles/components/Sliders/Base/NewsSlider.scss'

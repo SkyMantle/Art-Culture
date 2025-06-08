@@ -9,7 +9,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Autoplay } from 'swiper/modules'
-import { getBaseUrl, getImageUrl } from '../../../../utils/helper'
+import { getBaseUrl } from '../../../../utils/getBaseUrl'
+import { getImageUrl } from '../../../../utils/helper'
 
 // Import Swiper modules
 import { Navigation, Pagination } from 'swiper/modules'

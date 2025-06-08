@@ -8,7 +8,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getBaseUrl, getImageUrl } from '../../../utils/helper.js'
+import { getBaseUrl } from '../../../utils/getBaseUrl'
+import { getImageUrl } from '../../../utils/helper.js'
 import TranslatedContent from '../../components/Blocks/TranslatedContent.jsx'
 
 function ArtistPage() {

@@ -14,7 +14,7 @@ import { Navigation, Pagination } from 'swiper/modules'
 // import LikeAndShare from '@components/Blocks/LikeAndShare'
 // import sliderStyles from '@styles/components/Blocks/Slider.module.scss'
 import { useNavigate } from 'react-router-dom'
-import { getBaseUrl } from '../../../utils/helper'
+import { getBaseUrl } from '../../../utils/getBaseUrl'
 import TranslatedContent from '../../components/Blocks/TranslatedContent'
 import '@styles/components/Sliders/Base/ArtTermsSlider.scss'
 

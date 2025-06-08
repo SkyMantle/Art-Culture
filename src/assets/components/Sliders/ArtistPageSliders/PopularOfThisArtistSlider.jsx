@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { getBaseUrl } from '../../../../utils/helper'
+import { getBaseUrl } from '../../../../utils/getBaseUrl'
 // Import Swiper modules
 // import LikeAndShare from '@components/Blocks/LikeAndShare'
 import PropTypes from 'prop-types'
