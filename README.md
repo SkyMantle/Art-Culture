@@ -7,7 +7,7 @@ the project directory to ensure the correct version.
 
 ## Getting Started
 
-This project requires Node 18 or later. Install dependencies and create a local `.env` file based on `.env.example`:
+This project requires Node 18 or later. Install dependencies and create a local `.env` file based on `.env.sample`:
 
 ```bash
 npm install
@@ -24,7 +24,7 @@ Tests rely on an up-to-date `package-lock.json`.
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and update the values as needed.
+Copy `.env.sample` to `.env` and update the values as needed.
 
 - `DATABASE_URL` – connection string for PostgreSQL
 - `REDIS_URL` or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`
