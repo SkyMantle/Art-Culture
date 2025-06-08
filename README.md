@@ -54,6 +54,11 @@ npm run build
 npm start
 ```
 
+## Deployment
+
+See [docs/GCP_DEPLOY.md](docs/GCP_DEPLOY.md) for instructions on building a Docker image and deploying to Google Cloud Run.
+
+
 
 ## Testing
 
