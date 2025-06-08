@@ -12,14 +12,20 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      : 'http://localhost:3000'
   const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   return newsList.map((n) => ({ id: n.id }))
 }
 
 export async function generateMetadata({ params }: Props) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      : 'http://localhost:3000'
   const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id)
@@ -39,7 +45,10 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function NewsPage({ params }: Props) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || ''
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      : 'http://localhost:3000'
   const res = await fetch(`${baseUrl}/api/news`)
   const newsList: NewsItem[] = await res.json()
   const news = newsList.find((n) => n.id === params.id) as NewsItem
