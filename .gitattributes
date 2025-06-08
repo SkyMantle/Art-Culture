@@ -1,0 +1,2 @@
+src/customFonts/** filter=lfs diff=lfs merge=lfs -text
+public/Img/**      filter=lfs diff=lfs merge=lfs -text

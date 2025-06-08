@@ -21,6 +21,15 @@ npm install --legacy-peer-deps
 
 Tests rely on an up-to-date `package-lock.json`.
 
+This repository uses [Git LFS](https://git-lfs.com/) to store large
+binary assets. After cloning, make sure Git LFS is installed and pull
+the LFS objects:
+
+```bash
+git lfs install
+git lfs pull
+```
+
 
 ## Environment Variables
 
