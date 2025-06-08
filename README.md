@@ -32,6 +32,7 @@ Copy `.env.example` to `.env` and update the values as needed.
 - `NEXTAUTH_SECRET` and provider credentials like `GITHUB_ID`/`GITHUB_SECRET`
 - `NEXT_PUBLIC_HOST` – hostname used when rendering on the server
 - `API_BASE_URL` - base URL for server-side API requests
+- `TOKEN` - access token for internal APIs
 
 ## NextAuth
 
