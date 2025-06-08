@@ -56,7 +56,7 @@ npm start
 
 ## Deployment
 
-See [docs/GCP_DEPLOY.md](docs/GCP_DEPLOY.md) for instructions on building a Docker image and deploying to Google Cloud Run.
+See [docs/GCP_DEPLOYMENT.md](docs/GCP_DEPLOYMENT.md) for instructions on building a Docker image and deploying to Google Cloud Run.
 
 
 
