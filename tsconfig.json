@@ -1,6 +1,7 @@
 {
   // Ім’я файлу: tsconfig.json
   "compilerOptions": {
+    "skipLibCheck": true,
     "target": "esnext", // Використовуємо сучасний ESNext
     "lib": [
       "dom",
