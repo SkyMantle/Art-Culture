@@ -8,3 +8,17 @@ node_modules/
 # великі папки з бінарними файлами
 public/Img/
 src/customFonts/
+# macOS
+.DS_Store
+
+# Резервні/бекап-файли
+*.bak
+
+# Дублікати lock-файлів та модулів
+package-lock 2.json
+node_modules 2/
+
+# IDE та тестові артефакти
+__mocks__/
+jest.setup.js
+fix-eslint.sh
