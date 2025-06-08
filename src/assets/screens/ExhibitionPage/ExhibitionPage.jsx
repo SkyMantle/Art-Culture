@@ -423,7 +423,6 @@ function ExhibitionDetails() {
 							</p>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	)
