@@ -1,54 +1,10 @@
-# ────────────────────────────────────────────────────────────
-# macOS Finder
-.DS_Store
-
-# ────────────────────────────────────────────────────────────
-# Logs
-logs/
-*.log
-npm-debug.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# ────────────────────────────────────────────────────────────
-# Dependency directories
+# залежності та артефакти збірки
 node_modules/
-
-# ────────────────────────────────────────────────────────────
-# Build outputs
-dist/
-dist-ssr/
-
-# ────────────────────────────────────────────────────────────
-# Local env files
-*.local
-.env
-
-# ────────────────────────────────────────────────────────────
-# IDEs and editors
-.vscode/
-!.vscode/extensions.json
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 .next/
 
-.next/
-.git 2/
+# локальні змінні оточення
+.env.local
 
-# SSL certificates
-server.cert
-server.key
-
-# Git fetch metadata
-FETCH_HEAD
-
-# Database dumps
-dump.sql
-testdata.sql
-artukrainedev.session.sql
-sql command.sql
+# великі папки з бінарними файлами
+public/Img/
+src/customFonts/
