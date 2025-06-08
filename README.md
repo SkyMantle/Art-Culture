@@ -59,6 +59,22 @@ npm start
 
 See [docs/GCP_DEPLOYMENT.md](docs/GCP_DEPLOYMENT.md) for instructions on building a Docker image and deploying to Google Cloud Run.
 
+### Docker
+
+Build a production image using the included `Dockerfile`:
+
+```bash
+docker build -t art-culture .
+```
+
+Run the container locally with environment variables from your `.env` file:
+
+```bash
+docker run --env-file .env -p 3000:3000 art-culture
+```
+
+The image can also be pushed to a container registry for deployment. See the [GCP deployment guide](docs/GCP_DEPLOY.md) for an example using Google Artifact Registry and Cloud Run.
+
 
 
 ## Testing
