@@ -7,7 +7,7 @@ the project directory to ensure the correct version.
 
 ## Getting Started
 
-This project requires Node 18 or later. Install dependencies and create a local `.env` file based on `.env.sample`:
+This project requires Node 18 or later. Install dependencies and create a local `.env` file based on `.env.example`:
 
 ```bash
 npm install
@@ -24,13 +24,14 @@ Tests rely on an up-to-date `package-lock.json`.
 
 ## Environment Variables
 
-Copy `.env.sample` to `.env` and update the values as needed.
+Copy `.env.example` to `.env` and update the values as needed.
 
 - `DATABASE_URL` – connection string for PostgreSQL
 - `REDIS_URL` or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`
 - `SHOPIFY_API_KEY` and `SHOPIFY_API_SECRET`
 - `NEXTAUTH_SECRET` and provider credentials like `GITHUB_ID`/`GITHUB_SECRET`
 - `NEXT_PUBLIC_HOST` – hostname used when rendering on the server
+- `API_BASE_URL` - base URL for server-side API requests
 
 ## NextAuth
 
