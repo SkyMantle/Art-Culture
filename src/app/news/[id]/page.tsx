@@ -1,7 +1,11 @@
 // src/app/news/[id]/page.tsx
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import DOMPurify from 'isomorphic-dompurify'
+import createDOMPurify from 'dompurify'
+import { JSDOM } from 'jsdom'
+const window = new JSDOM('').window
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const DOMPurify = createDOMPurify(window as any)
 import { NewsItem } from '@/data/news'
 
 // Incremental static regeneration
