@@ -251,7 +251,6 @@ function MuseumPage() {
 						</button>
 					</div>
 				</div>
-			</div>
 		</div>
 	)
 }
