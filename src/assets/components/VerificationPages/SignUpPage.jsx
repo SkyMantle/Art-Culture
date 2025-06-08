@@ -111,9 +111,10 @@ const SignUp = () => {
 					headers: {
 						'Content-Type': 'multipart/form-data',
 					},
-				},
+                                },
+                        )
 
-			if (response.status === 201) {
+                        if (response.status === 201) {
 				const { token, user } = response.data // Assuming API returns user data
 				login(user, token) // Update AuthContext
 				navigate('/profile') // Redirect to profile

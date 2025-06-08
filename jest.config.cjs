@@ -2,7 +2,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.[jt]sx?$': ['babel-jest', { configFile: './babel.config.cjs' }],
+    '^.+\\.[jt]sx?$': ['babel-jest', { configFile: './babel-jest.config.cjs' }],
   },
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',

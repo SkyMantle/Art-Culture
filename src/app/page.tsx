@@ -18,10 +18,6 @@ const MainInstagramSlider = dynamic(
   }
 )
 
-export const metadata = {
-  title: 'Головна • Art & Culture',
-  description: 'Ласкаво просимо на сайт Art & Culture',
-}
 
 export default function HomePage() {
   const { t } = useTranslation()
@@ -57,7 +53,7 @@ export default function HomePage() {
         <h2>{t('Наш Instagram')}</h2>
         {/* Передаємо dummyImages у слайдер як проп */}
         {dummyImages.length > 0 ? (
-          <MainInstagramSlider images={dummyImages} />
+          <MainInstagramSlider />
         ) : (
           <p>{t('Завантаження слайдера...')}</p>
         )}
