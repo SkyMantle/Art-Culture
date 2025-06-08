@@ -56,6 +56,8 @@ npm start
 
 ## Testing
 
+Run `npm install` before executing tests to install dev dependencies such as Jest.
+
 Run all tests once:
 
 ```bash
