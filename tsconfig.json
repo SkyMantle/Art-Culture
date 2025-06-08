@@ -14,7 +14,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext", // ES-модулі
-    "moduleResolution": "node", // Vite/Next.js чекають moduleResolution=node
+    "moduleResolution": "node16", // Новий алгоритм резолвінгу модулів
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
