@@ -18,6 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
+    "typeRoots": ["src/types", "node_modules/@types"],
     "jsx": "preserve", // або "react-jsx" (Next.js автоматично «переведе» JSX)
     "types": [
       "node",
