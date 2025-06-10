@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://art.playukraine.com
-
-# Sitemaps
-Sitemap: https://art.playukraine.com/sitemap.xml
