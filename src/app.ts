@@ -6,17 +6,18 @@ import helmet from "helmet"
 import morgan from "morgan"
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
-import errorHandler from "./src/middleware/errorHandler.js"
-import adminRoutes from "./src/routes/adminRoutes.js"
-import artTermsRoutes from "./src/routes/artTermsRoutes.js"
-import authRoutes from "./src/routes/authRoutes.js"
-import exhibitionRoutes from "./src/routes/exhibitionRoutes.js"
-import geoRoutes from "./src/routes/geoRoutes.js"
-import likeRoutes from "./src/routes/likeRoutes.js"
-import postRoutes from "./src/routes/postRoutes.js"
-import productRoutes from "./src/routes/productRoutes.js"
-import searchRoutes from "./src/routes/searchRoutes.js"
-import userRoutes from "./src/routes/userRoutes.js"
+import errorHandler from "./middleware/errorHandler.js"
+import adminRoutes from "./routes/adminRoutes.js"
+import artTermsRoutes from "./routes/artTermsRoutes.js"
+import exhibitionRoutes from "./routes/exhibitionRoutes.js"
+import geoRoutes from "./routes/geoRoutes.js"
+import likeRoutes from "./routes/likeRoutes.js"
+import postRoutes from "./routes/postRoutes.js"
+import productRoutes from "./routes/productRoutes.js"
+import searchRoutes from "./routes/searchRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
+import authRoute from './modules/auth/routes/auth.route.js'
+
 dotenv.config()
 
 const app = express()
@@ -94,7 +95,7 @@ app.use(
 )
 
 // API Routes
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoute)
 app.use("/api/posts", postRoutes)
 app.use("/api/admin", adminRoutes)
 app.use("/api/products", productRoutes)
