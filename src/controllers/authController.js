@@ -6,7 +6,6 @@ import path, { dirname } from "path"
 import { fileURLToPath } from "url"
 import prisma from "../prismaClient.js"
 import generateToken from "../utils/generateToken.js"
-import logger from "../utils/logging.js"
 import sendEmail from "../utils/sendEmails.js"
 
 const __filename = fileURLToPath(import.meta.url)
@@ -73,12 +72,9 @@ export const register = async (req, res, next) => {
     const user = await prisma.user.create({
       data: userData,
     })
-    logger.debug("User object after creation:", user)
     const token = generateToken(user)
 
     const { password: pwd, ...userWithoutPassword } = user
-    logger.debug("Request body:", req.body)
-    logger.debug("Uploaded file:", req.file)
 
     if (museumLogo && role === "MUSEUM") {
       await prisma.museum_logo_images.create({
@@ -133,7 +129,6 @@ export const registerUser = async (req, res, next) => {
       data: { email, password: hashedPassword, role: "USER" },
     })
 
-    logger.log("User object after self-registration:", user)
     const token = generateToken(user)
 
     const { password: pwd, ...userWithoutPassword } = user
@@ -166,7 +161,6 @@ export const login = async (req, res, next) => {
     if (!validPassword)
       return res.status(401).json({ error: "Invalid credentials" })
 
-    logger.log("User object before token generation:", user)
 
     // Generate token
     const token = generateToken(user)
@@ -174,7 +168,7 @@ export const login = async (req, res, next) => {
     const { password: pwd, ...userWithoutPassword } = user
     res.json({ token, user: userWithoutPassword })
   } catch (error) {
-    logger.error("Login error:", error)
+    next(error)
     next(error)
   }
 }
@@ -311,7 +305,6 @@ export const updateUserProfile = async (req, res, next) => {
       lon,
     } = req.body
 
-    logger.log("Received update data:", {
       title,
       bio,
       country,
@@ -335,10 +328,9 @@ export const updateUserProfile = async (req, res, next) => {
         const oldImagePath = path.join(__dirname, "../../", user.images)
         try {
           await fs.promises.unlink(oldImagePath)
-          logger.log("Old image deleted successfully: ${oldImagePath}")
         } catch (err) {
           if (err.code !== "ENOENT") {
-            logger.error("Failed to delete old image:", err)
+            next(err)
           }
         }
       }
@@ -382,10 +374,9 @@ export const updateUserProfile = async (req, res, next) => {
         )
         try {
           await fs.promises.unlink(oldLogoPath)
-          logger.log(`Old museum logo deleted successfully: ${oldLogoPath}`)
         } catch (err) {
           if (err.code !== "ENOENT") {
-            logger.error("Failed to delete old museum logo:", err)
+            next(err)
           }
         }
       } else {
@@ -433,7 +424,7 @@ export const updateUserProfile = async (req, res, next) => {
       message: "Profile updated successfully",
     })
   } catch (error) {
-    logger.error("Error updating user profile:", error)
+    next(error)
     next(error)
   }
 }

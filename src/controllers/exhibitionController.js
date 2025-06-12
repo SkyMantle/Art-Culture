@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client"
 import fs from "fs"
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
-import logger from "../utils/logging.js"
 const prisma = new PrismaClient()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -509,7 +508,6 @@ export const getProductByExhibitionId = async (req, res, next) => {
     if (!exhibitionId || isNaN(parseInt(exhibitionId, 10)))
       return res.status(400).json({ error: "Invalid exhibition ID" })
 
-    logger.info("Exhibition ID:", exhibitionId)
     const exhibition = await prisma.exhibition.findUnique({
       where: { id: parseInt(exhibitionId, 10) },
       include: {
@@ -526,13 +524,11 @@ export const getProductByExhibitionId = async (req, res, next) => {
         },
       },
     })
-    logger.info("Exhibition and products data:", exhibition)
     if (!exhibition) {
       return res.status(404).json({ error: "Exhibition not found" })
     }
 
     const products = exhibition.products.map((ep) => ep.product)
-    logger.log("Fetched products:", products)
     res.json({ products })
   } catch (error) {
     console.error("Error fetching product by ID:", error)

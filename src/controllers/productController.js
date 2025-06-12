@@ -30,8 +30,6 @@ export const createProduct = async (req, res, next) => {
     } = req.body
     const userId = req.user.id
 
-    console.log("reg.user", req.user)
-
     const images = req.files.map((file) => ({
       imageUrl: `../../uploads/productImages/${file.filename}`,
     }))
@@ -63,7 +61,6 @@ export const createProduct = async (req, res, next) => {
 
     res.status(201).json({ product, message: "Product created successfully" })
   } catch (error) {
-    console.error("Error creating product:", error)
     next(error)
   }
 }
@@ -117,7 +114,6 @@ export const getProducts = async (req, res, next) => {
 
     res.json({ products })
   } catch (error) {
-    console.error("Error fetching products:", error)
     next(error)
   }
 }
@@ -158,8 +154,6 @@ export const getUserProducts = async (req, res, next) => {
   try {
     const userId = req.user.id
 
-    console.log("getUserProducts - req.user:", req.user)
-
     const products = await prisma.product.findMany({
       where: {
         authorId: userId,
@@ -178,7 +172,6 @@ export const getUserProducts = async (req, res, next) => {
 
     res.json({ products })
   } catch (error) {
-    console.error("Error fetching user products:", error)
     next(error)
   }
 }

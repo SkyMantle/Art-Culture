@@ -21,22 +21,14 @@ function getLikeField(entityType) {
 
 export const toggleLikeEntity = async (req, res) => {
   try {
-    console.log("=> toggleLikeEntity called")
-    console.log("Request body data:", req.body)
-
     // Ensure user is authenticated
     if (!req.user?.id) {
-      console.error("User not authenticated.")
       return res.status(401).json({ error: "User not authenticated" })
     }
 
     const { entityId, entityType } = req.body
     const entityIdInt = parseInt(entityId, 10)
     const userId = req.user.id
-
-    console.log("User ID:", userId)
-    console.log("Entity ID (parsed):", entityIdInt)
-    console.log("Entity type:", entityType)
 
     const field = getLikeField(entityType)
     if (!field || !entityIdInt) {
@@ -51,18 +43,14 @@ export const toggleLikeEntity = async (req, res) => {
       },
     })
 
-    console.log("Existing like found? =>", Boolean(existingLike))
-
     let liked = false
     if (existingLike) {
       // If already liked, remove it
-      console.log("Already liked, so unliking now...")
       await prisma.like.delete({
         where: { id: existingLike.id },
       })
     } else {
       // If not liked, create a new like
-      console.log("Not liked, creating new like...")
       await prisma.like.create({
         data: {
           userId,
@@ -77,28 +65,20 @@ export const toggleLikeEntity = async (req, res) => {
       where: { [field]: entityIdInt },
     })
 
-    console.log("New likeCount:", likeCount)
     return res.status(200).json({ liked, likeCount })
   } catch (error) {
-    console.error("Error toggling like:", error)
-    return res.status(500).json({ error: "Failed to toggle like" })
+    next(error)
   }
 }
 
 export const getLikeStatus = async (req, res) => {
   try {
-    console.log("=> getLikeStatus called")
-    console.log("Request query params:", req.query)
-
     // Since it's a GET request, read from req.query:
     const { entityId, entityType } = req.query
     const entityIdInt = parseInt(entityId, 10)
 
     // If your route requires auth:
     const userId = req.user?.id || null
-    console.log("User ID:", userId)
-    console.log("Entity ID (parsed):", entityIdInt)
-    console.log("Entity type:", entityType)
 
     const field = getLikeField(entityType)
     if (!field || !entityIdInt) {
@@ -119,25 +99,17 @@ export const getLikeStatus = async (req, res) => {
       liked = Boolean(existingLike)
     }
 
-    console.log(`likeCount => ${likeCount}, userHasLiked => ${liked}`)
     return res.status(200).json({ liked, likeCount })
   } catch (error) {
-    console.error("Error fetching like status:", error)
-    return res.status(500).json({ error: "Failed to fetch like status" })
+    next(error)
   }
 }
 
 export const getLikeCount = async (req, res) => {
   try {
-    console.log("=> getLikeCount called")
-    console.log("Request query params:", req.query)
-
     // Since it's a GET request, read from req.query:
     const { entityId, entityType } = req.query
     const entityIdInt = parseInt(entityId, 10)
-
-    console.log("Entity ID (parsed):", entityIdInt)
-    console.log("Entity type:", entityType)
 
     const field = getLikeField(entityType)
     if (!field || !entityIdInt) {
@@ -147,11 +119,9 @@ export const getLikeCount = async (req, res) => {
       where: { [field]: entityIdInt },
     })
 
-    console.log("likeCount =>", count)
     return res.status(200).json({ likeCount: count })
   } catch (error) {
-    console.error("Error fetching like count:", error)
-    return res.status(500).json({ error: "Failed to fetch like count" })
+    next(error)
   }
 }
 
@@ -173,8 +143,7 @@ export const getTopLikedPosts = async (req, res) => {
 
     res.status(200).json(topPosts)
   } catch (error) {
-    console.error("Error fetching top liked posts:", error)
-    res.status(500).json({ error: "Failed to fetch top liked posts" })
+    next(error)
   }
 }
 

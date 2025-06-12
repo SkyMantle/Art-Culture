@@ -4,7 +4,6 @@ import fs from "fs"
 import multer from "multer"
 import path, { dirname } from "path"
 import { fileURLToPath } from "url"
-import logger from "../utils/logging.js"
 
 const prisma = new PrismaClient()
 
@@ -132,7 +131,6 @@ export const getPostById = async (req, res, next) => {
 
     res.json(post)
   } catch (error) {
-    console.error("Error fetching post:", error)
     next(error)
   }
 }
@@ -162,7 +160,6 @@ export const getCreatorsPosts = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    console.error("Error fetching creator posts:", error)
     next(error)
   }
 }
@@ -192,7 +189,6 @@ export const getAuthorsPosts = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    logger.error("Error fetching creator posts:", error)
     next(error)
   }
 }
@@ -230,7 +226,6 @@ export const getPostsByAuthorId = async (req, res, next) => {
 
     res.json({ posts }) // Wrap products in an object
   } catch (error) {
-    logger.error("Error fetching posts by author ID:", error)
     next(error)
   }
 }
@@ -259,7 +254,6 @@ export const getExhibitionsPost = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    logger.error("Error fetching creator posts:", error)
     next(error)
   }
 }
@@ -296,7 +290,6 @@ export const getPostByExhibitionId = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    logger.error("Error fetching posts by author ID:", error)
     next(error)
   }
 }
@@ -325,7 +318,6 @@ export const getMuseumsPost = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    logger.error("Error fetching creator posts:", error)
     next(error)
   }
 }
@@ -362,7 +354,6 @@ export const getPostByMuseumId = async (req, res, next) => {
 
     res.json({ posts })
   } catch (error) {
-    logger.error("Error fetching posts by museum ID:", error)
     next(error)
   }
 }

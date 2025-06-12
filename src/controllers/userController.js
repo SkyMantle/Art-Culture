@@ -1,7 +1,6 @@
 // src/controllers/userController.js
 
 import prisma from "../prismaClient.js"
-import logger from "../utils/logging.js"
 
 // src/controllers/userController.js
 
@@ -42,7 +41,6 @@ export const getCreatorsByLanguage = async (req, res, next) => {
       },
     })
 
-    logger.info(`Fetched ${creators.length} creators from database`)
 
     const mappedCreators = creators.map((creator) => ({
       id: creator.id,
@@ -96,7 +94,6 @@ export const getMuseumsByLanguage = async (req, res, next) => {
       },
     })
 
-    logger.info(`Fetched ${museums.length} creators from database`)
 
     const mappedMuseums = museums.map((museum) => ({
       id: museum.id,
@@ -108,7 +105,7 @@ export const getMuseumsByLanguage = async (req, res, next) => {
 
     res.json({ museums: mappedMuseums })
   } catch (error) {
-    logger.error("Error fetching museums by language:", error)
+    next(error)
     res.status(500).json({ error: "Internal server error" })
   }
 }
@@ -132,7 +129,7 @@ export const getCreators = async (req, res, next) => {
 
     res.json({ creators })
   } catch (error) {
-    logger.error("Error fetching creators:", error)
+    next(error)
     next(error)
   }
 }
@@ -203,7 +200,6 @@ export const getAuthorsByLanguage = async (req, res, next) => {
       },
     })
 
-    logger.info(`Fetched ${authors.length} authors from database`)
 
     const mappedAuthors = authors.map((author) => ({
       id: author.id,
@@ -238,7 +234,7 @@ export const getAuthors = async (req, res, next) => {
 
     res.json({ authors })
   } catch (error) {
-    logger.error("Error fetching authors:", error)
+    next(error)
     next(error)
   }
 }
@@ -267,7 +263,7 @@ export const getAuthorById = async (req, res, next) => {
     }
     res.json({ author })
   } catch (error) {
-    logger.error("Error fetch data author id", error)
+    next(error)
     next(error)
   }
 }
@@ -303,7 +299,7 @@ export const getMuseums = async (req, res, next) => {
 
     res.json({ museums })
   } catch (error) {
-    logger.error("Error fetching museums:", error)
+    next(error)
     next(error)
   }
 }
@@ -356,7 +352,7 @@ export const getExhibitions = async (req, res, next) => {
 
     res.json({ exhibition })
   } catch (error) {
-    logger.error("Error fetching exhibitions:", error)
+    next(error)
     next(error)
   }
 }

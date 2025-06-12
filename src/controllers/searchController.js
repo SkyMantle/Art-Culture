@@ -24,7 +24,6 @@ export const searchAuthors = async (req, res, next) => {
     })
     res.json({ authors })
   } catch (error) {
-    console.error("Error searching for authors:", error)
     next(error)
   }
 }
@@ -67,7 +66,6 @@ export const searchPainting = async (req, res, next) => {
 
     res.json({ paintings })
   } catch (error) {
-    console.error("Error searching for paintings:", error)
     next(error)
   }
 }
@@ -104,7 +102,6 @@ export const searchMuseum = async (req, res, next) => {
     })
     res.json({ museums })
   } catch (error) {
-    console.error("Error searching for museums:", error)
     next(error)
   }
 }

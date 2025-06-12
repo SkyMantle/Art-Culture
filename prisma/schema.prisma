@@ -35,6 +35,8 @@ model User {
   museumExhibition   Exhibition[]        @relation("MuseumExhibition")
   museumProducts     Product[]           @relation("MuseumProducts") // New relation
   likesReceived      Like[]              @relation("LikesReceived")
+  resetToken         String?             @db.VarChar(255)
+  resetTokenExpires  DateTime?
   likesGiven         Like[]              @relation("LikesGiven")
 
   @@map("user")
