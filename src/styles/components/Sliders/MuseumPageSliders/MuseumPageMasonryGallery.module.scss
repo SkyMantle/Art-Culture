@@ -1,31 +1,5 @@
 @import '/src/styles/utilities/variables.scss';
 
-// .masonryGallery {
-// 	width: 100%;
-// 	margin: 0 auto;
-// }
-
-// .row {
-// 	display: flex;
-// 	margin-bottom: 10px; // Gap between rows
-// }
-
-// .item {
-// 	display: block;
-// }
-
-// .item:not(:last-child) {
-// 	margin-right: 10px; // Gap between items
-// }
-
-// img {
-// 	display: block;
-// 	width: 100%;
-// 	height: 100%;
-// 	object-fit: cover;
-// }
-/* JustifiedGallery.module.scss */
-
 .galleryContainer {
 	margin: calc(87px - (43 * ((1440px - 100vw) / (1440 - 375)))) $responsiveLeftAndRightPadding 0;
 	overflow: hidden; // Prevent horizontal scroll due to rounding errors

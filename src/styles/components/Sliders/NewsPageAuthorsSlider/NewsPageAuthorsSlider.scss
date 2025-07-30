@@ -87,7 +87,6 @@
 
 .newsPageAuthorsSliderWrapper {
 	/* Обертка для всего слайдера авторов */
-	// width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -132,7 +131,6 @@
 		top: calc(230px - (57 * ((1440px - 100vw) / (1440 - 375))));
 		width: var(--swiper-navigation-size);
 		height: var(--swiper-navigation-size);
-		// margin-top: calc((var(--swiper-navigation-size) / 2));
 		z-index: 11;
 		cursor: pointer;
 		display: flex;
@@ -145,7 +143,6 @@
 
 	.swiper-button-prev,
 	.swiper-rtl .swiper-button-next {
-		// left: calc(638px - (505 * ((1440px - 100vw) / (1440 - 375))));
 		left: calc(50% - calc(var(--swiper-navigation-size) * 1.14) - calc(34.5px - (5.5 * ((1440px - 100vw) / (1440 - 375)))));
 		right: auto;
 	}
@@ -182,7 +179,6 @@
 	.swiper-horizontal>.swiper-pagination-bullets,
 	.swiper-pagination-bullets.swiper-pagination-horizontal {
 		top: calc(225px - (57 * ((1440px - 100vw) / (1440 - 375))));
-		// top: var(--swiper-pagination-top, auto);
 		left: 0;
 		width: 100%;
 	}

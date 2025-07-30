@@ -23,12 +23,6 @@
     color: variables.$red;
   }
 
-  // @at-root {
-  //   :root {
-  //     --swiper-navigation-size: 63px;
-  //   }
-  // }
-
   .swiper-wrapper {
     z-index: 1;
     display: flex;
@@ -78,14 +72,12 @@
 
   .swiper-button-prev,
   .swiper-rtl .swiper-button-next {
-    // left: calc(-1 * var(--swiper-navigation-size));
     left: 0;
     right: auto;
   }
 
   .swiper-button-next,
   .swiper-rtl .swiper-button-prev {
-    // right: calc(-1 * var(--swiper-navigation-size));
     right: 0;
     left: auto;
   }
@@ -104,14 +96,4 @@
       color: variables.$red;
     }
   }
-
-  // .swiper-button-next,
-  // .swiper-rtl .swiper-button-prev {
-  //   right: calc(
-  //     0% - calc(var(--swiper-navigation-size) * 1.24) - calc(
-  //         34.5px - (5.5 * ((1440px - 100vw) / (1440 - 375)))
-  //       )
-  //   );
-  //   left: auto;
-  // }
 }

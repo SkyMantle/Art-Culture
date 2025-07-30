@@ -110,10 +110,7 @@
 }
 
 .AuthorPostsLists {
-  //padding: 0 calc(10 / 1440 * 100vw);
-  // width: 48.46%;
   display: flex;
-  // flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
 }
@@ -130,8 +127,7 @@
   font-weight: 500;
   font-size: calc(22px - (6 * ((1440px - 100vw) / (1440 - 375))));
   height: calc(
-    calc(22px - (6 * ((1440px - 100vw) / (1440 - 375)))) * 2
-  ); // Делаем ограничение вывода текста построчечно
+    calc(22px - (6 * ((1440px - 100vw) / (1440 - 375)))) * 2); // Делаем ограничение вывода текста построчечно
   overflow: hidden;
   text-transform: uppercase;
 }
@@ -140,8 +136,7 @@
   // Стили для обертки описания карточки
   margin: $responsiveSmallPadding 0 0 0;
   height: calc(
-    calc(20px - (2 * ((1440px - 100vw) / (1440 - 375)))) * 3
-  ); // Делаем ограничение вывода текста построчечно
+    calc(20px - (2 * ((1440px - 100vw) / (1440 - 375)))) * 3); // Делаем ограничение вывода текста построчечно
   overflow: hidden;
 }
 
@@ -155,7 +150,6 @@
 
 .AuthorPostsListsInfoWrapper {
   // Стили для карточки новостей
-  //padding: 0 calc(10 / 1440 * 100vw);
   width: 100%;
   display: flex;
   flex-direction: column;

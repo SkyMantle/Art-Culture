@@ -1,10 +1,7 @@
-// ZoomableImage.module.scss
-
 .imageWrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
-  //z-index: 1000; // Base z-index for non-zoomed image
 }
 
 .zoomed {
@@ -16,7 +13,6 @@
   max-height: 70%;
   transform: translate(-50%, -50%);
   z-index: 1001; // Above the overlay
-  //padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   width: max-content;

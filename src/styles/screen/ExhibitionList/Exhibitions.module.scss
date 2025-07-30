@@ -73,7 +73,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: start;
-	// width: 100%;
 	background-color: #fff;
 	padding: $responsiveSmallPadding;
 	border: 1px solid #ddd;
@@ -142,12 +141,6 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-
-	.modalFormWrapper {
-		// width: 100%;
-		// padding: 0 $responsiveMediumPadding 0 0;
-		// overflow-y: auto;
-	}
 
 	form {
 		width: 100%;

@@ -158,10 +158,6 @@
   background: none;
 }
 
-.museumPageMuseumBottomLogoWhithAdressWrapper {
-  // нижняя оболочка логотипа и адреса музея
-}
-
 .museumPageMuseumBottomLocationWrapper {
   // обертка для местоположения музея
   margin: $responsiveSmallPadding 0 0 0;
@@ -323,7 +319,6 @@
   }  
 
   .infoText {
-    // margin: $staticPcSmallPadding 0 0 0;
     font-size: 16px;
   }
 

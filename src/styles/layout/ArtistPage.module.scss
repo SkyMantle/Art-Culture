@@ -75,7 +75,6 @@
 
 .artistPageArtistPhoto {
   // фото митця
-  // margin: 0 auto;
   display: block;
   object-fit: contain;
   object-position: center center;
@@ -94,7 +93,6 @@
 
 .artistPageArtistName {
   // название митця
-  // font-size: calc(30px - (12 * ((1440px - 100vw) / (1440 - 375))));
   font-weight: 600;
   text-transform: uppercase;
 }

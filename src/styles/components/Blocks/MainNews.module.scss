@@ -210,11 +210,6 @@
 }
 
 @media (min-width: 1920px) {
-  .mainPageNewsContainer {
-    // Стили для основного контейнераконтейнера
-    // margin: 72px 0 0 0;
-  }
-
   .mainPageNewsCard {
     // Стили для карточки новостей
     width: 32.81%;
@@ -228,7 +223,6 @@
 
   .cardTitleWrapper {
     // Стили для обертки заголовка карточки
-    // font-size: 22px;
     height: calc(22px * 2 - 1px); // Делаем ограничение вывода текста построчечно
   }
 
@@ -240,7 +234,6 @@
   .cardDescription {
     // Стили для описания карточки
     line-height: 20px;
-    // font-size: 16px;
   }
 
   .cardAddressWrapper {
@@ -251,7 +244,6 @@
   .cardAddress {
     // Стили для описания карточки
     line-height: 20px;
-    // font-size: 16px;
   }
 
   .cardExhibDurTimeWrapper {
@@ -262,7 +254,6 @@
   .cardExhibDurTime {
     // Стили для описания карточки
     line-height: 20px;
-    // font-size: 16px;
   }
 }
 
@@ -272,11 +263,6 @@
     margin: $staticPcMediumPadding 0 0 0;
   }
 
-  // .mainPageNewsTitle {
-  // Стили для заголовка
-  // font-size: 28px;
-  // }
-
   .mainPageNewsButton {
     // Стили для кнопки
     border-radius: 34px;
@@ -285,7 +271,6 @@
   .mainPageNewsButtonTitle {
     // Стили для текста кнопки
     margin: 0 12px 0 0;
-    // font-size: 16px;
   }
 
   .mainPageNewsCardsWrapper {
@@ -298,20 +283,10 @@
     margin: $staticPcMediumPadding 0 0 0;
   }
 
-  // .cardTitleWrapper {
-  // Стили для обертки заголовка карточки
-  // font-size: 22px;
-  // }
-
   .cardDescriptioneWrapper {
     // Стили для обертки описания карточки
     margin: $staticPcSmallPadding 0 0 0;
   }
-
-  // .cardDescription {
-  // Стили для описания карточки
-  // font-size: 16px;
-  // }
 
   .cardClockAndDateInner {
     // Стили для обертки даты и времени карточки
@@ -323,20 +298,10 @@
     margin: $staticPcSmallPadding 0 0 0;
   }
 
-  // .cardAddress {
-  // Стили для описания карточки
-  // font-size: 16px;
-  // }
-
   .cardExhibDurTimeWrapper {
     // Стили для обертки описания карточки
     margin: $staticPcSmallPadding 0 0 0;
   }
-
-  // .cardExhibDurTime {
-  // Стили для описания карточки
-  // font-size: 16px;
-  // }
 
   .cardDateWrapper {
     // Стили для обертки даты
@@ -409,12 +374,6 @@
     // Стили для обертки описания карточки
     margin: $staticMobileSmallPadding 0 0 0;
   }
-
-  // .cardClockAndDateWrapper {
-  //   // Стили для обертки даты и времени
-  //   margin: $staticMobileSmallPadding 0 0 0;
-  //   flex-direction: column;
-  // }
 
   .cardExhibDurTimeWrapper {
     // Стили для обертки описания карточки

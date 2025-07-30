@@ -44,12 +44,9 @@
 .resultsWrapper {
   width: 90%;
   margin: calc(50px - 25 * (1440px - 100vw) / 871) auto;
-  //position: absolute;
   top: 5%;
   left: 50%;
-  //transform: translateX(-50%);
   max-height: 90vh;
-  //overflow-y: auto;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 20;

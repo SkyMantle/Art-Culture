@@ -106,7 +106,6 @@
     //Название музея
     width: 100%;
     height: 100%;
-    // font-size: calc(24px - (10 * ((1440px - 100vw) / (1440 - 375))));
     font-weight: 400;
     text-transform: none;
     color: rgb(255, 255, 255);
@@ -303,16 +302,6 @@
         margin: $staticPcMediumPadding 0 0 0;
     }
 
-    // .BannerSliderCardStaticTitle {
-    //     //Название музея
-    //     font-size: 42px;
-    // }
-
-    // .BannerSliderCardTitle {
-    //     //Название музея
-    //     font-size: 24px;
-    // }
-
     .BannerSliderCardDescriptionWrapper {
         // Обёртка описания музея
         margin: $staticPcSmallPadding 0 0 0;
@@ -397,16 +386,6 @@
         // Обёртка названия музея
         margin: $staticMobileMediumPadding 0 0 0;
     }
-
-    // .BannerSliderCardTitle {
-    //     //Название музея
-    //     font-size: 18px;
-    // }
-
-    // .BannerSliderCardTitle {
-    //     //Название музея
-    //     font-size: 18px;
-    // }
 
     .BannerSliderCardDescriptionWrapper {
         // Обёртка описания музея

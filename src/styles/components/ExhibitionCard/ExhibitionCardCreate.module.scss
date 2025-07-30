@@ -124,10 +124,6 @@
   }
 }
 
-.formFileInput {
-  /* Your styles */
-}
-
 .searchResults {
   display: flex;
   flex-direction: column;
@@ -137,7 +133,6 @@
 }
 
 .searchResultItem {
-  /* Your styles */
   display: flex;
 }
 
@@ -146,7 +141,6 @@
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
   gap: 20px;
-  /* Your styles */
 }
 
 .chipContainer {
@@ -173,10 +167,6 @@
   button {
     margin: calc(2 / 1440 * 100vw) 0;
   }
-}
-
-.authorPaintings {
-  /* Your styles */
 }
 
 .authorPaintingsDropdown {
@@ -244,7 +234,6 @@
 }
 
 .paintingsList {
-  /* Your styles */
   display: grid;
   flex-direction: row;
   justify-content: space-around;
@@ -256,7 +245,6 @@
 }
 
 .paintingItem {
-  /* Your styles */
   margin: $responsiveSmallPadding 10px;
   display: flex;
 

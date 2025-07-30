@@ -45,7 +45,6 @@
     justify-content: center;
     border: none;
     border-radius: calc(34px - (4 * ((1440px - 100vw) / (1440 - 375)))) 0 0 calc(34px - (4 * ((1440px - 100vw) / (1440 - 375))));
-    // font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
     font-weight: 500;
     color: white;
     background-color: variables.$turquoise;

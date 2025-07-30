@@ -65,16 +65,6 @@
   text-align: center;
 }
 
-// .newsPageLikeAndShareContainer {
-//   /* Контейнер для кнопок лайка и шаринга */
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: end;
-//   align-items: center;
-//   margin: calc(31px - (-15 * ((1440px - 100vw) / (1440 - 375)))) $responsiveLeftAndRightPadding 0;
-//   font-size: 18px;
-// }
-
 .newsPageLikeAndShareContainer {
   /* Контейнер для кнопок лайка и шаринга */
   display: none;

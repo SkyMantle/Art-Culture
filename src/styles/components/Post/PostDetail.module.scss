@@ -15,7 +15,6 @@
   // контейнер для навигации
   margin: 0 variables.$responsiveLeftAndRightPadding;
   display: flex;
-  // width: 100%;
 }
 
 .postPageNavigation {
@@ -78,7 +77,6 @@
 
 .postPageNewsPhoto {
   // фото митця
-  // margin: 0 auto;
   display: block;
   object-fit: contain;
   object-position: center center;
@@ -126,7 +124,6 @@
   // описание митця
   font-size: calc(16px - (2 * ((1440px - 100vw) / (1440 - 375))));
   font-weight: 400;
-  // text-align: center;
 }
 .postPageNewsAuthorNameWrapper {
   margin: calc(22px - (-3 * ((1440px - 100vw) / (1440 - 375)))) 0 0 0;

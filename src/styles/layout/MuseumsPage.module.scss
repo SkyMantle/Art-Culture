@@ -20,13 +20,6 @@
     $responsiveMediumPadding $responsiveLeftAndRightPadding;
 }
 
-// .MuseumsPageTitle {
-//   /* Заголовок страницы */
-//   font-size: calc(28px - (10 * ((1440px - 100vw) / (1440 - 375))));
-//   font-weight: 600;
-//   text-transform: uppercase;
-// }
-
 .ArtistsPageGalleryContainer {
   // Контейнер для галереи
   margin: 0 $responsiveLeftAndRightPadding;
@@ -88,7 +81,6 @@
 
 .ArtistsPageGalleryButtonSeparator {
   // Разделитель
-  // margin: 0 0 0 calc(15px - (5 * ((1440px - 100vw) / (1440 - 375))));
   font-size: calc(24px - (10 * ((1440px - 100vw) / (1440 - 375))));
   text-align: center;
   text-transform: uppercase;
@@ -301,11 +293,6 @@
     margin: $staticPcBigPadding $responsiveLeftAndRightPadding
       $staticPcMediumPadding $responsiveLeftAndRightPadding;
   }
-
-  // .MuseumsPageTitle {
-  //   /* Заголовок страницы новостей */
-  //   font-size: 28px;
-  // }
   .ArtistsPageGalleryTitleWrapper {
     // Контейнер для названия галереи
     margin: $staticPcBigPadding $responsiveLeftAndRightPadding 0

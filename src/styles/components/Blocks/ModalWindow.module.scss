@@ -20,7 +20,6 @@
   background-color: #fff;
   padding: 20px 20px 50px 20px;
   width: calc(1920px - (166 * ((1440px - 100vw) / (1440 - 375))));
-  //height: 100dvh;
   overflow-y: hidden;
   border-radius: 8px;
   display: flex;
@@ -103,10 +102,6 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  //height: 100dvh;
-  //margin: 0 auto;
-  //width: 100%;
-  //padding: calc(20 / 1440 * 100vw);
 }
 
 .modalImage {
