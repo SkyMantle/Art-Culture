@@ -187,7 +187,6 @@ body {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  // background: #000000;
 }
 .headerTitle {
   margin: 0 auto;
@@ -658,82 +657,6 @@ body {
   }
 }
 
-.socialLikeAndShareInner {
-  &__socialLikeAndShareInnerLikeButton:hover,
-  &__shareButton:hover {
-    // box-shadow: 0 0 7px 3px red;
-    // transition: box-shadow 0.3s ease;
-  }
-
-  &__socialLikeAndShareInnerLikeButton:not(:hover),
-  &__shareButton:not(:hover) {
-    // transition: 1s;
-  }
-}
-
-.socialLikeAndShareInner.dark {
-  .socialLikeAndShareInner__socialLikeAndShareInnerLikeButton:hover,
-  .socialLikeAndShareInner__shareButton:hover {
-    // box-shadow: 0 0 7px 3px rgb(255, 255, 255);
-    // transition: box-shadow 0.3s ease;
-  }
-
-  .socialLikeAndShareInner__socialLikeAndShareInnerLikeButton:not(:hover),
-  .socialLikeAndShareInner__shareButton:not(:hover) {
-    // transition: 1s;
-  }
-}
-
-.socialDownWrapper {
-  &__facebookButton:hover,
-  &__instagramButton:hover,
-  &__twitterButton:hover,
-  &__mailButton:hover {
-    // box-shadow: 0 0 10px 5px #3a8374;
-    // transition: box-shadow 0.3s ease;
-  }
-
-  &__facebookButton:not(:hover),
-  &__instagramButton:not(:hover),
-  &__twitterButton:not(:hover),
-  &__mailButton:not(:hover) {
-    // transition: 1s;
-  }
-
-  &__loginButton:hover {
-    // box-shadow: 0 0 10px 5px #d83934;
-    // transition: box-shadow 0.3s ease;
-  }
-
-  &__loginButton:not(:hover) {
-    // transition: 1s;
-  }
-}
-
-.staticHeaderTitleContainer {
-  &__likeButton:hover,
-  &__shareButton:hover {
-    // box-shadow: 0 0 10px 5px #3a8374;
-    // transition: box-shadow 0.3s ease;
-  }
-
-  &__likeButton:not(:hover),
-  &__shareButton:not(:hover) {
-    // transition: 1s;
-  }
-}
-
-.staticHeaderLoginContainer {
-  &__loginButton:hover {
-    // box-shadow: 0 0 10px 5px #d83934;
-    // transition: box-shadow 0.3s ease;
-  }
-
-  &__loginButton:not(:hover) {
-    // transition: 1s;
-  }
-}
-
 @media (min-width: 1441px) {
   .mainHeaderWrapper {
     padding: 39px 0 29px 0;
@@ -789,8 +712,6 @@ body {
     font-size: 18px;
   }
 
-  .mainMenu__link {
-  }
   .burgerButton {
     &__img {
       margin: 0 6px 0 0;
@@ -1247,10 +1168,6 @@ body {
   font-size: calc(18px - (4 * ((1440px - 100vw) / (1440 - 375))));
 }
 
-.burgerMenuDropdown {
-  // Выпадающее меню для переключателя языка в бургер-меню (модификатор для dropdownMenu)
-}
-
 .burgerMenuLoginButton {
   // Кнопка для входа в систему в бургер-меню (модификатор для socialDownWrapper__loginButton)
   display: flex;
@@ -1321,8 +1238,6 @@ body {
     font-family: $default-font;
     font-size: calc(16px - (2 * ((1440px - 100vw) / (1440 - 375))));
     color: white;
-    // cursor: pointer;
-    // display: block; // чтобы ссылки занимали всю ширину элемента спискаw
     white-space: nowrap;
     width: 100%;
   }
@@ -1360,18 +1275,6 @@ body {
   display: flex;
 }
 
-.burgerMenuInstagramButton {
-  // Кнопка Instagram в бургер-меню (модификатор для socialDownWrapper__instagramButton)
-}
-
-.burgerMenuTwitterButton {
-  // Кнопка Twitter в бургер-меню (модификатор для socialDownWrapper__twitterButton)
-}
-
-.burgerMenuMailButton {
-  // Кнопка Mail в бургер-меню (модификатор для socialDownWrapper__mailButton)
-}
-
 .burgerMenuSocialBottomWrapper {
   // Обертка для нижней части секции социальных сетей в бургер-меню
   margin: calc(22px - (-2 * ((1440px - 100vw) / (1440 - 375)))) 0 0 0;
@@ -1384,8 +1287,4 @@ body {
   min-height: 39px;
   object-fit: contain;
   object-position: center;
-}
-
-.burgerMenuPlayUkraine {
-  // Картинка PlayUkraine в бургер-меню (модификатор для footerContactsLinkImgPlayUkraine)
 }
