@@ -204,30 +204,6 @@
 	cursor: pointer;
 }
 
-.footerFacebookButton {
-	// стили для кнопки Facebook
-}
-
-.footerFacebookButtonImg {
-	// стили для изображения кнопки Facebook
-}
-
-.footerInstagramButton {
-	// стили для кнопки Instagram
-}
-
-.footerInstagramButtonImg {
-	// стили для изображения кнопки Instagram
-}
-
-.footerTwitterButton {
-	// стили для кнопки Twitter
-}
-
-.footerTwitterButtonImg {
-	// стили для изображения кнопки Twitter
-}
-
 .footerContactsWrapper {
 	// стили для обёртки блока контактов
 	margin: 0 0 0 10px;
@@ -251,10 +227,6 @@
 .footerContactsLinkWrapper {
 	// стили для обёртки ссылки на контакты
 	display: flex;
-}
-
-.footerContactsLink {
-	// стили для ссылки на контакты
 }
 
 .footerContactsLinkImg {
@@ -285,34 +257,6 @@
 	font-size: calc(16px - (4 * ((1440px - 100vw) / (1440 - 375))));
 	color: white;
 	text-decoration: none;
-}
-
-.footerLegalLinkText {
-	// стили для текста ссылки на юридическую информацию
-}
-
-.footerPolicyWrapper {
-	// стили для обёртки блока политики конфиденциальности
-}
-
-.footerPolicyLink {
-	// стили для ссылки на политику конфиденциальности
-}
-
-.footerPolicyLinkText {
-	// стили для текста ссылки на политику конфиденциальности
-}
-
-.footerCopyrightWrapper {
-	// стили для обёртки блока авторских прав
-}
-
-.footerCopyrightLink {
-	// стили для ссылки на информацию об авторских правах
-}
-
-.footerCopyrightLinkText {
-	// стили для текста ссылки на информацию об авторских правах
 }
 
 @media (min-width: 1441px) {
